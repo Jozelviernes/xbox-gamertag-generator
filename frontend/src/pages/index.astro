@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+import GamertagGenerator from "../components/GamertagGenerator.astro";
+import gamingBackground from "../assets/gaming-background.jpg";
+import FAQSection from "../components/home/FAQSection.astro";
+import ArticleSection from "../components/home/ArticleSection.astro";
+import BlogSection from "../components/home/BlogSection.astro";
+import ToolsSection from "../components/home/ToolsSection.astro";
+import Header from "../components/layout/Header.astro";
+---
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xbox Gamertag Generator – Instantly Generate Cool, Funny & Random Xbox Names</title>
+    <meta
+      name="description"
+      content="Use our free random Xbox gamertag generator to create unique, funny and cool names in seconds."
+    />
+  </head>
+
+  <body>
+	  <Header />
+    <div
+      class="min-h-screen bg-background px-4 md:px-8 lg:px-12 pt-8"
+      style={`background-image: url(${gamingBackground.src}); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;`}
+    >
+      <section class="bg-gradient-hero py-20 rounded-lg mb-8 max-w-6xl mx-auto">
+        <div class="px-6 text-center">
+          <h1 class="text-5xl md:text-6xl font-bold text-xbox-green mb-4">
+            Xbox Gamertag Generator
+          </h1>
+
+          <h2 class="text-xl md:text-2xl font-bold text-white mb-6">
+            Instantly Create Unique, Funny, Cool &amp; OG Gamer Tags
+          </h2>
+
+          <GamertagGenerator />
+
+          <p class="text-base text-muted-foreground mt-8 mb-1.5 max-w-4xl mx-auto leading-relaxed text-left">
+            Coming up with the perfect Xbox gamertag can be a pain.
+            You want a username that feels original, funny, or cool.
+            This tool helps generate clean, creative names you can use across Xbox, PC, and beyond.1
+          </p>
+
+
+        </div>
+      </section>
+
+	  
+	  <FAQSection />
+<ArticleSection />
+<BlogSection />
+<ToolsSection />
+    </div>
+  </body>
+</html>

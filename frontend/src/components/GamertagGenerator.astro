@@ -1,0 +1,249 @@
+---
+import {
+  themes,
+  languages,
+  languageWordSets,
+  languageGenderWords,
+  languageSuffixes,
+  numbers
+} from "../lib/gamertag-data";
+---
+
+<div class="space-y-8">
+  <div class="max-w-xl mx-auto bg-card rounded-xl p-4 md:p-6 shadow-card">
+    <div class="grid gap-6">
+      <div>
+        <label for="gender" class="text-sm font-medium block mb-2 text-white">Gender</label>
+        <select id="gender" class="w-full bg-surface text-white border border-border rounded-md px-3 py-2">
+          <option value="any" class="text-black">Any</option>
+          <option value="male" class="text-black">Male</option>
+          <option value="female" class="text-black">Female</option>
+          <option value="neutral" class="text-black">Neutral</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="theme" class="text-sm font-medium block mb-2 text-white">Character Theme</label>
+        <select id="theme" class="w-full bg-surface text-white border border-border rounded-md px-3 py-2">
+          {themes.map((theme) => (
+            <option value={theme.value} class="text-black">{theme.label}</option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label for="language" class="text-sm font-medium block mb-2 text-white">Language</label>
+        <select id="language" class="w-full bg-surface text-white border border-border rounded-md px-3 py-2">
+          {languages.map((language) => (
+            <option value={language.value} class="text-black">{language.label}</option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label for="includeWords" class="text-sm font-medium block mb-2 text-white">Include (Optional)</label>
+        <textarea
+          id="includeWords"
+          placeholder="Specific words or letters"
+          class="w-full bg-surface text-white border border-border rounded-md px-3 py-2 min-h-[80px] resize-none"
+        ></textarea>
+      </div>
+
+      <div>
+        <label for="otherRequests" class="text-sm font-medium block mb-2 text-white">Other Requests</label>
+        <textarea
+          id="otherRequests"
+          placeholder="Any special requirements"
+          class="w-full bg-surface text-white border border-border rounded-md px-3 py-2 min-h-[80px] resize-none"
+        ></textarea>
+      </div>
+
+      <div class="my-6 md:my-8 lg:my-10">
+        <label for="characterLimit" class="text-sm font-medium mb-3 block text-white">
+          Character Limit:
+          <span id="characterLimitValue" class="text-xbox-green">12</span>
+        </label>
+
+        <input
+          id="characterLimit"
+          type="range"
+          min="3"
+          max="12"
+          step="1"
+          value="12"
+          class="w-full accent-[hsl(107_76%_26%)]"
+        />
+      </div>
+
+      <button
+        id="generateBtn"
+        type="button"
+        class="bg-xbox-green hover:bg-xbox-green-light text-white font-semibold py-4 px-8 text-lg shadow-xbox transition-all duration-300 rounded-md"
+      >
+        Generate Gamertags
+      </button>
+    </div>
+
+    <div class="bg-gray-100 rounded-lg px-4 md:px-6 py-12 text-center border-2 border-dashed border-gray-300 mt-12 mb-12">
+      <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
+      <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
+    </div>
+  </div>
+
+  <div id="resultsSection" class="max-w-3xl mx-auto hidden">
+    <h2 class="text-3xl font-bold text-xbox-green text-center mb-8">
+      Generated Gamertags
+    </h2>
+
+    <div id="resultsGrid" class="grid md:grid-cols-2 gap-4 mb-8"></div>
+
+    <div class="text-center">
+      <button
+        id="generateMoreBtn"
+        type="button"
+        class="border border-xbox-green text-xbox-green hover:bg-xbox-green hover:text-white rounded-md px-6 py-3 transition-all duration-300"
+      >
+        Generate More
+      </button>
+    </div>
+
+    <div class="bg-gray-100 rounded-lg p-4 md:p-6 text-center border-2 border-dashed border-gray-300 mt-8">
+      <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
+      <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+    // @ts-nocheck
+  const genderEl = document.getElementById("gender");
+  const themeEl = document.getElementById("theme");
+  const languageEl = document.getElementById("language");
+  const includeWordsEl = document.getElementById("includeWords");
+  const otherRequestsEl = document.getElementById("otherRequests");
+  const characterLimitEl = document.getElementById("characterLimit");
+  const characterLimitValueEl = document.getElementById("characterLimitValue");
+  const generateBtn = document.getElementById("generateBtn");
+  const generateMoreBtn = document.getElementById("generateMoreBtn");
+  const resultsSection = document.getElementById("resultsSection");
+  const resultsGrid = document.getElementById("resultsGrid");
+
+  function updateCharacterLimitLabel() {
+    if (characterLimitEl && characterLimitValueEl) {
+      characterLimitValueEl.textContent = characterLimitEl.value;
+    }
+  }
+
+  characterLimitEl?.addEventListener("input", updateCharacterLimitLabel);
+
+  /**
+   * @param {HTMLElement | null} element
+   * @returns {string}
+   */
+  function getValue(element) {
+    if (
+      element instanceof HTMLInputElement ||
+      element instanceof HTMLTextAreaElement ||
+      element instanceof HTMLSelectElement
+    ) {
+      return element.value;
+    }
+    return "";
+  }
+
+  function getFormData() {
+    return {
+      gender: getValue(genderEl),
+      theme: getValue(themeEl),
+      language: getValue(languageEl),
+      includeWords: getValue(includeWordsEl),
+      otherRequests: getValue(otherRequestsEl),
+      characterLimit: Number(getValue(characterLimitEl) || 12),
+    };
+  }
+
+  async function generateTags() {
+    if (!generateBtn) return;
+
+    const originalText = generateBtn.textContent;
+    generateBtn.textContent = "Generating...";
+    generateBtn.setAttribute("disabled", "true");
+
+    try {
+      const formData = getFormData();
+
+      const response = await fetch("http://127.0.0.1:8000/api/generate-gamertags", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to generate gamertags.");
+      }
+
+      /** @type {{ tags: string[] }} */
+      const data = await response.json();
+
+      renderResults(data.tags || []);
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong while generating gamertags.");
+    } finally {
+      generateBtn.textContent = originalText;
+      generateBtn.removeAttribute("disabled");
+    }
+  }
+
+  /**
+   * @param {string[]} tags
+   */
+  function renderResults(tags) {
+    if (!resultsGrid || !resultsSection) return;
+
+    resultsGrid.innerHTML = "";
+
+    tags.forEach((tag) => {
+      const card = document.createElement("div");
+      card.className = "bg-card rounded-lg p-4 flex items-center justify-between shadow-card gap-3";
+
+      const name = document.createElement("span");
+      name.className = "font-medium text-lg break-all text-white";
+      name.textContent = tag;
+
+      const button = document.createElement("button");
+      button.className =
+        "bg-xbox-green hover:bg-xbox-green-light text-white rounded-md px-3 py-2 text-sm shrink-0 transition-all duration-300";
+      button.type = "button";
+      button.textContent = "Copy";
+
+      button.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(tag);
+          button.textContent = "Copied!";
+          setTimeout(() => {
+            button.textContent = "Copy";
+          }, 1200);
+        } catch {
+          button.textContent = "Failed";
+          setTimeout(() => {
+            button.textContent = "Copy";
+          }, 1200);
+        }
+      });
+
+      card.appendChild(name);
+      card.appendChild(button);
+      resultsGrid.appendChild(card);
+    });
+
+    resultsSection.classList.remove("hidden");
+  }
+
+  generateBtn?.addEventListener("click", generateTags);
+  generateMoreBtn?.addEventListener("click", generateTags);
+  updateCharacterLimitLabel();
+</script>

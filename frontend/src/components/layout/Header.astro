@@ -1,0 +1,99 @@
+---
+import Menu from "@lucide/astro/icons/menu";
+import X from "@lucide/astro/icons/x";
+
+const currentPath = Astro.url.pathname;
+
+const navigation = [
+  { name: "Home", path: "/" },
+  { name: "Blog", path: "/blog" },
+  { name: "Tools", path: "/tools" },
+  { name: "Glossary", path: "/glossary" },
+  { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
+];
+
+const isActive = (path: string) => currentPath === path;
+---
+
+<header class="bg-card sticky top-0 z-50 border-b border-border">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="text-2xl font-bebas text-xbox-green">
+      XboxGamerTag
+    </a>
+
+    <div class="hidden md:flex items-center space-x-8">
+      {navigation.map((item) => (
+        <a
+          href={item.path}
+          class:list={[
+            "relative inline-block pb-1 text-foreground transition-colors hover:text-xbox-green after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-xbox-green after:transition-all after:duration-300 after:content-['']",
+            "hover:after:w-full",
+            isActive(item.path) && "text-xbox-green after:w-full"
+          ]}
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+
+    <button
+      id="mobile-menu-button"
+      class="md:hidden text-foreground"
+      type="button"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span id="menu-icon-open">
+        <Menu class="h-6 w-6" />
+      </span>
+      <span id="menu-icon-close" class="hidden">
+        <X class="h-6 w-6" />
+      </span>
+    </button>
+  </nav>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-card border-b border-border">
+    <div class="max-w-6xl mx-auto px-6 py-4 space-y-4">
+      {navigation.map((item) => (
+        <a
+          href={item.path}
+          class:list={[
+            "block transition-colors hover:text-xbox-green",
+            isActive(item.path) && "text-xbox-green"
+          ]}
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+    const openIcon = document.getElementById("menu-icon-open");
+    const closeIcon = document.getElementById("menu-icon-close");
+
+    if (!button || !menu || !openIcon || !closeIcon) return;
+
+    button.addEventListener("click", () => {
+      const isHidden = menu.classList.contains("hidden");
+
+      if (isHidden) {
+        menu.classList.remove("hidden");
+        openIcon.classList.add("hidden");
+        closeIcon.classList.remove("hidden");
+        button.setAttribute("aria-expanded", "true");
+      } else {
+        menu.classList.add("hidden");
+        openIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        button.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+</script>

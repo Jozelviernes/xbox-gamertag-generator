@@ -1,0 +1,135 @@
+---
+import Search from "@lucide/astro/icons/search";
+import BarChart3 from "@lucide/astro/icons/chart-column";
+import Download from "@lucide/astro/icons/download";
+import DollarSign from "@lucide/astro/icons/dollar-sign";
+import UserCheck from "@lucide/astro/icons/user-check";
+import Gift from "@lucide/astro/icons/gift";
+
+type Tool = {
+  id: string;
+  title: string;
+  description: string;
+  icon: typeof Search;
+  slug: string;
+  comingSoon?: boolean;
+};
+
+const tools: Tool[] = [
+  {
+    id: "1",
+    title: "Xbox Gamertag Availability Checker",
+    description:
+      "Instantly see if your desired tag is still up for grabs (before someone else snags it).",
+    icon: Search,
+    slug: "availability-checker"
+  },
+  {
+    id: "2",
+    title: "Xbox Gamer Profile History & Stats Checker",
+    description:
+      "View old stats, username changes, and public-facing history tied to a gamertag.",
+    icon: BarChart3,
+    slug: "profile-stats-checker"
+  },
+  {
+    id: "3",
+    title: "Xbox Clips Tool",
+    description:
+      "Find and download Xbox gameplay clips, gifs and screenshots linked to any public profile.",
+    icon: Download,
+    slug: "clips-downloader",
+    comingSoon: true
+  },
+  {
+    id: "4",
+    title: "Xbox Gamertag Price Checker",
+    description:
+      "Estimate the potential value of a gamertag based on rarity and demand.",
+    icon: DollarSign,
+    slug: "price-checker",
+    comingSoon: true
+  },
+  {
+    id: "5",
+    title: "Xbox Account Price/Value Checker",
+    description:
+      "Rough valuation based on achievements, age, and stats.",
+    icon: UserCheck,
+    slug: "account-value-checker",
+    comingSoon: true
+  },
+  {
+    id: "6",
+    title: "Xbox Gamercard Generator",
+    description:
+      "Create a custom gamercard showing your gamertag and stats.",
+    icon: Gift,
+    slug: "gamercard-generator",
+    comingSoon: true
+  }
+];
+
+const getToolLink = (slug: string) => {
+  if (slug === "availability-checker") return "/xbox-gamertag-availability-checker";
+  if (slug === "profile-stats-checker") return "/xbox-gamertag-search";
+  return `/tools/${slug}`;
+};
+---
+
+<section class="py-16 bg-light-grey-softer">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bebas text-xbox-green text-center mb-12">
+      Explore More Tools
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {tools.map((tool) => {
+        const Icon = tool.icon;
+
+        return (
+          <div class="bg-white rounded-xl p-6 hover:shadow-xl transition-shadow group relative">
+            {tool.comingSoon && (
+              <div class="absolute top-4 right-4 bg-xbox-green text-white text-xs px-2 py-1 rounded-full">
+                Coming Soon
+              </div>
+            )}
+
+            <div class="text-xbox-green mb-4">
+              <Icon class="h-10 w-10" />
+            </div>
+
+            <h3 class="text-xl font-semibold mb-3 text-gray-800 group-hover:text-xbox-green transition-colors">
+              {tool.title}
+            </h3>
+
+            <p class="text-gray-600 mb-4">
+              {tool.description}
+            </p>
+
+            {tool.comingSoon ? (
+              <button
+                disabled
+                class="bg-gray-300 text-gray-500 px-4 py-2 rounded transition-colors cursor-not-allowed"
+              >
+                Coming Soon
+              </button>
+            ) : (
+              <a
+                href={getToolLink(tool.slug)}
+                class="bg-xbox-green hover:bg-xbox-green-light text-white px-4 py-2 rounded transition-colors inline-block"
+              >
+                Go to Tool
+              </a>
+            )}
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="bg-gray-100 rounded-lg px-4 md:px-6 py-6 text-center border-2 border-dashed border-gray-300 mt-8">
+      <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
+      <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
+    </div>
+  </div>
+</section>

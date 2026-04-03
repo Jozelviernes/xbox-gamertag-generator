@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@theme {
+  --color-xbox-green: hsl(107 76% 26%);
+  --color-xbox-green-light: hsl(107 76% 35%);
+  --color-xbox-green-dark: hsl(107 76% 20%);
+  --color-xbox-green-glow: hsl(107 76% 26%);
+
+  --color-background: hsl(218 30% 9%);
+  --color-foreground: hsl(210 40% 98%);
+
+  --color-card: hsl(218 30% 12%);
+  --color-card-foreground: hsl(210 40% 98%);
+
+  --color-surface: hsl(218 30% 16%);
+  --color-surface-foreground: hsl(210 40% 98%);
+
+  --color-light-grey: hsl(220 14% 96%);
+  --color-light-grey-foreground: hsl(220 8.9% 46.1%);
+  --color-light-grey-subtle: hsl(220 14% 94%);
+  --color-light-grey-softer: hsl(220 14% 98%);
+
+  --color-primary: hsl(107 76% 26%);
+  --color-primary-foreground: hsl(210 40% 98%);
+
+  --color-secondary: hsl(218 30% 16%);
+  --color-secondary-foreground: hsl(210 40% 98%);
+
+  --color-muted: hsl(218 30% 16%);
+  --color-muted-foreground: hsl(215 20.2% 65.1%);
+
+  --color-accent: hsl(107 76% 26%);
+  --color-accent-foreground: hsl(210 40% 98%);
+
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+
+  --color-border: hsl(218 30% 18%);
+  --color-input: hsl(218 30% 18%);
+  --color-ring: hsl(107 76% 26%);
+
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(224 71.4% 4.1%);
+
+  --radius: 0.75rem;
+
+  --shadow-xbox: 0 0 20px hsl(107 76% 26% / 0.3);
+  --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+}
+
+:root {
+  --gradient-primary: linear-gradient(135deg, hsl(107 76% 26%), hsl(107 76% 35%));
+  --gradient-dark: linear-gradient(180deg, hsl(218 30% 12%), hsl(218 30% 9%));
+  --gradient-hero: linear-gradient(135deg, hsl(218 30% 12%), hsl(218 30% 9%));
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+html {
+  color-scheme: dark;
+}
+
+* {
+  border-color: hsl(218 30% 18%);
+}
+
+body {
+  background-color: hsl(218 30% 9%);
+  color: hsl(210 40% 98%);
+}
+
+.bg-gradient-hero {
+  background: var(--gradient-hero);
+}
+
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-dark {
+  background: var(--gradient-dark);
+}
+
+.shadow-xbox {
+  box-shadow: var(--shadow-xbox);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.text-xbox-green {
+  color: hsl(107 76% 26%);
+}
+
+.text-xbox-green-light {
+  color: hsl(107 76% 35%);
+}
+
+.bg-xbox-green {
+  background-color: hsl(107 76% 26%);
+}
+
+.bg-xbox-green-light {
+  background-color: hsl(107 76% 35%);
+}
+
+.border-border {
+  border-color: hsl(218 30% 18%);
+}
+
+.bg-background {
+  background-color: hsl(218 30% 9%);
+}
+
+.text-foreground {
+  color: hsl(210 40% 98%);
+}
+
+.bg-card {
+  background-color: hsl(218 30% 12%);
+}
+
+.text-card-foreground {
+  color: hsl(210 40% 98%);
+}
+
+.bg-surface {
+  background-color: hsl(218 30% 16%);
+}
+
+.text-surface-foreground {
+  color: hsl(210 40% 98%);
+}
+
+.text-muted-foreground {
+  color: hsl(215 20.2% 65.1%);
+}
+
+.rounded-xl-theme {
+  border-radius: 0.75rem;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
