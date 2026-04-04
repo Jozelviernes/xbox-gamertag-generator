@@ -191,22 +191,6 @@ xbox_gamertag
 
 # 6. Import the SQL File
 
-## Recommended location for the SQL file in the project
-
-Put the SQL file here:
-
-```bash
-backend/database/sql/xbox_gamertag.sql
-```
-
-This is a clean place because it keeps database-related files inside the Laravel backend.
-
-## If the folder does not exist
-Create it:
-
-```bash
-backend/database/sql/
-```
 
 ## How to import in phpMyAdmin
 
