@@ -91,18 +91,22 @@ npm -v
 
 ---
 
-# 3. Clone or Open the Project
+# 3. Download the Project
 
-If using Git:
+## Option A: Using Git (Recommended)
 
-```bash
-git clone <repository-url>
-cd <project-folder>
-```
+Open terminal or command prompt and run:
 
-If you already have the project folder, just open it in VS Code.
+git clone https://github.com/Jozelviernes/xbox-gamertag-generator.git
+
+Then go to the project folder:
+
+cd xbox-gamertag-generator
+
 
 ---
+
+After downloading, proceed to backend and frontend setup.
 
 # 4. Backend Setup (Laravel)
 
