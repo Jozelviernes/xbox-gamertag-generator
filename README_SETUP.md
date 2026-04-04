@@ -80,14 +80,18 @@ If both show a version, Laragon is set up correctly.
 
 # 2. Install Node.js
 
-Install Node.js LTS.
+Download Node.js LTS from:
+https://nodejs.org/en/download
 
-Check it with:
+For Windows:
+Download the **Windows Installer (.msi)** and install it.
 
-```bash
+Recommended version: Node.js 20+
+
+Verify installation:
+
 node -v
 npm -v
-```
 
 ---
 
