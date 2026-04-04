@@ -161,7 +161,16 @@ Go to:
 
 - Menu
 - MySQL
-- **phpMyAdmin**
+- phpMyAdmin
+
+## Login Details
+
+By default (Laragon):
+
+Username: root  
+Password: (leave blank)
+
+If this does not work, use your MySQL credentials configured in Laragon.
 
 ## Step 3
 Create a database named:
