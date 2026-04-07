@@ -1,0 +1,159 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import gamingBackground from "../../assets/gaming-background.jpg";
+import { blogPosts } from "../../data/blogPosts";
+
+export async function getStaticPaths() {
+  const { blogPosts } = await import("../../data/blogPosts");
+  return blogPosts.map((post) => ({ params: { slug: post.slug } }));
+}
+
+const { slug } = Astro.params;
+const post = blogPosts.find((p) => p.slug === slug);
+if (!post) return Astro.redirect("/blog");
+
+const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
+---
+
+<MainLayout
+  title={`${post.title} - Xbox Gamertag Guide`}
+  description={post.excerpt}
+>
+  <div class="min-h-screen relative bg-gray-950 text-gray-100">
+
+    <!-- Background -->
+    <div
+      class="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-1]"
+      style={`background-image: url(${gamingBackground.src})`}
+    />
+    <div class="fixed inset-0 bg-gray-950/90 z-[-1]" />
+
+    <Header />
+
+    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pt-8">
+
+      <!-- Hero -->
+      <section class="bg-gray-900 border border-gray-800 py-16 max-w-6xl mx-auto rounded-lg">
+        <div class="px-6 text-center">
+          
+           <a href="/blog"
+            class="inline-flex items-center gap-1 text-xbox-green hover:text-xbox-green-light hover:underline text-sm mb-6 transition-colors"
+          >
+            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Back to Blog
+          </a>
+
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+            {post.title}
+          </h1>
+
+          <div class="flex items-center justify-center gap-2 text-gray-400 text-sm">
+            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>{post.readTime}</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Article Body -->
+      <section class="py-10">
+        <div class="max-w-3xl mx-auto">
+
+          <!-- Image placeholder -->
+          <div class="w-full h-56 md:h-72 bg-gray-800 border border-gray-700 rounded-lg flex items-center justify-center mb-8">
+            <span class="text-gray-500 text-sm">Gaming Image Placeholder</span>
+          </div>
+
+          <!-- Excerpt callout -->
+          <p class="text-lg text-gray-300 mb-8 italic border-l-4 border-xbox-green pl-4 bg-gray-900/60 py-3 pr-4 rounded-r-lg">
+            {post.excerpt}
+          </p>
+
+          <!-- Article content -->
+          <div
+            class="
+              prose prose-lg max-w-none
+              prose-invert
+              prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-4
+              prose-h2:text-xbox-green prose-h2:font-bold prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-3
+              prose-strong:text-white
+              prose-a:text-xbox-green prose-a:hover:underline
+            "
+            set:html={post.content}
+          />
+
+          <!-- Back to blog button -->
+          <div class="mt-12 pt-8 border-t border-gray-800">
+            
+             <a href="/blog"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-xbox-green hover:bg-xbox-green-light text-white font-semibold rounded-lg transition-colors shadow-xbox"
+            >
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              Back to All Articles
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Related Posts -->
+      <section class="pt-4 pb-16">
+        <div class="max-w-5xl mx-auto px-8 lg:px-12">
+
+          <h2 class="text-3xl font-bold text-center mb-6 text-white">
+            Related <span class="text-xbox-green">Articles</span>
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {relatedPosts.map((related) => (
+              <article class="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden hover:border-xbox-green hover:shadow-lg hover:shadow-xbox-green/10 transition-all duration-300">
+                <div class="w-full h-40 bg-gray-800 flex items-center justify-center">
+                  <span class="text-gray-600 text-sm">Gaming Image Placeholder</span>
+                </div>
+                <div class="p-4">
+                  <h3 class="text-base font-semibold mb-2 text-white leading-snug">{related.title}</h3>
+                  <p class="text-gray-400 mb-4 text-sm leading-relaxed">{related.excerpt}</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500 flex items-center gap-1">
+                      <svg class="h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      {related.readTime}
+                    </span>
+                    
+                     <a href={`/blog/${related.slug}`}
+                      class="text-xbox-green hover:text-xbox-green-light font-medium hover:underline inline-flex items-center gap-1 text-sm transition-colors"
+                    >
+                      Read More
+                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Ad Banner -->
+      <section class="pt-4 pb-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div class="bg-gray-900 border border-dashed border-gray-700 rounded-lg px-4 md:px-6 py-6 text-center">
+            <p class="text-xs md:text-sm text-gray-600 mb-2">Advertisement</p>
+            <div class="h-24 md:h-32 lg:h-48 bg-gray-800 rounded"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</MainLayout>

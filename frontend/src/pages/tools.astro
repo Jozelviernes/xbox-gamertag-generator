@@ -1,0 +1,209 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+
+type IconKey =
+  | "gamepad"
+  | "search"
+  | "chart"
+  | "download"
+  | "dollar"
+  | "trophy"
+  | "idcard";
+
+type Tool = {
+  id: string;
+  title: string;
+  description: string;
+  slug: string;
+  available: boolean;
+  href: string;
+  icon: IconKey;
+};
+
+const tools: Tool[] = [
+  {
+    id: "1",
+    title: "Xbox Gamertag Generator",
+    description: "Instantly create unique, funny, and cool gamertags with AI-powered suggestions.",
+    slug: "generator",
+    available: true,
+    href: "/",
+    icon: "gamepad",
+  },
+   {
+    id: "2",
+    title: "Xbox Gamertag Price Checker",
+    description: "Ever wondered what your gamertag might be worth on the market? This tool gives you a quick, data-based estimate of its potential value based on length, rarity, and demand.",
+    slug: "price-checker",
+    available: true,
+    href: "/tools/gamertag-price-checker",
+    icon: "dollar",
+  },
+  {
+    id: "3",
+    title: "Xbox Gamercard Generator",
+    description: "Instantly create a custom Xbox gamercard—a visual badge showing off your gamertag, gamerscore, and avatar. Great for forums, social bios, or bragging rights.",
+    slug: "gamercard-generator",
+    available: true,
+    href: "/tools/gamercard-generator",
+    icon: "idcard",
+  },
+  {
+    id: "4",
+    title: "Xbox Clips Tool",
+    description: "Find and download Xbox gameplay clips and screenshots linked to any public profile.",
+    slug: "clips-downloader",
+    available: false,
+    href: "/tools/clips-downloader",
+    icon: "download",
+  },
+   {
+    id: "5",
+    title: "Xbox Gamertag Availability Checker",
+    description: "Instantly see if your desired tag is still up for grabs (before someone else snags it).",
+    slug: "availability-checker",
+    available: false,
+    href: "/xbox-gamertag-availability-checker",
+    icon: "search",
+  },
+  {
+    id: "6",
+    title: "Xbox Account Price/Value Checker",
+    description: "A rough valuation based on your tag, achievements, age, and stats—just don't get any ideas about selling it (see the legal section above 👀).",
+    slug: "account-value-checker",
+    available: false,
+    href: "/tools/account-value-checker",
+    icon: "trophy",
+  },
+
+  {
+    id: "7",
+    title: "Xbox Gamer Profile History & Stats Checker",
+    description: "View old stats, username changes, and public-facing history tied to a gamertag.",
+    slug: "profile-stats-checker",
+    available: false,
+    href: "/xbox-gamertag-search",
+    icon: "chart",
+  }
+];
+
+const iconMap = {
+  gamepad: `
+    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12l-2 5a2 2 0 0 0 3 2l3-2h4l3 2a2 2 0 0 0 3-2l-2-5a6 6 0 0 0-12 0Z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11v2M7 12h2M16 12h.01M18 10h.01" />
+    </svg>
+  `,
+  search: `
+    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20l-3.5-3.5" />
+    </svg>
+  `,
+  chart: `
+    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 19h16" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V9" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16V5" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16v-7" />
+    </svg>
+  `,
+  download: `
+    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v11" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10l4 4 4-4" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 21h16" />
+    </svg>
+  `,
+  dollar: `
+    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5c0-1.9-2-3.5-4.5-3.5S7.5 5.6 7.5 7.5 9.5 11 12 11s4.5 1.6 4.5 3.5S14.5 18 12 18s-4.5-1.6-4.5-3.5" />
+    </svg>
+  `,
+  trophy: `
+    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4h8v3a4 4 0 0 1-8 0V4Z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4H4v2a4 4 0 0 0 4 4" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 4h2v2a4 4 0 0 1-4 4" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11v4" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 21h6" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 15h4v3h-4z" />
+    </svg>
+  `,
+  idcard: `
+    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke-width="2"></rect>
+      <circle cx="9" cy="10" r="2" stroke-width="2"></circle>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 16c.8-1.3 2-2 3-2s2.2.7 3 2" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 9h4M14 13h4" />
+    </svg>
+  `,
+} as const;
+---
+
+<MainLayout
+  title="Xbox Gaming Tools & Utilities - Gamertag Generator, Checker & More"
+  description="Comprehensive collection of Xbox gaming tools including gamertag generators, availability checkers, profile stats analyzers, and more. Free Xbox utilities for gamers."
+>
+  <Header />
+
+  <div class="min-h-screen bg-light-grey">
+    <!-- Hero Section -->
+    <section class="bg-card h-[400px] flex items-center">
+      <div class="container mx-auto px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-bebas text-xbox-green mb-6">
+          EXPLORE ALL XBOX TOOLS
+        </h1>
+        <h2 class="text-xl md:text-2xl text-foreground mb-6 max-w-3xl mx-auto">
+          Everything you need to manage, customize, and level up your Xbox identity.
+        </h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          From gamertag generators to availability checkers and profile tools, we've got you covered. Browse and find the tool that suits you.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section class="py-16 px-4 md:px-12 lg:px-24 bg-light-grey">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {tools.map((tool) => (
+            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xbox transition-all duration-300 border border-gray-200 relative">
+              {!tool.available && (
+                <div class="absolute top-2 right-2 bg-xbox-green text-white text-xs px-2 py-0.5 rounded-full">
+                  Coming Soon
+                </div>
+              )}
+
+              <div class="text-center mb-4" set:html={iconMap[tool.icon]}></div>
+
+              <h3 class="text-xl font-semibold mb-3 text-center text-gray-800 group-hover:text-xbox-green transition-colors">
+                {tool.title}
+              </h3>
+
+              <p class="text-gray-600 mb-6 text-center">{tool.description}</p>
+
+              {tool.available ? (
+                <a
+                  href={tool.href}
+                  class="w-full bg-xbox-green hover:bg-xbox-green-light text-white py-3 px-6 rounded-lg font-medium transition-colors duration-200 block text-center"
+                >
+                  Go to Tool
+                </a>
+              ) : (
+                <button
+                  disabled
+                  class="w-full bg-gray-300 text-gray-500 py-3 px-6 rounded-lg font-medium cursor-not-allowed block text-center"
+                >
+                  Coming Soon
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>

@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+import Footer from "../components/layout/Footer.astro";
+
+const {
+  title = "Xbox Gamertag Generator",
+  description = "Generate the best Xbox gamertags instantly.",
+  image = "/og-image.png",
+  url = "https://xboxgamertaggenerator.com"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={url} />
+  </head>
+
+  <body class="bg-background text-foreground min-h-screen flex flex-col">
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

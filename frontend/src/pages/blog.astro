@@ -1,0 +1,270 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import gamingBackground from "../assets/gaming-background.jpg";
+import Header from "../components/layout/Header.astro";
+import { blogPosts } from "../data/blogPosts";
+---
+
+<MainLayout
+  title="Xbox Gamertag Tips, Guides & Gaming Articles - Expert Advice"
+  description="Expert guides on Xbox gamertag creation, naming trends, gaming branding strategies, and profile optimization tips."
+>
+  <Header />
+  <div class="min-h-screen relative">
+
+    <!-- Background -->
+    <div
+      class="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-1]"
+      style={`background-image: url(${gamingBackground.src})`}
+    />
+    <div class="fixed inset-0 bg-background/80 z-[-1]" />
+
+    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pt-8">
+
+      <!-- Hero -->
+      <section class="bg-card py-16 max-w-6xl mx-auto mb-10 rounded-lg">
+        <div class="px-6 text-center">
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            Xbox Naming Tips, <span class="text-xbox-green">Guides</span> & Strategies
+          </h1>
+          <p class="text-lg md:text-xl text-muted-foreground mb-4 max-w-3xl mx-auto">
+            Everything you need to create, manage, and master your Xbox gamertag.
+          </p>
+          <p class="text-base text-muted-foreground max-w-2xl mx-auto">
+            Explore in-depth guides, naming trends, and branding strategies to make your gamer identity stand out.
+          </p>
+        </div>
+      </section>
+
+      <!-- Search Section -->
+      <section class="py-8 bg-light-grey">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+          <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 lg:mt-8">
+            Tips, Guides & Articles
+          </h2>
+          <div class="flex flex-col sm:flex-row gap-4 items-center">
+            <div class="relative flex-1 w-full">
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+              </svg>
+              <input
+                id="searchInput"
+                type="text"
+                placeholder="Search for articles..."
+                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-xbox-green focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
+              />
+            </div>
+            <button
+              id="searchBtn"
+              class="w-full sm:w-auto px-6 py-3 bg-xbox-green hover:bg-xbox-green-light text-white font-semibold rounded-lg transition-colors shadow-xbox"
+            >
+              Search
+            </button>
+          </div>
+
+          <!-- Ad Banner -->
+          <div class="bg-gray-100 rounded-lg px-4 md:px-6 py-6 text-center border-2 border-dashed border-gray-300 mt-8">
+            <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
+            <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Articles Section -->
+      <section class="pt-8 pb-16 bg-light-grey-subtle">
+        <div class="max-w-5xl mx-auto px-8 lg:px-12">
+
+          <!-- Default title -->
+          <h2 id="sectionTitle" class="text-3xl font-bold text-center mb-6 text-gray-800">
+            Latest Articles
+          </h2>
+
+          <!-- Search results header (hidden by default) -->
+          <div id="resultsHeader" class="hidden flex items-center justify-between mb-6">
+            <h2 id="resultsTitle" class="text-3xl font-bold text-gray-800">
+              Search Results (0)
+            </h2>
+            <button id="clearBtn" class="text-xbox-green hover:underline">
+              Clear Search
+            </button>
+          </div>
+
+          <!-- No results message (hidden by default) -->
+          <div id="noResults" class="hidden text-center py-12">
+            <p id="noResultsMsg" class="text-xl text-gray-600 mb-4"></p>
+            <p class="text-gray-500">
+              Try searching with different keywords or browse our latest articles below.
+            </p>
+            <button
+              id="viewAllBtn"
+              class="mt-4 px-6 py-2 bg-xbox-green text-white rounded-lg hover:bg-xbox-green-light transition-colors"
+            >
+              View All Articles
+            </button>
+          </div>
+
+          <!-- Blog grid -->
+          <div
+            id="blogGrid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            data-posts={JSON.stringify(blogPosts)}
+          >
+            {blogPosts.map((post) => (
+              <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
+                  <span class="text-gray-500 text-sm">Gaming Image Placeholder</span>
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-semibold mb-2 text-gray-800">{post.title}</h3>
+                  <p class="text-gray-600 mb-3 text-sm">{post.excerpt}</p>
+                  
+                   <a
+                    href={`/blog/${post.slug}`}
+                    class="text-xbox-green font-medium hover:underline inline-flex items-center gap-1"
+                  >
+                    Read More
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <section class="pt-1 pb-4 sm:pb-6 bg-light-grey-subtle">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div class="flex justify-center items-center space-x-3 sm:space-x-4 -mt-3 sm:mt-0">
+            <button class="px-3 py-2 sm:px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors inline-flex items-center text-sm sm:text-base">
+              <svg class="mr-1 sm:mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              <span class="hidden sm:inline">Prev</span>
+            </button>
+            <div class="flex space-x-2">
+              <button class="w-8 h-8 sm:w-10 sm:h-10 bg-xbox-green text-white rounded-lg text-sm sm:text-base flex items-center justify-center">1</button>
+              <button class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors text-sm sm:text-base flex items-center justify-center">2</button>
+              <button class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors text-sm sm:text-base flex items-center justify-center">3</button>
+              <span class="w-8 h-8 sm:w-10 sm:h-10 text-gray-500 flex items-center justify-center">...</span>
+            </div>
+            <button class="px-3 py-2 sm:px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors inline-flex items-center text-sm sm:text-base">
+              <span class="hidden sm:inline">Next</span>
+              <svg class="ml-1 sm:ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Ad Banner -->
+      <section class="pt-8 pb-16 bg-light-grey-subtle">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div class="bg-gray-100 rounded-lg px-4 md:px-6 py-6 text-center border-2 border-dashed border-gray-300">
+            <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
+            <div class="h-24 md:h-32 lg:h-48 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    type Post = {
+      id: string;
+      title: string;
+      excerpt: string;
+      readTime: string;
+      slug: string;
+    };
+
+    const grid          = document.getElementById("blogGrid")      as HTMLElement;
+    const sectionTitle  = document.getElementById("sectionTitle")  as HTMLElement;
+    const resultsHeader = document.getElementById("resultsHeader") as HTMLElement;
+    const resultsTitle  = document.getElementById("resultsTitle")  as HTMLElement;
+    const noResults     = document.getElementById("noResults")     as HTMLElement;
+    const noResultsMsg  = document.getElementById("noResultsMsg")  as HTMLElement;
+    const searchInput   = document.getElementById("searchInput")   as HTMLInputElement;
+    const searchBtn     = document.getElementById("searchBtn")     as HTMLButtonElement;
+    const clearBtn      = document.getElementById("clearBtn")      as HTMLButtonElement;
+    const viewAllBtn    = document.getElementById("viewAllBtn")    as HTMLButtonElement;
+
+    const posts: Post[] = JSON.parse(grid.dataset.posts ?? "[]");
+
+    function cardHTML(post: Post): string {
+      return `
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
+            <span class="text-gray-500 text-sm">Gaming Image Placeholder</span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold mb-2 text-gray-800">${post.title}</h3>
+            <p class="text-gray-600 mb-3 text-sm">${post.excerpt}</p>
+            
+              href="/blog/${post.slug}"
+              class="text-xbox-green font-medium hover:underline inline-flex items-center gap-1"
+              onclick="window.scrollTo({top:0,behavior:'smooth'})"
+            >
+              Read More
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </article>`;
+    }
+
+    function showAll() {
+      sectionTitle.textContent = "Latest Articles";
+      sectionTitle.classList.remove("hidden");
+      resultsHeader.classList.add("hidden");
+      noResults.classList.add("hidden");
+      grid.classList.remove("hidden");
+      grid.innerHTML = posts.map(cardHTML).join("");
+      searchInput.value = "";
+    }
+
+    function handleSearch() {
+      const term = searchInput.value.trim().toLowerCase();
+      if (!term) return;
+
+      sectionTitle.textContent = "Searching...";
+      sectionTitle.classList.remove("hidden");
+      resultsHeader.classList.add("hidden");
+
+      setTimeout(() => {
+        const results = posts.filter(
+          (p) =>
+            p.title.toLowerCase().includes(term) ||
+            p.excerpt.toLowerCase().includes(term)
+        );
+
+        sectionTitle.classList.add("hidden");
+        resultsHeader.classList.remove("hidden");
+        resultsTitle.textContent = `Search Results (${results.length})`;
+
+        if (results.length === 0) {
+          noResultsMsg.textContent = `No articles found for "${searchInput.value}"`;
+          noResults.classList.remove("hidden");
+          grid.classList.add("hidden");
+        } else {
+          noResults.classList.add("hidden");
+          grid.classList.remove("hidden");
+          grid.innerHTML = results.map(cardHTML).join("");
+        }
+      }, 500);
+    }
+
+    searchBtn.addEventListener("click", handleSearch);
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") handleSearch();
+    });
+    clearBtn.addEventListener("click", showAll);
+    viewAllBtn.addEventListener("click", showAll);
+  </script>
+</MainLayout>

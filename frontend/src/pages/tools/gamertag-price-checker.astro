@@ -1,0 +1,310 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Header from "../../components/layout/Header.astro";
+---
+
+<MainLayout
+  title="Xbox Gamertag Price Checker – What Is Your Tag Worth?"
+  description="Find out how much your Xbox gamertag could be worth based on length, rarity, word quality, and demand. Get an instant estimate."
+>
+  <Header />
+
+  <div class="min-h-screen relative bg-gray-950 text-gray-100">
+
+    <div class="fixed inset-0 bg-gray-950/95 z-[-1]" />
+
+    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pt-8">
+
+      <!-- Hero -->
+      <section class="bg-gray-900 border border-gray-800 py-16 max-w-6xl mx-auto rounded-lg">
+        <div class="px-6 text-center">
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+            Xbox Gamertag <span class="text-xbox-green">Price Checker</span>
+          </h1>
+          <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            Ever wondered what your gamertag might be worth? Get a quick data-based
+            estimate based on length, rarity, and demand.
+          </p>
+        </div>
+      </section>
+
+      <!-- Tool -->
+      <section class="py-10">
+        <div class="max-w-2xl mx-auto space-y-6">
+
+          <!-- Input Card -->
+          <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+            <label class="block text-sm font-medium text-gray-400 mb-2">
+              Enter your Xbox Gamertag
+            </label>
+            <div class="flex gap-3">
+              <input
+                id="gamertagInput"
+                type="text"
+                maxlength="12"
+                placeholder="e.g. ShadowWolf"
+                class="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-xbox-green focus:border-transparent transition-colors"
+              />
+              <button
+                id="checkBtn"
+                class="px-6 py-3 bg-xbox-green hover:bg-xbox-green-light text-white font-semibold rounded-lg transition-colors shadow-xbox whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Check Price
+              </button>
+            </div>
+            <p class="text-xs text-gray-600 mt-2">
+              Max 12 characters · Letters, numbers and spaces only
+            </p>
+          </div>
+
+          <!-- Loading -->
+          <div id="loadingState" class="hidden text-center py-12">
+            <div class="inline-block w-8 h-8 border-4 border-xbox-green border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p class="text-gray-400">Analyzing your gamertag...</p>
+          </div>
+
+          <!-- Error -->
+          <div id="errorState" class="hidden bg-red-900/30 border border-red-700 rounded-xl p-6 text-center">
+            <p id="errorMsg" class="text-red-400 font-medium"></p>
+          </div>
+
+          <!-- Results -->
+          <div id="results" class="hidden space-y-6">
+
+            <!-- Tier + Price Card -->
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-8 text-center">
+              <p class="text-gray-500 text-sm mb-1">Estimated value for</p>
+              <h2 id="resultTag" class="text-3xl font-bold text-white mb-5"></h2>
+
+              <div id="tierBadge"
+                class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-6">
+              </div>
+
+              <div class="text-5xl font-bold text-xbox-green mb-2" id="priceRange"></div>
+              <p class="text-gray-500 text-sm">Estimated market value</p>
+            </div>
+
+            <!-- Score Bar Card -->
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-sm font-medium text-gray-400">Rarity Score</span>
+                <span id="scoreValue" class="text-sm font-bold text-xbox-green"></span>
+              </div>
+              <div class="w-full bg-gray-800 rounded-full h-4 overflow-hidden">
+                <div
+                  id="scoreBar"
+                  class="h-4 rounded-full transition-all duration-700 ease-out"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div class="flex justify-between text-xs text-gray-600 mt-1">
+                <span>0</span>
+                <span>25</span>
+                <span>50</span>
+                <span>75</span>
+                <span>100</span>
+              </div>
+            </div>
+
+            <!-- Breakdown Card -->
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+              <h3 class="text-lg font-semibold text-white mb-4">
+                Score Breakdown
+              </h3>
+              <div id="breakdownList" class="space-y-3"></div>
+            </div>
+
+            <!-- Try Another -->
+            <div class="text-center">
+              <button
+                id="resetBtn"
+                class="px-6 py-3 border border-gray-700 hover:border-xbox-green text-gray-400 hover:text-xbox-green font-medium rounded-lg transition-colors"
+              >
+                Check Another Gamertag
+              </button>
+            </div>
+
+            <!-- Disclaimer -->
+            <p class="text-xs text-gray-600 text-center px-4 pb-4">
+              ⚠️ This is an estimate for entertainment purposes only. Actual gamertag
+              value depends on buyer demand and is not guaranteed. Selling Xbox
+              gamertags may violate Microsoft's Terms of Service.
+            </p>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Ad Banner -->
+      <section class="pb-16">
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-gray-900 border border-dashed border-gray-700 rounded-lg px-4 py-6 text-center">
+            <p class="text-xs text-gray-600 mb-2">Advertisement</p>
+            <div class="h-24 md:h-32 bg-gray-800 rounded"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    const API_URL = import.meta.env.PUBLIC_API_URL ?? "http://localhost:8000";
+
+    // ── Elements ───────────────────────────────────────────────────
+    const input        = document.getElementById("gamertagInput")  as HTMLInputElement;
+    const checkBtn     = document.getElementById("checkBtn")       as HTMLButtonElement;
+    const resetBtn     = document.getElementById("resetBtn")       as HTMLButtonElement;
+    const loadingState = document.getElementById("loadingState")   as HTMLElement;
+    const errorState   = document.getElementById("errorState")     as HTMLElement;
+    const errorMsg     = document.getElementById("errorMsg")       as HTMLElement;
+    const results      = document.getElementById("results")        as HTMLElement;
+    const resultTag    = document.getElementById("resultTag")      as HTMLElement;
+    const tierBadge    = document.getElementById("tierBadge")      as HTMLElement;
+    const priceRange   = document.getElementById("priceRange")     as HTMLElement;
+    const scoreValue   = document.getElementById("scoreValue")     as HTMLElement;
+    const scoreBar     = document.getElementById("scoreBar")       as HTMLElement;
+    const breakdownList = document.getElementById("breakdownList") as HTMLElement;
+
+    // ── Tier styles ────────────────────────────────────────────────
+    type Tier = "Legendary" | "Rare" | "Uncommon" | "Common" | "Low Value";
+
+    const tierStyles: Record<Tier, { badge: string; bar: string }> = {
+      "Legendary" : {
+        badge : "bg-yellow-500/20 text-yellow-400 border border-yellow-500/50",
+        bar   : "bg-gradient-to-r from-yellow-500 to-yellow-300",
+      },
+      "Rare"      : {
+        badge : "bg-purple-500/20 text-purple-400 border border-purple-500/50",
+        bar   : "bg-gradient-to-r from-purple-500 to-purple-400",
+      },
+      "Uncommon"  : {
+        badge : "bg-blue-500/20 text-blue-400 border border-blue-500/50",
+        bar   : "bg-gradient-to-r from-blue-500 to-blue-400",
+      },
+      "Common"    : {
+        badge : "bg-green-500/20 text-green-400 border border-green-500/50",
+        bar   : "bg-gradient-to-r from-green-500 to-green-400",
+      },
+      "Low Value" : {
+        badge : "bg-gray-500/20 text-gray-400 border border-gray-500/50",
+        bar   : "bg-gray-500",
+      },
+    };
+
+    // ── Helpers ────────────────────────────────────────────────────
+    function showOnly(el: HTMLElement) {
+      [loadingState, errorState, results].forEach((e) =>
+        e.classList.add("hidden")
+      );
+      el.classList.remove("hidden");
+    }
+
+    function resetTool() {
+      [loadingState, errorState, results].forEach((e) =>
+        e.classList.add("hidden")
+      );
+      input.value = "";
+      scoreBar.style.width = "0%";
+      input.focus();
+    }
+
+    // ── Render ─────────────────────────────────────────────────────
+    function renderResults(data: {
+      gamertag  : string;
+      score     : number;
+      tier      : Tier;
+      emoji     : string;
+      priceRange: string;
+      breakdown : { label: string; points: number; note: string }[];
+    }) {
+      const style = tierStyles[data.tier] ?? tierStyles["Low Value"];
+
+      resultTag.textContent  = data.gamertag;
+      priceRange.textContent = data.priceRange;
+      scoreValue.textContent = `${data.score} / 100`;
+
+      // Score bar color + animate
+      scoreBar.className = `h-4 rounded-full transition-all duration-700 ease-out ${style.bar}`;
+      setTimeout(() => {
+        scoreBar.style.width = `${data.score}%`;
+      }, 100);
+
+      // Tier badge
+      tierBadge.className = `inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-6 ${style.badge}`;
+      tierBadge.innerHTML = `${data.emoji} ${data.tier}`;
+
+      // Breakdown rows
+      breakdownList.innerHTML = data.breakdown
+        .map(
+          (item) => `
+          <div class="flex items-start justify-between py-3 border-b border-gray-800 last:border-0 gap-4">
+            <div class="flex-1">
+              <p class="text-sm text-gray-300 font-medium">${item.label}</p>
+              <p class="text-xs text-gray-500 mt-0.5">${item.note}</p>
+            </div>
+            <span class="text-sm font-bold shrink-0 ${
+              item.points > 0
+                ? "text-xbox-green"
+                : item.points < 0
+                ? "text-red-400"
+                : "text-gray-500"
+            }">
+              ${item.points > 0 ? "+" : ""}${item.points} pts
+            </span>
+          </div>`
+        )
+        .join("");
+    }
+
+    // ── Main fetch ─────────────────────────────────────────────────
+    async function checkPrice() {
+      const tag = input.value.trim();
+
+      if (!tag) {
+        errorMsg.textContent = "Please enter a gamertag first.";
+        showOnly(errorState);
+        return;
+      }
+
+      showOnly(loadingState);
+      checkBtn.disabled = true;
+
+      try {
+        const res = await fetch(`${API_URL}/api/check-price`, {
+          method : "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept"       : "application/json",
+          },
+          body: JSON.stringify({ gamertag: tag }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(
+            err?.message ?? `Server error (${res.status}). Please try again.`
+          );
+        }
+
+        const data = await res.json();
+        renderResults(data);
+        showOnly(results);
+      } catch (err: any) {
+        errorMsg.textContent =
+          err.message ?? "Something went wrong. Please try again.";
+        showOnly(errorState);
+      } finally {
+        checkBtn.disabled = false;
+      }
+    }
+
+    // ── Events ─────────────────────────────────────────────────────
+    checkBtn.addEventListener("click", checkPrice);
+    resetBtn.addEventListener("click", resetTool);
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkPrice();
+    });
+  </script>
+</MainLayout>

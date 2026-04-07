@@ -1,0 +1,669 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Header from "../../components/layout/Header.astro";
+---
+
+<MainLayout
+  title="Xbox Gamercard Generator – Create Your Custom Xbox Badge"
+  description="Create a custom Xbox gamercard showing your gamertag, gamerscore, and avatar. Download as PNG and share on forums, social bios, or anywhere."
+>
+  <Header />
+
+  <div class="min-h-screen relative bg-gray-950 text-gray-100">
+    <div class="fixed inset-0 bg-gray-950/95 z-[-1]" />
+
+    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pt-8 pb-16">
+
+      <!-- Hero -->
+      <section class="bg-gray-900 border border-gray-800 py-12 md:py-16 max-w-6xl mx-auto rounded-lg mb-8">
+        <div class="px-6 text-center">
+          <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+            Xbox <span class="text-xbox-green">Gamercard Generator</span>
+          </h1>
+          <p class="text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
+            Create a custom Xbox gamercard badge. Perfect for forums, social bios, or just bragging rights.
+          </p>
+        </div>
+      </section>
+
+      <!-- Tool -->
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-[1fr_1.2fr] gap-6">
+
+          <!-- LEFT — Controls -->
+          <div class="space-y-5">
+
+            <!-- Your Info -->
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 space-y-4">
+              <h3 class="text-base font-semibold text-white">Your Info</h3>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">Gamertag</label>
+                <input
+                  id="inputGamertag"
+                  type="text"
+                  maxlength="12"
+                  placeholder="e.g. ShadowWolf"
+                  class="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-xbox-green text-sm"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">Gamerscore</label>
+                <input
+                  id="inputGamerscore"
+                  type="number"
+                  min="0"
+                  max="999999"
+                  placeholder="e.g. 15000"
+                  class="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-xbox-green text-sm"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">
+                  Favorite Game <span class="text-gray-600">(optional)</span>
+                </label>
+                <input
+                  id="inputGame"
+                  type="text"
+                  maxlength="24"
+                  placeholder="e.g. Halo Infinite"
+                  class="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-xbox-green text-sm"
+                />
+              </div>
+            </div>
+
+            <!-- Avatar -->
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
+              <h3 class="text-base font-semibold text-white mb-3">Avatar</h3>
+
+              <!-- Preset grid -->
+              <div id="avatarGrid" class="grid grid-cols-6 gap-2 mb-4"></div>
+
+              <!-- Upload avatar -->
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">
+                  Or upload your own avatar
+                </label>
+                <label class="flex items-center gap-3 px-4 py-2.5 bg-gray-800 border border-gray-700 border-dashed rounded-lg cursor-pointer hover:border-xbox-green transition-colors group">
+                  <svg class="h-4 w-4 text-gray-500 group-hover:text-xbox-green transition-colors shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
+                  </svg>
+                  <span id="avatarUploadLabel" class="text-xs text-gray-500 group-hover:text-gray-300 transition-colors truncate">
+                    Click to upload image (square recommended)
+                  </span>
+                  <input id="avatarUpload" type="file" accept="image/*" class="hidden" />
+                </label>
+                <!-- Clear avatar upload -->
+                <button
+                  id="clearAvatarBtn"
+                  class="hidden mt-2 text-xs text-red-400 hover:text-red-300 transition-colors"
+                >
+                  ✕ Remove uploaded avatar
+                </button>
+              </div>
+            </div>
+
+            <!-- Background -->
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
+              <h3 class="text-base font-semibold text-white mb-3">Background</h3>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">
+                  Upload a background image
+                </label>
+                <label class="flex items-center gap-3 px-4 py-2.5 bg-gray-800 border border-gray-700 border-dashed rounded-lg cursor-pointer hover:border-xbox-green transition-colors group">
+                  <svg class="h-4 w-4 text-gray-500 group-hover:text-xbox-green transition-colors shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
+                  </svg>
+                  <span id="bgUploadLabel" class="text-xs text-gray-500 group-hover:text-gray-300 transition-colors truncate">
+                    Click to upload background
+                  </span>
+                  <input id="bgUpload" type="file" accept="image/*" class="hidden" />
+                </label>
+                <button
+                  id="clearBgBtn"
+                  class="hidden mt-2 text-xs text-red-400 hover:text-red-300 transition-colors"
+                >
+                  ✕ Remove background
+                </button>
+              </div>
+
+              <!-- BG overlay opacity (only shows when BG is uploaded) -->
+              <div id="bgOpacityRow" class="hidden mt-4">
+                <label class="block text-xs font-medium text-gray-400 mb-1.5">
+                  Background overlay darkness
+                </label>
+                <input
+                  id="bgOpacity"
+                  type="range"
+                  min="0"
+                  max="90"
+                  value="55"
+                  class="w-full accent-xbox-green"
+                />
+                <div class="flex justify-between text-xs text-gray-600 mt-1">
+                  <span>Lighter</span>
+                  <span>Darker</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Theme -->
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
+              <h3 class="text-base font-semibold text-white mb-3">Theme</h3>
+              <div id="themeGrid" class="grid grid-cols-2 gap-2"></div>
+            </div>
+
+            <!-- Generate -->
+            <button
+              id="generateBtn"
+              class="w-full py-3.5 bg-xbox-green hover:bg-xbox-green-light text-white font-bold text-base rounded-xl transition-colors shadow-xbox"
+            >
+              Generate Gamercard
+            </button>
+
+          </div>
+
+          <!-- RIGHT — Preview -->
+          <div class="space-y-5">
+
+            <!-- Sticky preview on desktop -->
+            <div class="lg:sticky lg:top-6 space-y-5">
+
+              <!-- Canvas preview -->
+              <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="text-base font-semibold text-white">Preview</h3>
+                  <span class="text-xs text-gray-500">Updates live as you type</span>
+                </div>
+
+                <!-- Canvas wrapper — responsive -->
+                <div class="w-full overflow-hidden rounded-xl border border-gray-700 mb-5">
+                  <canvas
+                    id="gamercardCanvas"
+                    width="600"
+                    height="200"
+                    class="w-full block"
+                  ></canvas>
+                </div>
+
+                <!-- Download -->
+                <button
+                  id="downloadBtn"
+                  class="w-full py-3 bg-xbox-green hover:bg-xbox-green-light text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+                >
+                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
+                  </svg>
+                  Download PNG
+                </button>
+              </div>
+
+              <!-- Tips -->
+              <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
+                <h3 class="text-sm font-semibold text-gray-400 mb-3">Tips</h3>
+                <ul class="space-y-2.5 text-sm text-gray-500">
+                  <li class="flex items-start gap-2">
+                    <span class="text-xbox-green shrink-0 mt-0.5">→</span>
+                    Use a square image for the best avatar result
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-xbox-green shrink-0 mt-0.5">→</span>
+                    Wide landscape images work best as backgrounds
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-xbox-green shrink-0 mt-0.5">→</span>
+                    Adjust the overlay slider to keep text readable
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-xbox-green shrink-0 mt-0.5">→</span>
+                    Download and paste the PNG into forum signatures
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Ad Banner -->
+      <div class="max-w-6xl mx-auto mt-8">
+        <div class="bg-gray-900 border border-dashed border-gray-700 rounded-lg px-4 py-6 text-center">
+          <p class="text-xs text-gray-600 mb-2">Advertisement</p>
+          <div class="h-24 md:h-32 bg-gray-800 rounded"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    type Theme = {
+      id      : string;
+      label   : string;
+      bg      : string;
+      accent  : string;
+      text    : string;
+      subtext : string;
+      border  : string;
+      dot     : string;
+    };
+
+    type AvatarPreset = {
+      id    : string;
+      emoji : string;
+      label : string;
+    };
+
+    // ── Themes ─────────────────────────────────────────────────────
+    const themes: Theme[] = [
+      {
+        id      : "xbox",
+        label   : "Classic Xbox",
+        bg      : "#0a0a0a",
+        accent  : "#107C10",
+        text    : "#ffffff",
+        subtext : "#9ca3af",
+        border  : "#107C10",
+        dot     : "#107C10",
+      },
+      {
+        id      : "neon",
+        label   : "Neon Night",
+        bg      : "#0d0d1a",
+        accent  : "#00fff7",
+        text    : "#ffffff",
+        subtext : "#a78bfa",
+        border  : "#00fff7",
+        dot     : "#00fff7",
+      },
+      {
+        id      : "gold",
+        label   : "Gold Elite",
+        bg      : "#0a0a0a",
+        accent  : "#f59e0b",
+        text    : "#ffffff",
+        subtext : "#d1d5db",
+        border  : "#f59e0b",
+        dot     : "#f59e0b",
+      },
+      {
+        id      : "ice",
+        label   : "Ice Cold",
+        bg      : "#0a1628",
+        accent  : "#e0f2fe",
+        text    : "#ffffff",
+        subtext : "#93c5fd",
+        border  : "#93c5fd",
+        dot     : "#93c5fd",
+      },
+    ];
+
+    // ── Avatar Presets ─────────────────────────────────────────────
+    const avatarPresets: AvatarPreset[] = [
+      { id: "wolf",      emoji: "🐺", label: "Wolf"      },
+      { id: "ghost",     emoji: "👻", label: "Ghost"     },
+      { id: "fire",      emoji: "🔥", label: "Fire"      },
+      { id: "skull",     emoji: "💀", label: "Skull"     },
+      { id: "sword",     emoji: "⚔️",  label: "Sword"     },
+      { id: "shield",    emoji: "🛡️",  label: "Shield"    },
+      { id: "dragon",    emoji: "🐉", label: "Dragon"    },
+      { id: "robot",     emoji: "🤖", label: "Robot"     },
+      { id: "alien",     emoji: "👾", label: "Alien"     },
+      { id: "crown",     emoji: "👑", label: "Crown"     },
+      { id: "lightning", emoji: "⚡", label: "Lightning" },
+      { id: "star",      emoji: "⭐", label: "Star"      },
+    ];
+
+    // ── State ──────────────────────────────────────────────────────
+    let selectedTheme  : Theme        = themes[0];
+    let selectedAvatar : AvatarPreset = avatarPresets[0];
+    let customAvatar   : HTMLImageElement | null = null;
+    let customBg       : HTMLImageElement | null = null;
+
+    // ── Elements ───────────────────────────────────────────────────
+    const canvas           = document.getElementById("gamercardCanvas")  as HTMLCanvasElement;
+    const ctx              = canvas.getContext("2d")!;
+    const inputGamertag    = document.getElementById("inputGamertag")    as HTMLInputElement;
+    const inputScore       = document.getElementById("inputGamerscore")  as HTMLInputElement;
+    const inputGame        = document.getElementById("inputGame")        as HTMLInputElement;
+    const generateBtn      = document.getElementById("generateBtn")      as HTMLButtonElement;
+    const downloadBtn      = document.getElementById("downloadBtn")      as HTMLButtonElement;
+    const avatarGrid       = document.getElementById("avatarGrid")       as HTMLElement;
+    const themeGrid        = document.getElementById("themeGrid")        as HTMLElement;
+    const avatarUpload     = document.getElementById("avatarUpload")     as HTMLInputElement;
+    const avatarUploadLabel = document.getElementById("avatarUploadLabel") as HTMLElement;
+    const clearAvatarBtn   = document.getElementById("clearAvatarBtn")   as HTMLButtonElement;
+    const bgUpload         = document.getElementById("bgUpload")         as HTMLInputElement;
+    const bgUploadLabel    = document.getElementById("bgUploadLabel")    as HTMLElement;
+    const clearBgBtn       = document.getElementById("clearBgBtn")       as HTMLButtonElement;
+    const bgOpacityRow     = document.getElementById("bgOpacityRow")     as HTMLElement;
+    const bgOpacity        = document.getElementById("bgOpacity")        as HTMLInputElement;
+
+    // ── Build Avatar Grid ──────────────────────────────────────────
+    avatarGrid.innerHTML = avatarPresets.map((a) => `
+      <button
+        data-avatar="${a.id}"
+        title="${a.label}"
+        class="avatar-btn aspect-square rounded-lg text-xl flex items-center justify-center
+               bg-gray-800 border-2 border-transparent hover:border-xbox-green transition-colors
+               ${a.id === selectedAvatar.id ? "border-xbox-green" : ""}"
+      >${a.emoji}</button>
+    `).join("");
+
+    document.querySelectorAll<HTMLButtonElement>(".avatar-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        selectedAvatar = avatarPresets.find((a) => a.id === btn.dataset.avatar!)!;
+        customAvatar   = null;
+
+        // Reset upload label
+        avatarUploadLabel.textContent = "Click to upload image (square recommended)";
+        clearAvatarBtn.classList.add("hidden");
+        avatarUpload.value = "";
+
+        document.querySelectorAll(".avatar-btn").forEach((b) =>
+          b.classList.remove("border-xbox-green")
+        );
+        btn.classList.add("border-xbox-green");
+        drawCard();
+      });
+    });
+
+    // ── Build Theme Grid ───────────────────────────────────────────
+    themeGrid.innerHTML = themes.map((t) => `
+      <button
+        data-theme="${t.id}"
+        class="theme-btn flex items-center gap-2.5 px-3 py-2.5 rounded-lg border-2 border-gray-700
+               hover:border-gray-500 transition-colors text-left
+               ${t.id === selectedTheme.id ? "border-white/40 bg-white/5" : ""}"
+      >
+        <div class="w-3.5 h-3.5 rounded-full shrink-0" style="background:${t.accent}"></div>
+        <span class="text-sm text-white">${t.label}</span>
+      </button>
+    `).join("");
+
+    document.querySelectorAll<HTMLButtonElement>(".theme-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        selectedTheme = themes.find((t) => t.id === btn.dataset.theme!)!;
+        document.querySelectorAll(".theme-btn").forEach((b) => {
+          b.classList.remove("border-white/40", "bg-white/5");
+          b.classList.add("border-gray-700");
+        });
+        btn.classList.remove("border-gray-700");
+        btn.classList.add("border-white/40", "bg-white/5");
+        drawCard();
+      });
+    });
+
+    // ── Avatar Upload ──────────────────────────────────────────────
+    avatarUpload.addEventListener("change", () => {
+      const file = avatarUpload.files?.[0];
+      if (!file) return;
+      loadImage(file, (img) => {
+        customAvatar = img;
+        // Deselect preset
+        document.querySelectorAll(".avatar-btn").forEach((b) =>
+          b.classList.remove("border-xbox-green")
+        );
+        avatarUploadLabel.textContent = `✅ ${file.name}`;
+        clearAvatarBtn.classList.remove("hidden");
+        drawCard();
+      });
+    });
+
+    clearAvatarBtn.addEventListener("click", () => {
+      customAvatar = null;
+      avatarUpload.value = "";
+      avatarUploadLabel.textContent = "Click to upload image (square recommended)";
+      clearAvatarBtn.classList.add("hidden");
+      // Re-select first preset
+      selectedAvatar = avatarPresets[0];
+      document.querySelectorAll(".avatar-btn").forEach((b, i) => {
+        if (i === 0) b.classList.add("border-xbox-green");
+        else b.classList.remove("border-xbox-green");
+      });
+      drawCard();
+    });
+
+    // ── Background Upload ──────────────────────────────────────────
+    bgUpload.addEventListener("change", () => {
+      const file = bgUpload.files?.[0];
+      if (!file) return;
+      loadImage(file, (img) => {
+        customBg = img;
+        bgUploadLabel.textContent = `✅ ${file.name}`;
+        clearBgBtn.classList.remove("hidden");
+        bgOpacityRow.classList.remove("hidden");
+        drawCard();
+      });
+    });
+
+    clearBgBtn.addEventListener("click", () => {
+      customBg = null;
+      bgUpload.value = "";
+      bgUploadLabel.textContent = "Click to upload background";
+      clearBgBtn.classList.add("hidden");
+      bgOpacityRow.classList.add("hidden");
+      drawCard();
+    });
+
+    bgOpacity.addEventListener("input", drawCard);
+
+    // ── Load image helper ──────────────────────────────────────────
+    function loadImage(file: File, cb: (img: HTMLImageElement) => void) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => cb(img);
+        img.src    = e.target?.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ── Rounded rect helper ────────────────────────────────────────
+    function roundRect(
+      c      : CanvasRenderingContext2D,
+      x      : number, y: number,
+      w      : number, h: number,
+      radius : number
+    ) {
+      c.beginPath();
+      c.moveTo(x + radius, y);
+      c.lineTo(x + w - radius, y);
+      c.quadraticCurveTo(x + w, y,     x + w, y + radius);
+      c.lineTo(x + w,           y + h - radius);
+      c.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+      c.lineTo(x + radius,      y + h);
+      c.quadraticCurveTo(x,     y + h, x, y + h - radius);
+      c.lineTo(x,               y + radius);
+      c.quadraticCurveTo(x,     y,     x + radius, y);
+      c.closePath();
+    }
+
+    // ── Draw Card ──────────────────────────────────────────────────
+    function drawCard() {
+      const W = canvas.width;   // 600
+      const H = canvas.height;  // 200
+      const t = selectedTheme;
+
+      const gamertag = inputGamertag.value.trim() || "YourGamertag";
+      const score    = inputScore.value.trim()    || "0";
+      const game     = inputGame.value.trim()     || "";
+
+      ctx.clearRect(0, 0, W, H);
+
+      // ── Background ──────────────────────────────────────────────
+      ctx.save();
+      roundRect(ctx, 0, 0, W, H, 16);
+      ctx.clip();
+
+      if (customBg) {
+        // Draw uploaded BG image — cover fill
+        const scale = Math.max(W / customBg.width, H / customBg.height);
+        const bw    = customBg.width  * scale;
+        const bh    = customBg.height * scale;
+        const bx    = (W - bw) / 2;
+        const by    = (H - bh) / 2;
+        ctx.drawImage(customBg, bx, by, bw, bh);
+
+        // Dark overlay for readability
+        const opacity = parseInt(bgOpacity.value) / 100;
+        ctx.fillStyle = `rgba(0,0,0,${opacity})`;
+        ctx.fillRect(0, 0, W, H);
+      } else {
+        // Solid theme bg
+        ctx.fillStyle = t.bg;
+        ctx.fillRect(0, 0, W, H);
+      }
+
+      ctx.restore();
+
+      // ── Left accent strip ────────────────────────────────────────
+      ctx.fillStyle = t.accent;
+      ctx.fillRect(0, 0, 5, H);
+
+      // ── Outer border ─────────────────────────────────────────────
+      ctx.save();
+      roundRect(ctx, 1, 1, W - 2, H - 2, 16);
+      ctx.strokeStyle = t.border;
+      ctx.lineWidth   = 1.5;
+      ctx.globalAlpha = 0.35;
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+      ctx.restore();
+
+      // ── Avatar ───────────────────────────────────────────────────
+      const aSize = 90;
+      const aX    = 22;
+      const aY    = (H - aSize) / 2;
+      const aCX   = aX + aSize / 2;
+      const aCY   = aY + aSize / 2;
+      const aR    = aSize / 2;
+
+      // Avatar background fill
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(aCX, aCY, aR, 0, Math.PI * 2);
+      ctx.fillStyle = t.accent + "25";
+      ctx.fill();
+
+      // Avatar border
+      ctx.strokeStyle = t.accent;
+      ctx.lineWidth   = 2.5;
+      ctx.globalAlpha = 1;
+      ctx.stroke();
+      ctx.restore();
+
+      if (customAvatar) {
+        // Uploaded avatar — clip to circle
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(aCX, aCY, aR - 2, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(customAvatar, aX + 2, aY + 2, aSize - 4, aSize - 4);
+        ctx.restore();
+      } else {
+        // Emoji preset — full opacity, properly centered
+        ctx.save();
+        ctx.font         = "44px serif";
+        ctx.textAlign    = "center";
+        ctx.textBaseline = "middle";
+        ctx.globalAlpha  = 1;
+        ctx.fillText(selectedAvatar.emoji, aCX, aCY + 2);
+        ctx.restore();
+      }
+
+      // ── Text area ────────────────────────────────────────────────
+      const tX = aX + aSize + 18;
+      const tY = (H - 80) / 2;
+
+      // Xbox dot indicator
+      ctx.save();
+      ctx.fillStyle = t.accent;
+      ctx.globalAlpha = 1;
+      ctx.beginPath();
+      ctx.arc(tX, tY + 13, 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Gamertag
+      ctx.save();
+      ctx.fillStyle    = t.text;
+      ctx.font         = "bold 30px Arial, sans-serif";
+      ctx.textAlign    = "left";
+      ctx.textBaseline = "top";
+      ctx.globalAlpha  = 1;
+      ctx.fillText(gamertag, tX + 16, tY, W - tX - 16 - 16);
+      ctx.restore();
+
+      // Gamerscore row
+      ctx.save();
+      ctx.textAlign    = "left";
+      ctx.textBaseline = "top";
+      ctx.globalAlpha  = 1;
+
+      // "G" badge
+      ctx.fillStyle = t.accent;
+      ctx.font      = "bold 15px Arial, sans-serif";
+      ctx.fillText("G", tX, tY + 42);
+
+      // Score number
+      ctx.fillStyle = t.text;
+      ctx.font      = "bold 15px Arial, sans-serif";
+      const scoreStr    = Number(score).toLocaleString();
+      const gWidth      = ctx.measureText("G").width + 4;
+      ctx.fillText(scoreStr, tX + gWidth, tY + 42);
+
+      // "Gamerscore" label
+      const scoreWidth  = ctx.measureText(scoreStr).width;
+      ctx.fillStyle     = t.subtext;
+      ctx.font          = "12px Arial, sans-serif";
+      ctx.fillText("Gamerscore", tX + gWidth + scoreWidth + 8, tY + 44);
+      ctx.restore();
+
+      // Favorite game
+      if (game) {
+        ctx.save();
+        ctx.fillStyle    = t.subtext;
+        ctx.font         = "13px Arial, sans-serif";
+        ctx.textAlign    = "left";
+        ctx.textBaseline = "top";
+        ctx.globalAlpha  = 1;
+        ctx.fillText(`🎮  ${game}`, tX, tY + 64, W - tX - 16);
+        ctx.restore();
+      }
+
+      // ── Watermark ─────────────────────────────────────────────────
+      ctx.save();
+      ctx.fillStyle    = "#ffffff";
+      ctx.font         = "10px Arial, sans-serif";
+      ctx.textAlign    = "right";
+      ctx.textBaseline = "bottom";
+      ctx.globalAlpha  = 0.25;
+      ctx.fillText("XboxGamerTagGenerator.com", W - 12, H - 10);
+      ctx.restore();
+    }
+
+    // ── Events ─────────────────────────────────────────────────────
+    generateBtn.addEventListener("click", drawCard);
+
+    [inputGamertag, inputScore, inputGame].forEach((el) =>
+      el.addEventListener("input", drawCard)
+    );
+
+    downloadBtn.addEventListener("click", () => {
+      const tag  = inputGamertag.value.trim() || "gamercard";
+      const link = document.createElement("a");
+      link.download = `${tag}-gamercard.png`;
+      link.href     = canvas.toDataURL("image/png");
+      link.click();
+    });
+
+    // ── Initial draw ───────────────────────────────────────────────
+    drawCard();
+  </script>
+</MainLayout>

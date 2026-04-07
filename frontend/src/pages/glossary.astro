@@ -1,0 +1,303 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+import { glossaryTerms } from "../data/glossaryTerms";
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+---
+
+<MainLayout
+  title="Xbox & Gaming Glossary"
+  description="Explore clear definitions of Xbox terms, naming rules, and gamer culture."
+>
+  <Header />
+
+  <div class="min-h-screen bg-gray-900 text-white">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-gray-900 to-gray-800 pt-14 pb-7 lg:pt-20 lg:pb-10">
+      <div class="max-w-7xl mx-auto px-12 sm:px-16 lg:px-20">
+        <div class="text-center lg:text-left max-w-4xl">
+          <h1 class="text-4xl lg:text-5xl font-bebas text-white mb-4">
+            Xbox & Gaming <span class="text-xbox-green border-b-4 border-xbox-green">Glossary</span>
+          </h1>
+          <p class="text-xl lg:text-2xl text-gray-300 mb-4 font-medium">
+            Understand the lingo. Game smarter.
+          </p>
+          <p class="text-lg text-gray-400 leading-relaxed max-w-2xl">
+            Explore clear definitions of Xbox terms, naming rules, and gamer culture. Build your knowledge and level up your naming game.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Filter Section -->
+    <section class="bg-gray-800 py-12">
+      <div class="max-w-7xl mx-auto px-12 sm:px-16 lg:px-20">
+        <!-- Search Bar -->
+        <div class="mb-16">
+          <div class="relative max-w-2xl mx-auto">
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search terms..."
+              class="w-full h-14 px-6 pr-12 bg-gray-700 border-2 border-gray-600 rounded-xl text-white placeholder-gray-400 focus:border-xbox-green focus:outline-none transition-colors"
+            />
+            <svg
+              class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20l-3.5-3.5" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Alphabetical Links -->
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold text-white mb-4 text-center lg:text-left">Browse by Letter</h3>
+          <div id="lettersWrap" class="flex flex-wrap justify-center lg:justify-start gap-1 md:gap-2">
+            {letters.map((letter) => (
+              <button
+                type="button"
+                class="letter-btn w-8 h-8 md:w-10 md:h-10 border border-gray-600 rounded-lg flex items-center justify-center font-semibold transition-colors text-sm md:text-base bg-gray-700 hover:bg-xbox-green hover:text-white text-white"
+                data-letter={letter}
+              >
+                {letter}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Glossary Section -->
+    <section class="bg-gray-100 py-16">
+      <div class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
+        <div
+          id="glossaryData"
+          data-terms={JSON.stringify(glossaryTerms)}
+        ></div>
+
+        <div id="noResults" class="hidden text-center py-12">
+          <p class="text-gray-600 text-lg">
+            No terms found matching your search criteria.
+          </p>
+        </div>
+
+        <div id="termsGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-8"></div>
+
+        <!-- Pagination -->
+        <div id="paginationWrap" class="hidden flex justify-center items-center mt-12 space-x-4">
+          <button
+            id="prevBtn"
+            type="button"
+            class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed rounded-md px-4 py-2 inline-flex items-center"
+          >
+            <svg class="h-4 w-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Previous
+          </button>
+
+          <div id="pageNumbers" class="flex space-x-2"></div>
+
+          <button
+            id="nextBtn"
+            type="button"
+            class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed rounded-md px-4 py-2 inline-flex items-center"
+          >
+            Next
+            <svg class="h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+  /**
+   * @typedef {{ term: string; definition: string; letter: string }} Term
+   */
+  const dataEl = document.getElementById("glossaryData");
+  const searchInput = document.getElementById("searchInput");
+  const letterButtons = Array.from(document.querySelectorAll(".letter-btn"));
+  const termsGrid = document.getElementById("termsGrid");
+  const noResults = document.getElementById("noResults");
+  const paginationWrap = document.getElementById("paginationWrap");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const pageNumbers = document.getElementById("pageNumbers");
+
+  if (
+    !(dataEl instanceof HTMLElement) ||
+    !(searchInput instanceof HTMLInputElement) ||
+    !(termsGrid instanceof HTMLElement) ||
+    !(noResults instanceof HTMLElement) ||
+    !(paginationWrap instanceof HTMLElement) ||
+    !(prevBtn instanceof HTMLButtonElement) ||
+    !(nextBtn instanceof HTMLButtonElement) ||
+    !(pageNumbers instanceof HTMLElement)
+  ) {
+    console.error("Glossary elements not found.");
+  } else {
+    const safeDataEl = dataEl;
+    const safeSearchInput = searchInput;
+    const safeTermsGrid = termsGrid;
+    const safeNoResults = noResults;
+    const safePaginationWrap = paginationWrap;
+    const safePrevBtn = prevBtn;
+    const safeNextBtn = nextBtn;
+    const safePageNumbers = pageNumbers;
+    const safeLetterButtons = letterButtons.filter((btn) => btn instanceof HTMLButtonElement);
+
+    /** @type {Term[]} */
+    const glossaryTerms = JSON.parse(safeDataEl.dataset.terms ?? "[]");
+    const itemsPerPage = 8;
+
+    let searchTerm = "";
+    let selectedLetter = "";
+    let currentPage = 1;
+
+    /**
+     * @returns {Term[]}
+     */
+    function filterTerms() {
+      const filtered = glossaryTerms.filter((/** @type {Term} */ term) => {
+        const matchesSearch =
+          term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          term.definition.toLowerCase().includes(searchTerm.toLowerCase());
+
+        const matchesLetter = !selectedLetter || term.letter === selectedLetter;
+        return matchesSearch && matchesLetter;
+      });
+
+      return filtered.sort((/** @type {Term} */ a, /** @type {Term} */ b) => a.term.localeCompare(b.term));
+    }
+
+    /**
+     * @param {Term[]} terms
+     */
+   function renderCards(terms) {
+  safeTermsGrid.innerHTML = terms
+    .map(
+      (term) => `
+      <div class="bg-white rounded-xl p-6 hover:bg-gray-50 transition-colors shadow-sm">
+        <h3 class="text-xl font-semibold text-xbox-green mb-3">${term.term}</h3>
+        <p class="text-gray-600 leading-relaxed">${term.definition}</p>
+      </div>
+    `
+    )
+    .join("");
+}
+
+    /**
+     * @param {number} totalPages
+     */
+    function renderPagination(totalPages) {
+      safePageNumbers.innerHTML = "";
+
+      for (let page = 1; page <= totalPages; page++) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = String(page);
+        button.className =
+          currentPage === page
+            ? "bg-xbox-green text-white hover:bg-xbox-green-light rounded-md px-4 py-2"
+            : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-md px-4 py-2";
+
+        button.addEventListener("click", () => {
+          currentPage = page;
+          render();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        safePageNumbers.appendChild(button);
+      }
+
+      safePrevBtn.disabled = currentPage === 1;
+      safeNextBtn.disabled = currentPage === totalPages || totalPages === 0;
+    }
+
+    function updateLetterButtons() {
+      safeLetterButtons.forEach((btn) => {
+        const btnLetter = /** @type {HTMLButtonElement} */ (btn).dataset.letter ?? "";
+
+        if (btnLetter === selectedLetter) {
+          btn.className =
+            "letter-btn w-8 h-8 md:w-10 md:h-10 border border-gray-600 rounded-lg flex items-center justify-center font-semibold transition-colors text-sm md:text-base bg-xbox-green text-white";
+        } else {
+          btn.className =
+            "letter-btn w-8 h-8 md:w-10 md:h-10 border border-gray-600 rounded-lg flex items-center justify-center font-semibold transition-colors text-sm md:text-base bg-gray-700 hover:bg-xbox-green hover:text-white text-white";
+        }
+      });
+    }
+
+    function render() {
+      const sortedTerms = filterTerms();
+      const totalPages = Math.ceil(sortedTerms.length / itemsPerPage);
+      const safePage = Math.min(currentPage, totalPages || 1);
+      currentPage = safePage;
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const currentTerms = sortedTerms.slice(startIndex, startIndex + itemsPerPage);
+
+      updateLetterButtons();
+
+      if (currentTerms.length === 0) {
+        safeTermsGrid.innerHTML = "";
+        safeNoResults.classList.remove("hidden");
+        safePaginationWrap.classList.add("hidden");
+        return;
+      }
+
+      safeNoResults.classList.add("hidden");
+      renderCards(currentTerms);
+
+      if (totalPages > 1) {
+        safePaginationWrap.classList.remove("hidden");
+        renderPagination(totalPages);
+      } else {
+        safePaginationWrap.classList.add("hidden");
+      }
+    }
+
+    safeSearchInput.addEventListener("input", () => {
+  searchTerm = safeSearchInput.value;
+  selectedLetter = ""; // clear selected letter when searching
+  currentPage = 1;
+  render();
+});
+
+    safeLetterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const letter = /** @type {HTMLButtonElement} */ (btn).dataset.letter ?? "";
+        selectedLetter = selectedLetter === letter ? "" : letter;
+        currentPage = 1;
+        render();
+      });
+    });
+
+    safePrevBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage -= 1;
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+
+    safeNextBtn.addEventListener("click", () => {
+      const totalPages = Math.ceil(filterTerms().length / itemsPerPage);
+      if (currentPage < totalPages) {
+        currentPage += 1;
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+
+    render();
+  }
+</script>
+</MainLayout>

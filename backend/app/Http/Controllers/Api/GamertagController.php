@@ -15,113 +15,48 @@ class GamertagController extends Controller
     public function generate(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'gender' => 'nullable|string|in:any,male,female,neutral',
-            'theme' => 'nullable|string|max:50',
-            'language' => 'nullable|string|max:50',
-            'includeWords' => 'nullable|string',
-            'otherRequests' => 'nullable|string',
+            'gender'         => 'nullable|string|in:any,male,female,neutral',
+            'theme'          => 'nullable|string|max:50',
+            'language'       => 'nullable|string|max:50',
+            'includeWords'   => 'nullable|string',
+            'otherRequests'  => 'nullable|string',
             'characterLimit' => 'nullable|integer|min:3|max:12',
         ]);
 
-        $gender = $validated['gender'] ?? 'any';
-        $theme = $validated['theme'] ?? 'gaming';
-        $language = $validated['language'] ?? 'english';
-        $includeWords = $validated['includeWords'] ?? '';
+        $gender         = $validated['gender'] ?? 'any';
+        $theme          = $validated['theme'] ?? 'gaming';
+        $language       = $validated['language'] ?? 'english';
         $characterLimit = $validated['characterLimit'] ?? 12;
 
-        $baseWords = GeneratorWord::query()
-            ->where('language', $language)
-            ->where('theme', $theme)
-            ->pluck('word')
-            ->toArray();
-
-        if (empty($baseWords)) {
-            $baseWords = GeneratorWord::query()
-                ->where('language', 'english')
-                ->where('theme', 'gaming')
-                ->pluck('word')
-                ->toArray();
-        }
-
-        $customWords = collect(explode(',', $includeWords))
-            ->map(fn ($word) => trim($word))
-            ->filter(fn ($word) => $word !== '')
+        $customWords = collect(explode(',', $validated['includeWords'] ?? ''))
+            ->map(fn($w) => trim($w))
+            ->filter(fn($w) => $w !== '')
             ->values()
             ->toArray();
 
-        $prefixes = [];
-        $suffixGenderWords = [];
-
-        if ($gender !== 'any') {
-            $prefixes = GeneratorGenderWord::query()
-                ->where('language', $language)
-                ->where('gender', $gender)
-                ->where('position', 'prefix')
-                ->pluck('word')
-                ->toArray();
-
-            $suffixGenderWords = GeneratorGenderWord::query()
-                ->where('language', $language)
-                ->where('gender', $gender)
-                ->where('position', 'suffix')
-                ->pluck('word')
-                ->toArray();
-
-            if (empty($prefixes)) {
-                $prefixes = GeneratorGenderWord::query()
-                    ->where('language', 'english')
-                    ->where('gender', $gender)
-                    ->where('position', 'prefix')
-                    ->pluck('word')
-                    ->toArray();
-            }
-
-            if (empty($suffixGenderWords)) {
-                $suffixGenderWords = GeneratorGenderWord::query()
-                    ->where('language', 'english')
-                    ->where('gender', $gender)
-                    ->where('position', 'suffix')
-                    ->pluck('word')
-                    ->toArray();
-            }
-        }
-
-        $languageSuffixes = GeneratorSuffix::query()
-            ->where('language', $language)
-            ->pluck('word')
-            ->toArray();
-
-        if (empty($languageSuffixes)) {
-            $languageSuffixes = GeneratorSuffix::query()
-                ->where('language', 'english')
-                ->pluck('word')
-                ->toArray();
-        }
-
-        $numbers = GeneratorNumber::query()
-            ->pluck('value')
-            ->toArray();
-
-        if (empty($numbers)) {
-            $numbers = ['01', '07', '13'];
-        }
-
         $parsedRequests = $this->parseOtherRequests($validated['otherRequests'] ?? '');
 
-        $generated = [];
+        // Load data with fallback helper
+        $baseWords       = $this->fetchWords($language, $theme);
+        $prefixes        = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'prefix') : [];
+        $suffixGender    = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'suffix') : [];
+        $languageSuffixes = $this->fetchSuffixes($language);
+        $numbers         = GeneratorNumber::pluck('value')->toArray() ?: ['01', '07', '13', '99', '47'];
+
+        $generated       = [];
         $usedCustomWords = [];
-        $safety = 0;
+        $usedPatterns    = [];
+        $customQuota     = !empty($customWords) ? 1 : 0;
+        $customUsed      = 0;
+        $safety          = 0;
 
-        $customQuota = !empty($customWords) ? 1 : 0;
-        $customUsed = 0;
-
-        while (count($generated) < 6 && $safety < 120) {
+        while (count($generated) < 6 && $safety < 150) {
             $forceCustom = $customUsed < $customQuota;
 
             $tag = $this->generateSingleTag(
                 $baseWords,
                 $prefixes,
-                $suffixGenderWords,
+                $suffixGender,
                 $languageSuffixes,
                 $numbers,
                 $gender,
@@ -129,35 +64,87 @@ class GamertagController extends Controller
                 $customWords,
                 $parsedRequests,
                 $forceCustom,
-                $usedCustomWords
+                $usedCustomWords,
+                $usedPatterns
             );
 
-            if (
-                mb_strlen($tag) >= 3 &&
-                !in_array($tag, $generated, true)
-            ) {
+            $tagLower = mb_strtolower($tag);
+
+            if (mb_strlen($tag) >= 3 && !in_array($tagLower, array_map('mb_strtolower', $generated), true)) {
                 if ($this->containsCustomWord($tag, $customWords)) {
-                    $matchedCustomWord = $this->findMatchedCustomWord($tag, $customWords);
-
-                    if ($matchedCustomWord !== null) {
-                        $usedCustomWords[] = mb_strtolower($matchedCustomWord);
+                    $matched = $this->findMatchedCustomWord($tag, $customWords);
+                    if ($matched !== null) {
+                        $usedCustomWords[] = mb_strtolower($matched);
                     }
-
                     if ($forceCustom) {
                         $customUsed++;
                     }
                 }
 
-                $generated[] = $tag;
+                $generated[]    = $tag;
+                $usedPatterns[] = $this->extractPattern($tag);
             }
 
             $safety++;
         }
 
-        return response()->json([
-            'tags' => $generated,
-        ]);
+        return response()->json(['tags' => $generated]);
     }
+
+    // ─── Data Fetchers ────────────────────────────────────────────────────────
+
+    private function fetchWords(string $language, string $theme): array
+    {
+        $words = GeneratorWord::where('language', $language)
+            ->where('theme', $theme)
+            ->pluck('word')
+            ->toArray();
+
+        if (empty($words)) {
+            $words = GeneratorWord::where('language', 'english')
+                ->where('theme', 'gaming')
+                ->pluck('word')
+                ->toArray();
+        }
+
+        return $words;
+    }
+
+    private function fetchGenderWords(string $language, string $gender, string $position): array
+    {
+        $words = GeneratorGenderWord::where('language', $language)
+            ->where('gender', $gender)
+            ->where('position', $position)
+            ->pluck('word')
+            ->toArray();
+
+        if (empty($words)) {
+            $words = GeneratorGenderWord::where('language', 'english')
+                ->where('gender', $gender)
+                ->where('position', $position)
+                ->pluck('word')
+                ->toArray();
+        }
+
+        return $words;
+    }
+
+    private function fetchSuffixes(string $language): array
+    {
+        $suffixes = GeneratorSuffix::where('language', $language)
+            ->pluck('word')
+            ->toArray();
+
+        if (empty($suffixes)) {
+            $suffixes = GeneratorSuffix::where('language', 'english')
+                ->pluck('word')
+                ->toArray();
+        }
+
+        return $suffixes;
+    }
+
+    // ─── Tag Generator ────────────────────────────────────────────────────────
 
     private function generateSingleTag(
         array $baseWords,
@@ -167,65 +154,58 @@ class GamertagController extends Controller
         array $numbers,
         string $gender,
         int $characterLimit,
-        array $customWords = [],
-        array $parsedRequests = [],
-        bool $forceCustom = false,
-        array $usedCustomWords = []
+        array $customWords,
+        array $parsedRequests,
+        bool $forceCustom,
+        array $usedCustomWords,
+        array $usedPatterns
     ): string {
         if (empty($baseWords)) {
             return 'Player' . rand(10, 99);
         }
 
-        $prefix = '';
-        $mainWord = '';
-        $genderSuffix = '';
-        $extraSuffix = '';
-        $number = '';
+        $allowNumbers  = !in_array('no_numbers', $parsedRequests, true);
+        $preferShort   = in_array('short', $parsedRequests, true);
 
-        if ($gender !== 'any' && !empty($prefixes) && mt_rand(1, 100) > 75) {
-            $prefix = $prefixes[array_rand($prefixes)];
-        }
+        // Pick a base word — shuffle to reduce repetition
+        $shuffled = $baseWords;
+        shuffle($shuffled);
+        $dbWord = $shuffled[0];
 
-        $allowNumbers = !in_array('no_numbers', $parsedRequests, true);
-        $preferShort = in_array('short', $parsedRequests, true);
-
-        $dbWord = $baseWords[array_rand($baseWords)];
+        // Build main word
         $availableCustomWords = $this->getAvailableCustomWords($customWords, $usedCustomWords);
+        $mainWord = $this->buildMainWord($dbWord, $availableCustomWords, $forceCustom);
 
-        if ($forceCustom && !empty($availableCustomWords)) {
-            $customWord = $availableCustomWords[array_rand($availableCustomWords)];
+        // Pick optional parts — randomize independently
+        $prefix      = ($gender !== 'any' && !empty($prefixes) && mt_rand(1, 100) > 75)
+                        ? $prefixes[array_rand($prefixes)]
+                        : '';
 
-            if (mt_rand(0, 1) === 1) {
-                $mainWord = $this->combineWords($customWord, $dbWord);
-            } else {
-                $mainWord = $this->combineWords($dbWord, $customWord);
-            }
-        } else {
-            if (!empty($availableCustomWords) && mt_rand(1, 100) > 85) {
-                $customWord = $availableCustomWords[array_rand($availableCustomWords)];
+        $genderSuffix = ($gender !== 'any' && !empty($suffixGenderWords) && mt_rand(1, 100) > 85)
+                        ? $suffixGenderWords[array_rand($suffixGenderWords)]
+                        : '';
 
-                if (mt_rand(0, 1) === 1) {
-                    $mainWord = $this->combineWords($customWord, $dbWord);
-                } else {
-                    $mainWord = $this->combineWords($dbWord, $customWord);
-                }
-            } else {
-                $mainWord = $dbWord;
-            }
-        }
-
-        if (
-            $gender !== 'any' &&
-            !empty($suffixGenderWords) &&
-            mt_rand(1, 100) > 85
-        ) {
-            $genderSuffix = $suffixGenderWords[array_rand($suffixGenderWords)];
-        }
+        $extraSuffix = '';
+        $number      = '';
 
         if (!$preferShort && mt_rand(1, 100) > 40) {
-            if (mt_rand(0, 1) === 1 && !empty($languageSuffixes)) {
+            // Vary the pattern: avoid using the same suffix/number pattern repeatedly
+            $useNumber = $allowNumbers && !empty($numbers) && mt_rand(0, 1) === 1;
+            $useSuffix = !empty($languageSuffixes) && mt_rand(0, 1) === 1;
+
+            $pattern = ($useNumber ? 'N' : '') . ($useSuffix ? 'S' : '');
+
+            // If this pattern was recently used, flip the choice
+            if (in_array($pattern, array_slice($usedPatterns, -3), true)) {
+                $useNumber = !$useNumber;
+                $useSuffix = !$useSuffix;
+            }
+
+            if ($useSuffix) {
                 $extraSuffix = $languageSuffixes[array_rand($languageSuffixes)];
-            } elseif ($allowNumbers && !empty($numbers)) {
+            }
+
+            if ($useNumber) {
                 $number = $numbers[array_rand($numbers)];
             }
         }
@@ -234,6 +214,7 @@ class GamertagController extends Controller
             $prefix . $mainWord . $genderSuffix . $extraSuffix . $number,
             $prefix . $mainWord . $genderSuffix . $extraSuffix,
             $prefix . $mainWord . $genderSuffix . $number,
+            $prefix . $mainWord . $extraSuffix . $number,
             $prefix . $mainWord . $extraSuffix,
             $prefix . $mainWord . $number,
             $mainWord . $genderSuffix . $extraSuffix,
@@ -244,7 +225,7 @@ class GamertagController extends Controller
         ];
 
         foreach ($candidates as $candidate) {
-            if (mb_strlen($candidate) <= $characterLimit) {
+            if (mb_strlen($candidate) <= $characterLimit && mb_strlen($candidate) >= 3) {
                 return $candidate;
             }
         }
@@ -252,28 +233,49 @@ class GamertagController extends Controller
         return $this->smartTrim($mainWord, $characterLimit);
     }
 
+    private function buildMainWord(string $dbWord, array $availableCustomWords, bool $forceCustom): string
+    {
+        if (empty($availableCustomWords)) {
+            return $dbWord;
+        }
+
+        $shouldUseCustom = $forceCustom || mt_rand(1, 100) > 85;
+
+        if (!$shouldUseCustom) {
+            return $dbWord;
+        }
+
+        $customWord = $availableCustomWords[array_rand($availableCustomWords)];
+
+        return mt_rand(0, 1) === 1
+            ? $this->combineWords($customWord, $dbWord)
+            : $this->combineWords($dbWord, $customWord);
+    }
+
+    // ─── Helpers ──────────────────────────────────────────────────────────────
+
+    private function extractPattern(string $tag): string
+    {
+        $hasNumber = preg_match('/\d/', $tag);
+        $wordCount = preg_match_all('/[A-Z][a-z]+/', $tag);
+
+        return ($hasNumber ? 'N' : '') . ($wordCount > 1 ? 'M' : 'S');
+    }
+
     private function parseOtherRequests(string $input): array
     {
-        $text = mb_strtolower(trim($input));
+        $text  = mb_strtolower(trim($input));
         $flags = [];
 
         if ($text === '') {
             return $flags;
         }
 
-        if (
-            str_contains($text, 'short') ||
-            str_contains($text, 'brief') ||
-            str_contains($text, 'small')
-        ) {
+        if (str_contains($text, 'short') || str_contains($text, 'brief') || str_contains($text, 'small')) {
             $flags[] = 'short';
         }
 
-        if (
-            str_contains($text, 'no numbers') ||
-            str_contains($text, 'without numbers') ||
-            str_contains($text, 'no number')
-        ) {
+        if (str_contains($text, 'no number') || str_contains($text, 'without number')) {
             $flags[] = 'no_numbers';
         }
 
@@ -310,28 +312,18 @@ class GamertagController extends Controller
 
         $used = array_map('mb_strtolower', $usedCustomWords);
 
-        $available = array_values(array_filter($customWords, function ($word) use ($used) {
-            return !in_array(mb_strtolower($word), $used, true);
-        }));
+        $available = array_values(array_filter($customWords, fn($w) => !in_array(mb_strtolower($w), $used, true)));
 
         return !empty($available) ? $available : $customWords;
     }
 
     private function combineWords(string $first, string $second): string
     {
-        $first = trim($first);
-        $second = trim($second);
+        $first  = ucfirst(trim($first));
+        $second = ucfirst(trim($second));
 
-        if ($first === '') {
-            return $second;
-        }
-
-        if ($second === '') {
-            return $first;
-        }
-
-        $first = ucfirst($first);
-        $second = ucfirst($second);
+        if ($first === '')  return $second;
+        if ($second === '') return $first;
 
         return $first . $second;
     }
@@ -342,22 +334,19 @@ class GamertagController extends Controller
             return $text;
         }
 
-        $parts = preg_split('/(?=[A-Z])|[_\-\s]+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
+        $parts   = preg_split('/(?=[A-Z])|[_\-\s]+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
+        $rebuilt = '';
 
-        if (!empty($parts)) {
-            $rebuilt = '';
-
-            foreach ($parts as $part) {
-                if (mb_strlen($rebuilt . $part) <= $limit) {
-                    $rebuilt .= $part;
-                } else {
-                    break;
-                }
+        foreach ($parts as $part) {
+            if (mb_strlen($rebuilt . $part) <= $limit) {
+                $rebuilt .= $part;
+            } else {
+                break;
             }
+        }
 
-            if ($rebuilt !== '' && mb_strlen($rebuilt) >= 3) {
-                return $rebuilt;
-            }
+        if ($rebuilt !== '' && mb_strlen($rebuilt) >= 3) {
+            return $rebuilt;
         }
 
         return mb_substr($text, 0, $limit);

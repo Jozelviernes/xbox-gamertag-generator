@@ -2,3181 +2,881 @@
   "languageWordSets": {
     "english": {
       "gaming": [
-        "ShadowHunter",
-        "CyberViper",
-        "NovaStorm",
-        "PhantomBlade",
-        "IronWolf",
-        "EliteRanger",
-        "DarkKnight",
-        "FireStorm",
-        "GhostRider",
-        "ThunderStrike",
-        "NightCrawler",
-        "BattleMage",
-        "WarLord",
-        "StealthNinja",
-        "PowerGamer"
+        "Shadow", "Cyber", "Nova", "Phantom", "Iron", "Elite", "Dark", "Fire", "Ghost", "Thunder",
+        "Night", "Battle", "War", "Stealth", "Power", "Blaze", "Storm", "Viper", "Wolf", "Titan",
+        "Apex", "Echo", "Void", "Surge", "Bolt", "Frost", "Raven", "Steel", "Reaper", "Onyx",
+        "Flux", "Savage", "Rogue", "Venom", "Nitro", "Fury", "Blitz", "Omega", "Alpha", "Wraith",
+        "Hunter", "Blade", "Rider", "Striker", "Ranger", "Knight", "Ninja", "Mage", "Sniper", "Slayer",
+        "Inferno", "Crimson", "Specter", "Glitch", "Nexus", "Havoc", "Pyro", "Cobra", "Tempest", "Lynx",
+        "Drift", "Core", "Neon", "Cipher", "Dusk", "Ember", "Obsidian", "Saber", "Pulse", "Comet",
+        "Zenith", "Hex", "Omen", "Vortex", "Torque", "Wrath", "Phantom", "Grim", "Fang", "Claw"
       ],
       "animals": [
-        "WolfPack",
-        "EagleEye",
-        "LionHeart",
-        "FoxTail",
-        "BearClaw",
-        "SnakeStrike",
-        "TigerRoar",
-        "SharkBite",
-        "RavenWing",
-        "DragonFly",
-        "PantherStrike",
-        "HawkEye",
-        "WildCat",
-        "ThunderBeast",
-        "SwiftFox"
+        "Wolf", "Eagle", "Lion", "Fox", "Bear", "Snake", "Tiger", "Shark", "Raven", "Dragon",
+        "Panther", "Hawk", "Cat", "Beast", "Viper", "Falcon", "Lynx", "Cobra", "Puma", "Jaguar",
+        "Bison", "Scorpion", "Rhino", "Osprey", "Mamba", "Hyena", "Stallion", "Ram", "Bull", "Crow",
+        "Orca", "Mantis", "Wolverine", "Badger", "Talon", "Fang", "Claw", "Tusk", "Mane", "Howl",
+        "Roar", "Strike", "Bite", "Wing", "Pack", "Herd", "Swarm", "Prowl", "Hunt", "Stalk"
       ],
       "tech": [
-        "CyberNet",
-        "PixelCore",
-        "DataMiner",
-        "CodeBreaker",
-        "TechNinja",
-        "DigitalGhost",
-        "CyberPunk",
-        "NeoMatrix",
-        "ByteWarrior",
-        "SystemHack",
-        "CloudRider",
-        "NetRunner",
-        "DataStream",
-        "TechWizard",
-        "CyberCore"
+        "Cyber", "Pixel", "Data", "Code", "Tech", "Digital", "Byte", "System", "Cloud", "Net",
+        "Stream", "Matrix", "Nano", "Micro", "Quantum", "Binary", "Signal", "Logic", "Circuit", "Core",
+        "Node", "Grid", "Sync", "Flux", "Cache", "Kernel", "Proxy", "Vector", "Cipher", "Hash",
+        "Ping", "Bit", "Chip", "Drive", "Radar", "Scan", "Hack", "Link", "Stack", "Frame",
+        "Pulse", "Surge", "Warp", "Boost", "Turbo", "Hyper", "Ultra", "Mega", "Giga", "Tera"
       ],
       "fantasy": [
-        "DragonLord",
-        "MysticMage",
-        "SwordMaster",
-        "DarkWizard",
-        "RuneBlade",
-        "SorcererKing",
-        "ElfArcher",
-        "DwarfWarrior",
-        "OrcSlayer",
-        "WizardStaff",
-        "SpellCaster",
-        "ArcaneKnight",
-        "MagicBlade",
-        "EnchantedSoul",
-        "MythicHero"
+        "Dragon", "Mystic", "Sword", "Wizard", "Rune", "Sorcerer", "Elf", "Dwarf", "Orc", "Spell",
+        "Arcane", "Magic", "Enchant", "Myth", "Legend", "Lore", "Relic", "Curse", "Hex", "Charm",
+        "Flame", "Frost", "Storm", "Shadow", "Light", "Dark", "Holy", "Venom", "Crystal", "Soul",
+        "Sage", "Oracle", "Titan", "Golem", "Wraith", "Specter", "Phantom", "Ancient", "Elder", "Void",
+        "Fae", "Warlock", "Witch", "Paladin", "Druid", "Shaman", "Bard", "Ranger", "Rogue", "Monk"
       ],
       "sports": [
-        "GoalSeeker",
-        "SlamDunk",
-        "HomeRunHero",
-        "TouchDown",
-        "PowerPlay",
-        "FastBreak",
-        "GameWinner",
-        "SportStar",
-        "ChampionRing",
-        "VictoryLap",
-        "AllStar",
-        "MVP",
-        "ProAthlete",
-        "GameChanger",
-        "WinStreak"
+        "Goal", "Slam", "Run", "Touch", "Power", "Fast", "Game", "Sport", "Champion", "Victory",
+        "Star", "Pro", "Ace", "Draft", "Strike", "Sprint", "Dash", "Blitz", "Drive", "Dunk",
+        "Score", "Win", "Rush", "Blaze", "Surge", "Vault", "Leap", "Grind", "Hustle", "Clutch",
+        "Rivals", "Fierce", "Bold", "Grit", "Pace", "Force", "Champ", "Crown", "Glory", "Valor"
       ],
       "space": [
-        "StarCruiser",
-        "GalaxyRider",
-        "CosmicDrift",
-        "NebulaStorm",
-        "AstroNaut",
-        "MoonWalker",
-        "SolarFlare",
-        "OrbitRider",
-        "SpaceRanger",
-        "StarFighter",
-        "CosmicWave",
-        "GalacticHero",
-        "StarshipPilot",
-        "NebulaKnight",
-        "VoidWalker"
+        "Star", "Galaxy", "Cosmic", "Nebula", "Astro", "Moon", "Solar", "Orbit", "Space", "Nova",
+        "Comet", "Pulsar", "Quasar", "Void", "Warp", "Flux", "Plasma", "Photon", "Ion", "Zenith",
+        "Aether", "Horizon", "Eclipse", "Aurora", "Vega", "Orion", "Lyra", "Draco", "Cygnus", "Hydra",
+        "Titan", "Lunar", "Stellar", "Radiant", "Supernova", "Meteor", "Asteroid", "Cosmos", "Infinity", "Apex"
       ],
       "music": [
-        "BeatMaster",
-        "SoundWave",
-        "RhythmKing",
-        "MelodyMaker",
-        "BassLine",
-        "DrumBeat",
-        "SynthWave",
-        "AudioFreak",
-        "MusicBox",
-        "SongBird",
-        "BeatDrop",
-        "SoundBlast",
-        "MelodyFlow",
-        "RhythmRider",
-        "BassHunter"
+        "Beat", "Sound", "Rhythm", "Melody", "Bass", "Drum", "Synth", "Audio", "Song", "Wave",
+        "Drop", "Blast", "Flow", "Vibe", "Groove", "Tempo", "Chord", "Pitch", "Tone", "Riff",
+        "Solo", "Echo", "Pulse", "Boom", "Treble", "Funk", "Jazz", "Rock", "Rap", "Rave",
+        "Mix", "Track", "Loop", "Dub", "Sample", "Reverb", "Fade", "Hook", "Lyric", "Verse"
       ],
       "food": [
-        "TacoMaster",
-        "PizzaSlayer",
-        "BurgerKing",
-        "SushiNinja",
-        "DonutLord",
-        "CakeWalk",
-        "CoffeeAddict",
-        "FoodFighter",
-        "CookieCrumb",
-        "FruitLoop",
-        "SpiceKing",
-        "FlavorQuest",
-        "FoodieHero",
-        "TasteBud",
-        "ChefMaster"
+        "Taco", "Pizza", "Burger", "Sushi", "Donut", "Cake", "Coffee", "Cookie", "Fruit", "Spice",
+        "Flavor", "Chef", "Grill", "Feast", "Crispy", "Savory", "Zesty", "Sweet", "Sour", "Spicy",
+        "Nacho", "Waffle", "Noodle", "Dumpling", "Ramen", "Curry", "Kebab", "Tart", "Bun", "Pretzel",
+        "Mochi", "Churro", "Brownie", "Latte", "Espresso", "Brunch", "Snack", "Bite", "Crunch", "Grub"
       ]
     },
     "spanish": {
       "gaming": [
-        "SombrasCazador",
-        "ViperCiber",
-        "TormentaNova",
-        "EspadaFantasma",
-        "LoboHierro",
-        "GuardianElite",
-        "CaballeroOscuro",
-        "TormentaFuego",
-        "JineteFantasma",
-        "GolpeTrueno",
-        "GuerreroNoche",
-        "MagoLucha",
-        "SeñorGuerra",
-        "NinjaFurtivo",
-        "JugadorPoder"
+        "Sombra", "Ciber", "Nova", "Fantasma", "Hierro", "Elite", "Oscuro", "Fuego", "Trueno", "Noche",
+        "Batalla", "Guerra", "Furtivo", "Poder", "Llama", "Tormenta", "Vibora", "Lobo", "Titan", "Cima",
+        "Eco", "Vacio", "Rayo", "Escarcha", "Cuervo", "Acero", "Segador", "Onix", "Flujo", "Salvaje",
+        "Pícaro", "Veneno", "Nitro", "Furia", "Rapido", "Omega", "Alfa", "Espectro", "Cazador", "Hoja",
+        "Jinete", "Golpe", "Guardián", "Caballero", "Ninja", "Mago", "Francotirador", "Asesino", "Inferno", "Carmesi"
       ],
       "animals": [
-        "ManadaLobo",
-        "OjoAguila",
-        "CorazonLeon",
-        "ColaZorro",
-        "GarraOso",
-        "GolpeSerpiente",
-        "RugidoTigre",
-        "MordidaTiburon",
-        "AlaCuervo",
-        "LibelulaDragon",
-        "GolpePantera",
-        "OjoHalcon",
-        "GatoSalvaje",
-        "BestiaTrueno",
-        "ZorroVeloz"
+        "Lobo", "Aguila", "Leon", "Zorro", "Oso", "Serpiente", "Tigre", "Tiburon", "Cuervo", "Dragon",
+        "Pantera", "Halcon", "Gato", "Bestia", "Vibora", "Lince", "Cobra", "Puma", "Jaguar", "Bisonte",
+        "Escorpion", "Rinoceronte", "Mamba", "Hiena", "Semental", "Toro", "Cuerno", "Garra", "Colmillo", "Rugido"
       ],
       "tech": [
-        "RedCiber",
-        "NucleoPixel",
-        "MineriaDatos",
-        "RomperCodigo",
-        "NinjaTech",
-        "FantasmaDigital",
-        "PunkCiber",
-        "MatrizNeo",
-        "GuerreroBytes",
-        "HackSistema",
-        "JineteNube",
-        "CorredorRed",
-        "FlujoDatos",
-        "MagoTech",
-        "NucleoCiber"
+        "Ciber", "Pixel", "Datos", "Codigo", "Tecno", "Digital", "Byte", "Sistema", "Nube", "Red",
+        "Flujo", "Matriz", "Nano", "Micro", "Cuanto", "Binario", "Señal", "Logica", "Circuito", "Nucleo",
+        "Nodo", "Rejilla", "Sincro", "Cache", "Vector", "Cifra", "Pulso", "Turbo", "Hiper", "Ultra"
       ],
       "fantasy": [
-        "SeñorDragon",
-        "MagoMistico",
-        "MaestroEspada",
-        "BrujoOscuro",
-        "EspadaRuna",
-        "ReyHechicero",
-        "ArqueroElfo",
-        "GuerreroEnano",
-        "MatadorOrco",
-        "BastonBrujo",
-        "LanzaHechizos",
-        "CaballeroArcano",
-        "EspadaMagica",
-        "AlmaEncantada",
-        "HeroeMitico"
+        "Dragon", "Mistico", "Espada", "Brujo", "Runa", "Hechicero", "Elfo", "Enano", "Orco", "Hechizo",
+        "Arcano", "Magia", "Encanto", "Mito", "Leyenda", "Reliquia", "Maldicion", "Cristal", "Alma", "Sabio",
+        "Oraculo", "Titan", "Espectro", "Fantasma", "Antiguo", "Vacio", "Brujo", "Paladin", "Druida", "Monje"
       ],
       "sports": [
-        "BuscadorGol",
-        "VoladaCanasta",
-        "HeroeJonron",
-        "FinoToque",
-        "JugadaPoder",
-        "QuiebreRapido",
-        "GanadorJuego",
-        "EstrellaDeporte",
-        "AnilloCampeon",
-        "VueltaVictoria",
-        "TodoEstrella",
-        "MVP",
-        "AtletaPro",
-        "CambiaJuego",
-        "RachaTriunfo"
+        "Gol", "Golpe", "Carrera", "Toque", "Poder", "Rapido", "Juego", "Deporte", "Campeon", "Victoria",
+        "Estrella", "Pro", "As", "Impacto", "Sprint", "Velocidad", "Empuje", "Bote", "Puntuacion", "Triunfo"
       ],
       "space": [
-        "CruceroEstrella",
-        "JineteGalaxia",
-        "DerivaCosmico",
-        "TormentaNebulosa",
-        "AstroNauta",
-        "CaminanteLuna",
-        "LlamaradaSolar",
-        "JineteOrbita",
-        "GuardianEspacio",
-        "LuchadorEstrella",
-        "OndaCosmica",
-        "HeroeGalactico",
-        "PilotoNave",
-        "CaballeroNebulosa",
-        "CaminanteVacio"
+        "Estrella", "Galaxia", "Cosmico", "Nebulosa", "Astro", "Luna", "Solar", "Orbita", "Espacio", "Nova",
+        "Cometa", "Pulsar", "Quasar", "Vacio", "Plasma", "Foton", "Ion", "Cenit", "Eclipse", "Aurora"
       ],
       "music": [
-        "MaestroRitmo",
-        "OndaSonido",
-        "ReyRitmo",
-        "CreadorMelodia",
-        "LineaBajo",
-        "GolpeTambor",
-        "OndaSintetizador",
-        "FreakAudio",
-        "CajaMelo",
-        "PajaroCancion",
-        "CaidaRitmo",
-        "ExplosionSonido",
-        "FlujoMelo",
-        "JineteRitmo",
-        "CazadorBajo"
+        "Ritmo", "Sonido", "Melodia", "Bajo", "Tambor", "Sintetizador", "Audio", "Cancion", "Onda", "Caida",
+        "Explosion", "Flujo", "Vibra", "Groove", "Tempo", "Acorde", "Tono", "Riff", "Solo", "Eco"
       ],
       "food": [
-        "MaestroTaco",
-        "MatadorPizza",
-        "ReyHamburguesa",
-        "NinjaSushi",
-        "SeñorRosquilla",
-        "PaseoCake",
-        "AdictosCafe",
-        "LuchadorComida",
-        "MigajaCookie",
-        "BucleFruta",
-        "ReyEspecia",
-        "BusquedaSabor",
-        "HeroeComida",
-        "PapilasGusto",
-        "MaestroChef"
+        "Taco", "Pizza", "Hamburguesa", "Sushi", "Rosquilla", "Pastel", "Cafe", "Galleta", "Fruta", "Especia",
+        "Sabor", "Chef", "Asado", "Festin", "Crujiente", "Sabroso", "Picante", "Dulce", "Agrio", "Bocado"
       ]
     },
     "portuguese": {
       "gaming": [
-        "CacadorSombra",
-        "ViperaCiber",
-        "TempestadeNova",
-        "LaminaFantasma",
-        "LoboFerro",
-        "GuardiaElite",
-        "CavaleiroEscuro",
-        "TempestadeFogo",
-        "CavaleiroFantasma",
-        "GolpeTrovao",
-        "GuerreiroNoite",
-        "MagoLuta",
-        "SenhorGuerra",
-        "NinjaFurtivo",
-        "JogadorPoder"
+        "Sombra", "Ciber", "Nova", "Fantasma", "Ferro", "Elite", "Escuro", "Fogo", "Trovao", "Noite",
+        "Batalha", "Guerra", "Furtivo", "Poder", "Chama", "Tempestade", "Vibora", "Lobo", "Titan", "Apice",
+        "Eco", "Vazio", "Raio", "Gelo", "Corvo", "Aco", "Ceifador", "Onix", "Fluxo", "Selvagem",
+        "Ladrao", "Veneno", "Nitro", "Furia", "Rapido", "Omega", "Alfa", "Espectro", "Cacador", "Lamina",
+        "Jinete", "Golpe", "Guardiao", "Cavaleiro", "Ninja", "Mago", "Atirador", "Assassino", "Inferno", "Carmim"
       ],
       "animals": [
-        "AlcateiaLobo",
-        "OlhoAguia",
-        "CoracaoLeao",
-        "CaudaRaposa",
-        "GarraUrso",
-        "GolpeSerpente",
-        "RugidoTigre",
-        "MordidaTubarao",
-        "AsaCorvo",
-        "LibelulaD",
-        "GolpePantera",
-        "OlhoFalcao",
-        "GatoSelvagem",
-        "FeraT",
-        "RaposaVeloz"
+        "Lobo", "Aguia", "Leao", "Raposa", "Urso", "Serpente", "Tigre", "Tubarao", "Corvo", "Dragao",
+        "Pantera", "Falcao", "Gato", "Fera", "Vibora", "Lince", "Cobra", "Puma", "Jaguar", "Bisao",
+        "Escorpiao", "Rinoceronte", "Mamba", "Hiena", "Garanhao", "Touro", "Garra", "Presa", "Rugido", "Bando"
       ],
       "tech": [
-        "RedeCiber",
-        "NucleoPixel",
-        "MineradorDados",
-        "QuebradorCodigo",
-        "NinjaTech",
-        "FantasmaDigital",
-        "PunkCiber",
-        "MatrizNeo",
-        "GuerreiroBytes",
-        "HackSistema",
-        "CavaleiroNuvem",
-        "CorredorRede",
-        "FluxoDados",
-        "MagoTech",
-        "NucleoCiber"
+        "Ciber", "Pixel", "Dados", "Codigo", "Tecno", "Digital", "Byte", "Sistema", "Nuvem", "Rede",
+        "Fluxo", "Matriz", "Nano", "Micro", "Quantico", "Binario", "Sinal", "Logica", "Circuito", "Nucleo",
+        "No", "Grade", "Sincro", "Cache", "Vetor", "Cifra", "Pulso", "Turbo", "Hiper", "Ultra"
       ],
       "fantasy": [
-        "SenhorDragao",
-        "MagoMistico",
-        "MestreEspada",
-        "BruxoEscuro",
-        "EspadaRuna",
-        "ReiFeitic",
-        "ArqueiroElfo",
-        "GuerreiroAnao",
-        "MatadorOrco",
-        "CajadoBrujo",
-        "LancadorFeiticos",
-        "CavaleiroArcano",
-        "EspadaMagica",
-        "AlmaEncantada",
-        "HeroiMitico"
+        "Dragao", "Mistico", "Espada", "Bruxo", "Runa", "Feiticeiro", "Elfo", "Anao", "Orc", "Feitico",
+        "Arcano", "Magia", "Encanto", "Mito", "Lenda", "Reliquia", "Maldicao", "Cristal", "Alma", "Sabio",
+        "Oraculo", "Titan", "Espectro", "Fantasma", "Antigo", "Vazio", "Paladino", "Druida", "Xamã", "Monge"
       ],
       "sports": [
-        "BuscadorGol",
-        "EnterradaC",
-        "HeroiHomeRun",
-        "TouchDown",
-        "JogadaPoder",
-        "QuiebraRapido",
-        "VencedorJogo",
-        "EstrelaDp",
-        "AnelCampeao",
-        "VoltaVitoria",
-        "TodoEstrela",
-        "MVP",
-        "AtletaPro",
-        "MudadorJogo",
-        "SequenciaVitoria"
+        "Gol", "Arremesso", "Corrida", "Toque", "Poder", "Rapido", "Jogo", "Esporte", "Campeao", "Vitoria",
+        "Estrela", "Pro", "As", "Impacto", "Sprint", "Velocidade", "Empurrao", "Salto", "Pontuacao", "Triunfo"
       ],
       "space": [
-        "CruzeiroEstrela",
-        "CavaleiroGalaxia",
-        "DerivaCosmico",
-        "TempestadeNebulosa",
-        "AstroNauta",
-        "CaminhanteLua",
-        "LabaradaSolar",
-        "CavaleiroOrbita",
-        "GuardiaoEspaco",
-        "LutadorEstrela",
-        "OndaCosmica",
-        "HeroiGalactico",
-        "PilotoNave",
-        "CavaleiroNebulosa",
-        "CaminhanteVazio"
+        "Estrela", "Galaxia", "Cosmico", "Nebulosa", "Astro", "Lua", "Solar", "Orbita", "Espaco", "Nova",
+        "Cometa", "Pulsar", "Quasar", "Vazio", "Plasma", "Foton", "Ion", "Zenite", "Eclipse", "Aurora"
       ],
       "music": [
-        "MestreRitmo",
-        "OndaSom",
-        "ReiRitmo",
-        "CriadorMelodia",
-        "LinhaBaixo",
-        "BatidaTambor",
-        "OndaSintetizador",
-        "ManiacoAudio",
-        "CaixaMusica",
-        "PassaroC",
-        "QuedaRitmo",
-        "ExplosaoSom",
-        "FluxoMelo",
-        "CavaleiroRitmo",
-        "CacadorBaixo"
+        "Ritmo", "Som", "Melodia", "Baixo", "Tambor", "Sintetizador", "Audio", "Cancao", "Onda", "Queda",
+        "Explosao", "Fluxo", "Vibra", "Groove", "Tempo", "Acorde", "Tom", "Riff", "Solo", "Eco"
       ],
       "food": [
-        "MestreTaco",
-        "MatadorPizza",
-        "ReiH",
-        "NinjaSushi",
-        "SenhorRosquinha",
-        "CaminhadaBolo",
-        "ViciadoCafe",
-        "LutadorComida",
-        "MigalhaB",
-        "LacoFruta",
-        "ReiTempero",
-        "BuscaSabor",
-        "HeroiComida",
-        "PapilasG",
-        "MestreChef"
+        "Taco", "Pizza", "Hamburguer", "Sushi", "Rosquinha", "Bolo", "Cafe", "Biscoito", "Fruta", "Tempero",
+        "Sabor", "Chef", "Grelha", "Festa", "Crocante", "Saboroso", "Picante", "Doce", "Azedo", "Mordida"
       ]
     },
     "french": {
       "gaming": [
-        "ChasseurOmbre",
-        "VipereCyber",
-        "TempeteNova",
-        "LameFantome",
-        "LoupFer",
-        "GardienElite",
-        "ChevalierSombre",
-        "TempeteFeu",
-        "CavalierFantome",
-        "CoupTonnerre",
-        "GuerrierNuit",
-        "MageCombat",
-        "SeigneurGuerre",
-        "NinjaFurtif",
-        "JoueurPuissance"
+        "Ombre", "Cyber", "Nova", "Fantome", "Fer", "Elite", "Sombre", "Feu", "Tonnerre", "Nuit",
+        "Bataille", "Guerre", "Furtif", "Puissance", "Flamme", "Tempete", "Vipere", "Loup", "Titan", "Apex",
+        "Echo", "Vide", "Eclair", "Givre", "Corbeau", "Acier", "Faucheur", "Onyx", "Flux", "Sauvage",
+        "Coquin", "Venin", "Nitro", "Furie", "Rapide", "Omega", "Alpha", "Spectre", "Chasseur", "Lame",
+        "Cavalier", "Coup", "Gardien", "Chevalier", "Ninja", "Mage", "Tireur", "Assassin", "Inferno", "Cramoisi"
       ],
       "animals": [
-        "MeuteLoup",
-        "OeilAigle",
-        "CoeurLion",
-        "QueueRenard",
-        "GriffeOurs",
-        "CoupSerpent",
-        "RugissementTigre",
-        "MorsureRequin",
-        "AileC",
-        "LibelluleD",
-        "CoupPanthere",
-        "OeilF",
-        "ChatSauvage",
-        "BeteT",
-        "RenardRapide"
+        "Loup", "Aigle", "Lion", "Renard", "Ours", "Serpent", "Tigre", "Requin", "Corbeau", "Dragon",
+        "Panthere", "Faucon", "Chat", "Bete", "Vipere", "Lynx", "Cobra", "Puma", "Jaguar", "Bison",
+        "Scorpion", "Rhinoceros", "Mamba", "Hyene", "Etalon", "Taureau", "Griffe", "Croc", "Rugissement", "Meute"
       ],
       "tech": [
-        "ReseauCyber",
-        "NoyauPixel",
-        "MineurDonnees",
-        "CasseurCode",
-        "NinjaTech",
-        "FantomeNumerique",
-        "PunkCyber",
-        "MatriceNeo",
-        "GuerrierOctets",
-        "PirateSysteme",
-        "CavalierNuage",
-        "CoureurReseau",
-        "FluxDonnees",
-        "MageTech",
-        "NoyauCyber"
+        "Cyber", "Pixel", "Donnees", "Code", "Tech", "Numerique", "Octet", "Systeme", "Nuage", "Reseau",
+        "Flux", "Matrice", "Nano", "Micro", "Quantique", "Binaire", "Signal", "Logique", "Circuit", "Noyau",
+        "Noeud", "Grille", "Synchro", "Cache", "Vecteur", "Chiffre", "Impulsion", "Turbo", "Hyper", "Ultra"
       ],
       "fantasy": [
-        "SeigneurDragon",
-        "MageMystique",
-        "MaitreEpee",
-        "SorcierSombre",
-        "EpeeRune",
-        "RoiSorcier",
-        "ArcherElfe",
-        "GuerrierNain",
-        "TueurOrque",
-        "BatonSorcier",
-        "LanceurSorts",
-        "ChevalierArcane",
-        "EpeeMagique",
-        "AmeEnchantee",
-        "HerosMythique"
+        "Dragon", "Mystique", "Epee", "Sorcier", "Rune", "Enchanteur", "Elfe", "Nain", "Orc", "Sort",
+        "Arcane", "Magie", "Enchant", "Mythe", "Legende", "Relique", "Malediction", "Cristal", "Ame", "Sage",
+        "Oracle", "Titan", "Spectre", "Fantome", "Ancien", "Vide", "Paladin", "Druide", "Chaman", "Moine"
       ],
       "sports": [
-        "ChercheurBut",
-        "DunkS",
-        "HerosCoupCircuit",
-        "TouchDown",
-        "JeuPuissance",
-        "PauseRapide",
-        "GagnantJeu",
-        "EtoileSport",
-        "AnneauChampion",
-        "TourVictoire",
-        "TouteEtoile",
-        "MVP",
-        "AthleteP",
-        "ChangeurJeu",
-        "SerieVictoire"
+        "But", "Smash", "Course", "Touche", "Puissance", "Rapide", "Jeu", "Sport", "Champion", "Victoire",
+        "Etoile", "Pro", "As", "Impact", "Sprint", "Vitesse", "Poussee", "Saut", "Score", "Triomphe"
       ],
       "space": [
-        "CroiseurEtoile",
-        "CavalierGalaxie",
-        "DeriveCosmique",
-        "TempeteNebuleuse",
-        "AstroNaute",
-        "MarcheurLune",
-        "FlambeeS",
-        "CavalierOrbite",
-        "GardienEspace",
-        "LutteurEtoile",
-        "OndeCosmique",
-        "HerosGalactique",
-        "PiloteVaisseau",
-        "ChevalierNebuleuse",
-        "MarcheurVide"
+        "Etoile", "Galaxie", "Cosmique", "Nebuleuse", "Astro", "Lune", "Solaire", "Orbite", "Espace", "Nova",
+        "Comete", "Pulsar", "Quasar", "Vide", "Plasma", "Photon", "Ion", "Zenith", "Eclipse", "Aurore"
       ],
       "music": [
-        "MaitreRythme",
-        "OndeSon",
-        "RoiRythme",
-        "CreateurMelodie",
-        "LigneBasse",
-        "BattementTambour",
-        "OndeSynthé",
-        "ManiaqueAudio",
-        "BoiteMusique",
-        "OiseauC",
-        "ChuteRythme",
-        "ExplosionSon",
-        "FluxMelo",
-        "CavalierRythme",
-        "ChasseurBasse"
+        "Rythme", "Son", "Melodie", "Basse", "Tambour", "Synthe", "Audio", "Chanson", "Onde", "Chute",
+        "Explosion", "Flux", "Groove", "Tempo", "Accord", "Ton", "Riff", "Solo", "Echo", "Vibration"
       ],
       "food": [
-        "MaitreTaco",
-        "TueurPizza",
-        "RoiH",
-        "NinjaSushi",
-        "SeigneurBeignet",
-        "PromGateau",
-        "AccroCafe",
-        "CombattantN",
-        "MietteB",
-        "BoucleFruit",
-        "RoiEpice",
-        "QuesteSaveur",
-        "HerosNourriture",
-        "PapillesG",
-        "MaitreChef"
+        "Taco", "Pizza", "Burger", "Sushi", "Beignet", "Gateau", "Cafe", "Biscuit", "Fruit", "Epice",
+        "Saveur", "Chef", "Grill", "Festin", "Croustillant", "Savoureux", "Piquant", "Sucre", "Aigre", "Bouchee"
       ]
     },
     "german": {
       "gaming": [
-        "SchattenJaeger",
-        "CyberViper",
-        "NovaSturm",
-        "GeistKlinge",
-        "EisenWolf",
-        "EliteWaechter",
-        "DunklerRitter",
-        "FeuerSturm",
-        "GeistReiter",
-        "DonnerSchlag",
-        "NachtKrieger",
-        "KampfMagier",
-        "KriegsHerr",
-        "SchleichNinja",
-        "MachtSpieler"
+        "Schatten", "Cyber", "Nova", "Geist", "Eisen", "Elite", "Dunkel", "Feuer", "Donner", "Nacht",
+        "Kampf", "Krieg", "Schleich", "Macht", "Flamme", "Sturm", "Viper", "Wolf", "Titan", "Spitze",
+        "Echo", "Leere", "Blitz", "Frost", "Rabe", "Stahl", "Sensenmann", "Onyx", "Fluss", "Wild",
+        "Schurke", "Gift", "Nitro", "Wut", "Schnell", "Omega", "Alpha", "Geist", "Jaeger", "Klinge",
+        "Reiter", "Schlag", "Waechter", "Ritter", "Ninja", "Magier", "Scharfschütze", "Assassine", "Inferno", "Karmesin"
       ],
       "animals": [
-        "WolfRudel",
-        "AdlerAuge",
-        "LoewenHerz",
-        "FuchsSchwanz",
-        "BaerKralle",
-        "SchlangenStoss",
-        "TigerBruelln",
-        "HaiBiss",
-        "RabenFlug",
-        "DracheFlieg",
-        "PantherSchlag",
-        "FalkenAuge",
-        "WildKatze",
-        "DonnerBiest",
-        "SchnellFuchs"
+        "Wolf", "Adler", "Loewe", "Fuchs", "Baer", "Schlange", "Tiger", "Hai", "Rabe", "Drache",
+        "Panther", "Falke", "Katze", "Bestie", "Viper", "Luchs", "Kobra", "Puma", "Jaguar", "Bison",
+        "Skorpion", "Nashorn", "Mamba", "Hyaene", "Hengst", "Stier", "Kralle", "Fang", "Bruellen", "Rudel"
       ],
       "tech": [
-        "CyberNetz",
-        "PixelKern",
-        "DatenGraeber",
-        "CodeKnacker",
-        "TechNinja",
-        "DigitalGeist",
-        "CyberPunk",
-        "NeoMatrix",
-        "ByteKrieger",
-        "SystemHack",
-        "WolkenReiter",
-        "NetzLaeufer",
-        "DatenStrom",
-        "TechZauberer",
-        "CyberKern"
+        "Cyber", "Pixel", "Daten", "Code", "Tech", "Digital", "Byte", "System", "Wolke", "Netz",
+        "Strom", "Matrix", "Nano", "Mikro", "Quanten", "Binaer", "Signal", "Logik", "Schaltung", "Kern",
+        "Knoten", "Gitter", "Synchro", "Cache", "Vektor", "Chiffre", "Impuls", "Turbo", "Hyper", "Ultra"
       ],
       "fantasy": [
-        "DrachenHerr",
-        "MystikMagier",
-        "SchwertMeister",
-        "DunklerZauberer",
-        "RunenKlinge",
-        "ZaubererKoenig",
-        "ElfenSchuetze",
-        "ZwergKrieger",
-        "OrkToeter",
-        "ZauberStab",
-        "ZauberWirker",
-        "ArkaneRitter",
-        "MagieKlinge",
-        "VerzauberteSeele",
-        "MythHeld"
+        "Drache", "Mystik", "Schwert", "Zauberer", "Rune", "Hexer", "Elfe", "Zwerg", "Ork", "Zauber",
+        "Arkan", "Magie", "Verzaubern", "Mythos", "Legende", "Relikt", "Fluch", "Kristall", "Seele", "Weise",
+        "Orakel", "Titan", "Gespenst", "Phantom", "Uralt", "Leere", "Paladin", "Druide", "Schamane", "Moenche"
       ],
       "sports": [
-        "TorSucher",
-        "KorbWurf",
-        "HomeRunHeld",
-        "TouchDown",
-        "MachtSpiel",
-        "SchnellBruch",
-        "SpielGewinner",
-        "SportStern",
-        "MeisterRing",
-        "SiegRunde",
-        "AlleSterne",
-        "MVP",
-        "ProAthlet",
-        "SpielWechsler",
-        "SiegSerie"
+        "Tor", "Schuss", "Lauf", "Touchdown", "Macht", "Schnell", "Spiel", "Sport", "Meister", "Sieg",
+        "Stern", "Pro", "As", "Schlag", "Sprint", "Tempo", "Stoss", "Sprung", "Punkte", "Triumph"
       ],
       "space": [
-        "SternKreuzer",
-        "GalaxieReiter",
-        "KosmischDrift",
-        "NebelSturm",
-        "AstroNaut",
-        "MondWandler",
-        "SolarFlamme",
-        "UmlaufReiter",
-        "WeltraumWaechter",
-        "SternKaempfer",
-        "KosmischWelle",
-        "GalaktischHeld",
-        "RaumschiffPilot",
-        "NebelRitter",
-        "LeerWandler"
+        "Stern", "Galaxie", "Kosmisch", "Nebel", "Astro", "Mond", "Solar", "Orbit", "Weltraum", "Nova",
+        "Komet", "Pulsar", "Quasar", "Leere", "Plasma", "Photon", "Ion", "Zenit", "Eclipse", "Aurora"
       ],
       "music": [
-        "RhythmusMeister",
-        "SchallWelle",
-        "RhythmusKoenig",
-        "MelodieSchopfer",
-        "BassLinie",
-        "TrommelSchlag",
-        "SynthWelle",
-        "AudioFreak",
-        "MusikBox",
-        "LiedVogel",
-        "RhythmusTropfen",
-        "SchallExplosion",
-        "MelodieFluss",
-        "RhythmusReiter",
-        "BassJaeger"
+        "Rhythmus", "Schall", "Melodie", "Bass", "Trommel", "Synth", "Audio", "Lied", "Welle", "Drop",
+        "Explosion", "Fluss", "Groove", "Tempo", "Akkord", "Ton", "Riff", "Solo", "Echo", "Vibration"
       ],
       "food": [
-        "TacoMeister",
-        "PizzaToeter",
-        "BurgerKoenig",
-        "SushiNinja",
-        "DonutHerr",
-        "KuchenWalk",
-        "KaffeeSuechtig",
-        "EssenKaempfer",
-        "KeksKrumel",
-        "FruchtSchleife",
-        "GewuerzKoenig",
-        "GeschmackQuest",
-        "EssenHeld",
-        "GeschmackKnospen",
-        "ChefMeister"
+        "Taco", "Pizza", "Burger", "Sushi", "Donut", "Kuchen", "Kaffee", "Keks", "Frucht", "Gewuerz",
+        "Geschmack", "Chef", "Grill", "Festmahl", "Knusprig", "Herzhaft", "Pikant", "Suess", "Sauer", "Bissen"
       ]
     },
     "italian": {
       "gaming": [
-        "CacciatoreOmbra",
-        "ViperaCyber",
-        "TempestaNova",
-        "LamaFantasma",
-        "LupoFerro",
-        "GuardiaElite",
-        "CavaliereScuro",
-        "TempestFuoco",
-        "CavaliereF",
-        "ColpoTuono",
-        "GuerrieroNotte",
-        "MagoCombat",
-        "SignoreGuerra",
-        "NinjaFurtivo",
-        "GiocatorePotere"
+        "Ombra", "Cyber", "Nova", "Fantasma", "Ferro", "Elite", "Oscuro", "Fuoco", "Tuono", "Notte",
+        "Battaglia", "Guerra", "Furtivo", "Potere", "Fiamma", "Tempesta", "Vipera", "Lupo", "Titano", "Apice",
+        "Eco", "Vuoto", "Fulmine", "Gelo", "Corvo", "Acciaio", "Mietitore", "Onice", "Flusso", "Selvaggio",
+        "Ladro", "Veleno", "Nitro", "Furia", "Rapido", "Omega", "Alfa", "Spettro", "Cacciatore", "Lama",
+        "Cavaliere", "Colpo", "Guardiano", "Ninja", "Mago", "Cecchino", "Assassino", "Inferno", "Cremisi", "Stregone"
       ],
       "animals": [
-        "BrancoLupo",
-        "OcchioAquila",
-        "CuoreLeone",
-        "CodaVolpe",
-        "ArtiglioOrso",
-        "ColpoSerpente",
-        "RuggitoTigre",
-        "MorsoSqualo",
-        "AlaCorvo",
-        "LibellulaD",
-        "ColpoPantera",
-        "OcchioF",
-        "GattoSelvatico",
-        "BestiaT",
-        "VolpeVeloce"
+        "Lupo", "Aquila", "Leone", "Volpe", "Orso", "Serpente", "Tigre", "Squalo", "Corvo", "Drago",
+        "Pantera", "Falco", "Gatto", "Bestia", "Vipera", "Lince", "Cobra", "Puma", "Giaguaro", "Bisonte",
+        "Scorpione", "Rinoceronte", "Mamba", "Iena", "Stallone", "Toro", "Artiglio", "Zanna", "Ruggito", "Branco"
       ],
       "tech": [
-        "ReteCyber",
-        "NucleoPixel",
-        "MinatoreDati",
-        "RompitoreC",
-        "NinjaTech",
-        "FantasmaDigitale",
-        "PunkCyber",
-        "MatriceNeo",
-        "GuerrieroBytes",
-        "HackSistema",
-        "CavaliereN",
-        "CorridoreRete",
-        "FlussoDati",
-        "MagoTech",
-        "NucleoCyber"
+        "Cyber", "Pixel", "Dati", "Codice", "Tecno", "Digitale", "Byte", "Sistema", "Nuvola", "Rete",
+        "Flusso", "Matrice", "Nano", "Micro", "Quantistico", "Binario", "Segnale", "Logica", "Circuito", "Nucleo",
+        "Nodo", "Griglia", "Sincro", "Cache", "Vettore", "Cifratura", "Impulso", "Turbo", "Iper", "Ultra"
       ],
       "fantasy": [
-        "SignoreDragone",
-        "MagoMistico",
-        "MaestroSpada",
-        "StregoneScuro",
-        "SpadaRuna",
-        "ReMago",
-        "ArciereElfo",
-        "GuerrieroNano",
-        "UccisoreOrco",
-        "BastoneM",
-        "LanciatoreSortilegi",
-        "CavaliereA",
-        "SpadaMagica",
-        "AnimaIncantata",
-        "EroeMitico"
+        "Drago", "Mistico", "Spada", "Stregone", "Runa", "Incantatore", "Elfo", "Nano", "Orco", "Incantesimo",
+        "Arcano", "Magia", "Incanto", "Mito", "Leggenda", "Reliquia", "Maledizione", "Cristallo", "Anima", "Saggio",
+        "Oracolo", "Titano", "Spettro", "Fantasma", "Antico", "Vuoto", "Paladino", "Druido", "Sciamano", "Monaco"
       ],
       "sports": [
-        "CercatoreGol",
-        "SchiacciataC",
-        "EroeHomeRun",
-        "TouchDown",
-        "GiocoPotere",
-        "RotturaPapida",
-        "VincitoreG",
-        "StellaSport",
-        "AnelloCampione",
-        "GiroVittoria",
-        "TutteStelle",
-        "MVP",
-        "AtletaP",
-        "CambiaGioco",
-        "SerieVittoria"
+        "Gol", "Schiacciata", "Corsa", "Tocco", "Potenza", "Veloce", "Gioco", "Sport", "Campione", "Vittoria",
+        "Stella", "Pro", "Asso", "Impatto", "Sprint", "Velocita", "Spinta", "Salto", "Punteggio", "Trionfo"
       ],
       "space": [
-        "IncrociatoreSt",
-        "CavaliereG",
-        "DerivaCosmica",
-        "TempestaN",
-        "AstroNauta",
-        "CamminatoreL",
-        "FiammataSolare",
-        "CavaliereO",
-        "GuardianoS",
-        "LottatoreS",
-        "OndaCosmica",
-        "EroeGalattico",
-        "PilotaNave",
-        "CavaliereN",
-        "CamminatorV"
+        "Stella", "Galassia", "Cosmico", "Nebulosa", "Astro", "Luna", "Solare", "Orbita", "Spazio", "Nova",
+        "Cometa", "Pulsar", "Quasar", "Vuoto", "Plasma", "Fotone", "Ione", "Zenit", "Eclissi", "Aurora"
       ],
       "music": [
-        "MaestroRitmo",
-        "OndaSuono",
-        "ReRitmo",
-        "CreatoreM",
-        "LineaBasso",
-        "BattutoTamburo",
-        "OndaSintetizz",
-        "ManiacoAudio",
-        "ScatolaM",
-        "UccelloC",
-        "CadutaRitmo",
-        "EsplosioneS",
-        "FlussoMelo",
-        "CavaliereRitmo",
-        "CacciatoreB"
+        "Ritmo", "Suono", "Melodia", "Basso", "Tamburo", "Synth", "Audio", "Canzone", "Onda", "Caduta",
+        "Esplosione", "Flusso", "Groove", "Tempo", "Accordo", "Tono", "Riff", "Solo", "Eco", "Vibrazione"
       ],
       "food": [
-        "MaestroTaco",
-        "UccisoreP",
-        "ReH",
-        "NinjaSushi",
-        "SignoreD",
-        "CamminataT",
-        "DipendenteCaffe",
-        "CombattenteC",
-        "BricioleB",
-        "AnelloFrutta",
-        "ReSpezie",
-        "QuestGusto",
-        "EroeCibo",
-        "PapilleG",
-        "MaestroChef"
+        "Taco", "Pizza", "Burger", "Sushi", "Ciambella", "Torta", "Caffe", "Biscotto", "Frutta", "Spezia",
+        "Sapore", "Chef", "Grill", "Festino", "Croccante", "Saporito", "Piccante", "Dolce", "Agro", "Morso"
       ]
     },
     "russian": {
       "gaming": [
-        "ОхотникТени",
-        "КиберГадюка",
-        "НоваШторм",
-        "ПризракКлинок",
-        "ЖелезныйВолк",
-        "ЭлитнаяОхрана",
-        "ТемныйРыцарь",
-        "ОгненнаяБуря",
-        "ПризракВсадник",
-        "УдарГрома",
-        "НочнойВоин",
-        "БоевойМаг",
-        "ВоенныйГосподин",
-        "СкрытныйНиндзя",
-        "МощныйИгрок"
+        "Тень", "Кибер", "Нова", "Призрак", "Железо", "Элита", "Тёмный", "Огонь", "Гром", "Ночь",
+        "Битва", "Война", "Скрытный", "Мощь", "Пламя", "Буря", "Гадюка", "Волк", "Титан", "Вершина",
+        "Эхо", "Пустота", "Молния", "Мороз", "Ворон", "Сталь", "Жнец", "Оникс", "Поток", "Дикий",
+        "Плут", "Яд", "Нитро", "Ярость", "Быстрый", "Омега", "Альфа", "Призрак", "Охотник", "Клинок",
+        "Всадник", "Удар", "Страж", "Рыцарь", "Ниндзя", "Маг", "Снайпер", "Убийца", "Инферно", "Алый"
       ],
       "animals": [
-        "ВолчьяСтая",
-        "ОрлиныйГлаз",
-        "Львиное Сердце",
-        "ЛисийХвост",
-        "МедвежийКоготь",
-        "ЗмеиныйУдар",
-        "ТигровыйРык",
-        "АкульяПасть",
-        "ВороновоКрыло",
-        "СтрекозаД",
-        "ПантеровыйУдар",
-        "СоколиныйГлаз",
-        "ДикийКот",
-        "ГрозныйЗверь",
-        "БыстраяЛиса"
+        "Волк", "Орёл", "Лев", "Лиса", "Медведь", "Змея", "Тигр", "Акула", "Ворон", "Дракон",
+        "Пантера", "Сокол", "Кот", "Зверь", "Гадюка", "Рысь", "Кобра", "Пума", "Ягуар", "Бизон",
+        "Скорпион", "Носорог", "Мамба", "Гиена", "Жеребец", "Бык", "Коготь", "Клык", "Рёв", "Стая"
       ],
       "tech": [
-        "КиберСеть",
-        "ПиксельноеЯдро",
-        "ДобытчикДанных",
-        "ВзломщикКода",
-        "ТехНиндзя",
-        "ЦифровойПризрак",
-        "КиберПанк",
-        "НеоМатрица",
-        "БайтовыйВоин",
-        "СистемныйВзлом",
-        "ОблачныйВсадник",
-        "СетевойБегун",
-        "ПотокДанных",
-        "ТехВолшебник",
-        "КиберЯдро"
+        "Кибер", "Пиксель", "Данные", "Код", "Техно", "Цифра", "Байт", "Система", "Облако", "Сеть",
+        "Поток", "Матрица", "Нано", "Микро", "Квант", "Бинарный", "Сигнал", "Логика", "Схема", "Ядро",
+        "Узел", "Сетка", "Синхро", "Кэш", "Вектор", "Шифр", "Импульс", "Турбо", "Гипер", "Ультра"
       ],
       "fantasy": [
-        "ПовелительД",
-        "МистическийМаг",
-        "МастерМеча",
-        "ТемныйВолшебник",
-        "РуническийКлинок",
-        "КорольВолшебник",
-        "ЭльфийскийС",
-        "ГномВоин",
-        "УбийцаОрков",
-        "ВолшебнаяПалочка",
-        "КастерЗаклинаний",
-        "АркановыйРыцарь",
-        "МагическийКлинок",
-        "ЗачарованнаяДуша",
-        "МифическийГерой"
+        "Дракон", "Мистик", "Меч", "Волшебник", "Руна", "Чародей", "Эльф", "Гном", "Орк", "Заклинание",
+        "Аркан", "Магия", "Чары", "Миф", "Легенда", "Реликвия", "Проклятие", "Кристалл", "Душа", "Мудрец",
+        "Оракул", "Титан", "Призрак", "Фантом", "Древний", "Пустота", "Паладин", "Друид", "Шаман", "Монах"
       ],
       "sports": [
-        "ИскательГолов",
-        "БросокВКорзину",
-        "ГеройХоумрана",
-        "Тачдаун",
-        "СильнаяИгра",
-        "БыстрыйПрорыв",
-        "ПобедительИгры",
-        "СпортивнаяЗвезда",
-        "ЧемпионскоеКольцо",
-        "ПобедныйКруг",
-        "ВсеЗвезды",
-        "СамыйЦенныйИгрок",
-        "ПрофессиональныйАтлет",
-        "МенялщикИгры",
-        "ПобеднаяСерия"
+        "Гол", "Бросок", "Бег", "Тачдаун", "Мощь", "Быстрый", "Игра", "Спорт", "Чемпион", "Победа",
+        "Звезда", "Про", "Туз", "Удар", "Спринт", "Скорость", "Рывок", "Прыжок", "Счёт", "Триумф"
       ],
       "space": [
-        "ЗвездныйКрейсер",
-        "ГалактическийВсадник",
-        "КосмическийДрейф",
-        "НебуляШторм",
-        "Астронавт",
-        "ЛунныйПутешественник",
-        "СолнечнаяВспышка",
-        "ОрбитальныйВсадник",
-        "КосмическийСтраж",
-        "ЗвездныйБоец",
-        "КосмическаяВолна",
-        "ГалактическийГерой",
-        "ПилотКорабля",
-        "НебулярныйРыцарь",
-        "ПутешественникПустоты"
+        "Звезда", "Галактика", "Космос", "Туманность", "Астро", "Луна", "Солнечный", "Орбита", "Пространство", "Нова",
+        "Комета", "Пульсар", "Квазар", "Пустота", "Плазма", "Фотон", "Ион", "Зенит", "Затмение", "Аврора"
       ],
       "music": [
-        "МастерРитма",
-        "ЗвуковаяВолна",
-        "КорольРитма",
-        "СоздательМелодий",
-        "БасоваяЛиния",
-        "БарабанныйУдар",
-        "СинтезаторнаяВолна",
-        "АудиоФрик",
-        "МузыкальнаяКоробка",
-        "ПевчаяПтица",
-        "РитмическоеПадение",
-        "ЗвуковойВзрыв",
-        "МелодичныйПоток",
-        "РитмическийВсадник",
-        "ОхотникБаса"
+        "Ритм", "Звук", "Мелодия", "Бас", "Барабан", "Синт", "Аудио", "Песня", "Волна", "Дроп",
+        "Взрыв", "Поток", "Грув", "Темп", "Аккорд", "Тон", "Рифф", "Соло", "Эхо", "Вибрация"
       ],
       "food": [
-        "МастерТако",
-        "УбийцаПиццы",
-        "КорольБургеров",
-        "СушиНиндзя",
-        "ГосподинПончиков",
-        "ТортоваяПрогулка",
-        "КофейныйНаркоман",
-        "БорецЕды",
-        "ПеченьеваяКрошка",
-        "ФруктоваяПетля",
-        "КорольСпеций",
-        "КвестВкуса",
-        "ГеройЕды",
-        "ВкусовыеРецепторы",
-        "МастерШеф"
+        "Тако", "Пицца", "Бургер", "Суши", "Пончик", "Торт", "Кофе", "Печенье", "Фрукт", "Специя",
+        "Вкус", "Шеф", "Гриль", "Пир", "Хрустящий", "Сочный", "Острый", "Сладкий", "Кислый", "Кусок"
       ]
     },
     "japanese": {
       "gaming": [
-        "影狩り",
-        "サイバー蛇",
-        "ノヴァ嵐",
-        "幻影刃",
-        "鉄狼",
-        "エリート守護",
-        "暗黒騎士",
-        "炎嵐",
-        "幻騎士",
-        "雷撃",
-        "夜戦士",
-        "戦闘魔術師",
-        "戦争主",
-        "隠密忍者",
-        "力遊戯者"
+        "影", "電脳", "新星", "幻", "鉄", "精鋭", "闇", "炎", "雷", "夜",
+        "戦", "戦争", "潜伏", "力", "焔", "嵐", "毒蛇", "狼", "巨人", "頂",
+        "反響", "虚空", "閃光", "霜", "鴉", "鋼", "死神", "黒曜", "流", "野生",
+        "盗賊", "毒", "疾走", "怒", "速", "終極", "頂点", "霊", "狩人", "刃",
+        "騎士", "撃", "守護", "忍者", "魔法", "狙撃", "暗殺", "業火", "紅", "剣士"
       ],
       "animals": [
-        "狼群",
-        "鷹目",
-        "獅子心",
-        "狐尻尾",
-        "熊爪",
-        "蛇撃",
-        "虎咆哮",
-        "鮫噛",
-        "鴉翼",
-        "蜻蛉",
-        "豹撃",
-        "隼目",
-        "野猫",
-        "雷獣",
-        "迅狐"
+        "狼", "鷹", "獅子", "狐", "熊", "蛇", "虎", "鮫", "鴉", "竜",
+        "豹", "隼", "猫", "獣", "毒蛇", "山猫", "コブラ", "ピューマ", "ジャガー", "野牛",
+        "蠍", "犀", "マンバ", "鬣犬", "種馬", "牡牛", "爪", "牙", "咆哮", "群れ"
       ],
       "tech": [
-        "サイバー網",
-        "画素核",
-        "データ採掘者",
-        "コード破壊者",
-        "技術忍者",
-        "デジタル幽霊",
-        "サイバーパンク",
-        "ネオマトリックス",
-        "バイト戦士",
-        "システムハック",
-        "雲騎士",
-        "網走者",
-        "データ流",
-        "技術魔法使い",
-        "サイバー核"
+        "電脳", "画素", "データ", "コード", "技術", "デジタル", "バイト", "システム", "雲", "網",
+        "流", "行列", "ナノ", "マイクロ", "量子", "二進", "信号", "論理", "回路", "核心",
+        "節点", "格子", "同期", "キャッシュ", "ベクター", "暗号", "脈動", "ターボ", "ハイパー", "超"
       ],
       "fantasy": [
-        "竜主",
-        "神秘魔術師",
-        "剣聖",
-        "暗黒魔法使い",
-        "ルーン刃",
-        "魔法王",
-        "エルフ射手",
-        "ドワーフ戦士",
-        "オーク殺し",
-        "魔法杖",
-        "呪文使い",
-        "秘術騎士",
-        "魔法刃",
-        "魅惑魂",
-        "神話英雄"
+        "竜", "神秘", "剣", "魔法使い", "符文", "術師", "妖精", "小人", "鬼", "呪文",
+        "秘術", "魔法", "魔力", "神話", "伝説", "遺物", "呪い", "水晶", "魂", "賢者",
+        "神託", "巨人", "霊", "幻", "古代", "虚空", "聖騎士", "薬師", "祈祷師", "修道僧"
       ],
       "sports": [
-        "得点探求者",
-        "ダンクスラム",
-        "ホームラン英雄",
-        "タッチダウン",
-        "パワープレイ",
-        "高速突破",
-        "勝利者",
-        "スポーツ星",
-        "チャンピオンリング",
-        "勝利周回",
-        "全星",
-        "最優秀選手",
-        "プロ選手",
-        "ゲームチェンジャー",
-        "勝利連続"
+        "得点", "叩", "走", "触", "力", "速", "競技", "運動", "王者", "勝利",
+        "星", "プロ", "エース", "打撃", "疾走", "速度", "突進", "跳躍", "スコア", "凱旋"
       ],
       "space": [
-        "星巡洋艦",
-        "銀河騎士",
-        "宇宙漂流",
-        "星雲嵐",
-        "宇宙飛行士",
-        "月歩行者",
-        "太陽フレア",
-        "軌道騎士",
-        "宇宙守護者",
-        "星戦士",
-        "宇宙波",
-        "銀河英雄",
-        "宇宙船操縦士",
-        "星雲騎士",
-        "虚空歩行者"
+        "星", "銀河", "宇宙", "星雲", "天文", "月", "太陽", "軌道", "空間", "新星",
+        "彗星", "パルサー", "クエーサー", "虚空", "プラズマ", "光子", "イオン", "頂点", "蝕", "曙"
       ],
       "music": [
-        "リズム主",
-        "音波",
-        "リズム王",
-        "旋律創造者",
-        "ベースライン",
-        "ドラム打",
-        "シンセ波",
-        "音響狂",
-        "音楽箱",
-        "歌鳥",
-        "リズム落下",
-        "音爆発",
-        "旋律流",
-        "リズム騎士",
-        "ベース狩人"
+        "律動", "音", "旋律", "低音", "太鼓", "合成", "音響", "歌", "波", "落下",
+        "爆発", "流", "グルーブ", "テンポ", "和音", "音色", "リフ", "独奏", "反響", "振動"
       ],
       "food": [
-        "タコ主",
-        "ピザ殺し",
-        "バーガー王",
-        "寿司忍者",
-        "ドーナツ主",
-        "ケーキ歩行",
-        "コーヒー中毒",
-        "食べ物戦士",
-        "クッキー屑",
-        "果物輪",
-        "香料王",
-        "味探求",
-        "食べ物英雄",
-        "味蕾",
-        "料理長"
+        "タコ", "ピザ", "バーガー", "寿司", "ドーナツ", "ケーキ", "珈琲", "菓子", "果物", "香辛料",
+        "風味", "料理長", "焼", "饗宴", "サクサク", "美味", "辛", "甘", "酸", "一口"
       ]
     },
     "korean": {
       "gaming": [
-        "그림자사냥꾼",
-        "사이버독사",
-        "노바폭풍",
-        "유령검",
-        "철늑대",
-        "엘리트수호자",
-        "어둠기사",
-        "화염폭풍",
-        "유령기사",
-        "천둥타격",
-        "밤전사",
-        "전투마법사",
-        "전쟁군주",
-        "은밀닌자",
-        "파워게이머"
+        "그림자", "사이버", "노바", "유령", "철", "엘리트", "어둠", "화염", "천둥", "밤",
+        "전투", "전쟁", "은밀", "힘", "불꽃", "폭풍", "독사", "늑대", "타이탄", "정점",
+        "메아리", "허공", "번개", "서리", "까마귀", "강철", "사신", "흑요석", "흐름", "야생",
+        "도적", "독", "질주", "분노", "빠른", "오메가", "알파", "스펙터", "사냥꾼", "칼날",
+        "기사", "타격", "수호자", "닌자", "마법사", "저격수", "암살자", "인페르노", "진홍", "검사"
       ],
       "animals": [
-        "늑대무리",
-        "독수리눈",
-        "사자심장",
-        "여우꼬리",
-        "곰발톱",
-        "뱀타격",
-        "호랑이포효",
-        "상어물기",
-        "까마귀날개",
-        "잠자리",
-        "표범타격",
-        "매눈",
-        "야생고양이",
-        "천둥야수",
-        "빠른여우"
+        "늑대", "독수리", "사자", "여우", "곰", "뱀", "호랑이", "상어", "까마귀", "용",
+        "표범", "매", "고양이", "야수", "독사", "살쾡이", "코브라", "퓨마", "재규어", "들소",
+        "전갈", "코뿔소", "맘바", "하이에나", "종마", "황소", "발톱", "송곳니", "울부짖음", "무리"
       ],
       "tech": [
-        "사이버네트",
-        "픽셀코어",
-        "데이터채굴자",
-        "코드파괴자",
-        "기술닌자",
-        "디지털유령",
-        "사이버펑크",
-        "네오매트릭스",
-        "바이트전사",
-        "시스템해킹",
-        "클라우드기사",
-        "네트러너",
-        "데이터스트림",
-        "기술마법사",
-        "사이버코어"
+        "사이버", "픽셀", "데이터", "코드", "기술", "디지털", "바이트", "시스템", "클라우드", "네트",
+        "흐름", "매트릭스", "나노", "마이크로", "양자", "이진", "신호", "논리", "회로", "핵심",
+        "노드", "격자", "동기화", "캐시", "벡터", "암호", "펄스", "터보", "하이퍼", "울트라"
       ],
       "fantasy": [
-        "용군주",
-        "신비마법사",
-        "검성",
-        "어둠마법사",
-        "룬검",
-        "마법왕",
-        "엘프궁수",
-        "드워프전사",
-        "오크살해자",
-        "마법지팡이",
-        "주문시전자",
-        "비전기사",
-        "마법검",
-        "매혹된영혼",
-        "신화영웅"
+        "용", "신비", "검", "마법사", "룬", "술사", "엘프", "드워프", "오크", "주문",
+        "비전", "마법", "마력", "신화", "전설", "유물", "저주", "수정", "영혼", "현자",
+        "신탁", "타이탄", "망령", "환영", "고대", "허공", "성기사", "드루이드", "무당", "수도사"
       ],
       "sports": [
-        "골탐색자",
-        "슬램덩크",
-        "홈런영웅",
-        "터치다운",
-        "파워플레이",
-        "빠른돌파",
-        "게임승자",
-        "스포츠스타",
-        "챔피언링",
-        "승리랩",
-        "올스타",
-        "최우수선수",
-        "프로선수",
-        "게임체인저",
-        "승리연속"
+        "골", "스매시", "질주", "터치", "파워", "빠른", "게임", "스포츠", "챔피언", "승리",
+        "스타", "프로", "에이스", "타격", "스프린트", "속도", "돌진", "도약", "득점", "개선"
       ],
       "space": [
-        "별순양함",
-        "은하기사",
-        "우주표류",
-        "성운폭풍",
-        "우주비행사",
-        "달보행자",
-        "태양플레어",
-        "궤도기사",
-        "우주수호자",
-        "별전사",
-        "우주파동",
-        "은하영웅",
-        "우주선조종사",
-        "성운기사",
-        "공허보행자"
+        "별", "은하", "우주", "성운", "천문", "달", "태양", "궤도", "공간", "신성",
+        "혜성", "펄서", "퀘이사", "허공", "플라즈마", "광자", "이온", "정점", "식", "오로라"
       ],
       "music": [
-        "리듬마스터",
-        "사운드웨이브",
-        "리듬왕",
-        "멜로디창조자",
-        "베이스라인",
-        "드럼비트",
-        "신스웨이브",
-        "오디오광",
-        "뮤직박스",
-        "노래새",
-        "리듬드롭",
-        "사운드폭발",
-        "멜로디플로우",
-        "리듬기사",
-        "베이스헌터"
+        "리듬", "사운드", "멜로디", "베이스", "드럼", "신스", "오디오", "노래", "파동", "드롭",
+        "폭발", "흐름", "그루브", "템포", "화음", "음색", "리프", "솔로", "메아리", "진동"
       ],
       "food": [
-        "타코마스터",
-        "피자킬러",
-        "버거킹",
-        "스시닌자",
-        "도넛로드",
-        "케이크워크",
-        "커피중독",
-        "음식전사",
-        "쿠키부스러기",
-        "과일루프",
-        "향신료왕",
-        "맛탐구",
-        "음식영웅",
-        "미뢰",
-        "셰프마스터"
+        "타코", "피자", "버거", "스시", "도넛", "케이크", "커피", "쿠키", "과일", "향신료",
+        "풍미", "셰프", "구이", "향연", "바삭한", "맛있는", "매운", "달콤한", "새콤한", "한입"
       ]
     },
     "hindi": {
       "gaming": [
-        "छायाशिकारी",
-        "साइबरसाँप",
-        "नोवातूफान",
-        "भूतब्लेड",
-        "लोहाभेड़िया",
-        "कुलीनरक्षक",
-        "अंधकारनाइट",
-        "अग्नितूफान",
-        "भूतसवार",
-        "गर्जनस्ट्राइक",
-        "रात्रियोद्धा",
-        "युद्धजादूगर",
-        "युद्धस्वामी",
-        "गुप्तनिंजा",
-        "शक्तिखिलाड़ी"
+        "छाया", "साइबर", "नोवा", "भूत", "लोहा", "अभिजात", "अंधकार", "अग्नि", "गर्जन", "रात",
+        "युद्ध", "संग्राम", "गुप्त", "शक्ति", "ज्वाला", "तूफान", "विषधर", "भेड़िया", "दैत्य", "शीर्ष",
+        "प्रतिध्वनि", "शून्य", "बिजली", "पाला", "काक", "इस्पात", "काल", "ओनिक्स", "प्रवाह", "जंगली",
+        "बदमाश", "विष", "नाइट्रो", "क्रोध", "तेज", "ओमेगा", "अल्फा", "भूत", "शिकारी", "तलवार",
+        "सवार", "प्रहार", "रक्षक", "नाइट", "जादूगर", "निशानेबाज", "हत्यारा", "नरक", "लाल", "योद्धा"
       ],
       "animals": [
-        "भेड़ियाझुंड",
-        "बाजआंख",
-        "सिंहदिल",
-        "लोमड़ीपूंछ",
-        "भालूपंजा",
-        "सांपहमला",
-        "बाघदहाड़",
-        "शार्ककाटन",
-        "कौवापंख",
-        "ड्रैगनफ्लाई",
-        "तेंदुआहमला",
-        "बाजआंख",
-        "जंगलीबिल्ली",
-        "गर्जनजानवर",
-        "तेजलोमड़ी"
+        "भेड़िया", "बाज", "सिंह", "लोमड़ी", "भालू", "सांप", "बाघ", "शार्क", "कौवा", "अजगर",
+        "तेंदुआ", "बाज", "बिल्ली", "जानवर", "नाग", "चीता", "कोबरा", "प्यूमा", "जगुआर", "भैंस",
+        "बिच्छू", "गैंडा", "मांबा", "लकड़बग्घा", "घोड़ा", "बैल", "पंजा", "दांत", "दहाड़", "झुंड"
       ],
       "tech": [
-        "साइबरनेट",
-        "पिक्सेलकोर",
-        "डेटाखनिक",
-        "कोडतोड़क",
-        "तकनीकनिंजा",
-        "डिजिटलभूत",
-        "साइबरपंक",
-        "नियोमैट्रिक्स",
-        "बाइटयोद्धा",
-        "सिस्टमहैक",
-        "बादलसवार",
-        "नेटरनर",
-        "डेटाधारा",
-        "तकनीकजादूगर",
-        "साइबरकोर"
+        "साइबर", "पिक्सेल", "डेटा", "कोड", "तकनीक", "डिजिटल", "बाइट", "सिस्टम", "बादल", "नेट",
+        "प्रवाह", "मैट्रिक्स", "नैनो", "माइक्रो", "क्वांटम", "द्विआधारी", "संकेत", "तर्क", "सर्किट", "कोर",
+        "नोड", "ग्रिड", "सिंक", "कैश", "वेक्टर", "सिफर", "नाड़ी", "टर्बो", "हाइपर", "अल्ट्रा"
       ],
       "fantasy": [
-        "अजगरस्वामी",
-        "रहस्यजादूगर",
-        "तलवारमास्टर",
-        "अंधकारजादूगर",
-        "रूनब्लेड",
-        "जादूगरराजा",
-        "एल्फतीरंदाज",
-        "बौनायोद्धा",
-        "राक्षसवध",
-        "जादूछड़ी",
-        "मंत्रकास्टर",
-        "गुप्तनाइट",
-        "जादूब्लेड",
-        "मंत्रमुग्धआत्मा",
-        "पौराणिकहीरो"
+        "अजगर", "रहस्यमय", "तलवार", "जादूगर", "रूण", "जादूगर", "एल्फ", "बौना", "राक्षस", "मंत्र",
+        "गुप्त", "जादू", "मोहिनी", "पौराणिक", "किंवदंती", "अवशेष", "शाप", "क्रिस्टल", "आत्मा", "ज्ञानी",
+        "दैवज्ञ", "दैत्य", "भटकती", "प्रेत", "प्राचीन", "शून्य", "पालाडिन", "द्रुइड", "शमन", "भिक्षु"
       ],
       "sports": [
-        "गोलतलाशी",
-        "स्लैमडंक",
-        "होमरनहीरो",
-        "टचडाउन",
-        "पावरप्ले",
-        "तेजब्रेक",
-        "खेलविजेता",
-        "खेलसितारा",
-        "चैंपियनरिंग",
-        "जीतलैप",
-        "सभीसितारे",
-        "सर्वश्रेष्ठखिलाड़ी",
-        "प्रोएथलीट",
-        "खेलपरिवर्तक",
-        "जीतश्रृंखला"
+        "गोल", "स्लैम", "दौड़", "टच", "शक्ति", "तेज", "खेल", "खेल", "चैंपियन", "जीत",
+        "सितारा", "प्रो", "इक्का", "प्रहार", "स्प्रिंट", "गति", "धक्का", "छलांग", "स्कोर", "विजय"
       ],
       "space": [
-        "सितारेक्रूजर",
-        "आकाशगंगासवार",
-        "ब्रह्मांडीयड्रिफ्ट",
-        "नेबुलातूफान",
-        "अंतरिक्षयात्री",
-        "चंद्रवॉकर",
-        "सौरज्वाला",
-        "कक्षासवार",
-        "अंतरिक्षरक्षक",
-        "सितारेयोद्धा",
-        "ब्रह्मांडीयलहर",
-        "आकाशगंगाहीरो",
-        "अंतरिक्षयानपायलट",
-        "नेबुलानाइट",
-        "शून्यवॉकर"
+        "सितारा", "आकाशगंगा", "ब्रह्मांड", "नीहारिका", "खगोल", "चंद्र", "सौर", "कक्षा", "अंतरिक्ष", "नोवा",
+        "धूमकेतु", "पल्सर", "क्वासर", "शून्य", "प्लाज्मा", "फोटॉन", "आयन", "शीर्ष", "ग्रहण", "उषा"
       ],
       "music": [
-        "लयमास्टर",
-        "ध्वनिलहर",
-        "लयराजा",
-        "मधुरनिर्माता",
-        "बासलाइन",
-        "ड्रमबीट",
-        "सिंथवेव",
-        "ऑडियोफ्रीक",
-        "संगीतबॉक्स",
-        "गीतपक्षी",
-        "लयड्रॉप",
-        "ध्वनिविस्फोट",
-        "मधुरप्रवाह",
-        "लयसवार",
-        "बासशिकारी"
+        "लय", "ध्वनि", "राग", "बास", "ढोल", "सिंथ", "ऑडियो", "गीत", "लहर", "ड्रॉप",
+        "विस्फोट", "प्रवाह", "ग्रूव", "टेम्पो", "स्वर", "तान", "रिफ", "एकल", "प्रतिध्वनि", "कंपन"
       ],
       "food": [
-        "टैकोमास्टर",
-        "पिज्जाकिलर",
-        "बर्गरराजा",
-        "सुशीनिंजा",
-        "डोनटलॉर्ड",
-        "केकवॉक",
-        "कॉफीनशेड़ी",
-        "भोजनयोद्धा",
-        "कुकीटुकड़ा",
-        "फलपाश",
-        "मसालाराजा",
-        "स्वादखोज",
-        "भोजनहीरो",
-        "स्वादकलियां",
-        "रसोइयामास्टर"
+        "टैको", "पिज्जा", "बर्गर", "सुशी", "डोनट", "केक", "कॉफी", "बिस्किट", "फल", "मसाला",
+        "स्वाद", "शेफ", "ग्रिल", "दावत", "कुरकुरा", "स्वादिष्ट", "तीखा", "मीठा", "खट्टा", "कौर"
       ]
     },
     "arabic": {
       "gaming": [
-        "صائدالظل",
-        "أفعىسايبر",
-        "عاصفةنوفا",
-        "شبحالسيف",
-        "ذئبحديد",
-        "حارسنخبة",
-        "فارسالظلام",
-        "عاصفةالنار",
-        "فارسالشبح",
-        "ضربةالرعد",
-        "محاربالليل",
-        "ساحرالقتال",
-        "سيدالحرب",
-        "نينجامخفي",
-        "لاعبقوي"
+        "ظل", "سايبر", "نوفا", "شبح", "حديد", "نخبة", "ظلام", "نار", "رعد", "ليل",
+        "معركة", "حرب", "خفي", "قوة", "لهب", "عاصفة", "أفعى", "ذئب", "عملاق", "قمة",
+        "صدى", "فراغ", "برق", "صقيع", "غراب", "فولاذ", "حاصد", "أونيكس", "تدفق", "متوحش",
+        "محتال", "سم", "نيترو", "غضب", "سريع", "أوميجا", "ألفا", "طيف", "صياد", "نصل",
+        "فارس", "ضربة", "حارس", "نينجا", "ساحر", "قناص", "قاتل", "جحيم", "قرمزي", "محارب"
       ],
       "animals": [
-        "قطيعالذئاب",
-        "عينالنسر",
-        "قلبالأسد",
-        "ذيلالثعلب",
-        "مخلبالدب",
-        "ضربةالثعبان",
-        "زئيرالنمر",
-        "عضةالقرش",
-        "جناحالغراب",
-        "يعسوبالتنين",
-        "ضربةالنمر",
-        "عينالصقر",
-        "قطبري",
-        "وحشالرعد",
-        "ثعلبسريع"
+        "ذئب", "نسر", "أسد", "ثعلب", "دب", "ثعبان", "نمر", "قرش", "غراب", "تنين",
+        "فهد", "صقر", "قط", "وحش", "أفعى", "وشق", "كوبرا", "بوما", "نمر أمريكي", "بيسون",
+        "عقرب", "وحيد قرن", "مامبا", "ضبع", "حصان", "ثور", "مخلب", "ناب", "زئير", "قطيع"
       ],
       "tech": [
-        "شبكةسايبر",
-        "نواةالبكسل",
-        "منقبالبيانات",
-        "كاسرالرمز",
-        "نينجاالتقنية",
-        "شبحرقمي",
-        "سايبربانك",
-        "نيوماتريكس",
-        "محاربالبايت",
-        "هاكرالنظام",
-        "فارسالسحاب",
-        "عداءالشبكة",
-        "تدفقالبيانات",
-        "ساحرالتقنية",
-        "نواةسايبر"
+        "سايبر", "بكسل", "بيانات", "كود", "تقنية", "رقمي", "بايت", "نظام", "سحاب", "شبكة",
+        "تدفق", "مصفوفة", "نانو", "ميكرو", "كمي", "ثنائي", "إشارة", "منطق", "دائرة", "نواة",
+        "عقدة", "شبكة", "تزامن", "كاش", "متجه", "شفرة", "نبضة", "توربو", "فائق", "أولترا"
       ],
       "fantasy": [
-        "سيدالتنين",
-        "ساحرصوفي",
-        "سيدالسيف",
-        "ساحرمظلم",
-        "سيفالرون",
-        "ملكالسحرة",
-        "رامیالجان",
-        "محاربالأقزام",
-        "قاتلالعفاريت",
-        "عصاالساحر",
-        "ملقيالتعاويذ",
-        "فارسسري",
-        "سيفسحري",
-        "روحمسحورة",
-        "بطلأسطوري"
+        "تنين", "غامض", "سيف", "ساحر", "رونة", "فاتن", "جني", "قزم", "غول", "تعويذة",
+        "سري", "سحر", "طلسم", "أسطورة", "ملحمة", "رفات", "لعنة", "بلور", "روح", "حكيم",
+        "عراف", "عملاق", "شبح", "طيف", "قديم", "فراغ", "مدافع", "معالج", "شامان", "راهب"
       ],
       "sports": [
-        "باحثالأهداف",
-        "ضربةقوية",
-        "بطلالضربة",
-        "تاتشداون",
-        "لعبةقوة",
-        "اختراقسريع",
-        "فائزاللعبة",
-        "نجمالرياضة",
-        "خاتمالبطولة",
-        "دورةالفوز",
-        "كلالنجوم",
-        "أفضللاعب",
-        "لاعبمحترف",
-        "مغيراللعبة",
-        "سلسلةالفوز"
+        "هدف", "ضربة", "جري", "لمسة", "قوة", "سريع", "لعبة", "رياضة", "بطل", "فوز",
+        "نجم", "محترف", "آس", "ضربة", "عدو", "سرعة", "دفع", "قفز", "نقاط", "انتصار"
       ],
       "space": [
-        "طرادالنجوم",
-        "فارسالمجرة",
-        "انجرافكوني",
-        "عاصفةالسديم",
-        "رائدفضاء",
-        "ماشيالقمر",
-        "توهجشمسي",
-        "فارسالمدار",
-        "حارسالفضاء",
-        "محاربالنجوم",
-        "موجةكونية",
-        "بطلمجري",
-        "طيارالمركبة",
-        "فارسالسديم",
-        "ماشيالفراغ"
+        "نجم", "مجرة", "كوني", "سديم", "فلك", "قمر", "شمسي", "مدار", "فضاء", "نوفا",
+        "مذنب", "نجم نابض", "كوازار", "فراغ", "بلازما", "فوتون", "أيون", "ذروة", "خسوف", "شفق"
       ],
       "music": [
-        "سيدالإيقاع",
-        "موجةالصوت",
-        "ملكالإيقاع",
-        "صانعاللحن",
-        "خطالباص",
-        "ضربةالطبل",
-        "موجةالسينث",
-        "مهووسالصوت",
-        "صندوقالموسيقى",
-        "طائرالأغنية",
-        "سقوطالإيقاع",
-        "انفجارالصوت",
-        "تدفقاللحن",
-        "فارسالإيقاع",
-        "صائدالباص"
+        "إيقاع", "صوت", "لحن", "باص", "طبل", "سينث", "صوتي", "أغنية", "موجة", "سقوط",
+        "انفجار", "تدفق", "غروف", "إيقاع", "وتر", "نغمة", "ريف", "منفرد", "صدى", "اهتزاز"
       ],
       "food": [
-        "سيدالتاكو",
-        "قاتلالبيتزا",
-        "ملكالبرغر",
-        "نينجاالسوشي",
-        "سيدالدونات",
-        "مشيالكعك",
-        "مدمنالقهوة",
-        "محاربالطعام",
-        "فتاتالبسكويت",
-        "حلقةالفاكهة",
-        "ملكالبهارات",
-        "مهمةالطعم",
-        "بطلالطعام",
-        "براعمالذوق",
-        "سيدالطبخ"
+        "تاكو", "بيتزا", "برغر", "سوشي", "دونات", "كعكة", "قهوة", "بسكويت", "فاكهة", "بهار",
+        "نكهة", "طاهي", "شواء", "وليمة", "مقرمش", "شهي", "حار", "حلو", "حامض", "لقمة"
       ]
     },
     "turkish": {
       "gaming": [
-        "GolgecAvci",
-        "SiberYilan",
-        "NovaFirtina",
-        "HayaletKilic",
-        "DemirKurt",
-        "ElitNobetci",
-        "KaranlıkSovalye",
-        "AtesiFirtina",
-        "HayaletBinici",
-        "GokgurltusSaldiri",
-        "GeceSavascı",
-        "SavasMuteb",
-        "SavasLordu",
-        "GizliNinja",
-        "GucluOyuncu"
+        "Golge", "Siber", "Nova", "Hayalet", "Demir", "Elit", "Karanlik", "Ates", "Gokgurultu", "Gece",
+        "Savas", "Harp", "Gizli", "Guc", "Alev", "Firtina", "Viper", "Kurt", "Titan", "Zirve",
+        "Eko", "Bosluk", "Simsek", "Buz", "Karga", "Celik", "Olumcu", "Oniks", "Akim", "Vahsi",
+        "Sahte", "Zehir", "Nitro", "Ofke", "Hizli", "Omega", "Alfa", "Hayalet", "Avci", "Kilic",
+        "Binici", "Darbe", "Nobetci", "Savascı", "Ninja", "Buyucu", "Keskin", "Suikast", "Cehennem", "Kırmizi"
       ],
       "animals": [
-        "KurtSurusu",
-        "KartalGoz",
-        "AslanYurek",
-        "TilkiKuyruk",
-        "AyiPencesi",
-        "YilanVurus",
-        "KaplanUkreme",
-        "KopekbalıgıIsirıgı",
-        "KargaKanat",
-        "YusufcukEjder",
-        "ParsVurus",
-        "SahinGoz",
-        "YabaniKedi",
-        "GokgurultuCanavar",
-        "HızlıTilki"
+        "Kurt", "Kartal", "Aslan", "Tilki", "Ayi", "Yilan", "Kaplan", "Kopekbaligi", "Karga", "Ejder",
+        "Pars", "Sahin", "Kedi", "Canavar", "Engerek", "Vaşak", "Kobra", "Puma", "Jaguar", "Bizon",
+        "Akrep", "Gegerci", "Mamba", "Sirtlan", "Aygir", "Boga", "Pence", "Dis", "Kükreme", "Suru"
       ],
       "tech": [
-        "SiberAg",
-        "PikselCekirdek",
-        "VeriMadenci",
-        "KodKırıcı",
-        "TeknikNinja",
-        "DijitalHayal",
-        "SiberPunk",
-        "NeoMatris",
-        "BaytSavascı",
-        "SistemHack",
-        "BulutBinici",
-        "AgKosucusu",
-        "VeriAkisi",
-        "TeknikBuyucu",
-        "SiberCekirdek"
+        "Siber", "Piksel", "Veri", "Kod", "Tekno", "Dijital", "Bayt", "Sistem", "Bulut", "Ag",
+        "Akim", "Matris", "Nano", "Mikro", "Kuantum", "Ikili", "Sinyal", "Mantik", "Devre", "Cekirdek",
+        "Dugum", "Izgara", "Senkro", "Onbellek", "Vektor", "Sifreli", "Nabiz", "Turbo", "Hiper", "Ultra"
       ],
       "fantasy": [
-        "EjderLordu",
-        "MistikBuyucu",
-        "KilicUstadi",
-        "KaranlıkBuyucu",
-        "RunKilici",
-        "BuyucuKral",
-        "ElfOkcu",
-        "CuceSavasci",
-        "OrkKatili",
-        "BuyucuDegnek",
-        "BuyuCastirici",
-        "GizliSovalye",
-        "SihirliKilic",
-        "BuyuluRuh",
-        "EfsaneviKahraman"
+        "Ejder", "Mistik", "Kilic", "Buyucu", "Rün", "Büyücü", "Elf", "Cüce", "Ork", "Buju",
+        "Arkan", "Sihir", "Büyü", "Efsane", "Söylence", "Kalinti", "Lanet", "Kristal", "Ruh", "Bilge",
+        "Kehanet", "Titan", "Hayalet", "Tayf", "Antik", "Bosluk", "Paladin", "Druid", "Saman", "Rahip"
       ],
       "sports": [
-        "GolArıyan",
-        "SlamDunk",
-        "HomeRunKahramani",
-        "TouchDown",
-        "GucOyunu",
-        "HızlıKırılma",
-        "OyunKazanan",
-        "SporYildizi",
-        "SampiyonYuzuk",
-        "ZaferTuru",
-        "TumYildizlar",
-        "EnDegerliOyuncu",
-        "ProfesyonelAtlet",
-        "OyunDegistirici",
-        "ZaferSerisi"
+        "Gol", "Smac", "Kos", "Temas", "Guc", "Hizli", "Oyun", "Spor", "Sampiyon", "Zafer",
+        "Yildiz", "Pro", "As", "Vuris", "Sprint", "Hiz", "Atis", "Siçramak", "Skor", "Zafer"
       ],
       "space": [
-        "YildizKruvazor",
-        "GalaksiBinici",
-        "KozmikSuruklenme",
-        "NebulaFirtina",
-        "Astronot",
-        "AyYuruyucu",
-        "GunesAlevi",
-        "YörungeBinici",
-        "UzayNobetci",
-        "YildizSavasci",
-        "KozmikDalga",
-        "GalaktikKahraman",
-        "UzayGemisiPilot",
-        "NebulaSovalye",
-        "BoslukYuruyucu"
+        "Yildiz", "Galaksi", "Kozmik", "Bulutsu", "Astro", "Ay", "Gunes", "Yörünge", "Uzay", "Nova",
+        "Kuyruklu", "Pulsar", "Kuazar", "Bosluk", "Plazma", "Foton", "Iyon", "Doruk", "Tutulma", "Avrora"
       ],
       "music": [
-        "RitimUstad",
-        "SesDalga",
-        "RitimKral",
-        "MelodeYaratici",
-        "BasHat",
-        "DavolVurus",
-        "SentezDalga",
-        "SesDelis",
-        "MuzikKutu",
-        "SarkicıKus",
-        "RitimDusus",
-        "SesPatlaması",
-        "MelodeAkis",
-        "RitimBinici",
-        "BasAvcisi"
+        "Ritim", "Ses", "Melodi", "Bas", "Davul", "Sintetik", "Ses", "Sarki", "Dalga", "Drop",
+        "Patlama", "Akim", "Groove", "Tempo", "Akor", "Ton", "Riff", "Solo", "Eko", "Titresim"
       ],
       "food": [
-        "TacoUstadi",
-        "PizzaKatil",
-        "BurgerKral",
-        "SusNinja",
-        "DonutLord",
-        "PastaYuru",
-        "KahveBagimli",
-        "YemekSavasci",
-        "KurabiyeKırıntı",
-        "MeyveHalka",
-        "BaharatKral",
-        "LezzetArama",
-        "YemekKahraman",
-        "TatTomurcuk",
-        "SefUstad"
+        "Taco", "Pizza", "Burger", "Sushi", "Donut", "Pasta", "Kahve", "Kurabiye", "Meyve", "Baharat",
+        "Lezzet", "Sef", "Izgara", "Ziyafet", "Çıtır", "Lezzetli", "Acı", "Tatli", "Ekşi", "Lokma"
       ]
     },
     "chinese": {
       "gaming": [
-        "暗影猎手",
-        "网络毒蛇",
-        "新星风暴",
-        "幻影刀锋",
-        "钢铁之狼",
-        "精英守卫",
-        "暗黑骑士",
-        "火焰风暴",
-        "幽灵骑士",
-        "雷霆一击",
-        "夜间战士",
-        "战斗法师",
-        "战争领主",
-        "隐秘忍者",
-        "力量玩家"
+        "暗影", "网络", "新星", "幽灵", "钢铁", "精英", "黑暗", "火焰", "雷霆", "暗夜",
+        "战斗", "战争", "潜行", "力量", "烈焰", "风暴", "毒蛇", "狼", "泰坦", "顶峰",
+        "回响", "虚空", "闪电", "寒霜", "乌鸦", "钢", "死神", "黑曜", "流", "野性",
+        "浪客", "毒", "极速", "怒", "迅捷", "终极", "主宰", "幽灵", "猎手", "刀锋",
+        "骑士", "打击", "守护", "忍者", "法师", "狙击", "刺客", "地狱", "赤红", "剑客"
       ],
       "animals": [
-        "狼群",
-        "鹰眼",
-        "狮心",
-        "狐尾",
-        "熊爪",
-        "蛇击",
-        "虎啸",
-        "鲨咬",
-        "鸦翼",
-        "蜻蜓",
-        "豹击",
-        "鹰眼",
-        "野猫",
-        "雷兽",
-        "迅狐"
+        "狼", "鹰", "狮", "狐", "熊", "蛇", "虎", "鲨", "鸦", "龙",
+        "豹", "隼", "猫", "兽", "毒蛇", "猞猁", "眼镜蛇", "美洲狮", "美洲豹", "野牛",
+        "蝎", "犀牛", "黑曼巴", "鬣狗", "骏马", "公牛", "利爪", "獠牙", "咆哮", "兽群"
       ],
       "tech": [
-        "网络安全",
-        "像素核心",
-        "数据挖掘者",
-        "代码破解者",
-        "技术忍者",
-        "数字幽灵",
-        "网络朋克",
-        "新矩阵",
-        "字节战士",
-        "系统黑客",
-        "云骑士",
-        "网络跑者",
-        "数据流",
-        "技术巫师",
-        "网络核心"
+        "网络", "像素", "数据", "代码", "科技", "数字", "字节", "系统", "云端", "网",
+        "数据流", "矩阵", "纳米", "微型", "量子", "二进制", "信号", "逻辑", "电路", "核心",
+        "节点", "网格", "同步", "缓存", "向量", "密码", "脉冲", "涡轮", "超级", "极致"
       ],
       "fantasy": [
-        "龙王",
-        "神秘法师",
-        "剑圣",
-        "黑暗巫师",
-        "符文之刃",
-        "法师王",
-        "精灵射手",
-        "矮人战士",
-        "兽人杀手",
-        "法师杖",
-        "法术施放者",
-        "奥术骑士",
-        "魔法之刃",
-        "被附魔的灵魂",
-        "神话英雄"
+        "龙", "神秘", "剑", "巫师", "符文", "术士", "精灵", "矮人", "兽人", "魔法",
+        "秘术", "魔力", "魔咒", "神话", "传说", "遗物", "诅咒", "水晶", "灵魂", "智者",
+        "神谕", "泰坦", "幽灵", "幻影", "远古", "虚空", "圣骑士", "德鲁伊", "萨满", "僧侣"
       ],
       "sports": [
-        "进球者",
-        "扣篮",
-        "本垒打英雄",
-        "触地得分",
-        "强力比赛",
-        "快速突破",
-        "游戏获胜者",
-        "体育明星",
-        "冠军戒指",
-        "胜利圈",
-        "全明星",
-        "最有价值球员",
-        "职业运动员",
-        "游戏改变者",
-        "连胜"
+        "进球", "扣杀", "奔跑", "触地", "力量", "迅速", "竞技", "运动", "冠军", "胜利",
+        "明星", "专业", "王牌", "击打", "冲刺", "速度", "推进", "跃起", "得分", "凯旋"
       ],
       "space": [
-        "星际巡洋舰",
-        "银河骑士",
-        "宇宙漂移",
-        "星云风暴",
-        "宇航员",
-        "月球行者",
-        "太阳耀斑",
-        "轨道骑士",
-        "太空守护者",
-        "星际战士",
-        "宇宙波",
-        "银河英雄",
-        "宇宙飞船飞行员",
-        "星云骑士",
-        "虚空行者"
+        "星辰", "银河", "宇宙", "星云", "天文", "月亮", "太阳", "轨道", "太空", "新星",
+        "彗星", "脉冲星", "类星体", "虚空", "等离子", "光子", "离子", "巅峰", "蚀", "极光"
       ],
       "music": [
-        "节奏大师",
-        "声波",
-        "节奏之王",
-        "旋律制作者",
-        "低音线",
-        "鼓点",
-        "合成波",
-        "音频狂",
-        "音乐盒",
-        "歌鸟",
-        "节奏下降",
-        "声音爆炸",
-        "旋律流",
-        "节奏骑士",
-        "低音猎手"
+        "节奏", "声音", "旋律", "低音", "鼓", "合成器", "音频", "歌曲", "波", "降落",
+        "爆炸", "流", "律动", "节拍", "和弦", "音色", "即兴", "独奏", "回响", "振动"
       ],
       "food": [
-        "塔可大师",
-        "披萨杀手",
-        "汉堡王",
-        "寿司忍者",
-        "甜甜圈领主",
-        "蛋糕漫步",
-        "咖啡上瘾者",
-        "食物战士",
-        "饼干屑",
-        "水果环",
-        "香料王",
-        "味道探索",
-        "食物英雄",
-        "味蕾",
-        "主厨大师"
+        "墨西哥卷", "披萨", "汉堡", "寿司", "甜甜圈", "蛋糕", "咖啡", "饼干", "水果", "香料",
+        "风味", "厨师", "烤", "盛宴", "酥脆", "美味", "辣", "甜", "酸", "一口"
       ]
     },
     "polish": {
       "gaming": [
-        "ŁowcaCieni",
-        "CyberWąż",
-        "BurzaNova",
-        "DuchOstrze",
-        "ŻelaznyWilk",
-        "ElitaStrażnik",
-        "CiemnyRycerz",
-        "BurzaOgnia",
-        "DuchJeździec",
-        "UderzeniePioruna",
-        "NocnyWojownik",
-        "BojowyCzarodziej",
-        "PanWojny",
-        "SkrytyNinja",
-        "MocnyGracz"
+        "Cien", "Cyber", "Nova", "Duch", "Zelazo", "Elita", "Ciemny", "Ogien", "Piorun", "Noc",
+        "Bitwa", "Wojna", "Skryty", "Moc", "Plomien", "Burza", "Zmija", "Wilk", "Tytan", "Szczyt",
+        "Echo", "Pustka", "Blysk", "Mroz", "Kruk", "Stal", "Zniwiar", "Onyx", "Nurt", "Dziki",
+        "Losbujer", "Jad", "Nitro", "Gniew", "Szybki", "Omega", "Alfa", "Widmo", "Lowca", "Klinga",
+        "Jezdziec", "Cios", "Straznik", "Rycerz", "Ninja", "Mag", "Snajper", "Zabojca", "Pieklo", "Karmazyn"
       ],
       "animals": [
-        "WatataWilków",
-        "OkoOrła",
-        "LwieSerce",
-        "OgonLisa",
-        "ŁapaMiedwiedzia",
-        "UderzWeża",
-        "RykTygrysa",
-        "UgryzienieRekina",
-        "SkrzydłoKruka",
-        "ŻagiewDragon",
-        "UderzeniePantery",
-        "OkoSokoła",
-        "DzikiKot",
-        "PiorunowaBestia",
-        "SzybkiLis"
+        "Wilk", "Orzel", "Lew", "Lis", "Niedz", "Waz", "Tygrys", "Rekin", "Kruk", "Smok",
+        "Pantera", "Jastrząb", "Kot", "Bestia", "Zmija", "Rys", "Kobra", "Puma", "Jaguar", "Bizon",
+        "Skorpion", "Nosorozec", "Mamba", "Hiena", "Ogier", "Byk", "Szpon", "Kiel", "Ryk", "Sfora"
       ],
       "tech": [
-        "CyberSieć",
-        "PikselRdzeń",
-        "KopaczDanych",
-        "ŁamaczKodu",
-        "TechNinja",
-        "CyfrowyDuch",
-        "CyberPunk",
-        "NeoMatryca",
-        "BajtWojownik",
-        "SystemHack",
-        "ChmuraJeździec",
-        "SieciowaBiegacz",
-        "StrumieńDanych",
-        "TechCzarodziej",
-        "CyberRdzeń"
+        "Cyber", "Piksel", "Dane", "Kod", "Techno", "Cyfrowy", "Bajt", "System", "Chmura", "Siec",
+        "Strumien", "Macierz", "Nano", "Mikro", "Kwant", "Binarny", "Sygnal", "Logika", "Obwod", "Jadro",
+        "Wezel", "Siatka", "Synchro", "Podrecz", "Wektor", "Szyfr", "Impuls", "Turbo", "Hiper", "Ultra"
       ],
       "fantasy": [
-        "PanSmoków",
-        "MistycznyCzarodziej",
-        "MistrzMiecza",
-        "CiemnyCzarodziej",
-        "RuniczneOstrze",
-        "KrólCzarodziejów",
-        "ElfŁucznik",
-        "KrasnoludWojownik",
-        "ZabójcaOrków",
-        "CzarodziejskiKij",
-        "CiskaczCzarów",
-        "ArkańskiRycerz",
-        "MagiczneOstrze",
-        "ZaczarowanaDusza",
-        "MitycznyBohater"
+        "Smok", "Mistyczny", "Miecz", "Czarodziej", "Runa", "Czarnoksiaznik", "Elf", "Krasnolud", "Ork", "Czar",
+        "Arkana", "Magia", "Urok", "Mit", "Legenda", "Relikt", "Klatwa", "Kryształ", "Dusza", "Madrzec",
+        "Wyrocznia", "Tytan", "Widmo", "Fantom", "Pradawny", "Pustka", "Paladin", "Druid", "Szaman", "Mnich"
       ],
       "sports": [
-        "SzukaczGoli",
-        "WsadDoKosza",
-        "BohaterHomerun",
-        "TouchDown",
-        "SilnaGra",
-        "SzybkiePrzełamanie",
-        "ZwycięzcaGry",
-        "GwiazdaSportu",
-        "PierśćMistrza",
-        "ZwycięskaRunda",
-        "WszystkoGwiazdy",
-        "NajcenniejszyGracz",
-        "ProAtleta",
-        "ZmieniaczGry",
-        "PassaZwycięstw"
+        "Gol", "Smecz", "Bieg", "Dotyk", "Moc", "Szybki", "Gra", "Sport", "Mistrz", "Zwyciestwo",
+        "Gwiazda", "Pro", "As", "Uderzenie", "Sprint", "Predkosc", "Pchnięcie", "Skok", "Wynik", "Triumf"
       ],
       "space": [
-        "GwieżdnyKrążownik",
-        "GalaktycznyJeździec",
-        "KosmicznyDryf",
-        "BurzaMgławica",
-        "Astronauta",
-        "KsężycWędrowiec",
-        "SłonecznyRozbłysk",
-        "OrbitaJeździec",
-        "KosmicznyStrażnik",
-        "GwieżdnyWojownik",
-        "KosmicznaFala",
-        "GalaktycznyBohater",
-        "PilotStatku",
-        "MgławicaRycerz",
-        "PróżniaWędrowiec"
+        "Gwiazda", "Galaktyka", "Kosmiczny", "Mgławica", "Astro", "Ksiezyc", "Sloneczny", "Orbita", "Przestrzen", "Nova",
+        "Kometa", "Pulsar", "Kwazar", "Pustka", "Plazma", "Foton", "Jon", "Zenit", "Zaćmienie", "Aurora"
       ],
       "music": [
-        "MistrzRytmu",
-        "FalaDźwięku",
-        "KrólRytmu",
-        "TwórcaMelodii",
-        "LiniaBasowa",
-        "UderzenieBębnów",
-        "FalaSyntetyzatora",
-        "AudioSzaleniec",
-        "SkrzynkamuZyczna",
-        "ŚpiewaijćyPtak",
-        "SpadekRytmu",
-        "EksplozjaDźwięku",
-        "PrzepływMelodii",
-        "RytmJeździec",
-        "ŁowcaBasu"
+        "Rytm", "Dzwiek", "Melodia", "Bas", "Bebny", "Syntezator", "Audio", "Piosenka", "Fala", "Drop",
+        "Eksplozja", "Nurt", "Groove", "Tempo", "Akord", "Ton", "Riff", "Solo", "Echo", "Wibracja"
       ],
       "food": [
-        "MistrzTaco",
-        "ZabójcaPizzy",
-        "KrólBurgerów",
-        "NinjaSushi",
-        "PanPączków",
-        "SpacerTortu",
-        "KawowUzależniony",
-        "ŻywnośćWojownik",
-        "OkruchCiastka",
-        "PętlaOwocowa",
-        "KrólPrzypraw",
-        "PoszukiwaczSmaku",
-        "BohaterŻywności",
-        "KubkiSmakowe",
-        "MistrzKuchni"
+        "Taco", "Pizza", "Burger", "Sushi", "Paczek", "Ciasto", "Kawa", "Ciastko", "Owoc", "Przyprawa",
+        "Smak", "Kucharz", "Grill", "Ucztowanie", "Chrupiący", "Smaczny", "Ostry", "Slodki", "Kwasny", "Kęs"
       ]
     },
     "indonesian": {
       "gaming": [
-        "PemburuBayangan",
-        "ViperSiber",
-        "BadaiNova",
-        "PedangHantu",
-        "SerigalaBesi",
-        "PenjagaElite",
-        "KsatriaGelap",
-        "BadaiApi",
-        "KsatriaHantu",
-        "PukulanPetir",
-        "PejuangMalam",
-        "PenyihirTempur",
-        "TuanPerang",
-        "NinjaTersembunyi",
-        "PemainKekuatan"
+        "Bayangan", "Siber", "Nova", "Hantu", "Besi", "Elite", "Gelap", "Api", "Petir", "Malam",
+        "Pertempuran", "Perang", "Tersembunyi", "Kekuatan", "Nyala", "Badai", "Viper", "Serigala", "Titan", "Puncak",
+        "Gema", "Hampa", "Kilat", "Beku", "Gagak", "Baja", "Penuai", "Oniks", "Arus", "Liar",
+        "Nakal", "Racun", "Nitro", "Amarah", "Cepat", "Omega", "Alfa", "Specter", "Pemburu", "Pedang",
+        "Penunggang", "Pukulan", "Penjaga", "Kesatria", "Ninja", "Penyihir", "Penembak", "Pembunuh", "Neraka", "Merah"
       ],
       "animals": [
-        "KawananSerigala",
-        "MataElang",
-        "HatiSinga",
-        "EkorRubah",
-        "CakarBeruang",
-        "SeranganUlar",
-        "AumanHarimau",
-        "GigitanHiu",
-        "SayapGagak",
-        "CapungNaga",
-        "SeranganMacan",
-        "MataElang",
-        "KucingLiar",
-        "BianatangPetir",
-        "RubahCepat"
+        "Serigala", "Elang", "Singa", "Rubah", "Beruang", "Ular", "Harimau", "Hiu", "Gagak", "Naga",
+        "Macan", "Rajawali", "Kucing", "Binatang", "Viper", "Lynx", "Kobra", "Puma", "Jaguar", "Bison",
+        "Kalajengking", "Badak", "Mamba", "Hyena", "Kuda", "Banteng", "Cakar", "Taring", "Auman", "Kawanan"
       ],
       "tech": [
-        "JaringanSiber",
-        "IntiPiksel",
-        "PenambangData",
-        "PemecahKode",
-        "NinjaTeknologi",
-        "HantuDigital",
-        "SiberPunk",
-        "NeoMatriks",
-        "PejuangByte",
-        "HackSistem",
-        "PenungganAwan",
-        "PelariJaringan",
-        "AliranData",
-        "PenyihirTeknologi",
-        "IntiSiber"
+        "Siber", "Piksel", "Data", "Kode", "Tekno", "Digital", "Byte", "Sistem", "Awan", "Jaringan",
+        "Aliran", "Matriks", "Nano", "Mikro", "Kuantum", "Biner", "Sinyal", "Logika", "Sirkuit", "Inti",
+        "Simpul", "Kisi", "Sinkron", "Tembolok", "Vektor", "Sandi", "Denyut", "Turbo", "Hiper", "Ultra"
       ],
       "fantasy": [
-        "TuanNaga",
-        "PenyihirMistik",
-        "MasterPedang",
-        "PenyihirGelap",
-        "PedangRune",
-        "RajaPenyihir",
-        "PemanaNnElf",
-        "PejuangKerdil",
-        "PembunuhOrc",
-        "TongkatPenyihir",
-        "PelemparMantra",
-        "KsatriaArkane",
-        "PedangSihir",
-        "JiwaTerepesona",
-        "PahlawanMitologi"
+        "Naga", "Mistis", "Pedang", "Penyihir", "Rune", "Pesulap", "Elf", "Kurcaci", "Orc", "Mantra",
+        "Gaib", "Sihir", "Pesona", "Mitos", "Legenda", "Relik", "Kutukan", "Kristal", "Jiwa", "Bijak",
+        "Peramal", "Titan", "Specter", "Hantu", "Kuno", "Hampa", "Paladin", "Druid", "Dukun", "Biksu"
       ],
       "sports": [
-        "PencariGol",
-        "SlamDunk",
-        "PahlawanHomeRun",
-        "TouchDown",
-        "PermainanKekuatan",
-        "TembusanCepat",
-        "PemenangPermainan",
-        "BintangOlahraga",
-        "CincinJuara",
-        "PutaranKemenangan",
-        "SemuaBintang",
-        "PemainTerbaik",
-        "AtletPro",
-        "PengubahPermainan",
-        "SeriKemenangan"
+        "Gol", "Smash", "Lari", "Sentuh", "Daya", "Cepat", "Permainan", "Olahraga", "Juara", "Kemenangan",
+        "Bintang", "Pro", "Ace", "Pukulan", "Sprint", "Kecepatan", "Dorongan", "Lompat", "Skor", "Kemenangan"
       ],
       "space": [
-        "KapalPenjelajahBintang",
-        "PenungganGalaksi",
-        "HanyutKosmik",
-        "BadaiNebula",
-        "Astronot",
-        "PejelajahBulan",
-        "SemburanMatahari",
-        "PenungganOrbit",
-        "PenjagaLuarAngkasa",
-        "PejuangBintang",
-        "GelombangKosmik",
-        "PahlawanGalaksi",
-        "PilotPesawatLuarAngkasa",
-        "KsatriaNebula",
-        "PejelajahKekosongan"
+        "Bintang", "Galaksi", "Kosmik", "Nebula", "Astro", "Bulan", "Surya", "Orbit", "Angkasa", "Nova",
+        "Komet", "Pulsar", "Kuasar", "Hampa", "Plasma", "Foton", "Ion", "Puncak", "Gerhana", "Aurora"
       ],
       "music": [
-        "MasterRitme",
-        "GelombangSuara",
-        "RajaRitme",
-        "PenciptaMelodi",
-        "GarisBass",
-        "PukulanDrum",
-        "GelombangSintetis",
-        "ManiaAudio",
-        "KotakMusik",
-        "BurungPenyanyi",
-        "JatuhRitme",
-        "LedakanSuara",
-        "AliranMelodi",
-        "PenungganRitme",
-        "PemburuBass"
+        "Ritme", "Suara", "Melodi", "Bass", "Drum", "Sintetis", "Audio", "Lagu", "Gelombang", "Drop",
+        "Ledakan", "Aliran", "Groove", "Tempo", "Akor", "Nada", "Riff", "Solo", "Gema", "Getaran"
       ],
       "food": [
-        "MasterTaco",
-        "PembunuhPizza",
-        "RajaBurger",
-        "NinjaSushi",
-        "TuanDonat",
-        "JalanKue",
-        "PecandunKopi",
-        "PejuangMakanan",
-        "RemahKue",
-        "LoopBuah",
-        "RajaRempah",
-        "PencarianRasa",
-        "PahlawanMakanan",
-        "InderaPengecap",
-        "MasterKoki"
+        "Taco", "Pizza", "Burger", "Sushi", "Donat", "Kue", "Kopi", "Kukis", "Buah", "Rempah",
+        "Cita", "Chef", "Panggang", "Pesta", "Renyah", "Lezat", "Pedas", "Manis", "Asam", "Gigitan"
       ]
     }
   },
   "languageGenderWords": {
     "english": {
       "male": {
-        "prefixes": [
-          "Mr",
-          "King",
-          "Lord",
-          "Master",
-          "Captain",
-          "Sir",
-          "Boss"
-        ],
-        "suffixes": [
-          "Guy",
-          "Dude",
-          "Man",
-          "Bro",
-          "Hero",
-          "Warrior",
-          "Knight"
-        ]
+        "prefixes": ["Mr", "King", "Lord", "Master", "Captain", "Sir", "Boss", "Duke", "Chief", "Baron"],
+        "suffixes": ["Guy", "Dude", "Man", "Bro", "Hero", "Warrior", "Knight", "King", "Lord", "Beast"]
       },
       "female": {
-        "prefixes": [
-          "Ms",
-          "Queen",
-          "Lady",
-          "Mistress",
-          "Princess",
-          "Dame",
-          "Boss"
-        ],
-        "suffixes": [
-          "Girl",
-          "Lady",
-          "Woman",
-          "Sis",
-          "Heroine",
-          "Warrior",
-          "Knight"
-        ]
+        "prefixes": ["Ms", "Queen", "Lady", "Mistress", "Princess", "Dame", "Boss", "Duchess", "Empress", "Vixen"],
+        "suffixes": ["Girl", "Lady", "Woman", "Sis", "Heroine", "Warrior", "Knight", "Queen", "Goddess", "Nova"]
       },
       "neutral": {
-        "prefixes": [
-          "Mx",
-          "Ruler",
-          "Sovereign",
-          "Guardian",
-          "Champion",
-          "Chief",
-          "Leader"
-        ],
-        "suffixes": [
-          "Person",
-          "Hero",
-          "Warrior",
-          "Champion",
-          "Guardian",
-          "Fighter",
-          "Legend"
-        ]
+        "prefixes": ["Mx", "Ruler", "Sovereign", "Guardian", "Champion", "Chief", "Leader", "Apex", "Prime", "Ultra"],
+        "suffixes": ["Person", "Hero", "Warrior", "Champion", "Guardian", "Fighter", "Legend", "Ace", "Star", "Force"]
       }
     },
     "spanish": {
       "male": {
-        "prefixes": [
-          "Sr",
-          "Rey",
-          "Señor",
-          "Maestro",
-          "Capitán",
-          "Jefe"
-        ],
-        "suffixes": [
-          "Chico",
-          "Tipo",
-          "Hombre",
-          "Hermano",
-          "Héroe",
-          "Guerrero",
-          "Caballero"
-        ]
+        "prefixes": ["Sr", "Rey", "Señor", "Maestro", "Capitán", "Jefe", "Duque", "Baron", "Don", "Lider"],
+        "suffixes": ["Chico", "Tipo", "Hombre", "Hermano", "Héroe", "Guerrero", "Caballero", "Rey", "Señor", "Bestia"]
       },
       "female": {
-        "prefixes": [
-          "Sra",
-          "Reina",
-          "Señora",
-          "Maestra",
-          "Princesa",
-          "Jefa"
-        ],
-        "suffixes": [
-          "Chica",
-          "Mujer",
-          "Hermana",
-          "Heroína",
-          "Guerrera",
-          "Caballera"
-        ]
+        "prefixes": ["Sra", "Reina", "Señora", "Maestra", "Princesa", "Jefa", "Duquesa", "Emperatriz", "Dama", "Diosa"],
+        "suffixes": ["Chica", "Mujer", "Hermana", "Heroína", "Guerrera", "Caballera", "Reina", "Diosa", "Nova", "Estrella"]
       },
       "neutral": {
-        "prefixes": [
-          "Soberano",
-          "Guardián",
-          "Campeón",
-          "Líder"
-        ],
-        "suffixes": [
-          "Persona",
-          "Héroe",
-          "Guerrero",
-          "Campeón",
-          "Guardián",
-          "Luchador",
-          "Leyenda"
-        ]
+        "prefixes": ["Soberano", "Guardián", "Campeón", "Líder", "Supremo", "Maestro", "Cima", "Primo", "Ultra", "Apex"],
+        "suffixes": ["Persona", "Héroe", "Guerrero", "Campeón", "Guardián", "Luchador", "Leyenda", "As", "Estrella", "Fuerza"]
       }
     },
     "portuguese": {
       "male": {
-        "prefixes": [
-          "Sr",
-          "Rei",
-          "Senhor",
-          "Mestre",
-          "Capitão",
-          "Chefe"
-        ],
-        "suffixes": [
-          "Cara",
-          "Homem",
-          "Irmão",
-          "Herói",
-          "Guerreiro",
-          "Cavaleiro"
-        ]
+        "prefixes": ["Sr", "Rei", "Senhor", "Mestre", "Capitão", "Chefe", "Duque", "Barão", "Dom", "Lider"],
+        "suffixes": ["Cara", "Homem", "Irmão", "Herói", "Guerreiro", "Cavaleiro", "Rei", "Senhor", "Fera", "Campeão"]
       },
       "female": {
-        "prefixes": [
-          "Sra",
-          "Rainha",
-          "Senhora",
-          "Mestra",
-          "Princesa",
-          "Chefe"
-        ],
-        "suffixes": [
-          "Garota",
-          "Mulher",
-          "Irmã",
-          "Heroína",
-          "Guerreira",
-          "Cavaleira"
-        ]
+        "prefixes": ["Sra", "Rainha", "Senhora", "Mestra", "Princesa", "Chefe", "Duquesa", "Imperatriz", "Dama", "Deusa"],
+        "suffixes": ["Garota", "Mulher", "Irmã", "Heroína", "Guerreira", "Cavaleira", "Rainha", "Deusa", "Nova", "Estrela"]
       },
       "neutral": {
-        "prefixes": [
-          "Soberano",
-          "Guardião",
-          "Campeão",
-          "Líder"
-        ],
-        "suffixes": [
-          "Pessoa",
-          "Herói",
-          "Guerreiro",
-          "Campeão",
-          "Guardião",
-          "Lutador",
-          "Lenda"
-        ]
+        "prefixes": ["Soberano", "Guardião", "Campeão", "Líder", "Supremo", "Mestre", "Apex", "Primo", "Ultra", "Elite"],
+        "suffixes": ["Pessoa", "Herói", "Guerreiro", "Campeão", "Guardião", "Lutador", "Lenda", "As", "Estrela", "Força"]
       }
     },
     "french": {
       "male": {
-        "prefixes": [
-          "M",
-          "Roi",
-          "Seigneur",
-          "Maître",
-          "Capitaine",
-          "Chef"
-        ],
-        "suffixes": [
-          "Gars",
-          "Homme",
-          "Frère",
-          "Héros",
-          "Guerrier",
-          "Chevalier"
-        ]
+        "prefixes": ["M", "Roi", "Seigneur", "Maître", "Capitaine", "Chef", "Duc", "Baron", "Don", "Leader"],
+        "suffixes": ["Gars", "Homme", "Frère", "Héros", "Guerrier", "Chevalier", "Roi", "Seigneur", "Bête", "Champion"]
       },
       "female": {
-        "prefixes": [
-          "Mme",
-          "Reine",
-          "Dame",
-          "Maîtresse",
-          "Princesse",
-          "Chef"
-        ],
-        "suffixes": [
-          "Fille",
-          "Femme",
-          "Sœur",
-          "Héroïne",
-          "Guerrière",
-          "Chevalière"
-        ]
+        "prefixes": ["Mme", "Reine", "Dame", "Maîtresse", "Princesse", "Chef", "Duchesse", "Impératrice", "Diva", "Déesse"],
+        "suffixes": ["Fille", "Femme", "Sœur", "Héroïne", "Guerrière", "Chevalière", "Reine", "Déesse", "Nova", "Étoile"]
       },
       "neutral": {
-        "prefixes": [
-          "Souverain",
-          "Gardien",
-          "Champion",
-          "Leader"
-        ],
-        "suffixes": [
-          "Personne",
-          "Héros",
-          "Guerrier",
-          "Champion",
-          "Gardien",
-          "Combattant",
-          "Légende"
-        ]
+        "prefixes": ["Souverain", "Gardien", "Champion", "Leader", "Suprême", "Maître", "Apex", "Prime", "Ultra", "Elite"],
+        "suffixes": ["Personne", "Héros", "Guerrier", "Champion", "Gardien", "Combattant", "Légende", "As", "Étoile", "Force"]
       }
     },
     "german": {
       "male": {
-        "prefixes": [
-          "Herr",
-          "König",
-          "Meister",
-          "Hauptmann",
-          "Chef"
-        ],
-        "suffixes": [
-          "Typ",
-          "Mann",
-          "Bruder",
-          "Held",
-          "Krieger",
-          "Ritter"
-        ]
+        "prefixes": ["Herr", "König", "Meister", "Hauptmann", "Chef", "Herzog", "Baron", "Fürst", "Lord", "Anführer"],
+        "suffixes": ["Typ", "Mann", "Bruder", "Held", "Krieger", "Ritter", "König", "Herr", "Bestie", "Meister"]
       },
       "female": {
-        "prefixes": [
-          "Frau",
-          "Königin",
-          "Dame",
-          "Meisterin",
-          "Prinzessin",
-          "Chefin"
-        ],
-        "suffixes": [
-          "Mädchen",
-          "Frau",
-          "Schwester",
-          "Heldin",
-          "Kriegerin",
-          "Ritterin"
-        ]
+        "prefixes": ["Frau", "Königin", "Dame", "Meisterin", "Prinzessin", "Chefin", "Herzogin", "Kaiserin", "Göttin", "Diva"],
+        "suffixes": ["Mädchen", "Frau", "Schwester", "Heldin", "Kriegerin", "Ritterin", "Königin", "Göttin", "Nova", "Stern"]
       },
       "neutral": {
-        "prefixes": [
-          "Herrscher",
-          "Wächter",
-          "Champion",
-          "Anführer"
-        ],
-        "suffixes": [
-          "Person",
-          "Held",
-          "Krieger",
-          "Champion",
-          "Wächter",
-          "Kämpfer",
-          "Legende"
-        ]
+        "prefixes": ["Herrscher", "Wächter", "Champion", "Anführer", "Oberster", "Meister", "Apex", "Prima", "Ultra", "Elite"],
+        "suffixes": ["Person", "Held", "Krieger", "Champion", "Wächter", "Kämpfer", "Legende", "As", "Stern", "Kraft"]
       }
     },
     "italian": {
       "male": {
-        "prefixes": [
-          "Sig",
-          "Re",
-          "Signore",
-          "Maestro",
-          "Capitano",
-          "Capo"
-        ],
-        "suffixes": [
-          "Ragazzo",
-          "Uomo",
-          "Fratello",
-          "Eroe",
-          "Guerriero",
-          "Cavaliere"
-        ]
+        "prefixes": ["Sig", "Re", "Signore", "Maestro", "Capitano", "Capo", "Duca", "Barone", "Don", "Leader"],
+        "suffixes": ["Ragazzo", "Uomo", "Fratello", "Eroe", "Guerriero", "Cavaliere", "Re", "Signore", "Bestia", "Campione"]
       },
       "female": {
-        "prefixes": [
-          "Sig.ra",
-          "Regina",
-          "Signora",
-          "Maestra",
-          "Principessa",
-          "Capo"
-        ],
-        "suffixes": [
-          "Ragazza",
-          "Donna",
-          "Sorella",
-          "Eroina",
-          "Guerriera",
-          "Cavaliera"
-        ]
+        "prefixes": ["Sig.ra", "Regina", "Signora", "Maestra", "Principessa", "Capo", "Duchessa", "Imperatrice", "Dea", "Diva"],
+        "suffixes": ["Ragazza", "Donna", "Sorella", "Eroina", "Guerriera", "Cavaliera", "Regina", "Dea", "Nova", "Stella"]
       },
       "neutral": {
-        "prefixes": [
-          "Sovrano",
-          "Guardiano",
-          "Campione",
-          "Leader"
-        ],
-        "suffixes": [
-          "Persona",
-          "Eroe",
-          "Guerriero",
-          "Campione",
-          "Guardiano",
-          "Combattente",
-          "Leggenda"
-        ]
+        "prefixes": ["Sovrano", "Guardiano", "Campione", "Leader", "Supremo", "Maestro", "Apex", "Primo", "Ultra", "Elite"],
+        "suffixes": ["Persona", "Eroe", "Guerriero", "Campione", "Guardiano", "Combattente", "Leggenda", "Asso", "Stella", "Forza"]
       }
     },
     "russian": {
       "male": {
-        "prefixes": [
-          "Господин",
-          "Король",
-          "Мастер",
-          "Капитан",
-          "Начальник"
-        ],
-        "suffixes": [
-          "Парень",
-          "Мужчина",
-          "Брат",
-          "Герой",
-          "Воин",
-          "Рыцарь"
-        ]
+        "prefixes": ["Господин", "Король", "Мастер", "Капитан", "Начальник", "Герцог", "Барон", "Князь", "Лорд", "Лидер"],
+        "suffixes": ["Парень", "Мужчина", "Брат", "Герой", "Воин", "Рыцарь", "Король", "Властелин", "Зверь", "Чемпион"]
       },
       "female": {
-        "prefixes": [
-          "Госпожа",
-          "Королева",
-          "Дама",
-          "Принцесса",
-          "Начальница"
-        ],
-        "suffixes": [
-          "Девушка",
-          "Женщина",
-          "Сестра",
-          "Героиня",
-          "Воительница",
-          "Рыцарь"
-        ]
+        "prefixes": ["Госпожа", "Королева", "Дама", "Принцесса", "Начальница", "Герцогиня", "Императрица", "Богиня", "Дива", "Леди"],
+        "suffixes": ["Девушка", "Женщина", "Сестра", "Героиня", "Воительница", "Рыцарь", "Королева", "Богиня", "Нова", "Звезда"]
       },
       "neutral": {
-        "prefixes": [
-          "Правитель",
-          "Страж",
-          "Чемпион",
-          "Лидер"
-        ],
-        "suffixes": [
-          "Человек",
-          "Герой",
-          "Воин",
-          "Чемпион",
-          "Страж",
-          "Боец",
-          "Легенда"
-        ]
+        "prefixes": ["Правитель", "Страж", "Чемпион", "Лидер", "Верховный", "Мастер", "Апекс", "Прайм", "Ультра", "Элита"],
+        "suffixes": ["Человек", "Герой", "Воин", "Чемпион", "Страж", "Боец", "Легенда", "Туз", "Звезда", "Сила"]
       }
     },
     "japanese": {
       "male": {
-        "prefixes": [
-          "王",
-          "主",
-          "師匠",
-          "隊長",
-          "上司"
-        ],
-        "suffixes": [
-          "男",
-          "兄",
-          "英雄",
-          "戦士",
-          "騎士"
-        ]
+        "prefixes": ["王", "主", "師匠", "隊長", "上司", "公爵", "男爵", "君主", "覇者", "将"],
+        "suffixes": ["男", "兄", "英雄", "戦士", "騎士", "王", "主人", "猛者", "達人", "勇者"]
       },
       "female": {
-        "prefixes": [
-          "女王",
-          "姫",
-          "師匠",
-          "女上司"
-        ],
-        "suffixes": [
-          "女",
-          "姉",
-          "英雄",
-          "戦士",
-          "騎士"
-        ]
+        "prefixes": ["女王", "姫", "師匠", "女上司", "公爵夫人", "女帝", "女神", "聖女", "巫女", "乙女"],
+        "suffixes": ["女", "姉", "英雄", "戦士", "騎士", "女王", "女神", "星", "新星", "花"]
       },
       "neutral": {
-        "prefixes": [
-          "支配者",
-          "守護者",
-          "王者",
-          "指導者"
-        ],
-        "suffixes": [
-          "人",
-          "英雄",
-          "戦士",
-          "王者",
-          "守護者",
-          "戦闘者",
-          "伝説"
-        ]
+        "prefixes": ["支配者", "守護者", "王者", "指導者", "至高", "頂点", "主宰", "超越", "究極", "覇者"],
+        "suffixes": ["人", "英雄", "戦士", "王者", "守護者", "戦闘者", "伝説", "エース", "星", "力"]
       }
     },
     "korean": {
       "male": {
-        "prefixes": [
-          "왕",
-          "주인",
-          "마스터",
-          "대장",
-          "상사"
-        ],
-        "suffixes": [
-          "남자",
-          "형",
-          "영웅",
-          "전사",
-          "기사"
-        ]
+        "prefixes": ["왕", "주인", "마스터", "대장", "상사", "공작", "남작", "군주", "지배자", "장군"],
+        "suffixes": ["남자", "형", "영웅", "전사", "기사", "왕", "주인", "맹수", "달인", "용사"]
       },
       "female": {
-        "prefixes": [
-          "여왕",
-          "공주",
-          "마스터",
-          "여상사"
-        ],
-        "suffixes": [
-          "여자",
-          "누나",
-          "영웅",
-          "전사",
-          "기사"
-        ]
+        "prefixes": ["여왕", "공주", "마스터", "여상사", "공작부인", "여제", "여신", "성녀", "무녀", "소녀"],
+        "suffixes": ["여자", "누나", "영웅", "전사", "기사", "여왕", "여신", "별", "신성", "꽃"]
       },
       "neutral": {
-        "prefixes": [
-          "지배자",
-          "수호자",
-          "챔피언",
-          "리더"
-        ],
-        "suffixes": [
-          "사람",
-          "영웅",
-          "전사",
-          "챔피언",
-          "수호자",
-          "전투원",
-          "전설"
-        ]
+        "prefixes": ["지배자", "수호자", "챔피언", "리더", "최고", "정점", "주재", "초월", "극한", "패자"],
+        "suffixes": ["사람", "영웅", "전사", "챔피언", "수호자", "전투원", "전설", "에이스", "별", "힘"]
       }
     },
     "hindi": {
       "male": {
-        "prefixes": [
-          "राजा",
-          "स्वामी",
-          "गुरु",
-          "कैप्टन",
-          "मालिक"
-        ],
-        "suffixes": [
-          "आदमी",
-          "भाई",
-          "वीर",
-          "योद्धा",
-          "नाइट"
-        ]
+        "prefixes": ["राजा", "स्वामी", "गुरु", "कैप्टन", "मालिक", "ड्यूक", "बैरन", "महाराज", "सरदार", "नेता"],
+        "suffixes": ["आदमी", "भाई", "वीर", "योद्धा", "नाइट", "राजा", "स्वामी", "शेर", "उस्ताद", "चैंपियन"]
       },
       "female": {
-        "prefixes": [
-          "रानी",
-          "राजकुमारी",
-          "गुरु",
-          "मालकिन"
-        ],
-        "suffixes": [
-          "औरत",
-          "बहन",
-          "वीरांगना",
-          "योद्धा",
-          "नाइट"
-        ]
+        "prefixes": ["रानी", "राजकुमारी", "गुरु", "मालकिन", "डचेस", "महारानी", "देवी", "पवित्र", "अप्सरा", "लेडी"],
+        "suffixes": ["औरत", "बहन", "वीरांगना", "योद्धा", "नाइट", "रानी", "देवी", "तारा", "नोवा", "फूल"]
       },
       "neutral": {
-        "prefixes": [
-          "शासक",
-          "रक्षक",
-          "चैंपियन",
-          "नेता"
-        ],
-        "suffixes": [
-          "व्यक्ति",
-          "वीर",
-          "योद्धा",
-          "चैंपियन",
-          "रक्षक",
-          "सेनानी",
-          "किंवदंती"
-        ]
+        "prefixes": ["शासक", "रक्षक", "चैंपियन", "नेता", "सर्वोच्च", "शीर्ष", "प्राइम", "अल्ट्रा", "एलीट", "अपेक्स"],
+        "suffixes": ["व्यक्ति", "वीर", "योद्धा", "चैंपियन", "रक्षक", "सेनानी", "किंवदंती", "इक्का", "तारा", "शक्ति"]
       }
     },
     "arabic": {
       "male": {
-        "prefixes": [
-          "ملك",
-          "سيد",
-          "أستاذ",
-          "قائد",
-          "رئيس"
-        ],
-        "suffixes": [
-          "رجل",
-          "أخ",
-          "بطل",
-          "محارب",
-          "فارس"
-        ]
+        "prefixes": ["ملك", "سيد", "أستاذ", "قائد", "رئيس", "دوق", "بارون", "أمير", "سلطان", "زعيم"],
+        "suffixes": ["رجل", "أخ", "بطل", "محارب", "فارس", "ملك", "سيد", "وحش", "خبير", "بطل"]
       },
       "female": {
-        "prefixes": [
-          "ملكة",
-          "أميرة",
-          "أستاذة",
-          "رئيسة"
-        ],
-        "suffixes": [
-          "امرأة",
-          "أخت",
-          "بطلة",
-          "محاربة",
-          "فارسة"
-        ]
+        "prefixes": ["ملكة", "أميرة", "أستاذة", "رئيسة", "دوقة", "إمبراطورة", "إلهة", "قديسة", "حورية", "ليدي"],
+        "suffixes": ["امرأة", "أخت", "بطلة", "محاربة", "فارسة", "ملكة", "إلهة", "نجمة", "نوفا", "زهرة"]
       },
       "neutral": {
-        "prefixes": [
-          "حاكم",
-          "حارس",
-          "بطل",
-          "قائد"
-        ],
-        "suffixes": [
-          "شخص",
-          "بطل",
-          "محارب",
-          "بطل",
-          "حارس",
-          "مقاتل",
-          "أسطورة"
-        ]
+        "prefixes": ["حاكم", "حارس", "بطل", "قائد", "أعلى", "قمة", "برايم", "الترا", "نخبة", "أبيكس"],
+        "suffixes": ["شخص", "بطل", "محارب", "بطل", "حارس", "مقاتل", "أسطورة", "آس", "نجم", "قوة"]
       }
     },
     "turkish": {
       "male": {
-        "prefixes": [
-          "Kral",
-          "Efendi",
-          "Usta",
-          "Kaptan",
-          "Şef"
-        ],
-        "suffixes": [
-          "Adam",
-          "Kardeş",
-          "Kahraman",
-          "Savaşçı",
-          "Şövalye"
-        ]
+        "prefixes": ["Kral", "Efendi", "Usta", "Kaptan", "Şef", "Dük", "Baron", "Prens", "Sultan", "Lider"],
+        "suffixes": ["Adam", "Kardeş", "Kahraman", "Savaşçı", "Şövalye", "Kral", "Efendi", "Canavar", "Uzman", "Şampiyon"]
       },
       "female": {
-        "prefixes": [
-          "Kraliçe",
-          "Hanım",
-          "Usta",
-          "Prenses",
-          "Şef"
-        ],
-        "suffixes": [
-          "Kadın",
-          "Kardeş",
-          "Kahraman",
-          "Savaşçı",
-          "Şövalye"
-        ]
+        "prefixes": ["Kraliçe", "Hanım", "Usta", "Prenses", "Şef", "Düşes", "İmparatoriçe", "Tanrıça", "Azize", "Lady"],
+        "suffixes": ["Kadın", "Kardeş", "Kahraman", "Savaşçı", "Şövalye", "Kraliçe", "Tanrıça", "Yıldız", "Nova", "Çiçek"]
       },
       "neutral": {
-        "prefixes": [
-          "Hükümdar",
-          "Koruyucu",
-          "Şampiyon",
-          "Lider"
-        ],
-        "suffixes": [
-          "Kişi",
-          "Kahraman",
-          "Savaşçı",
-          "Şampiyon",
-          "Koruyucu",
-          "Dövüşçü",
-          "Efsane"
-        ]
+        "prefixes": ["Hükümdar", "Koruyucu", "Şampiyon", "Lider", "En Yüce", "Doruk", "Prime", "Ultra", "Elit", "Apex"],
+        "suffixes": ["Kişi", "Kahraman", "Savaşçı", "Şampiyon", "Koruyucu", "Dövüşçü", "Efsane", "As", "Yıldız", "Güç"]
       }
     },
     "chinese": {
       "male": {
-        "prefixes": [
-          "王",
-          "主",
-          "师傅",
-          "队长",
-          "老板"
-        ],
-        "suffixes": [
-          "男",
-          "兄",
-          "英雄",
-          "战士",
-          "骑士"
-        ]
+        "prefixes": ["王", "主", "师傅", "队长", "老板", "公爵", "男爵", "君主", "霸主", "将领"],
+        "suffixes": ["男", "兄", "英雄", "战士", "骑士", "王者", "主宰", "猛兽", "达人", "勇者"]
       },
       "female": {
-        "prefixes": [
-          "女王",
-          "公主",
-          "师傅",
-          "女老板"
-        ],
-        "suffixes": [
-          "女",
-          "姐",
-          "英雄",
-          "战士",
-          "骑士"
-        ]
+        "prefixes": ["女王", "公主", "师傅", "女老板", "公爵夫人", "女皇", "女神", "圣女", "巫女", "仙女"],
+        "suffixes": ["女", "姐", "英雄", "战士", "骑士", "女王", "女神", "星", "新星", "花"]
       },
       "neutral": {
-        "prefixes": [
-          "统治者",
-          "守护者",
-          "冠军",
-          "领袖"
-        ],
-        "suffixes": [
-          "人",
-          "英雄",
-          "战士",
-          "冠军",
-          "守护者",
-          "战斗者",
-          "传奇"
-        ]
+        "prefixes": ["统治者", "守护者", "冠军", "领袖", "至高", "顶点", "至尊", "超越", "极致", "霸主"],
+        "suffixes": ["人", "英雄", "战士", "冠军", "守护者", "战斗者", "传奇", "王牌", "明星", "力量"]
       }
     },
     "polish": {
       "male": {
-        "prefixes": [
-          "Król",
-          "Pan",
-          "Mistrz",
-          "Kapitan",
-          "Szef"
-        ],
-        "suffixes": [
-          "Facet",
-          "Mężczyzna",
-          "Brat",
-          "Bohater",
-          "Wojownik",
-          "Rycerz"
-        ]
+        "prefixes": ["Król", "Pan", "Mistrz", "Kapitan", "Szef", "Książę", "Baron", "Władca", "Lord", "Lider"],
+        "suffixes": ["Facet", "Mężczyzna", "Brat", "Bohater", "Wojownik", "Rycerz", "Król", "Pan", "Bestia", "Mistrz"]
       },
       "female": {
-        "prefixes": [
-          "Królowa",
-          "Pani",
-          "Mistrzyni",
-          "Księżniczka",
-          "Szef"
-        ],
-        "suffixes": [
-          "Dziewczyna",
-          "Kobieta",
-          "Siostra",
-          "Bohaterka",
-          "Wojowniczka",
-          "Rycerka"
-        ]
+        "prefixes": ["Królowa", "Pani", "Mistrzyni", "Księżniczka", "Szef", "Księżna", "Cesarzowa", "Bogini", "Święta", "Lady"],
+        "suffixes": ["Dziewczyna", "Kobieta", "Siostra", "Bohaterka", "Wojowniczka", "Rycerka", "Królowa", "Bogini", "Nova", "Gwiazda"]
       },
       "neutral": {
-        "prefixes": [
-          "Władca",
-          "Strażnik",
-          "Mistrz",
-          "Lider"
-        ],
-        "suffixes": [
-          "Osoba",
-          "Bohater",
-          "Wojownik",
-          "Mistrz",
-          "Strażnik",
-          "Wojownik",
-          "Legenda"
-        ]
+        "prefixes": ["Władca", "Strażnik", "Mistrz", "Lider", "Najwyższy", "Szczyt", "Prime", "Ultra", "Elita", "Apex"],
+        "suffixes": ["Osoba", "Bohater", "Wojownik", "Mistrz", "Strażnik", "Wojownik", "Legenda", "As", "Gwiazda", "Sila"]
       }
     },
     "indonesian": {
       "male": {
-        "prefixes": [
-          "Raja",
-          "Tuan",
-          "Master",
-          "Kapten",
-          "Bos"
-        ],
-        "suffixes": [
-          "Pria",
-          "Saudara",
-          "Pahlawan",
-          "Pejuang",
-          "Kesatria"
-        ]
+        "prefixes": ["Raja", "Tuan", "Master", "Kapten", "Bos", "Duke", "Baron", "Pangeran", "Sultan", "Pemimpin"],
+        "suffixes": ["Pria", "Saudara", "Pahlawan", "Pejuang", "Kesatria", "Raja", "Tuan", "Iblis", "Ahli", "Juara"]
       },
       "female": {
-        "prefixes": [
-          "Ratu",
-          "Nyonya",
-          "Master",
-          "Putri",
-          "Bos"
-        ],
-        "suffixes": [
-          "Wanita",
-          "Saudari",
-          "Pahlawan",
-          "Pejuang",
-          "Kesatria"
-        ]
+        "prefixes": ["Ratu", "Nyonya", "Master", "Putri", "Bos", "Duchess", "Kaisar", "Dewi", "Bidadari", "Lady"],
+        "suffixes": ["Wanita", "Saudari", "Pahlawan", "Pejuang", "Kesatria", "Ratu", "Dewi", "Bintang", "Nova", "Bunga"]
       },
       "neutral": {
-        "prefixes": [
-          "Penguasa",
-          "Penjaga",
-          "Juara",
-          "Pemimpin"
-        ],
-        "suffixes": [
-          "Orang",
-          "Pahlawan",
-          "Pejuang",
-          "Juara",
-          "Penjaga",
-          "Petarung",
-          "Legenda"
-        ]
+        "prefixes": ["Penguasa", "Penjaga", "Juara", "Pemimpin", "Tertinggi", "Puncak", "Prime", "Ultra", "Elite", "Apex"],
+        "suffixes": ["Orang", "Pahlawan", "Pejuang", "Juara", "Penjaga", "Petarung", "Legenda", "Ace", "Bintang", "Kekuatan"]
       }
     }
   },
   "languageSuffixes": {
-    "english": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Elite",
-      "Prime",
-      "Max",
-      "Ultra"
-    ],
-    "spanish": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Elite",
-      "Prime",
-      "Max",
-      "Ultra"
-    ],
-    "portuguese": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Elite",
-      "Prime",
-      "Max",
-      "Ultra"
-    ],
-    "french": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Elite",
-      "Prime",
-      "Max",
-      "Ultra"
-    ],
-    "german": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Elite",
-      "Prime",
-      "Max",
-      "Ultra"
-    ],
-    "italian": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Elite",
-      "Prime",
-      "Max",
-      "Ultra"
-    ],
-    "russian": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Элит",
-      "Прайм",
-      "Макс",
-      "Ультра"
-    ],
-    "japanese": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "エリート",
-      "プライム",
-      "マックス",
-      "ウルトラ"
-    ],
-    "korean": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "엘리트",
-      "프라임",
-      "맥스",
-      "울트라"
-    ],
-    "hindi": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "एलीट",
-      "प्राइम",
-      "मैक्स",
-      "अल्ट्रा"
-    ],
-    "arabic": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "نخبة",
-      "برايم",
-      "ماكس",
-      "ألترا"
-    ],
-    "turkish": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Elite",
-      "Prime",
-      "Max",
-      "Ultra"
-    ],
-    "chinese": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "精英",
-      "至尊",
-      "最大",
-      "终极"
-    ],
-    "polish": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Elite",
-      "Prime",
-      "Max",
-      "Ultra"
-    ],
-    "indonesian": [
-      "X",
-      "Pro",
-      "Gaming",
-      "GX",
-      "TV",
-      "YT",
-      "TTV",
-      "Elite",
-      "Prime",
-      "Max",
-      "Ultra"
-    ]
+    "english": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Elite", "Prime", "Max", "Ultra", "GG", "HD", "FX", "XL", "XP", "Plus", "Edge", "Force", "Strike", "Mode", "Zone", "Rank", "Ace", "One"],
+    "spanish": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Elite", "Prime", "Max", "Ultra", "GG", "HD", "FX", "XL", "Plus", "Borde", "Fuerza", "Golpe", "Modo", "Zona", "Rango", "As", "Uno"],
+    "portuguese": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Elite", "Prime", "Max", "Ultra", "GG", "HD", "FX", "XL", "Plus", "Borda", "Força", "Golpe", "Modo", "Zona", "Rank", "Ás", "Um"],
+    "french": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Elite", "Prime", "Max", "Ultra", "GG", "HD", "FX", "XL", "Plus", "Bord", "Force", "Frappe", "Mode", "Zone", "Rang", "As", "Un"],
+    "german": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Elite", "Prime", "Max", "Ultra", "GG", "HD", "FX", "XL", "Plus", "Kante", "Kraft", "Schlag", "Modus", "Zone", "Rang", "As", "Eins"],
+    "italian": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Elite", "Prime", "Max", "Ultra", "GG", "HD", "FX", "XL", "Plus", "Bordo", "Forza", "Colpo", "Modo", "Zona", "Rango", "Asso", "Uno"],
+    "russian": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Элит", "Прайм", "Макс", "Ультра", "GG", "HD", "FX", "XL", "Плюс", "Край", "Сила", "Удар", "Режим", "Зона", "Ранг", "Туз", "Один"],
+    "japanese": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "エリート", "プライム", "マックス", "ウルトラ", "GG", "HD", "FX", "XL", "プラス", "エッジ", "フォース", "ストライク", "モード", "ゾーン", "ランク", "エース", "ワン"],
+    "korean": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "엘리트", "프라임", "맥스", "울트라", "GG", "HD", "FX", "XL", "플러스", "엣지", "포스", "스트라이크", "모드", "존", "랭크", "에이스", "원"],
+    "hindi": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "एलीट", "प्राइम", "मैक्स", "अल्ट्रा", "GG", "HD", "FX", "XL", "प्लस", "एज", "फोर्स", "स्ट्राइक", "मोड", "जोन", "रैंक", "इक्का", "एक"],
+    "arabic": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "نخبة", "برايم", "ماكس", "ألترا", "GG", "HD", "FX", "XL", "بلاس", "حافة", "قوة", "ضربة", "وضع", "منطقة", "رتبة", "آس", "واحد"],
+    "turkish": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Elite", "Prime", "Max", "Ultra", "GG", "HD", "FX", "XL", "Plus", "Kenar", "Güç", "Vuruş", "Mod", "Bölge", "Rütbe", "As", "Bir"],
+    "chinese": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "精英", "至尊", "最大", "终极", "GG", "HD", "FX", "XL", "加强", "锋芒", "力量", "打击", "模式", "领域", "排名", "王牌", "一号"],
+    "polish": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Elite", "Prime", "Max", "Ultra", "GG", "HD", "FX", "XL", "Plus", "Krawedz", "Sila", "Cios", "Tryb", "Strefa", "Ranga", "As", "Jeden"],
+    "indonesian": ["X", "Pro", "Gaming", "GX", "TV", "YT", "TTV", "Elite", "Prime", "Max", "Ultra", "GG", "HD", "FX", "XL", "Plus", "Tepi", "Kekuatan", "Serangan", "Mode", "Zona", "Peringkat", "Ace", "Satu"]
   },
   "themes": [
-    {
-      "value": "gaming",
-      "label": "Gaming"
-    },
-    {
-      "value": "animals",
-      "label": "Animals"
-    },
-    {
-      "value": "tech",
-      "label": "Tech"
-    },
-    {
-      "value": "fantasy",
-      "label": "Fantasy"
-    },
-    {
-      "value": "sports",
-      "label": "Sports"
-    },
-    {
-      "value": "space",
-      "label": "Space"
-    },
-    {
-      "value": "music",
-      "label": "Music"
-    },
-    {
-      "value": "food",
-      "label": "Food"
-    }
+    {"value": "gaming", "label": "Gaming"},
+    {"value": "animals", "label": "Animals"},
+    {"value": "tech", "label": "Tech"},
+    {"value": "fantasy", "label": "Fantasy"},
+    {"value": "sports", "label": "Sports"},
+    {"value": "space", "label": "Space"},
+    {"value": "music", "label": "Music"},
+    {"value": "food", "label": "Food"}
   ],
   "languages": [
-    {
-      "value": "english",
-      "label": "English"
-    },
-    {
-      "value": "spanish",
-      "label": "Spanish"
-    },
-    {
-      "value": "portuguese",
-      "label": "Portuguese"
-    },
-    {
-      "value": "french",
-      "label": "French"
-    },
-    {
-      "value": "german",
-      "label": "German"
-    },
-    {
-      "value": "italian",
-      "label": "Italian"
-    },
-    {
-      "value": "russian",
-      "label": "Russian"
-    },
-    {
-      "value": "japanese",
-      "label": "Japanese"
-    },
-    {
-      "value": "korean",
-      "label": "Korean"
-    },
-    {
-      "value": "hindi",
-      "label": "Hindi"
-    },
-    {
-      "value": "arabic",
-      "label": "Arabic"
-    },
-    {
-      "value": "turkish",
-      "label": "Turkish"
-    },
-    {
-      "value": "chinese",
-      "label": "Chinese (Simplified)"
-    },
-    {
-      "value": "polish",
-      "label": "Polish"
-    },
-    {
-      "value": "indonesian",
-      "label": "Indonesian"
-    }
+    {"value": "english", "label": "English"},
+    {"value": "spanish", "label": "Spanish"},
+    {"value": "portuguese", "label": "Portuguese"},
+    {"value": "french", "label": "French"},
+    {"value": "german", "label": "German"},
+    {"value": "italian", "label": "Italian"},
+    {"value": "russian", "label": "Russian"},
+    {"value": "japanese", "label": "Japanese"},
+    {"value": "korean", "label": "Korean"},
+    {"value": "hindi", "label": "Hindi"},
+    {"value": "arabic", "label": "Arabic"},
+    {"value": "turkish", "label": "Turkish"},
+    {"value": "chinese", "label": "Chinese (Simplified)"},
+    {"value": "polish", "label": "Polish"},
+    {"value": "indonesian", "label": "Indonesian"}
   ],
   "numbers": [
-    "01",
-    "07",
-    "13",
-    "21",
-    "42",
-    "47",
-    "69",
-    "77",
-    "88",
-    "99",
-    "100",
-    "123",
-    "420",
-    "666",
-    "777",
-    "999"
+    "01", "07", "09", "13", "21", "23", "42", "47", "69", "77",
+    "88", "99", "100", "101", "123", "360", "404", "420", "500",
+    "666", "777", "888", "999", "007", "011", "22", "33", "44", "55", "66"
   ]
 }

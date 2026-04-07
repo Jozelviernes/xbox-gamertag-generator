@@ -1,54 +1,7 @@
 ---
-const featuredPosts = [
-  {
-    id: "1",
-    title: "The Complete Guide to Xbox Gamertag History",
-    excerpt:
-      "Discover the evolution of Xbox gamertags from the original Xbox to today's modern system.",
-    readTime: "5 min read",
-    slug: "xbox-gamertag-history-guide"
-  },
-  {
-    id: "2",
-    title: "50 Creative Gamertag Ideas for Every Gamer",
-    excerpt:
-      "Get inspired with our curated list of unique gamertag ideas across different gaming genres.",
-    readTime: "8 min read",
-    slug: "50-creative-gamertag-ideas"
-  },
-  {
-    id: "3",
-    title: "How to Change Your Xbox Gamertag (Step by Step)",
-    excerpt:
-      "A detailed walkthrough on changing your gamertag on Xbox console, PC, and mobile app.",
-    readTime: "6 min read",
-    slug: "how-to-change-xbox-gamertag"
-  },
-  {
-    id: "4",
-    title: "Xbox Gamertag Rules and Restrictions Explained",
-    excerpt:
-      "Understanding Microsoft's policies and what makes a gamertag acceptable or banned.",
-    readTime: "4 min read",
-    slug: "xbox-gamertag-rules-restrictions"
-  },
-  {
-    id: "5",
-    title: "Psychology Behind Great Gaming Names",
-    excerpt:
-      "Why certain gamertags stick in memory and how to create one that represents you.",
-    readTime: "7 min read",
-    slug: "psychology-gaming-names"
-  },
-  {
-    id: "6",
-    title: "Rare Xbox Gamertags: What Makes Them Valuable",
-    excerpt:
-      "Explore the world of rare gamertags and what collectors look for in premium names.",
-    readTime: "9 min read",
-    slug: "rare-xbox-gamertags-valuable"
-  }
-];
+import { blogPosts } from "../../data/blogPosts";
+
+const featuredPosts = blogPosts.slice(0, 6);
 ---
 
 <section class="pt-8 pb-16 bg-light-grey">
@@ -75,8 +28,8 @@ const featuredPosts = [
                 {post.readTime}
               </div>
 
-              <a
-                href={`/blog/${post.slug}`}
+              
+                <a href={`/blog/${post.slug}`}
                 class="text-xbox-green hover:text-xbox-green-light font-medium inline-flex items-center group-hover:translate-x-1 transition-transform"
               >
                 Read More <span class="ml-1">→</span>
@@ -88,7 +41,7 @@ const featuredPosts = [
     </div>
 
     <div class="text-center mt-12">
-      <a
+      
         href="/blog"
         class="inline-flex items-center px-6 py-3 bg-xbox-green hover:bg-xbox-green-light text-white font-semibold rounded-lg transition-colors shadow-xbox"
       >
