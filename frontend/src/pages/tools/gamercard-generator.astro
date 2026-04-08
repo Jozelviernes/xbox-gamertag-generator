@@ -1,3 +1,4 @@
+
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import Header from "../../components/layout/Header.astro";
@@ -5,665 +6,1613 @@ import Header from "../../components/layout/Header.astro";
 
 <MainLayout
   title="Xbox Gamercard Generator – Create Your Custom Xbox Badge"
-  description="Create a custom Xbox gamercard showing your gamertag, gamerscore, and avatar. Download as PNG and share on forums, social bios, or anywhere."
+  description="Create a custom Xbox gamercard showing your gamertag, gamerscore, status, badges, and avatar. Download as PNG and share on forums, social bios, or anywhere."
 >
   <Header />
 
-  <div class="min-h-screen relative bg-gray-950 text-gray-100">
-    <div class="fixed inset-0 bg-gray-950/95 z-[-1]" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap');
 
-    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pt-8 pb-16">
+    .gc-root { font-family: 'Rajdhani', sans-serif; }
+    .gc-title { font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.04em; }
+    .gc-mono  { font-family: 'Share Tech Mono', monospace; }
 
-      <!-- Hero -->
-      <section class="bg-gray-900 border border-gray-800 py-12 md:py-16 max-w-6xl mx-auto rounded-lg mb-8">
-        <div class="px-6 text-center">
-          <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">
-            Xbox <span class="text-xbox-green">Gamercard Generator</span>
-          </h1>
-          <p class="text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
-            Create a custom Xbox gamercard badge. Perfect for forums, social bios, or just bragging rights.
-          </p>
+    .panel {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .panel-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 14px;
+    }
+
+    .gc-input {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .gc-input::placeholder { color: rgba(255,255,255,0.2); }
+    .gc-input:focus { border-color: var(--accent, #107C10); }
+
+    .gc-select {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .field-label {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 6px;
+    }
+
+    .avatar-btn {
+      aspect-ratio: 1;
+      border-radius: 10px;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+    }
+    .avatar-btn:hover { border-color: rgba(255,255,255,0.25); }
+    .avatar-btn.active {
+      border-color: var(--accent, #107C10);
+      background: rgba(0,0,0,0.5);
+      box-shadow: 0 0 0 1px var(--accent, #107C10), 0 0 14px rgba(0,0,0,0.22);
+    }
+
+    .badge-btn {
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.3);
+      color: rgba(255,255,255,0.45);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .badge-btn svg {
+      width: 11px;
+      height: 11px;
+      min-width: 11px;
+      min-height: 11px;
+      flex-shrink: 0;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      opacity: 0.9;
+    }
+    .badge-btn:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
+    .badge-btn.active {
+      border-color: var(--accent,#107C10);
+      color: #fff;
+      background: rgba(0,0,0,0.5);
+      box-shadow: 0 0 0 1px rgba(16,124,16,0.12);
+    }
+
+    .theme-btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .style-btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.3);
+      color: rgba(255,255,255,0.7);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .theme-btn:hover,
+    .style-btn:hover {
+      border-color: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    .theme-btn.active,
+    .style-btn.active {
+      border-color: var(--accent, #107C10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      color: #fff;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.04),
+        0 0 0 1px var(--accent, #107C10),
+        0 10px 24px rgba(0,0,0,0.22);
+    }
+
+    .theme-btn.active .accent-dot {
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.06),
+        0 0 14px var(--accent, #107C10);
+    }
+
+    .upload-zone {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.35);
+      border: 1px dashed rgba(255,255,255,0.15);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .upload-zone:hover { border-color: var(--accent,#107C10); }
+
+    .dl-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--accent, #107C10);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .dl-btn:hover { opacity: 0.88; }
+
+    .canvas-wrap {
+      background: #080808;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .tip-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.4;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+    .accent-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+    input[type=range] { accent-color: var(--accent,#107C10); }
+    input[type=color] { cursor: pointer; }
+
+    .section-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 4px 0;
+    }
+  </style>
+
+  <div class="gc-root min-h-screen bg-[#070a0e] text-gray-100" style="--accent:#107C10">
+    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 pt-8 pb-20">
+
+      <section class="max-w-7xl mx-auto mb-8 text-center py-12 px-6"
+        style="background:linear-gradient(135deg,rgba(16,124,16,0.12) 0%,rgba(0,0,0,0) 60%);border:1px solid rgba(16,124,16,0.18);border-radius:16px;">
+        <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full gc-mono text-xs"
+          style="background:rgba(16,124,16,0.15);border:1px solid rgba(16,124,16,0.3);color:#4ade80;">
+          ● GAMERCARD STUDIO
         </div>
+        <h1 class="gc-title text-4xl md:text-5xl font-extrabold tracking-wide text-white mb-3">
+          Xbox <span style="color:var(--accent)">Gamercard</span> Generator
+        </h1>
+        <p class="text-base text-gray-400 max-w-2xl mx-auto" style="font-family:'Rajdhani',sans-serif;font-size:17px;">
+          Build a realistic Xbox-style profile card. Choose your style, theme, badges, and export in social-ready sizes.
+        </p>
       </section>
 
-      <!-- Tool -->
-      <div class="max-w-6xl mx-auto">
-        <div class="grid lg:grid-cols-[1fr_1.2fr] gap-6">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.3fr] gap-6">
 
-          <!-- LEFT — Controls -->
-          <div class="space-y-5">
+        <div class="space-y-4">
 
-            <!-- Your Info -->
-            <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 space-y-4">
-              <h3 class="text-base font-semibold text-white">Your Info</h3>
-
+          <div class="panel">
+            <div class="panel-label">Profile Info</div>
+            <div class="space-y-3">
               <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1.5">Gamertag</label>
-                <input
-                  id="inputGamertag"
-                  type="text"
-                  maxlength="12"
-                  placeholder="e.g. ShadowWolf"
-                  class="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-xbox-green text-sm"
-                />
+                <label class="field-label">Gamertag</label>
+                <input id="inputGamertag" type="text" maxlength="16" placeholder="e.g. ShadowWolf" class="gc-input" />
               </div>
-
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="field-label">Gamerscore</label>
+                  <input id="inputGamerscore" type="number" min="0" max="9999999" placeholder="e.g. 85000" class="gc-input" />
+                </div>
+                <div>
+                  <label class="field-label">Member Since</label>
+                  <input id="inputMemberSince" type="text" maxlength="12" placeholder="e.g. 2018" class="gc-input" />
+                </div>
+              </div>
               <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1.5">Gamerscore</label>
-                <input
-                  id="inputGamerscore"
-                  type="number"
-                  min="0"
-                  max="999999"
-                  placeholder="e.g. 15000"
-                  class="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-xbox-green text-sm"
-                />
+                <label class="field-label">Favorite / Recent Game</label>
+                <input id="inputGame" type="text" maxlength="32" placeholder="e.g. Halo Infinite" class="gc-input" />
               </div>
-
-              <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1.5">
-                  Favorite Game <span class="text-gray-600">(optional)</span>
-                </label>
-                <input
-                  id="inputGame"
-                  type="text"
-                  maxlength="24"
-                  placeholder="e.g. Halo Infinite"
-                  class="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-xbox-green text-sm"
-                />
-              </div>
-            </div>
-
-            <!-- Avatar -->
-            <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
-              <h3 class="text-base font-semibold text-white mb-3">Avatar</h3>
-
-              <!-- Preset grid -->
-              <div id="avatarGrid" class="grid grid-cols-6 gap-2 mb-4"></div>
-
-              <!-- Upload avatar -->
-              <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1.5">
-                  Or upload your own avatar
-                </label>
-                <label class="flex items-center gap-3 px-4 py-2.5 bg-gray-800 border border-gray-700 border-dashed rounded-lg cursor-pointer hover:border-xbox-green transition-colors group">
-                  <svg class="h-4 w-4 text-gray-500 group-hover:text-xbox-green transition-colors shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
-                  </svg>
-                  <span id="avatarUploadLabel" class="text-xs text-gray-500 group-hover:text-gray-300 transition-colors truncate">
-                    Click to upload image (square recommended)
-                  </span>
-                  <input id="avatarUpload" type="file" accept="image/*" class="hidden" />
-                </label>
-                <!-- Clear avatar upload -->
-                <button
-                  id="clearAvatarBtn"
-                  class="hidden mt-2 text-xs text-red-400 hover:text-red-300 transition-colors"
-                >
-                  ✕ Remove uploaded avatar
-                </button>
-              </div>
-            </div>
-
-            <!-- Background -->
-            <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
-              <h3 class="text-base font-semibold text-white mb-3">Background</h3>
-
-              <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1.5">
-                  Upload a background image
-                </label>
-                <label class="flex items-center gap-3 px-4 py-2.5 bg-gray-800 border border-gray-700 border-dashed rounded-lg cursor-pointer hover:border-xbox-green transition-colors group">
-                  <svg class="h-4 w-4 text-gray-500 group-hover:text-xbox-green transition-colors shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
-                  </svg>
-                  <span id="bgUploadLabel" class="text-xs text-gray-500 group-hover:text-gray-300 transition-colors truncate">
-                    Click to upload background
-                  </span>
-                  <input id="bgUpload" type="file" accept="image/*" class="hidden" />
-                </label>
-                <button
-                  id="clearBgBtn"
-                  class="hidden mt-2 text-xs text-red-400 hover:text-red-300 transition-colors"
-                >
-                  ✕ Remove background
-                </button>
-              </div>
-
-              <!-- BG overlay opacity (only shows when BG is uploaded) -->
-              <div id="bgOpacityRow" class="hidden mt-4">
-                <label class="block text-xs font-medium text-gray-400 mb-1.5">
-                  Background overlay darkness
-                </label>
-                <input
-                  id="bgOpacity"
-                  type="range"
-                  min="0"
-                  max="90"
-                  value="55"
-                  class="w-full accent-xbox-green"
-                />
-                <div class="flex justify-between text-xs text-gray-600 mt-1">
-                  <span>Lighter</span>
-                  <span>Darker</span>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="field-label">Status</label>
+                  <select id="inputStatus" class="gc-select">
+                    <option value="online">Online</option>
+                    <option value="ingame">In Game</option>
+                    <option value="away">Away</option>
+                    <option value="offline">Offline</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="field-label">Presence Text</label>
+                  <input id="inputPresence" type="text" maxlength="42" placeholder="e.g. Playing Forza" class="gc-input" />
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Theme -->
-            <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
-              <h3 class="text-base font-semibold text-white mb-3">Theme</h3>
+          <div class="panel">
+            <div class="flex items-center justify-between mb-3">
+              <div class="panel-label mb-0">Avatar</div>
+              <select id="avatarShape" class="gc-select" style="width:auto;padding:6px 12px;font-size:13px;">
+                <option value="circle">Circle</option>
+                <option value="rounded">Rounded</option>
+              </select>
+            </div>
+            <div id="avatarGrid" class="grid grid-cols-6 gap-2 mb-3"></div>
+            <div>
+              <label class="field-label">Upload Custom Avatar</label>
+              <label class="upload-zone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span id="avatarUploadLabel" class="text-xs text-gray-500 truncate" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:0.05em;">
+                  Click to upload (square recommended)
+                </span>
+                <input id="avatarUpload" type="file" accept="image/*" class="hidden" />
+              </label>
+              <button id="clearAvatarBtn" class="hidden mt-2 text-xs text-red-400 hover:text-red-300 transition-colors" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em;">
+                ✕ Remove avatar
+              </button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="flex items-center justify-between mb-3">
+              <div class="panel-label mb-0">Badges</div>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input id="toggleBadges" type="checkbox" class="accent-[#107C10]" />
+                <span class="field-label mb-0" style="font-size:11px;">Show badges</span>
+              </label>
+            </div>
+            <div id="badgeGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
+          </div>
+
+          <div class="panel space-y-4">
+            <div class="panel-label">Style & Theme</div>
+
+            <div>
+              <label class="field-label">Card Style</label>
+              <div id="styleGrid" class="grid grid-cols-2 gap-2"></div>
+            </div>
+
+            <div>
+              <label class="field-label">Theme</label>
               <div id="themeGrid" class="grid grid-cols-2 gap-2"></div>
             </div>
 
-            <!-- Generate -->
-            <button
-              id="generateBtn"
-              class="w-full py-3.5 bg-xbox-green hover:bg-xbox-green-light text-white font-bold text-base rounded-xl transition-colors shadow-xbox"
-            >
-              Generate Gamercard
-            </button>
-
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="field-label">Accent Color</label>
+                <input id="accentColor" type="color" value="#107C10"
+                  class="w-full h-11 bg-transparent border border-white/10 rounded-lg cursor-pointer" />
+              </div>
+              <div>
+                <label class="field-label">Background</label>
+                <select id="bgPreset" class="gc-select">
+                  <option value="none">Solid Dark</option>
+                  <option value="green-gradient">Green Gradient</option>
+                  <option value="blue-nebula">Blue Nebula</option>
+                  <option value="gold-wave">Gold Wave</option>
+                  <option value="purple-haze">Purple Haze</option>
+                  <option value="midnight">Midnight</option>
+                  <option value="carbon">Carbon Grid</option>
+                </select>
+              </div>
+            </div>
           </div>
 
-          <!-- RIGHT — Preview -->
-          <div class="space-y-5">
-
-            <!-- Sticky preview on desktop -->
-            <div class="lg:sticky lg:top-6 space-y-5">
-
-              <!-- Canvas preview -->
-              <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
-                <div class="flex items-center justify-between mb-4">
-                  <h3 class="text-base font-semibold text-white">Preview</h3>
-                  <span class="text-xs text-gray-500">Updates live as you type</span>
-                </div>
-
-                <!-- Canvas wrapper — responsive -->
-                <div class="w-full overflow-hidden rounded-xl border border-gray-700 mb-5">
-                  <canvas
-                    id="gamercardCanvas"
-                    width="600"
-                    height="200"
-                    class="w-full block"
-                  ></canvas>
-                </div>
-
-                <!-- Download -->
-                <button
-                  id="downloadBtn"
-                  class="w-full py-3 bg-xbox-green hover:bg-xbox-green-light text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
-                >
-                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
-                  </svg>
-                  Download PNG
-                </button>
+          <div class="panel">
+            <div class="panel-label">Background Upload</div>
+            <label class="upload-zone">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span id="bgUploadLabel" class="text-xs text-gray-500 truncate" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:0.05em;">
+                Click to upload background image
+              </span>
+              <input id="bgUpload" type="file" accept="image/*" class="hidden" />
+            </label>
+            <button id="clearBgBtn" class="hidden mt-2 text-xs text-red-400 hover:text-red-300 transition-colors" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em;">
+              ✕ Remove background
+            </button>
+            <div id="bgOpacityRow" class="hidden mt-4">
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="field-label mb-0">Overlay Darkness</label>
+                <span id="bgOpacityVal" class="gc-mono text-xs text-gray-500">55%</span>
               </div>
-
-              <!-- Tips -->
-              <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
-                <h3 class="text-sm font-semibold text-gray-400 mb-3">Tips</h3>
-                <ul class="space-y-2.5 text-sm text-gray-500">
-                  <li class="flex items-start gap-2">
-                    <span class="text-xbox-green shrink-0 mt-0.5">→</span>
-                    Use a square image for the best avatar result
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-xbox-green shrink-0 mt-0.5">→</span>
-                    Wide landscape images work best as backgrounds
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-xbox-green shrink-0 mt-0.5">→</span>
-                    Adjust the overlay slider to keep text readable
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-xbox-green shrink-0 mt-0.5">→</span>
-                    Download and paste the PNG into forum signatures
-                  </li>
-                </ul>
+              <input id="bgOpacity" type="range" min="0" max="90" value="55" class="w-full" />
+              <div class="flex justify-between mt-1" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:rgba(255,255,255,0.25);">
+                <span>LIGHTER</span><span>DARKER</span>
               </div>
+            </div>
+          </div>
 
+          <div class="panel">
+            <div class="panel-label">Export Settings</div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="field-label">Size</label>
+                <select id="exportSize" class="gc-select">
+                  <option value="wide">Wide Card (600×200)</option>
+                  <option value="square">Square (1080×1080)</option>
+                  <option value="story">Story (1080×1920)</option>
+                  <option value="banner">Banner (1500×500)</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label">Scale</label>
+                <select id="exportScale" class="gc-select">
+                  <option value="2">2x — HD</option>
+                  <option value="4" selected>4x — 4K Ready</option>
+                  <option value="6">6x — Very High</option>
+                  <option value="8">8x — Max</option>
+                </select>
+              </div>
             </div>
           </div>
 
         </div>
+
+        <div class="space-y-4">
+          <div class="lg:sticky lg:top-6 space-y-4">
+
+            <div class="panel">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <div class="panel-label mb-0">Live Preview</div>
+                <span id="previewSizeLabel" class="gc-mono text-xs text-gray-500">Wide Card • 600×200</span>
+              </div>
+
+              <div class="canvas-wrap mb-4">
+                <canvas id="gamercardCanvas" width="600" height="200" class="w-full block"></canvas>
+              </div>
+
+              <button id="downloadBtn" class="dl-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PNG
+              </button>
+            </div>
+
+            <div class="panel">
+              <div class="panel-label">Pro Tips</div>
+              <div class="space-y-3">
+                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> Square avatar images give cleanest results</div>
+                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> Use 4x or higher for very sharp downloads</div>
+                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> 50–70% overlay keeps text readable over photos</div>
+                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> Banner format is perfect for Twitter / X headers</div>
+                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> Square export is ideal for Instagram posts</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
 
-      <!-- Ad Banner -->
-      <div class="max-w-6xl mx-auto mt-8">
-        <div class="bg-gray-900 border border-dashed border-gray-700 rounded-lg px-4 py-6 text-center">
-          <p class="text-xs text-gray-600 mb-2">Advertisement</p>
-          <div class="h-24 md:h-32 bg-gray-800 rounded"></div>
+      <div class="max-w-7xl mx-auto mt-8">
+        <div class="panel text-center">
+          <p class="gc-mono text-xs text-gray-600 mb-3">Advertisement</p>
+          <div class="h-24 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.06);"></div>
         </div>
       </div>
 
     </div>
   </div>
 
-  <script>
-    type Theme = {
-      id      : string;
-      label   : string;
-      bg      : string;
-      accent  : string;
-      text    : string;
-      subtext : string;
-      border  : string;
-      dot     : string;
-    };
+<script>
+  type Theme        = { id:string; label:string; bg:string; accent:string; text:string; subtext:string };
+  type AvatarPreset = { id:string; emoji:string; label:string };
+  type IconName     = "circle"|"trophy"|"calendar"|"messageSquare"|"gamepad2"|"flame"|"zap"|"diamond"|"sparkles";
+  type BadgePreset  = { id:string; icon:IconName; label:string };
+  type CardStyle    = { id:string; label:string; glass:boolean; glow:boolean; strip:boolean; scanline:boolean };
+  type ExportPreset = { id:string; label:string; width:number; height:number };
+  type Status       = "online"|"ingame"|"away"|"offline";
 
-    type AvatarPreset = {
-      id    : string;
-      emoji : string;
-      label : string;
-    };
+  const themes: Theme[] = [
+    { id:"xbox",   label:"Classic Xbox",  bg:"#06090d", accent:"#107C10", text:"#ffffff", subtext:"#8a9aaa" },
+    { id:"neon",   label:"Neon Night",    bg:"#05050f", accent:"#00e5ff", text:"#ffffff", subtext:"#a78bfa" },
+    { id:"gold",   label:"Gold Elite",    bg:"#080600", accent:"#f59e0b", text:"#ffffff", subtext:"#c9a84c" },
+    { id:"crimson",label:"Crimson",       bg:"#0a0205", accent:"#ef4444", text:"#ffffff", subtext:"#f87171" },
+    { id:"ice",    label:"Ice Cold",      bg:"#04111e", accent:"#7dd3fc", text:"#ffffff", subtext:"#93c5fd" },
+    { id:"purple", label:"Ultra Violet",  bg:"#06020f", accent:"#a855f7", text:"#ffffff", subtext:"#c084fc" },
+  ];
 
-    // ── Themes ─────────────────────────────────────────────────────
-    const themes: Theme[] = [
-      {
-        id      : "xbox",
-        label   : "Classic Xbox",
-        bg      : "#0a0a0a",
-        accent  : "#107C10",
-        text    : "#ffffff",
-        subtext : "#9ca3af",
-        border  : "#107C10",
-        dot     : "#107C10",
-      },
-      {
-        id      : "neon",
-        label   : "Neon Night",
-        bg      : "#0d0d1a",
-        accent  : "#00fff7",
-        text    : "#ffffff",
-        subtext : "#a78bfa",
-        border  : "#00fff7",
-        dot     : "#00fff7",
-      },
-      {
-        id      : "gold",
-        label   : "Gold Elite",
-        bg      : "#0a0a0a",
-        accent  : "#f59e0b",
-        text    : "#ffffff",
-        subtext : "#d1d5db",
-        border  : "#f59e0b",
-        dot     : "#f59e0b",
-      },
-      {
-        id      : "ice",
-        label   : "Ice Cold",
-        bg      : "#0a1628",
-        accent  : "#e0f2fe",
-        text    : "#ffffff",
-        subtext : "#93c5fd",
-        border  : "#93c5fd",
-        dot     : "#93c5fd",
-      },
+  const avatarPresets: AvatarPreset[] = [
+    {id:"wolf",emoji:"🐺",label:"Wolf"},{id:"ghost",emoji:"👻",label:"Ghost"},
+    {id:"fire",emoji:"🔥",label:"Fire"},{id:"skull",emoji:"💀",label:"Skull"},
+    {id:"sword",emoji:"⚔️",label:"Sword"},{id:"shield",emoji:"🛡️",label:"Shield"},
+    {id:"dragon",emoji:"🐉",label:"Dragon"},{id:"robot",emoji:"🤖",label:"Robot"},
+    {id:"alien",emoji:"👾",label:"Alien"},{id:"crown",emoji:"👑",label:"Crown"},
+    {id:"lightning",emoji:"⚡",label:"Lightning"},{id:"star",emoji:"⭐",label:"Star"},
+    {id:"ninja",emoji:"🥷",label:"Ninja"},{id:"sniper",emoji:"🎯",label:"Sniper"},
+    {id:"demon",emoji:"😈",label:"Demon"},{id:"axe",emoji:"🪓",label:"Axe"},
+    {id:"bomb",emoji:"💣",label:"Bomb"},{id:"zap",emoji:"⚡",label:"Zap"},
+  ];
+
+  const badgePresets: BadgePreset[] = [
+    {id:"veteran", icon:"flame",    label:"Veteran"},
+    {id:"elite",   icon:"trophy",   label:"Elite"},
+    {id:"founder", icon:"sparkles", label:"Founder"},
+    {id:"grinder", icon:"zap",      label:"Grinder"},
+    {id:"rare",    icon:"diamond",  label:"Rare Tag"},
+    {id:"og",      icon:"gamepad2", label:"OG Gamer"},
+  ];
+
+  const cardStyles: CardStyle[] = [
+    {id:"classic", label:"Classic", glass:false, glow:false, strip:true,  scanline:false},
+    {id:"modern",  label:"Modern",  glass:false, glow:false, strip:false, scanline:false},
+    {id:"glass",   label:"Glass",   glass:true,  glow:false, strip:false, scanline:false},
+    {id:"elite",   label:"Elite",   glass:false, glow:true,  strip:true,  scanline:false},
+    {id:"crt",     label:"CRT",     glass:false, glow:true,  strip:false, scanline:true },
+  ];
+
+  const exportPresets: ExportPreset[] = [
+    {id:"wide",   label:"Wide Card",   width:600,  height:200 },
+    {id:"square", label:"Square Post", width:1080, height:1080},
+    {id:"story",  label:"Story",       width:1080, height:1920},
+    {id:"banner", label:"Banner",      width:1500, height:500 },
+  ];
+
+  const statusMap: Record<Status,{label:string;color:string}> = {
+    online:  {label:"ONLINE",  color:"#22c55e"},
+    ingame:  {label:"IN GAME", color:"#3b82f6"},
+    away:    {label:"AWAY",    color:"#f59e0b"},
+    offline: {label:"OFFLINE", color:"#6b7280"},
+  };
+
+  function iconSvg(name: IconName){
+    switch(name){
+      case "flame":
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A3.5 3.5 0 1 0 12 8c0 2-2 3-2 5a2 2 0 1 0 4 0c0-1.5-1-2.5-1-4.5 2 1 5 3.5 5 7a6 6 0 0 1-12 0c0-2.5 1.2-4.4 2.5-5.5"/></svg>`;
+      case "trophy":
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h3v2a4 4 0 0 1-4 4"/><path d="M7 5H4v2a4 4 0 0 0 4 4"/></svg>`;
+      case "sparkles":
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3Z"/><path d="M5 19l.8 1.7L7.5 22l-1.7.8L5 24l-.8-1.2L2.5 22l1.7-.3L5 19Z"/><path d="M19 15l1 2 2 .9-2 .9-1 2-.9-2-2-.9 2-.9 1-2Z"/></svg>`;
+      case "zap":
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>`;
+      case "diamond":
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 6-5 6 5-6 13L6 8Z"/><path d="M6 8h12"/></svg>`;
+      case "gamepad2":
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4"/><path d="M8 10v4"/><path d="M15 11h.01"/><path d="M18 13h.01"/><path d="M6.2 9.8A4 4 0 0 1 10 7h4a4 4 0 0 1 3.8 2.8l1 3.2a2.5 2.5 0 0 1-4.5 2.1L13 13H11l-1.3 2.1A2.5 2.5 0 0 1 5.2 13l1-3.2Z"/></svg>`;
+      default:
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>`;
+    }
+  }
+
+  let selTheme : Theme        = themes[0];
+  let selAvatar: AvatarPreset = avatarPresets[0];
+  let selStyle : CardStyle    = cardStyles[0];
+  let selExport: ExportPreset = exportPresets[0];
+  let selBadges: string[]     = [];
+  let custAvatar: HTMLImageElement|null = null;
+  let custBg    : HTMLImageElement|null = null;
+
+  const canvas    = document.getElementById("gamercardCanvas")  as HTMLCanvasElement;
+  let ctx         = canvas.getContext("2d")!;
+  const iTag      = document.getElementById("inputGamertag")    as HTMLInputElement;
+  const iScore    = document.getElementById("inputGamerscore")  as HTMLInputElement;
+  const iGame     = document.getElementById("inputGame")        as HTMLInputElement;
+  const iSince    = document.getElementById("inputMemberSince") as HTMLInputElement;
+  const iStatus   = document.getElementById("inputStatus")      as HTMLSelectElement;
+  const iPresence = document.getElementById("inputPresence")    as HTMLInputElement;
+  const iAccent   = document.getElementById("accentColor")      as HTMLInputElement;
+  const iShape    = document.getElementById("avatarShape")      as HTMLSelectElement;
+  const iBgPreset = document.getElementById("bgPreset")         as HTMLSelectElement;
+  const iExportSz = document.getElementById("exportSize")       as HTMLSelectElement;
+  const iExportSc = document.getElementById("exportScale")      as HTMLSelectElement;
+  const iToggleBg = document.getElementById("toggleBadges")     as HTMLInputElement;
+  const elAvatarGrid   = document.getElementById("avatarGrid")       as HTMLElement;
+  const elBadgeGrid    = document.getElementById("badgeGrid")        as HTMLElement;
+  const elThemeGrid    = document.getElementById("themeGrid")        as HTMLElement;
+  const elStyleGrid    = document.getElementById("styleGrid")        as HTMLElement;
+  const elPreviewLabel = document.getElementById("previewSizeLabel") as HTMLElement;
+  const elBgOpacityRow = document.getElementById("bgOpacityRow")     as HTMLElement;
+  const elBgOpacity    = document.getElementById("bgOpacity")        as HTMLInputElement;
+  const elBgOpacityVal = document.getElementById("bgOpacityVal")     as HTMLElement;
+  const elAvatarLabel  = document.getElementById("avatarUploadLabel")as HTMLElement;
+  const elClearAvatar  = document.getElementById("clearAvatarBtn")   as HTMLButtonElement;
+  const elBgLabel      = document.getElementById("bgUploadLabel")    as HTMLElement;
+  const elClearBg      = document.getElementById("clearBgBtn")       as HTMLButtonElement;
+  const elAvatarUpload = document.getElementById("avatarUpload")     as HTMLInputElement;
+  const elBgUpload     = document.getElementById("bgUpload")         as HTMLInputElement;
+  const rootEl         = document.querySelector(".gc-root")          as HTMLElement;
+
+  elAvatarGrid.innerHTML = avatarPresets.map(a=>`
+    <button data-avatar="${a.id}" title="${a.label}" class="avatar-btn ${a.id===selAvatar.id?"active":""}">${a.emoji}</button>
+  `).join("");
+
+  elBadgeGrid.innerHTML = badgePresets.map(b=>`
+    <button data-badge="${b.id}" class="badge-btn">
+      ${iconSvg(b.icon)}
+      <span>${b.label}</span>
+    </button>
+  `).join("");
+
+  elThemeGrid.innerHTML = themes.map(t=>`
+    <button data-theme="${t.id}" class="theme-btn ${t.id===selTheme.id?"active":""}">
+      <div class="accent-dot" style="background:${t.accent}"></div>
+      <span>${t.label}</span>
+    </button>
+  `).join("");
+
+  elStyleGrid.innerHTML = cardStyles.map(s=>`
+    <button data-style="${s.id}" class="style-btn ${s.id===selStyle.id?"active":""}">${s.label}</button>
+  `).join("");
+elAvatarGrid.querySelectorAll<HTMLButtonElement>(".avatar-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    selAvatar=avatarPresets.find(a=>a.id===btn.dataset.avatar)!;
+    custAvatar=null;
+    elAvatarUpload.value="";
+    elAvatarLabel.textContent="Click to upload (square recommended)";
+    elClearAvatar.classList.add("hidden");
+    elAvatarGrid.querySelectorAll(".avatar-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    draw();
+  });
+});
+
+elBadgeGrid.querySelectorAll<HTMLButtonElement>(".badge-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const id=btn.dataset.badge!;
+    if(selBadges.includes(id)){
+      selBadges=selBadges.filter(b=>b!==id);
+      btn.classList.remove("active");
+    } else if(selBadges.length<4){
+      selBadges.push(id);
+      btn.classList.add("active");
+    }
+    draw();
+  });
+});
+
+elThemeGrid.querySelectorAll<HTMLButtonElement>(".theme-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    selTheme=themes.find(t=>t.id===btn.dataset.theme)!;
+    iAccent.value=selTheme.accent;
+    rootEl.style.setProperty("--accent",selTheme.accent);
+    elThemeGrid.querySelectorAll(".theme-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    draw();
+  });
+});
+
+elStyleGrid.querySelectorAll<HTMLButtonElement>(".style-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    selStyle=cardStyles.find(s=>s.id===btn.dataset.style)!;
+    elStyleGrid.querySelectorAll(".style-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    draw();
+  });
+});
+
+iAccent.addEventListener("input",()=>{
+  rootEl.style.setProperty("--accent",iAccent.value);
+  draw();
+});
+
+elAvatarUpload.addEventListener("change",()=>{
+  const f=elAvatarUpload.files?.[0];
+  if(!f) return;
+  loadImg(f,img=>{
+    custAvatar=img;
+    elAvatarLabel.textContent=`✅ ${f.name}`;
+    elClearAvatar.classList.remove("hidden");
+    elAvatarGrid.querySelectorAll(".avatar-btn").forEach(b=>b.classList.remove("active"));
+    draw();
+  });
+});
+
+elClearAvatar.addEventListener("click",()=>{
+  custAvatar=null;
+  elAvatarUpload.value="";
+  elAvatarLabel.textContent="Click to upload (square recommended)";
+  elClearAvatar.classList.add("hidden");
+  selAvatar=avatarPresets[0];
+  elAvatarGrid.querySelectorAll(".avatar-btn").forEach((b,i)=>{
+    if(i===0) b.classList.add("active");
+    else b.classList.remove("active");
+  });
+  draw();
+});
+
+elBgUpload.addEventListener("change",()=>{
+  const f=elBgUpload.files?.[0];
+  if(!f) return;
+  loadImg(f,img=>{
+    custBg=img;
+    elBgLabel.textContent=`✅ ${f.name}`;
+    elClearBg.classList.remove("hidden");
+    elBgOpacityRow.classList.remove("hidden");
+    draw();
+  });
+});
+
+elClearBg.addEventListener("click",()=>{
+  custBg=null;
+  elBgUpload.value="";
+  elBgLabel.textContent="Click to upload background image";
+  elClearBg.classList.add("hidden");
+  elBgOpacityRow.classList.add("hidden");
+  draw();
+});
+
+elBgOpacity.addEventListener("input",()=>{
+  elBgOpacityVal.textContent=`${elBgOpacity.value}%`;
+  draw();
+});
+
+[iTag,iScore,iGame,iSince,iStatus,iPresence,iAccent,iShape,iBgPreset].forEach(el=>{
+  el.addEventListener("input",()=>draw());
+});
+
+iExportSz.addEventListener("change",()=>{
+  selExport=exportPresets.find(p=>p.id===iExportSz.value)!;
+  resizeCanvas();
+  draw();
+});
+
+iToggleBg.addEventListener("change",()=>draw());
+
+  function loadImg(file:File,cb:(img:HTMLImageElement)=>void){
+    const r=new FileReader();
+    r.onload=e=>{
+      const i=new Image();
+      i.onload=()=>cb(i);
+      i.src=e.target?.result as string;
+    };
+    r.readAsDataURL(file);
+  }
+
+  function hex2rgb(hex:string){
+    const v=hex.replace("#","");
+    const n=v.length===3 ? v.split("").map(c=>c+c).join("") : v;
+    const b=parseInt(n,16);
+    return {r:(b>>16)&255,g:(b>>8)&255,b:b&255};
+  }
+
+  function rgba(hex:string,a:number){
+    const {r,g,b}=hex2rgb(hex);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  function clamp(n:number,min:number,max:number){
+    return Math.min(max,Math.max(min,n));
+  }
+
+  function fontPx(font:string){
+    const m=font.match(/(\d+(\.\d+)?)px/);
+    return m ? Number(m[1]) : 16;
+  }
+
+  function measure(text:string,font:string){
+    ctx.save();
+    ctx.font=font;
+    const w=ctx.measureText(text).width;
+    ctx.restore();
+    return w;
+  }
+
+  function fitText(text:string,maxW:number,font:string){
+    if(!text) return "";
+    if(maxW<=0) return "";
+    ctx.save();
+    ctx.font=font;
+    if(ctx.measureText(text).width<=maxW){
+      ctx.restore();
+      return text;
+    }
+    let out=text;
+    while(out.length>1 && ctx.measureText(`${out}…`).width>maxW){
+      out=out.slice(0,-1);
+    }
+    ctx.restore();
+    return `${out}…`;
+  }
+
+  function fitRowsToHeight(
+    availableH:number,
+    desiredFontPx:number,
+    desiredGap:number,
+    rowCount:number,
+    minFontPx:number,
+    minGap:number
+  ){
+    let fontPxVal = desiredFontPx;
+    let gap = desiredGap;
+
+    while(
+      rowCount > 0 &&
+      (rowCount * fontPxVal + Math.max(0, rowCount - 1) * gap > availableH) &&
+      fontPxVal > minFontPx
+    ){
+      fontPxVal -= 1;
+      gap = Math.max(minGap, gap - 0.5);
+    }
+
+    return { fontPx: fontPxVal, gap };
+  }
+
+  function safeExportScale(requested:number, w:number, h:number){
+    let scale = Math.max(1, requested);
+    while(
+      scale > 1 &&
+      (
+        w * scale > 12000 ||
+        h * scale > 12000 ||
+        (w * h * scale * scale) > 95000000
+      )
+    ){
+      scale -= 1;
+    }
+    return scale;
+  }
+
+  function rr(x:number,y:number,w:number,h:number,r:number){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.lineTo(x+w-r,y);
+    ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+    ctx.lineTo(x+w,y+h-r);
+    ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+    ctx.lineTo(x+r,y+h);
+    ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+    ctx.lineTo(x,y+r);
+    ctx.quadraticCurveTo(x,y,x+r,y);
+    ctx.closePath();
+  }
+
+  function applyCtxQuality(){
+    ctx = canvas.getContext("2d")!;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+  }
+
+  function resizeCanvas(){
+    canvas.width = selExport.width;
+    canvas.height = selExport.height;
+    applyCtxQuality();
+    elPreviewLabel.textContent = `${selExport.label} • ${selExport.width}×${selExport.height}`;
+  }
+
+  function drawIcon(name:IconName,x:number,y:number,size:number,color:string,lineWidth=Math.max(1.6,size*0.1),filled=false){
+    const s=size;
+    const cx=x+s/2;
+    const cy=y+s/2;
+
+    ctx.save();
+    ctx.strokeStyle=color;
+    ctx.fillStyle=color;
+    ctx.lineWidth=lineWidth;
+    ctx.lineCap="round";
+    ctx.lineJoin="round";
+
+    if(name==="circle"){
+      ctx.beginPath();
+      ctx.arc(cx,cy,s*0.22,0,Math.PI*2);
+      filled ? ctx.fill() : ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    if(name==="zap"){
+      ctx.beginPath();
+      ctx.moveTo(x+s*0.58,y+s*0.08);
+      ctx.lineTo(x+s*0.28,y+s*0.56);
+      ctx.lineTo(x+s*0.50,y+s*0.56);
+      ctx.lineTo(x+s*0.40,y+s*0.92);
+      ctx.lineTo(x+s*0.72,y+s*0.42);
+      ctx.lineTo(x+s*0.50,y+s*0.42);
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    if(name==="diamond"){
+      ctx.beginPath();
+      ctx.moveTo(cx,y+s*0.1);
+      ctx.lineTo(x+s*0.82,cy);
+      ctx.lineTo(cx,y+s*0.9);
+      ctx.lineTo(x+s*0.18,cy);
+      ctx.closePath();
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(x+s*0.18,cy);
+      ctx.lineTo(x+s*0.82,cy);
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    if(name==="sparkles"){
+      ctx.beginPath();
+      ctx.moveTo(cx,y+s*0.08);
+      ctx.lineTo(cx,y+s*0.34);
+      ctx.moveTo(cx,y+s*0.66);
+      ctx.lineTo(cx,y+s*0.92);
+      ctx.moveTo(x+s*0.08,cy);
+      ctx.lineTo(x+s*0.34,cy);
+      ctx.moveTo(x+s*0.66,cy);
+      ctx.lineTo(x+s*0.92,cy);
+      ctx.moveTo(x+s*0.24,y+s*0.24);
+      ctx.lineTo(x+s*0.38,y+s*0.38);
+      ctx.moveTo(x+s*0.62,y+s*0.62);
+      ctx.lineTo(x+s*0.76,y+s*0.76);
+      ctx.moveTo(x+s*0.62,y+s*0.38);
+      ctx.lineTo(x+s*0.76,y+s*0.24);
+      ctx.moveTo(x+s*0.24,y+s*0.76);
+      ctx.lineTo(x+s*0.38,y+s*0.62);
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    if(name==="flame"){
+      ctx.beginPath();
+      ctx.moveTo(cx,y+s*0.1);
+      ctx.bezierCurveTo(x+s*0.82,y+s*0.26,x+s*0.76,y+s*0.56,cx,y+s*0.9);
+      ctx.bezierCurveTo(x+s*0.22,y+s*0.72,x+s*0.18,y+s*0.34,cx,y+s*0.1);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(cx,y+s*0.34);
+      ctx.bezierCurveTo(x+s*0.62,y+s*0.44,x+s*0.60,y+s*0.62,cx,y+s*0.8);
+      ctx.bezierCurveTo(x+s*0.38,y+s*0.68,x+s*0.34,y+s*0.5,cx,y+s*0.34);
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    if(name==="calendar"){
+      rr(x+s*0.14,y+s*0.2,s*0.72,s*0.66,s*0.08);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(x+s*0.14,y+s*0.42);
+      ctx.lineTo(x+s*0.86,y+s*0.42);
+      ctx.moveTo(x+s*0.32,y+s*0.08);
+      ctx.lineTo(x+s*0.32,y+s*0.28);
+      ctx.moveTo(x+s*0.68,y+s*0.08);
+      ctx.lineTo(x+s*0.68,y+s*0.28);
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    if(name==="messageSquare"){
+      rr(x+s*0.12,y+s*0.14,s*0.76,s*0.58,s*0.12);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(x+s*0.32,y+s*0.72);
+      ctx.lineTo(x+s*0.26,y+s*0.9);
+      ctx.lineTo(x+s*0.48,y+s*0.72);
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    if(name==="gamepad2"){
+      rr(x+s*0.1,y+s*0.34,s*0.8,s*0.34,s*0.16);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(x+s*0.27,y+s*0.44);
+      ctx.lineTo(x+s*0.27,y+s*0.58);
+      ctx.moveTo(x+s*0.20,y+s*0.51);
+      ctx.lineTo(x+s*0.34,y+s*0.51);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(x+s*0.64,y+s*0.48,s*0.03,0,Math.PI*2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(x+s*0.73,y+s*0.56,s*0.03,0,Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+      return;
+    }
+
+    if(name==="trophy"){
+      rr(x+s*0.24,y+s*0.16,s*0.52,s*0.38,s*0.08);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(x+s*0.76,y+s*0.22);
+      ctx.quadraticCurveTo(x+s*0.92,y+s*0.22,x+s*0.88,y+s*0.42);
+      ctx.quadraticCurveTo(x+s*0.84,y+s*0.58,x+s*0.70,y+s*0.56);
+
+      ctx.moveTo(x+s*0.24,y+s*0.22);
+      ctx.quadraticCurveTo(x+s*0.08,y+s*0.22,x+s*0.12,y+s*0.42);
+      ctx.quadraticCurveTo(x+s*0.16,y+s*0.58,x+s*0.30,y+s*0.56);
+
+      ctx.moveTo(cx,y+s*0.54);
+      ctx.lineTo(cx,y+s*0.76);
+      ctx.moveTo(x+s*0.32,y+s*0.86);
+      ctx.lineTo(x+s*0.68,y+s*0.86);
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    ctx.restore();
+  }
+
+  function drawStatusPillMetrics(label:string,fontSize:number){
+    const font=`700 ${fontSize}px "Barlow Condensed",sans-serif`;
+    const dotSize=Math.max(8,fontSize*0.72);
+    const gap=Math.max(6,fontSize*0.35);
+    const height=Math.max(fontSize+12,dotSize+10);
+    const width=measure(label,font)+dotSize+gap+20;
+    return {width,height,dotSize,gap,font};
+  }
+
+  function drawStatusPill(x:number,y:number,label:string,color:string,fontSize:number){
+    const m=drawStatusPillMetrics(label,fontSize);
+    rr(x,y,m.width,m.height,999);
+    ctx.fillStyle=rgba(color,0.12);
+    ctx.fill();
+    ctx.strokeStyle=rgba(color,0.4);
+    ctx.lineWidth=1.2;
+    ctx.stroke();
+
+    drawIcon("circle",x+10,y+(m.height-m.dotSize)/2,m.dotSize,color,1.8,true);
+    txt(label,x+10+m.dotSize+m.gap,y+(m.height-fontSize)/2-1,color,m.font,"left");
+
+    return m.width;
+  }
+
+  function drawBadgeChip(x:number,y:number,icon:IconName,label:string,accent:string,fontSize:number){
+    const font=`600 ${fontSize}px "Barlow Condensed",sans-serif`;
+    const iconSize=clamp(fontSize*0.95,12,16);
+    const gap=6;
+    const textW=measure(label,font);
+    const bw=textW+iconSize+gap+22;
+    const bh=Math.max(fontSize+14,iconSize+10);
+
+    rr(x,y,bw,bh,999);
+    ctx.fillStyle=rgba(accent,0.06);
+    ctx.fill();
+    ctx.strokeStyle=rgba(accent,0.22);
+    ctx.lineWidth=1;
+    ctx.stroke();
+
+    drawIcon(icon,x+10,y+(bh-iconSize)/2,iconSize,"#ffffff",1.7);
+    txt(label,x+10+iconSize+gap,y+(bh-fontSize)/2-1,"rgba(255,255,255,0.88)",font,"left");
+
+    return bw;
+  }
+
+  function drawBadges(x:number,y:number,accent:string,maxW:number){
+    if(!iToggleBg.checked || selBadges.length===0) return;
+
+    const badges=badgePresets.filter(b=>selBadges.includes(b.id)).slice(0,4);
+    let cx=x;
+    const fSize=clamp(maxW/34,10,13);
+
+    badges.forEach(badge=>{
+      const font=`600 ${fSize}px "Barlow Condensed",sans-serif`;
+      const iconSize=clamp(fSize*0.95,12,16);
+      const bw=measure(badge.label,font)+iconSize+6+22;
+      if(cx+bw>x+maxW) return;
+      const usedW=drawBadgeChip(cx,y,badge.icon,badge.label,accent,fSize);
+      cx+=usedW+6;
+    });
+  }
+
+  function txt(text:string,x:number,y:number,color:string,font:string,align:"left"|"center"|"right"="left",maxW?:number){
+    ctx.save();
+    ctx.font=font;
+    ctx.fillStyle=color;
+    ctx.textAlign=align;
+    ctx.textBaseline="top";
+    if(maxW) ctx.fillText(text,x,y,maxW);
+    else ctx.fillText(text,x,y);
+    ctx.restore();
+  }
+
+  function drawSep(x:number,y:number,w:number,accent:string){
+    const sg=ctx.createLinearGradient(x,y,x+w,y);
+    sg.addColorStop(0,"transparent");
+    sg.addColorStop(0.3,rgba(accent,0.35));
+    sg.addColorStop(0.7,rgba(accent,0.35));
+    sg.addColorStop(1,"transparent");
+    ctx.save();
+    ctx.strokeStyle=sg;
+    ctx.lineWidth=1;
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x+w,y);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawInfoRow(
+    x:number,
+    y:number,
+    icon:IconName,
+    text:string,
+    color:string,
+    font:string,
+    align:"left"|"center"="left",
+    maxW=240,
+    iconColor=color
+  ){
+    if(!text) return;
+    const fpx=fontPx(font);
+    const iconSize=clamp(fpx*0.9,13,22);
+    const gap=clamp(fpx*0.36,6,10);
+    const safe=fitText(text,Math.max(0,maxW-iconSize-gap),font);
+    const textW=measure(safe,font);
+    const totalW=iconSize+gap+textW;
+    const startX=align==="center" ? x-totalW/2 : x;
+
+    drawIcon(icon,startX,y+Math.max(0,(fpx-iconSize)/2),iconSize,iconColor,Math.max(1.6,iconSize*0.1));
+    txt(safe,startX+iconSize+gap,y,color,font,"left");
+  }
+
+  function getMetaRows(score:string,since:string,game:string,pres:string,accent:string){
+    const rows: {icon:IconName;text:string;color:string;iconColor:string}[] = [
+      { icon:"trophy", text:`${score} Gamerscore`, color:"#ffffff", iconColor:accent },
     ];
 
-    // ── Avatar Presets ─────────────────────────────────────────────
-    const avatarPresets: AvatarPreset[] = [
-      { id: "wolf",      emoji: "🐺", label: "Wolf"      },
-      { id: "ghost",     emoji: "👻", label: "Ghost"     },
-      { id: "fire",      emoji: "🔥", label: "Fire"      },
-      { id: "skull",     emoji: "💀", label: "Skull"     },
-      { id: "sword",     emoji: "⚔️",  label: "Sword"     },
-      { id: "shield",    emoji: "🛡️",  label: "Shield"    },
-      { id: "dragon",    emoji: "🐉", label: "Dragon"    },
-      { id: "robot",     emoji: "🤖", label: "Robot"     },
-      { id: "alien",     emoji: "👾", label: "Alien"     },
-      { id: "crown",     emoji: "👑", label: "Crown"     },
-      { id: "lightning", emoji: "⚡", label: "Lightning" },
-      { id: "star",      emoji: "⭐", label: "Star"      },
-    ];
-
-    // ── State ──────────────────────────────────────────────────────
-    let selectedTheme  : Theme        = themes[0];
-    let selectedAvatar : AvatarPreset = avatarPresets[0];
-    let customAvatar   : HTMLImageElement | null = null;
-    let customBg       : HTMLImageElement | null = null;
-
-    // ── Elements ───────────────────────────────────────────────────
-    const canvas           = document.getElementById("gamercardCanvas")  as HTMLCanvasElement;
-    const ctx              = canvas.getContext("2d")!;
-    const inputGamertag    = document.getElementById("inputGamertag")    as HTMLInputElement;
-    const inputScore       = document.getElementById("inputGamerscore")  as HTMLInputElement;
-    const inputGame        = document.getElementById("inputGame")        as HTMLInputElement;
-    const generateBtn      = document.getElementById("generateBtn")      as HTMLButtonElement;
-    const downloadBtn      = document.getElementById("downloadBtn")      as HTMLButtonElement;
-    const avatarGrid       = document.getElementById("avatarGrid")       as HTMLElement;
-    const themeGrid        = document.getElementById("themeGrid")        as HTMLElement;
-    const avatarUpload     = document.getElementById("avatarUpload")     as HTMLInputElement;
-    const avatarUploadLabel = document.getElementById("avatarUploadLabel") as HTMLElement;
-    const clearAvatarBtn   = document.getElementById("clearAvatarBtn")   as HTMLButtonElement;
-    const bgUpload         = document.getElementById("bgUpload")         as HTMLInputElement;
-    const bgUploadLabel    = document.getElementById("bgUploadLabel")    as HTMLElement;
-    const clearBgBtn       = document.getElementById("clearBgBtn")       as HTMLButtonElement;
-    const bgOpacityRow     = document.getElementById("bgOpacityRow")     as HTMLElement;
-    const bgOpacity        = document.getElementById("bgOpacity")        as HTMLInputElement;
-
-    // ── Build Avatar Grid ──────────────────────────────────────────
-    avatarGrid.innerHTML = avatarPresets.map((a) => `
-      <button
-        data-avatar="${a.id}"
-        title="${a.label}"
-        class="avatar-btn aspect-square rounded-lg text-xl flex items-center justify-center
-               bg-gray-800 border-2 border-transparent hover:border-xbox-green transition-colors
-               ${a.id === selectedAvatar.id ? "border-xbox-green" : ""}"
-      >${a.emoji}</button>
-    `).join("");
-
-    document.querySelectorAll<HTMLButtonElement>(".avatar-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        selectedAvatar = avatarPresets.find((a) => a.id === btn.dataset.avatar!)!;
-        customAvatar   = null;
-
-        // Reset upload label
-        avatarUploadLabel.textContent = "Click to upload image (square recommended)";
-        clearAvatarBtn.classList.add("hidden");
-        avatarUpload.value = "";
-
-        document.querySelectorAll(".avatar-btn").forEach((b) =>
-          b.classList.remove("border-xbox-green")
-        );
-        btn.classList.add("border-xbox-green");
-        drawCard();
-      });
-    });
-
-    // ── Build Theme Grid ───────────────────────────────────────────
-    themeGrid.innerHTML = themes.map((t) => `
-      <button
-        data-theme="${t.id}"
-        class="theme-btn flex items-center gap-2.5 px-3 py-2.5 rounded-lg border-2 border-gray-700
-               hover:border-gray-500 transition-colors text-left
-               ${t.id === selectedTheme.id ? "border-white/40 bg-white/5" : ""}"
-      >
-        <div class="w-3.5 h-3.5 rounded-full shrink-0" style="background:${t.accent}"></div>
-        <span class="text-sm text-white">${t.label}</span>
-      </button>
-    `).join("");
-
-    document.querySelectorAll<HTMLButtonElement>(".theme-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        selectedTheme = themes.find((t) => t.id === btn.dataset.theme!)!;
-        document.querySelectorAll(".theme-btn").forEach((b) => {
-          b.classList.remove("border-white/40", "bg-white/5");
-          b.classList.add("border-gray-700");
-        });
-        btn.classList.remove("border-gray-700");
-        btn.classList.add("border-white/40", "bg-white/5");
-        drawCard();
-      });
-    });
-
-    // ── Avatar Upload ──────────────────────────────────────────────
-    avatarUpload.addEventListener("change", () => {
-      const file = avatarUpload.files?.[0];
-      if (!file) return;
-      loadImage(file, (img) => {
-        customAvatar = img;
-        // Deselect preset
-        document.querySelectorAll(".avatar-btn").forEach((b) =>
-          b.classList.remove("border-xbox-green")
-        );
-        avatarUploadLabel.textContent = `✅ ${file.name}`;
-        clearAvatarBtn.classList.remove("hidden");
-        drawCard();
-      });
-    });
-
-    clearAvatarBtn.addEventListener("click", () => {
-      customAvatar = null;
-      avatarUpload.value = "";
-      avatarUploadLabel.textContent = "Click to upload image (square recommended)";
-      clearAvatarBtn.classList.add("hidden");
-      // Re-select first preset
-      selectedAvatar = avatarPresets[0];
-      document.querySelectorAll(".avatar-btn").forEach((b, i) => {
-        if (i === 0) b.classList.add("border-xbox-green");
-        else b.classList.remove("border-xbox-green");
-      });
-      drawCard();
-    });
-
-    // ── Background Upload ──────────────────────────────────────────
-    bgUpload.addEventListener("change", () => {
-      const file = bgUpload.files?.[0];
-      if (!file) return;
-      loadImage(file, (img) => {
-        customBg = img;
-        bgUploadLabel.textContent = `✅ ${file.name}`;
-        clearBgBtn.classList.remove("hidden");
-        bgOpacityRow.classList.remove("hidden");
-        drawCard();
-      });
-    });
-
-    clearBgBtn.addEventListener("click", () => {
-      customBg = null;
-      bgUpload.value = "";
-      bgUploadLabel.textContent = "Click to upload background";
-      clearBgBtn.classList.add("hidden");
-      bgOpacityRow.classList.add("hidden");
-      drawCard();
-    });
-
-    bgOpacity.addEventListener("input", drawCard);
-
-    // ── Load image helper ──────────────────────────────────────────
-    function loadImage(file: File, cb: (img: HTMLImageElement) => void) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const img = new Image();
-        img.onload = () => cb(img);
-        img.src    = e.target?.result as string;
-      };
-      reader.readAsDataURL(file);
+    if(game){
+      rows.push({ icon:"gamepad2", text:game, color:"rgba(255,255,255,0.86)", iconColor:accent });
     }
 
-    // ── Rounded rect helper ────────────────────────────────────────
-    function roundRect(
-      c      : CanvasRenderingContext2D,
-      x      : number, y: number,
-      w      : number, h: number,
-      radius : number
-    ) {
-      c.beginPath();
-      c.moveTo(x + radius, y);
-      c.lineTo(x + w - radius, y);
-      c.quadraticCurveTo(x + w, y,     x + w, y + radius);
-      c.lineTo(x + w,           y + h - radius);
-      c.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
-      c.lineTo(x + radius,      y + h);
-      c.quadraticCurveTo(x,     y + h, x, y + h - radius);
-      c.lineTo(x,               y + radius);
-      c.quadraticCurveTo(x,     y,     x + radius, y);
-      c.closePath();
+    if(since){
+      rows.push({ icon:"calendar", text:`Member since ${since}`, color:"rgba(255,255,255,0.72)", iconColor:accent });
     }
 
-    // ── Draw Card ──────────────────────────────────────────────────
-    function drawCard() {
-      const W = canvas.width;   // 600
-      const H = canvas.height;  // 200
-      const t = selectedTheme;
+    if(pres){
+      rows.push({ icon:"messageSquare", text:pres, color:"rgba(255,255,255,0.58)", iconColor:accent });
+    }
 
-      const gamertag = inputGamertag.value.trim() || "YourGamertag";
-      const score    = inputScore.value.trim()    || "0";
-      const game     = inputGame.value.trim()     || "";
+    return rows;
+  }
 
-      ctx.clearRect(0, 0, W, H);
+  function drawBg(W:number,H:number,accent:string){
+    const rad=Math.max(16,W*0.02);
+    ctx.save();
+    rr(0,0,W,H,rad);
+    ctx.clip();
 
-      // ── Background ──────────────────────────────────────────────
-      ctx.save();
-      roundRect(ctx, 0, 0, W, H, 16);
-      ctx.clip();
+    if(custBg){
+      const sc=Math.max(W/custBg.width,H/custBg.height);
+      const bw=custBg.width*sc;
+      const bh=custBg.height*sc;
+      ctx.drawImage(custBg,(W-bw)/2,(H-bh)/2,bw,bh);
+      ctx.fillStyle=`rgba(0,0,0,${parseInt(elBgOpacity.value)/100})`;
+      ctx.fillRect(0,0,W,H);
+    } else {
+      const preset=iBgPreset.value;
 
-      if (customBg) {
-        // Draw uploaded BG image — cover fill
-        const scale = Math.max(W / customBg.width, H / customBg.height);
-        const bw    = customBg.width  * scale;
-        const bh    = customBg.height * scale;
-        const bx    = (W - bw) / 2;
-        const by    = (H - bh) / 2;
-        ctx.drawImage(customBg, bx, by, bw, bh);
+      if(preset==="green-gradient"){
+        const g=ctx.createLinearGradient(0,0,W,H);
+        g.addColorStop(0,selTheme.bg);
+        g.addColorStop(1,rgba(accent,0.6));
+        ctx.fillStyle=g;
+        ctx.fillRect(0,0,W,H);
+      } else if(preset==="blue-nebula"){
+        ctx.fillStyle="#020b18";
+        ctx.fillRect(0,0,W,H);
+        const g=ctx.createRadialGradient(W*.65,H*.25,0,W*.65,H*.25,Math.max(W,H)*.6);
+        g.addColorStop(0,rgba("#3b82f6",0.5));
+        g.addColorStop(0.5,rgba("#1d4ed8",0.2));
+        g.addColorStop(1,"transparent");
+        ctx.fillStyle=g;
+        ctx.fillRect(0,0,W,H);
 
-        // Dark overlay for readability
-        const opacity = parseInt(bgOpacity.value) / 100;
-        ctx.fillStyle = `rgba(0,0,0,${opacity})`;
-        ctx.fillRect(0, 0, W, H);
+        const g2=ctx.createRadialGradient(W*.15,H*.7,0,W*.15,H*.7,Math.max(W,H)*.4);
+        g2.addColorStop(0,rgba("#7c3aed",0.3));
+        g2.addColorStop(1,"transparent");
+        ctx.fillStyle=g2;
+        ctx.fillRect(0,0,W,H);
+      } else if(preset==="gold-wave"){
+        ctx.fillStyle="#060400";
+        ctx.fillRect(0,0,W,H);
+        const g=ctx.createLinearGradient(0,0,W,H);
+        g.addColorStop(0,rgba("#78500a",0.4));
+        g.addColorStop(0.5,rgba("#f59e0b",0.18));
+        g.addColorStop(1,rgba("#78500a",0.4));
+        ctx.fillStyle=g;
+        ctx.fillRect(0,0,W,H);
+      } else if(preset==="purple-haze"){
+        ctx.fillStyle="#06020f";
+        ctx.fillRect(0,0,W,H);
+        const g=ctx.createRadialGradient(W*.5,H*.5,0,W*.5,H*.5,Math.max(W,H)*.7);
+        g.addColorStop(0,rgba("#7c3aed",0.4));
+        g.addColorStop(0.6,rgba("#4c1d95",0.2));
+        g.addColorStop(1,"transparent");
+        ctx.fillStyle=g;
+        ctx.fillRect(0,0,W,H);
+      } else if(preset==="midnight"){
+        const g=ctx.createLinearGradient(0,0,0,H);
+        g.addColorStop(0,"#080e1e");
+        g.addColorStop(1,"#020509");
+        ctx.fillStyle=g;
+        ctx.fillRect(0,0,W,H);
+      } else if(preset==="carbon"){
+        ctx.fillStyle=selTheme.bg;
+        ctx.fillRect(0,0,W,H);
+
+        const gridSz=Math.max(6,W*0.01);
+        ctx.strokeStyle=rgba(accent,0.1);
+        ctx.lineWidth=0.6;
+        for(let x=0;x<W;x+=gridSz){
+          ctx.beginPath();
+          ctx.moveTo(x,0);
+          ctx.lineTo(x,H);
+          ctx.stroke();
+        }
+        for(let y=0;y<H;y+=gridSz){
+          ctx.beginPath();
+          ctx.moveTo(0,y);
+          ctx.lineTo(W,y);
+          ctx.stroke();
+        }
       } else {
-        // Solid theme bg
-        ctx.fillStyle = t.bg;
-        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle=selTheme.bg;
+        ctx.fillRect(0,0,W,H);
       }
+    }
 
-      ctx.restore();
+    const accentGlowA=ctx.createRadialGradient(W*0.82,H*0.18,0,W*0.82,H*0.18,Math.max(W,H)*0.7);
+    accentGlowA.addColorStop(0,rgba(accent,0.16));
+    accentGlowA.addColorStop(1,"transparent");
+    ctx.fillStyle=accentGlowA;
+    ctx.fillRect(0,0,W,H);
 
-      // ── Left accent strip ────────────────────────────────────────
-      ctx.fillStyle = t.accent;
-      ctx.fillRect(0, 0, 5, H);
+    const accentGlowB=ctx.createRadialGradient(W*0.06,H*0.9,0,W*0.06,H*0.9,Math.max(W,H)*0.6);
+    accentGlowB.addColorStop(0,rgba(accent,0.14));
+    accentGlowB.addColorStop(1,"transparent");
+    ctx.fillStyle=accentGlowB;
+    ctx.fillRect(0,0,W,H);
 
-      // ── Outer border ─────────────────────────────────────────────
-      ctx.save();
-      roundRect(ctx, 1, 1, W - 2, H - 2, 16);
-      ctx.strokeStyle = t.border;
-      ctx.lineWidth   = 1.5;
-      ctx.globalAlpha = 0.35;
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-      ctx.restore();
-
-      // ── Avatar ───────────────────────────────────────────────────
-      const aSize = 90;
-      const aX    = 22;
-      const aY    = (H - aSize) / 2;
-      const aCX   = aX + aSize / 2;
-      const aCY   = aY + aSize / 2;
-      const aR    = aSize / 2;
-
-      // Avatar background fill
-      ctx.save();
+    ctx.save();
+    ctx.globalAlpha = custBg ? 0.08 : 0.07;
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = Math.max(1,W*0.002);
+    const spacing = Math.max(20,W*0.04);
+    for(let i=-H;i<W+H;i+=spacing){
       ctx.beginPath();
-      ctx.arc(aCX, aCY, aR, 0, Math.PI * 2);
-      ctx.fillStyle = t.accent + "25";
-      ctx.fill();
+      ctx.moveTo(i,0);
+      ctx.lineTo(i+H,H);
+      ctx.stroke();
+    }
+    ctx.restore();
 
-      // Avatar border
-      ctx.strokeStyle = t.accent;
-      ctx.lineWidth   = 2.5;
-      ctx.globalAlpha = 1;
+    if(selStyle.glass){
+      const gl=ctx.createLinearGradient(0,0,W,H);
+      gl.addColorStop(0,"rgba(255,255,255,0.07)");
+      gl.addColorStop(1,"rgba(255,255,255,0.01)");
+      ctx.fillStyle=gl;
+      ctx.fillRect(0,0,W,H);
+    }
+
+    if(selStyle.scanline){
+      const lineH=Math.max(2,H*0.008);
+      ctx.save();
+      ctx.globalAlpha=0.06;
+      ctx.fillStyle="#000";
+      for(let y=0;y<H;y+=lineH*2){
+        ctx.fillRect(0,y,W,lineH);
+      }
+      ctx.restore();
+    }
+
+    ctx.restore();
+  }
+
+  function drawFrame(W:number,H:number,accent:string){
+    const rad=Math.max(16,W*0.02);
+
+    if(selStyle.strip){
+      const sw=Math.max(4,Math.round(W*0.006));
+      const sg=ctx.createLinearGradient(0,0,0,H);
+      sg.addColorStop(0,rgba(accent,0.3));
+      sg.addColorStop(0.5,accent);
+      sg.addColorStop(1,rgba(accent,0.3));
+      ctx.fillStyle=sg;
+      ctx.fillRect(0,0,sw,H);
+    }
+
+    if(selStyle.glow){
+      ctx.save();
+      ctx.shadowColor=rgba(accent,0.7);
+      ctx.shadowBlur=Math.max(18,W*0.025);
+      ctx.strokeStyle=rgba(accent,0.25);
+      ctx.lineWidth=Math.max(3,W*0.004);
+      rr(6,6,W-12,H-12,rad-4);
       ctx.stroke();
       ctx.restore();
-
-      if (customAvatar) {
-        // Uploaded avatar — clip to circle
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(aCX, aCY, aR - 2, 0, Math.PI * 2);
-        ctx.clip();
-        ctx.drawImage(customAvatar, aX + 2, aY + 2, aSize - 4, aSize - 4);
-        ctx.restore();
-      } else {
-        // Emoji preset — full opacity, properly centered
-        ctx.save();
-        ctx.font         = "44px serif";
-        ctx.textAlign    = "center";
-        ctx.textBaseline = "middle";
-        ctx.globalAlpha  = 1;
-        ctx.fillText(selectedAvatar.emoji, aCX, aCY + 2);
-        ctx.restore();
-      }
-
-      // ── Text area ────────────────────────────────────────────────
-      const tX = aX + aSize + 18;
-      const tY = (H - 80) / 2;
-
-      // Xbox dot indicator
-      ctx.save();
-      ctx.fillStyle = t.accent;
-      ctx.globalAlpha = 1;
-      ctx.beginPath();
-      ctx.arc(tX, tY + 13, 5, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-
-      // Gamertag
-      ctx.save();
-      ctx.fillStyle    = t.text;
-      ctx.font         = "bold 30px Arial, sans-serif";
-      ctx.textAlign    = "left";
-      ctx.textBaseline = "top";
-      ctx.globalAlpha  = 1;
-      ctx.fillText(gamertag, tX + 16, tY, W - tX - 16 - 16);
-      ctx.restore();
-
-      // Gamerscore row
-      ctx.save();
-      ctx.textAlign    = "left";
-      ctx.textBaseline = "top";
-      ctx.globalAlpha  = 1;
-
-      // "G" badge
-      ctx.fillStyle = t.accent;
-      ctx.font      = "bold 15px Arial, sans-serif";
-      ctx.fillText("G", tX, tY + 42);
-
-      // Score number
-      ctx.fillStyle = t.text;
-      ctx.font      = "bold 15px Arial, sans-serif";
-      const scoreStr    = Number(score).toLocaleString();
-      const gWidth      = ctx.measureText("G").width + 4;
-      ctx.fillText(scoreStr, tX + gWidth, tY + 42);
-
-      // "Gamerscore" label
-      const scoreWidth  = ctx.measureText(scoreStr).width;
-      ctx.fillStyle     = t.subtext;
-      ctx.font          = "12px Arial, sans-serif";
-      ctx.fillText("Gamerscore", tX + gWidth + scoreWidth + 8, tY + 44);
-      ctx.restore();
-
-      // Favorite game
-      if (game) {
-        ctx.save();
-        ctx.fillStyle    = t.subtext;
-        ctx.font         = "13px Arial, sans-serif";
-        ctx.textAlign    = "left";
-        ctx.textBaseline = "top";
-        ctx.globalAlpha  = 1;
-        ctx.fillText(`🎮  ${game}`, tX, tY + 64, W - tX - 16);
-        ctx.restore();
-      }
-
-      // ── Watermark ─────────────────────────────────────────────────
-      ctx.save();
-      ctx.fillStyle    = "#ffffff";
-      ctx.font         = "10px Arial, sans-serif";
-      ctx.textAlign    = "right";
-      ctx.textBaseline = "bottom";
-      ctx.globalAlpha  = 0.25;
-      ctx.fillText("XboxGamerTagGenerator.com", W - 12, H - 10);
-      ctx.restore();
     }
 
-    // ── Events ─────────────────────────────────────────────────────
-    generateBtn.addEventListener("click", drawCard);
+    ctx.save();
+    rr(1,1,W-2,H-2,rad);
+    ctx.strokeStyle=rgba(accent,0.35);
+    ctx.lineWidth=1.5;
+    ctx.stroke();
 
-    [inputGamertag, inputScore, inputGame].forEach((el) =>
-      el.addEventListener("input", drawCard)
+    rr(3,3,W-6,H-6,rad-2);
+    ctx.strokeStyle=rgba(accent,0.08);
+    ctx.lineWidth=1;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawAvatar(x:number,y:number,sz:number,accent:string,statusColor:string){
+    const shape=iShape.value;
+    const cx=x+sz/2;
+    const cy=y+sz/2;
+    const r=sz/2;
+    const cornerR=Math.max(14,sz*0.22);
+
+    ctx.save();
+
+    ctx.save();
+    ctx.shadowColor=rgba(accent,0.5);
+    ctx.shadowBlur=Math.max(10,sz*0.12);
+    if(shape==="rounded"){
+      rr(x,y,sz,sz,cornerR);
+    } else {
+      ctx.beginPath();
+      ctx.arc(cx,cy,r,0,Math.PI*2);
+    }
+    ctx.strokeStyle=rgba(accent,0.6);
+    ctx.lineWidth=Math.max(2,sz*0.028);
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.save();
+    if(shape==="rounded"){
+      rr(x+3,y+3,sz-6,sz-6,cornerR-2);
+    } else {
+      ctx.beginPath();
+      ctx.arc(cx,cy,r-2,0,Math.PI*2);
+    }
+    ctx.clip();
+
+    if(custAvatar){
+      ctx.drawImage(custAvatar,x+3,y+3,sz-6,sz-6);
+    } else {
+      const bg=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+      bg.addColorStop(0,rgba(accent,0.22));
+      bg.addColorStop(1,rgba(accent,0.06));
+      ctx.fillStyle=bg;
+      ctx.fillRect(x,y,sz,sz);
+      ctx.font=`${Math.floor(sz*0.46)}px serif`;
+      ctx.textAlign="center";
+      ctx.textBaseline="middle";
+      ctx.fillStyle="#fff";
+      ctx.fillText(selAvatar.emoji,cx,cy+Math.floor(sz*0.03));
+    }
+    ctx.restore();
+
+    const dotR=Math.max(7,sz*0.11);
+    const dotX=x+sz-dotR*0.8;
+    const dotY=y+sz-dotR*0.8;
+    ctx.save();
+    ctx.shadowColor=rgba(statusColor,0.6);
+    ctx.shadowBlur=8;
+    ctx.beginPath();
+    ctx.arc(dotX,dotY,dotR+2.5,0,Math.PI*2);
+    ctx.fillStyle=selTheme.bg;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(dotX,dotY,dotR,0,Math.PI*2);
+    ctx.fillStyle=statusColor;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawWide(W:number,H:number,accent:string,sc:string,sl:string,tag:string,score:string,since:string,game:string,pres:string){
+    const pad=clamp(W*0.038,18,36);
+    const aSz=clamp(H*0.52,84,H-34);
+    const aX=pad;
+    const aY=(H-aSz)/2;
+    drawAvatar(aX,aY,aSz,accent,sc);
+
+    const contentX=aX+aSz+clamp(W*0.028,16,32);
+    const contentW=W-contentX-pad;
+
+    const nameFont=`800 ${clamp(H*0.21,24,42)}px "Barlow Condensed",sans-serif`;
+    const pillSize=clamp(H*0.075,10,15);
+
+    const nameY=clamp(H*0.08,14,22);
+    txt(fitText(tag,contentW,nameFont),contentX,nameY,"#ffffff",nameFont,"left");
+    drawSep(contentX,nameY+fontPx(nameFont)+5,contentW,accent);
+
+    const pillY=nameY+fontPx(nameFont)+12;
+    const pillH=drawStatusPillMetrics(sl,pillSize).height;
+    drawStatusPill(contentX,pillY,sl,sc,pillSize);
+
+    const rows=getMetaRows(score,since,game,pres,accent);
+    const badgesReserve = iToggleBg.checked && selBadges.length ? 28 : 8;
+    const rowsStartY = pillY + pillH + 8;
+    const rowsAvailableH = H - rowsStartY - badgesReserve - 8;
+
+    const fitted = fitRowsToHeight(
+      rowsAvailableH,
+      clamp(H*0.068,11,15),
+      clamp(H*0.018,3,7),
+      rows.length,
+      9,
+      2
     );
 
-    downloadBtn.addEventListener("click", () => {
-      const tag  = inputGamertag.value.trim() || "gamercard";
-      const link = document.createElement("a");
-      link.download = `${tag}-gamercard.png`;
-      link.href     = canvas.toDataURL("image/png");
-      link.click();
+    const rowFont=`600 ${fitted.fontPx}px "Rajdhani",sans-serif`;
+    let rowY=rowsStartY;
+
+    rows.forEach(row=>{
+      drawInfoRow(contentX,rowY,row.icon,row.text,row.color,rowFont,"left",contentW,row.iconColor);
+      rowY+=fitted.fontPx+fitted.gap;
     });
 
-    // ── Initial draw ───────────────────────────────────────────────
-    drawCard();
-  </script>
+    drawBadges(contentX,H-24,accent,contentW);
+  }
+
+  function drawSquare(W:number,H:number,accent:string,sc:string,sl:string,tag:string,score:string,since:string,game:string,pres:string){
+    const cx=W/2;
+    const aSz=clamp(W*0.27,210,330);
+    const aY=H*0.055;
+    drawAvatar(cx-aSz/2,aY,aSz,accent,sc);
+
+    const nameFont=`800 ${clamp(W*0.074,52,88)}px "Barlow Condensed",sans-serif`;
+    const pillSize=clamp(W*0.03,20,34);
+    const rows=getMetaRows(score,since,game,pres,accent);
+
+    const nameY=aY+aSz+H*0.028;
+    txt(fitText(tag,W*0.84,nameFont),cx,nameY,"#ffffff",nameFont,"center");
+    drawSep(W*0.1,nameY+fontPx(nameFont)+12,W*0.8,accent);
+
+    const pillM=drawStatusPillMetrics(sl,pillSize);
+    const pillY=nameY+fontPx(nameFont)+26;
+    drawStatusPill(cx-pillM.width/2,pillY,sl,sc,pillSize);
+
+    const badgesReserve = iToggleBg.checked && selBadges.length ? 96 : 44;
+    const rowsStartY = pillY + pillM.height + 34;
+    const rowsAvailableH = H - rowsStartY - badgesReserve;
+
+    const fitted = fitRowsToHeight(
+      rowsAvailableH,
+      clamp(W*0.036,24,38),
+      clamp(H*0.024,12,22),
+      rows.length,
+      18,
+      8
+    );
+
+    const rowFont=`600 ${fitted.fontPx}px "Rajdhani",sans-serif`;
+    let rowY=rowsStartY;
+
+    rows.forEach(row=>{
+      drawInfoRow(cx,rowY,row.icon,row.text,row.color,rowFont,"center",W*0.8,row.iconColor);
+      rowY+=fitted.fontPx+fitted.gap;
+    });
+
+    drawBadges(W*0.12,H-92,accent,W*0.76);
+  }
+
+  function drawStory(W:number,H:number,accent:string,sc:string,sl:string,tag:string,score:string,since:string,game:string,pres:string){
+    const cx=W/2;
+    const aSz=clamp(W*0.33,250,390);
+    const aY=H*0.055;
+    drawAvatar(cx-aSz/2,aY,aSz,accent,sc);
+
+    const nameFont=`800 ${clamp(W*0.082,56,94)}px "Barlow Condensed",sans-serif`;
+    const pillSize=clamp(W*0.033,22,34);
+    const rows=getMetaRows(score,since,game,pres,accent);
+
+    const nameY=aY+aSz+H*0.024;
+    txt(fitText(tag,W*0.86,nameFont),cx,nameY,"#ffffff",nameFont,"center");
+    drawSep(W*0.08,nameY+fontPx(nameFont)+12,W*0.84,accent);
+
+    const pillM=drawStatusPillMetrics(sl,pillSize);
+    const pillY=nameY+fontPx(nameFont)+26;
+    drawStatusPill(cx-pillM.width/2,pillY,sl,sc,pillSize);
+
+    const panelX=W*0.075;
+    const panelW=W*0.85;
+    const innerPadX=clamp(W*0.055,28,42);
+    const innerPadY=clamp(H*0.022,28,44);
+
+    const desiredFontPx = clamp(W*0.035,24,36);
+    const desiredGap = clamp(H*0.022,16,26);
+    const fitted = fitRowsToHeight(
+      H*0.34,
+      desiredFontPx,
+      desiredGap,
+      rows.length,
+      18,
+      10
+    );
+
+    const rowFont=`600 ${fitted.fontPx}px "Rajdhani",sans-serif`;
+    const rowFontPx=fontPx(rowFont);
+    const panelH=innerPadY*2 + rows.length*rowFontPx + Math.max(0,rows.length-1)*fitted.gap + 10;
+    const panelY=pillY+pillM.height+clamp(H*0.03,30,52);
+
+    ctx.save();
+    rr(panelX,panelY,panelW,panelH,26);
+    ctx.fillStyle=rgba(accent,0.06);
+    ctx.fill();
+    ctx.strokeStyle=rgba(accent,0.24);
+    ctx.lineWidth=1.5;
+    ctx.stroke();
+    ctx.restore();
+
+    let rowY=panelY+innerPadY;
+    rows.forEach((row,index)=>{
+      drawInfoRow(panelX+innerPadX,rowY,row.icon,row.text,row.color,rowFont,"left",panelW-innerPadX*2,row.iconColor);
+      if(index<rows.length-1){
+        drawSep(panelX+22,rowY+rowFontPx+fitted.gap/2,panelW-44,accent);
+      }
+      rowY+=rowFontPx+fitted.gap;
+    });
+
+    drawBadges(panelX+18,Math.min(H-108,panelY+panelH+34),accent,panelW-36);
+  }
+
+  function drawBanner(W:number,H:number,accent:string,sc:string,sl:string,tag:string,score:string,since:string,game:string,pres:string){
+    const pad=clamp(W*0.04,28,60);
+    const aSz=clamp(H*0.58,160,H-44);
+    const aX=pad;
+    const aY=(H-aSz)/2;
+    drawAvatar(aX,aY,aSz,accent,sc);
+
+    const contentX=aX+aSz+clamp(W*0.025,24,42);
+    const contentW=W-contentX-pad;
+
+    const nameFont=`800 ${clamp(H*0.22,34,74)}px "Barlow Condensed",sans-serif`;
+    const pillSize=clamp(H*0.088,16,32);
+    const rowFont=`600 ${clamp(H*0.082,14,24)}px "Rajdhani",sans-serif`;
+    const rowGap=clamp(H*0.03,8,14);
+
+    const nameY=H*0.08;
+    txt(fitText(tag,contentW,nameFont),contentX,nameY,"#ffffff",nameFont,"left");
+    drawSep(contentX,nameY+fontPx(nameFont)+8,contentW,accent);
+
+    const pillY=nameY+fontPx(nameFont)+18;
+    drawStatusPill(contentX,pillY,sl,sc,pillSize);
+
+    let rowY=pillY+drawStatusPillMetrics(sl,pillSize).height+16;
+    const rows=getMetaRows(score,since,game,pres,accent).slice(0,4);
+
+    rows.forEach(row=>{
+      drawInfoRow(contentX,rowY,row.icon,row.text,row.color,rowFont,"left",contentW,row.iconColor);
+      rowY+=fontPx(rowFont)+rowGap;
+    });
+
+    drawBadges(contentX,H-clamp(H*0.18,54,92),accent,contentW);
+  }
+
+  function draw(renderW:number=canvas.width, renderH:number=canvas.height){
+    const W=renderW;
+    const H=renderH;
+    const tag=iTag.value.trim() || "YourGamertag";
+    const score=Number(iScore.value || 0).toLocaleString();
+    const game=iGame.value.trim();
+    const since=iSince.value.trim();
+    const status=(iStatus.value as Status) || "online";
+    const sl=statusMap[status].label;
+    const sc=statusMap[status].color;
+    const pres=iPresence.value.trim();
+    const accent=iAccent.value || selTheme.accent;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    drawBg(W,H,accent);
+    drawFrame(W,H,accent);
+
+    if(selExport.id==="square") drawSquare(W,H,accent,sc,sl,tag,score,since,game,pres);
+    else if(selExport.id==="story") drawStory(W,H,accent,sc,sl,tag,score,since,game,pres);
+    else if(selExport.id==="banner") drawBanner(W,H,accent,sc,sl,tag,score,since,game,pres);
+    else drawWide(W,H,accent,sc,sl,tag,score,since,game,pres);
+  }
+
+  document.getElementById("downloadBtn")!.addEventListener("click",()=>{
+    const logicalW = selExport.width;
+    const logicalH = selExport.height;
+    const requestedScale = Number(iExportSc.value || 4);
+    const scale = safeExportScale(requestedScale, logicalW, logicalH);
+
+    canvas.width = logicalW * scale;
+    canvas.height = logicalH * scale;
+    applyCtxQuality();
+
+    ctx.setTransform(scale,0,0,scale,0,0);
+    draw(logicalW, logicalH);
+
+    const link=document.createElement("a");
+    link.download=`${iTag.value.trim() || "gamercard"}-${selExport.id}-${scale}x.png`;
+    link.href=canvas.toDataURL("image/png");
+    link.click();
+
+    canvas.width = logicalW;
+    canvas.height = logicalH;
+    applyCtxQuality();
+    ctx.setTransform(1,0,0,1,0,0);
+    draw(logicalW, logicalH);
+  });
+
+  resizeCanvas();
+  draw();
+</script>
 </MainLayout>

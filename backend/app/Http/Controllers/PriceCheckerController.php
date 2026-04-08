@@ -94,30 +94,7 @@ class PriceCheckerController extends Controller
             $breakdown[] = ['label' => 'Starts a rare tag',       'points' => 8,  'note' => 'Found at the start of rare-tier names'];
         }
 
-        // ── 4. GENERATOR WORDS CHECK ──────────────────────────────
-        // If word is in generator_words = commonly mass-generated
-        // = less unique = lower market value = PENALTY
-        $wordMatch = DB::table('generator_words')
-            ->whereRaw('LOWER(word) = ?', [$lower])
-            ->first();
 
-        if ($wordMatch) {
-            $theme = strtolower($wordMatch->theme);
-            $score -= 10;
-            $breakdown[] = [
-                'label'  => 'Common generator word',
-                'points' => -10,
-                'note'   => ucfirst($theme) . ' theme — used in generator, reduces uniqueness',
-            ];
-        } else {
-            // Not in generator = more unique = small bonus
-            $score += 5;
-            $breakdown[] = [
-                'label'  => 'Unique word',
-                'points' => 5,
-                'note'   => 'Not a common generator word — adds uniqueness',
-            ];
-        }
 
         // ── 5. SINGLE CLEAN WORD BONUS ────────────────────────────
         if (!str_contains($gamertag, ' ') && preg_match('/^[a-zA-Z]+$/', $gamertag)) {
@@ -151,38 +128,38 @@ class PriceCheckerController extends Controller
     // ── Tier → price range + emoji ────────────────────────────────
     private function buildFromTier(string $gamertag, string $tier, string $note = ''): array
     {
-        $map = [
-            'legendary' => [
-                'label'      => 'Legendary',
-                'priceRange' => '$50 – $200+',
-                'emoji'      => '👑',
-                'score'      => 90,
-            ],
-            'rare' => [
-                'label'      => 'Rare',
-                'priceRange' => '$10 – $49',
-                'emoji'      => '💎',
-                'score'      => 65,
-            ],
-            'uncommon' => [
-                'label'      => 'Uncommon',
-                'priceRange' => '$3 – $9',
-                'emoji'      => '🔷',
-                'score'      => 45,
-            ],
-            'common' => [
-                'label'      => 'Common',
-                'priceRange' => '$1 – $2',
-                'emoji'      => '🟩',
-                'score'      => 28,
-            ],
-            'low_value' => [
-                'label'      => 'Low Value',
-                'priceRange' => 'No market value',
-                'emoji'      => '⬜',
-                'score'      => 10,
-            ],
-        ];
+       $map = [
+    'legendary' => [
+        'label'      => 'Legendary',
+        'priceRange' => '$100 – $500+',
+        'emoji'      => '👑',
+        'score'      => 90,
+    ],
+    'rare' => [
+        'label'      => 'Rare',
+        'priceRange' => '$25 – $99',
+        'emoji'      => '💎',
+        'score'      => 65,
+    ],
+    'uncommon' => [
+        'label'      => 'Uncommon',
+        'priceRange' => '$8 – $24',
+        'emoji'      => '🔷',
+        'score'      => 45,
+    ],
+    'common' => [
+        'label'      => 'Common',
+        'priceRange' => '$1 – $7',
+        'emoji'      => '🟩',
+        'score'      => 28,
+    ],
+    'low_value' => [
+        'label'      => 'Low Value',
+        'priceRange' => 'No market value',
+        'emoji'      => '⬜',
+        'score'      => 10,
+    ],
+];
 
         $data = $map[$tier] ?? $map['low_value'];
 
