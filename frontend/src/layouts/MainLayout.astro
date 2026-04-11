@@ -2,39 +2,151 @@
 import "../styles/global.css";
 import Footer from "../components/layout/Footer.astro";
 
+interface Props {
+  title        : string;
+  description  : string;
+  keywords?    : string;
+  ogImage?     : string;
+  ogType?      : string;
+  canonical?   : string;
+  noindex?     : boolean;
+  schema?      : object | object[];
+}
+
 const {
-  title = "Xbox Gamertag Generator",
-  description = "Generate the best Xbox gamertags instantly.",
-  image = "/og-image.png",
-  url = "https://xboxgamertaggenerator.com"
+  title,
+  description,
+  keywords,
+  ogImage   = "https://xboxgamertaggenerator.com/og-default.jpg",
+  ogType    = "website",
+  canonical = Astro.url.href.split("?")[0],
+  noindex   = false,
+  schema,
 } = Astro.props;
+
+const siteName  = "Xbox Gamertag Generator";
+const fullTitle = title.includes(siteName)
+  ? title
+  : `${title} | ${siteName}`;
+
+// Normalize canonical — always trailing-slash free
+const canonicalClean = canonical.endsWith("/") && canonical !== "https://xboxgamertaggenerator.com/"
+  ? canonical.slice(0, -1)
+  : canonical;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- ── Primary SEO ── -->
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:url" content={url} />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author"      content="Xbox Gamertag Generator" />
+    <meta name="robots"      content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
+    <meta name="theme-color" content="#00D02B" />
+
+    <!-- ── Canonical ── -->
+    <link rel="canonical" href={canonicalClean} />
+
+    <!-- ── Open Graph ── -->
+    <meta property="og:type"         content={ogType} />
+    <meta property="og:url"          content={canonicalClean} />
+    <meta property="og:title"        content={fullTitle} />
+    <meta property="og:description"  content={description} />
+    <meta property="og:image"        content={ogImage} />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt"    content={fullTitle} />
+    <meta property="og:site_name"    content={siteName} />
+    <meta property="og:locale"       content="en_US" />
+
+    <!-- ── Twitter Card ── -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href={url} />
+    <meta name="twitter:image"       content={ogImage} />
+    <meta name="twitter:image:alt"   content={fullTitle} />
+    <meta name="twitter:site"        content="@XboxGamertagGen" />
+
+    <!-- ── Favicon ── -->
+     
+    <link rel="icon"             type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon"             type="image/png"    href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon"             type="image/png"    href="/favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" sizes="180x180"     href="/apple-touch-icon.png" />
+    <link rel="manifest"                              href="/site.webmanifest" />
+
+    <!-- ── Sitemap ── -->
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <!-- ── Font preconnect ── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- ── Font preload (non-blocking) ── -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap"
+      />
+    </noscript>
+
+    <!-- ── Page-specific Schema.org JSON-LD ── -->
+    {schema && (
+      Array.isArray(schema)
+        ? schema.map(s => (
+            <script type="application/ld+json" set:html={JSON.stringify(s)} />
+          ))
+        : <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+
+    <!-- ── Global WebSite Schema ── -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type"   : "WebSite",
+      "name"    : siteName,
+      "url"     : "https://xboxgamertaggenerator.com",
+      "potentialAction": {
+        "@type"      : "SearchAction",
+        "target"     : "https://xboxgamertaggenerator.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    })} />
+
+    <!-- ── Global Organization Schema ── -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type"   : "Organization",
+      "name"    : siteName,
+      "url"     : "https://xboxgamertaggenerator.com",
+      "logo"    : "https://xboxgamertaggenerator.com/favicon-32x32.png",
+      "sameAs"  : [
+        "https://x.com/xbox_tag_gen",
+        "https://www.facebook.com/xboxgamertaggenerator/",
+      ],
+    })} />
   </head>
 
-  <body class="bg-background text-foreground min-h-screen flex flex-col">
+  <body class="bg-[#000000] text-white min-h-screen flex flex-col">
     <main class="flex-1">
       <slot />
     </main>
-
     <Footer />
   </body>
 </html>

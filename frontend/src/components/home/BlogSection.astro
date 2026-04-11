@@ -4,54 +4,91 @@ import { blogPosts } from "../../data/blogPosts";
 const featuredPosts = blogPosts.slice(0, 6);
 ---
 
-<section class="pt-8 pb-16 bg-light-grey">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl font-bebas text-xbox-green text-center mb-12">
-      Featured Gaming Guides
-    </h2>
+<section class="bg-[#F8FAFC] py-14 md:py-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Section header -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm">
+        <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">
+          Gaming Guides
+        </span>
+      </div>
+      <h2 class="font-[Orbitron] text-2xl sm:text-3xl font-bold text-[#050505] leading-snug">
+        Featured Gaming Guides
+      </h2>
+      <p class="font-[Rajdhani] text-sm text-[#64748B] mt-3 max-w-md mx-auto">
+        Tips, tricks, and deep dives to level up your gaming identity.
+      </p>
+    </div>
+
+    <!-- Blog grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {featuredPosts.map((post) => (
-        <article class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow group">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-3 group-hover:text-xbox-green transition-colors">
+        <article class="group bg-white border border-[#E2E8F0] rounded-xl overflow-hidden transition-all duration-200 hover:border-[#00D02B]/40 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.12)]">
+
+          <!-- Card top accent bar — visible on hover -->
+          <div class="h-0.5 w-full bg-[#E2E8F0] group-hover:bg-[#00D02B] transition-colors duration-200"></div>
+
+          <div class="p-5 flex flex-col h-full">
+
+            <!-- Title -->
+            <h3 class="font-[Orbitron] text-sm font-bold text-[#050505] mb-3 leading-snug group-hover:text-[#00D02B] transition-colors duration-200 line-clamp-2">
               {post.title}
             </h3>
 
-            <p class="text-gray-600 mb-4 line-clamp-3">
+            <!-- Excerpt -->
+            <p class="font-[Rajdhani] text-sm text-[#64748B] leading-relaxed mb-4 line-clamp-3 flex-1">
               {post.excerpt}
             </p>
 
-            <div class="flex items-center justify-between gap-4">
-              <div class="flex items-center text-sm text-gray-500">
-                <span class="mr-1">🕒</span>
-                {post.readTime}
+            <!-- Footer row -->
+            <div class="flex items-center justify-between gap-3 pt-3 border-t border-[#E2E8F0]">
+
+              <!-- Read time -->
+              <div class="flex items-center gap-1.5">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <circle cx="6" cy="6" r="5" stroke="#94A3B8" stroke-width="1.5"/>
+                  <path d="M6 3.5V6l1.5 1.5" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-[Rajdhani] text-xs font-600 text-[#94A3B8]">{post.readTime}</span>
               </div>
 
-              
-                <a href={`/blog/${post.slug}`}
-                class="text-xbox-green hover:text-xbox-green-light font-medium inline-flex items-center group-hover:translate-x-1 transition-transform"
+              <!-- Read more link -->
+              <a
+                href={`/blog/${post.slug}`}
+                class="inline-flex items-center gap-1 font-[Rajdhani] text-xs font-bold uppercase tracking-wider text-[#00D02B] transition-transform duration-150 group-hover:translate-x-0.5"
               >
-                Read More <span class="ml-1">→</span>
+                Read More
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 6h8M7 3l3 3-3 3" stroke="#00D02B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
+
             </div>
           </div>
         </article>
       ))}
     </div>
 
-    <div class="text-center mt-12">
-      
+    <!-- View all CTA -->
+    <div class="text-center mt-10">
+      <a
         href="/blog"
-        class="inline-flex items-center px-6 py-3 bg-xbox-green hover:bg-xbox-green-light text-white font-semibold rounded-lg transition-colors shadow-xbox"
+        class="inline-flex items-center gap-2 px-7 py-3 bg-[#00D02B] hover:bg-[#00e830] text-black font-[Rajdhani] font-bold text-sm uppercase tracking-widest rounded transition-colors duration-200"
       >
-        View All Posts <span class="ml-2">→</span>
+        View All Posts
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </a>
     </div>
 
-    <div class="bg-gray-100 rounded-lg px-4 md:px-6 py-6 text-center border-2 border-dashed border-gray-300 mt-8">
-      <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
-      <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
+    <!-- Ad slot -->
+    <div class="bg-[#F8FAFC] border border-dashed border-[#E2E8F0] rounded-lg px-5 py-4 text-center mt-10">
+      <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#CBD5E1] mb-3">Advertisement</p>
+      <div class="bg-white border border-[#E2E8F0] rounded h-20 md:h-32 lg:h-40"></div>
     </div>
+
   </div>
 </section>

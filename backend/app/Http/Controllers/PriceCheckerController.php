@@ -26,7 +26,7 @@ class PriceCheckerController extends Controller
 
         if ($exactMatch) {
             return response()->json(
-                $this->buildFromTier($gamertag, $exactMatch->tier, 'Exact match found in database')
+                $this->buildFromTier($gamertag, $exactMatch->tier, 'This gamertag was found in our verified pricing database')
             );
         }
 
@@ -170,7 +170,7 @@ class PriceCheckerController extends Controller
             'emoji'      => $data['emoji'],
             'priceRange' => $data['priceRange'],
             'breakdown'  => $note
-                ? [['label' => '✅ Database match', 'points' => $data['score'], 'note' => $note]]
+                ? [['label' => 'Verified Pricing', 'points' => $data['score'], 'note' => $note]]
                 : [],
         ];
     }

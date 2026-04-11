@@ -1,7 +1,6 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import Header from "../../components/layout/Header.astro";
-import gamingBackground from "../../assets/gaming-background.jpg";
 import { blogPosts } from "../../data/blogPosts";
 
 export async function getStaticPaths() {
@@ -14,146 +13,266 @@ const post = blogPosts.find((p) => p.slug === slug);
 if (!post) return Astro.redirect("/blog");
 
 const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "url": `https://xboxgamertaggenerator.com/blog/${post.slug}`,
+  "description": post.excerpt,
+  "author": {
+    "@type": "Organization",
+    "name": "Xbox Gamertag Generator",
+  },
+};
 ---
 
 <MainLayout
-  title={`${post.title} - Xbox Gamertag Guide`}
+  title={`${post.title} | Xbox Gamertag Guide`}
   description={post.excerpt}
+  keywords={`${post.title.toLowerCase()}, xbox gamertag guide, gaming tips, xbox naming`}
+  canonical={`https://xboxgamertaggenerator.com/blog/${post.slug}`}
+  ogType="article"
+  {schema}
 >
-  <div class="min-h-screen relative bg-gray-950 text-gray-100">
-
-    <!-- Background -->
-    <div
-      class="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-1]"
-      style={`background-image: url(${gamingBackground.src})`}
-    />
-    <div class="fixed inset-0 bg-gray-950/90 z-[-1]" />
+  <div class="min-h-screen bg-background text-foreground font-ui">
 
     <Header />
 
-    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pt-8">
+    <!-- Hero -->
+    <section class="section-dark border-b border-[#1F2937] py-14 md:py-20 relative overflow-hidden">
+      <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
+      <div class="max-w-4xl mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
 
-      <!-- Hero -->
-      <section class="bg-gray-900 border border-gray-800 py-16 max-w-6xl mx-auto rounded-lg">
-        <div class="px-6 text-center">
+        <!-- Back link -->
+        
+         <a  href="/blog"
+          class="inline-flex items-center gap-1.5 text-foreground-muted hover:text-brand text-sm font-ui font-semibold mb-8 transition-colors group"
+        >
+          <svg class="h-4 w-4 transition-transform group-hover:-translate-x-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Back to Blog
+        </a>
+
+        <!-- Read time -->
+        <div class="flex items-center gap-2 mb-5">
+          <span class="label-green">Article</span>
+          <span class="text-[#1F2937]">·</span>
+          <div class="flex items-center gap-1.5 text-foreground-muted text-xs font-ui font-semibold uppercase tracking-widest">
+            <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            {post.readTime}
+          </div>
+        </div>
+
+        <!-- Title -->
+        <h1 class="heading-hero text-3xl md:text-5xl lg:text-6xl text-foreground leading-tight">
+          {post.title}
+        </h1>
+
+      </div>
+    </section>
+
+    <!-- Article Body -->
+    <section class="section-dark-alt py-12 md:py-16">
+      <div class="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16">
+
+        <!-- Image placeholder -->
+        <div
+          class="w-full h-56 md:h-72 rounded-xl flex items-center justify-center mb-10 border border-[#1F2937]"
+          style="background:rgba(255,255,255,0.02)"
+        >
+          <div class="text-center">
+            <div class="text-3xl mb-2">🎮</div>
+            <span class="text-foreground-subtle text-xs font-ui uppercase tracking-widest">
+              Article Image
+            </span>
+          </div>
+        </div>
+
+        <!-- Excerpt callout -->
+        <div
+          class="mb-10 p-5 rounded-r-xl border-l-4"
+          style="background:rgba(0,208,43,0.05);border-left-color:#00D02B"
+        >
+          <p class="text-foreground-muted text-base font-ui leading-relaxed italic">
+            {post.excerpt}
+          </p>
+        </div>
+
+        <!-- Article content -->
+        <div
+          class="
+            prose prose-lg max-w-none
+            prose-invert
+            prose-p:text-foreground-muted prose-p:leading-relaxed prose-p:mb-5 prose-p:font-ui
+            prose-h2:text-brand prose-h2:font-display prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:tracking-tight
+            prose-h3:text-foreground prose-h3:font-display prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+            prose-strong:text-foreground prose-strong:font-bold
+            prose-a:text-brand prose-a:no-underline hover:prose-a:underline
+            prose-li:text-foreground-muted prose-li:font-ui
+            prose-ul:my-4 prose-ol:my-4
+            prose-blockquote:border-l-brand prose-blockquote:text-foreground-muted
+            prose-code:text-brand prose-code:bg-background-surface prose-code:rounded prose-code:px-1.5 prose-code:py-0.5
+          "
+          set:html={post.content}
+        />
+
+        <!-- Divider -->
+        <div class="my-12 border-t border-[#1F2937]"></div>
+
+        <!-- Back button -->
+        <div class="flex items-center justify-between flex-wrap gap-4">
           
-           <a href="/blog"
-            class="inline-flex items-center gap-1 text-xbox-green hover:text-xbox-green-light hover:underline text-sm mb-6 transition-colors"
+            <a href="/blog"
+            class="btn-secondary inline-flex items-center gap-2 px-6 py-3 text-sm"
           >
             <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
-            Back to Blog
+            Back to All Articles
           </a>
 
-          <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">
-            {post.title}
-          </h1>
-
-          <div class="flex items-center justify-center gap-2 text-gray-400 text-sm">
-            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>{post.readTime}</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Article Body -->
-      <section class="py-10">
-        <div class="max-w-3xl mx-auto">
-
-          <!-- Image placeholder -->
-          <div class="w-full h-56 md:h-72 bg-gray-800 border border-gray-700 rounded-lg flex items-center justify-center mb-8">
-            <span class="text-gray-500 text-sm">Gaming Image Placeholder</span>
-          </div>
-
-          <!-- Excerpt callout -->
-          <p class="text-lg text-gray-300 mb-8 italic border-l-4 border-xbox-green pl-4 bg-gray-900/60 py-3 pr-4 rounded-r-lg">
-            {post.excerpt}
-          </p>
-
-          <!-- Article content -->
-          <div
-            class="
-              prose prose-lg max-w-none
-              prose-invert
-              prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-4
-              prose-h2:text-xbox-green prose-h2:font-bold prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-3
-              prose-strong:text-white
-              prose-a:text-xbox-green prose-a:hover:underline
-            "
-            set:html={post.content}
-          />
-
-          <!-- Back to blog button -->
-          <div class="mt-12 pt-8 border-t border-gray-800">
+          <!-- Share -->
+          <div class="flex items-center gap-3">
+            <span class="label-mono">Share</span>
             
-             <a href="/blog"
-              class="inline-flex items-center gap-2 px-6 py-3 bg-xbox-green hover:bg-xbox-green-light text-white font-semibold rounded-lg transition-colors shadow-xbox"
+            <a  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://xboxgamertaggenerator.com/blog/${post.slug}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:shadow-green"
+              style="background:rgba(0,208,43,0.08);border:1px solid rgba(0,208,43,0.2)"
+              title="Share on X / Twitter"
             >
-              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              <svg class="w-4 h-4 text-brand" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
-              Back to All Articles
             </a>
+            <button
+              id="copyLinkBtn"
+              class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:shadow-green"
+              style="background:rgba(0,208,43,0.08);border:1px solid rgba(0,208,43,0.2)"
+              title="Copy link"
+            >
+              <svg class="w-4 h-4 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-4 10h6a2 2 0 002-2v-8a2 2 0 00-2-2h-6a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </button>
+            <span id="copiedMsg" class="hidden text-xs text-brand font-ui font-semibold">✅ Copied!</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Related Posts -->
+    {relatedPosts.length > 0 && (
+      <section class="section-dark border-t border-[#1F2937] py-14 md:py-20">
+        <div class="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
+
+          <div class="flex items-center gap-3 mb-10">
+            <div class="w-1 h-6 bg-brand rounded-full"></div>
+            <h2 class="heading-section text-2xl text-foreground">
+              Related <span class="text-brand">Articles</span>
+            </h2>
           </div>
 
-        </div>
-      </section>
-
-      <!-- Related Posts -->
-      <section class="pt-4 pb-16">
-        <div class="max-w-5xl mx-auto px-8 lg:px-12">
-
-          <h2 class="text-3xl font-bold text-center mb-6 text-white">
-            Related <span class="text-xbox-green">Articles</span>
-          </h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {relatedPosts.map((related) => (
-              <article class="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden hover:border-xbox-green hover:shadow-lg hover:shadow-xbox-green/10 transition-all duration-300">
-                <div class="w-full h-40 bg-gray-800 flex items-center justify-center">
-                  <span class="text-gray-600 text-sm">Gaming Image Placeholder</span>
+              
+               <a href={`/blog/${related.slug}`}
+                class="feature-card-dark group flex flex-col no-underline"
+              >
+                <!-- Image placeholder -->
+                <div
+                  class="w-full h-40 rounded-lg flex items-center justify-center mb-5 border border-[#1F2937] transition-colors group-hover:border-brand/30"
+                  style="background:rgba(255,255,255,0.02)"
+                >
+                  <span class="text-2xl">🎮</span>
                 </div>
-                <div class="p-4">
-                  <h3 class="text-base font-semibold mb-2 text-white leading-snug">{related.title}</h3>
-                  <p class="text-gray-400 mb-4 text-sm leading-relaxed">{related.excerpt}</p>
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs text-gray-500 flex items-center gap-1">
-                      <svg class="h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                      </svg>
-                      {related.readTime}
-                    </span>
-                    
-                     <a href={`/blog/${related.slug}`}
-                      class="text-xbox-green hover:text-xbox-green-light font-medium hover:underline inline-flex items-center gap-1 text-sm transition-colors"
-                    >
-                      Read More
-                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                      </svg>
-                    </a>
-                  </div>
+
+                <!-- Content -->
+                <div class="flex-1">
+                  <h3 class="heading-section text-base text-foreground mb-2 leading-snug group-hover:text-brand transition-colors duration-200">
+                    {related.title}
+                  </h3>
+                  <p class="text-foreground-muted text-sm font-ui leading-relaxed line-clamp-2 mb-4">
+                    {related.excerpt}
+                  </p>
                 </div>
-              </article>
+
+                <!-- Footer -->
+                <div class="flex items-center justify-between pt-4 border-t border-[#1F2937] mt-auto">
+                  <span class="flex items-center gap-1.5 text-foreground-subtle text-xs font-ui">
+                    <svg class="h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    {related.readTime}
+                  </span>
+                  <span class="label-green" style="font-size:10px">Read More →</span>
+                </div>
+              </a>
             ))}
           </div>
 
         </div>
       </section>
+    )}
 
-      <!-- Ad Banner -->
-      <section class="pt-4 pb-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
-          <div class="bg-gray-900 border border-dashed border-gray-700 rounded-lg px-4 md:px-6 py-6 text-center">
-            <p class="text-xs md:text-sm text-gray-600 mb-2">Advertisement</p>
-            <div class="h-24 md:h-32 lg:h-48 bg-gray-800 rounded"></div>
-          </div>
+    <!-- CTA -->
+    <section class="section-cta-dark py-14 md:py-20">
+      <div class="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16 text-center">
+        <span class="label-green block mb-4">Free Tool</span>
+        <h2 class="heading-section text-2xl md:text-3xl text-foreground mb-4">
+          Ready to find your <span class="text-brand">perfect gamertag?</span>
+        </h2>
+        <p class="text-foreground-muted font-ui mb-8 leading-relaxed text-sm">
+          Use our free generator to create unique Xbox gamertags instantly.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          
+           <a href="/"
+            class="btn-primary px-8 py-3.5 text-sm shadow-green hover:shadow-[0_0_30px_rgba(0,208,43,0.4)] inline-flex items-center justify-center gap-2"
+          >
+            Try the Generator
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+          
+          <a  href="/tools"
+            class="btn-secondary px-8 py-3.5 text-sm inline-flex items-center justify-center gap-2"
+          >
+            Explore All Tools
+          </a>
         </div>
-      </section>
+      </div>
+    </section>
 
-    </div>
+    <!-- Ad -->
+    <section class="section-dark-alt py-10 border-t border-[#1F2937]">
+      <div class="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16">
+        <div class="feature-card-dark p-6 text-center" style="border-style:dashed">
+          <p class="label-mono mb-3">Advertisement</p>
+          <div class="h-24 md:h-32 lg:h-48 bg-background rounded-lg"></div>
+        </div>
+      </div>
+    </section>
+
   </div>
+
+  <script>
+    const btn = document.getElementById("copyLinkBtn");
+    const msg = document.getElementById("copiedMsg");
+    if (btn && msg) {
+      btn.addEventListener("click", () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          msg.classList.remove("hidden");
+          setTimeout(() => msg.classList.add("hidden"), 2000);
+        });
+      });
+    }
+  </script>
 </MainLayout>

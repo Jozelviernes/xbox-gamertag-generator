@@ -9,185 +9,483 @@ import {
 } from "../lib/gamertag-data";
 ---
 
-<div class="space-y-8">
-  <div class="max-w-xl mx-auto bg-card rounded-xl p-4 md:p-6 shadow-card">
-    <div class="grid gap-6">
+<div class="w-full">
+
+  <!-- ═══ FORM CARD ═══ -->
+  <div class="w-full bg-card border border-default rounded-xl p-6 md:p-8 shadow-card">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Gender -->
       <div>
-        <label for="gender" class="text-sm font-medium block mb-2 text-white">Gender</label>
-        <select id="gender" class="w-full bg-surface text-white border border-border rounded-md px-3 py-2">
-          <option value="any" class="text-black">Any</option>
-          <option value="male" class="text-black">Male</option>
-          <option value="female" class="text-black">Female</option>
-          <option value="neutral" class="text-black">Neutral</option>
-        </select>
+        <label class="label-mono text-foreground-muted block mb-2">Gender</label>
+        <div class="custom-select-wrapper" data-name="gender">
+          <input type="hidden" name="gender" id="gender" value="any" />
+          <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="custom-select-label">Any</span>
+            <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M6 8L1 3h10z" fill="#00D02B"/>
+            </svg>
+          </button>
+          <ul class="custom-select-menu" role="listbox">
+            <li class="custom-select-item selected" role="option" data-value="any" aria-selected="true">Any</li>
+            <li class="custom-select-item" role="option" data-value="male" aria-selected="false">Male</li>
+            <li class="custom-select-item" role="option" data-value="female" aria-selected="false">Female</li>
+            <li class="custom-select-item" role="option" data-value="neutral" aria-selected="false">Neutral</li>
+          </ul>
+        </div>
       </div>
 
+      <!-- Character Theme -->
       <div>
-        <label for="theme" class="text-sm font-medium block mb-2 text-white">Character Theme</label>
-        <select id="theme" class="w-full bg-surface text-white border border-border rounded-md px-3 py-2">
-          {themes.map((theme) => (
-            <option value={theme.value} class="text-black">{theme.label}</option>
-          ))}
-        </select>
+        <label class="label-mono text-foreground-muted block mb-2">Character Theme</label>
+        <div class="custom-select-wrapper" data-name="theme">
+          <input type="hidden" name="theme" id="theme" value={themes[0]?.value ?? ""} />
+          <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="custom-select-label">{themes[0]?.label ?? "Any"}</span>
+            <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M6 8L1 3h10z" fill="#00D02B"/>
+            </svg>
+          </button>
+          <ul class="custom-select-menu" role="listbox">
+            {themes.map((t, i) => (
+              <li
+                class={`custom-select-item${i === 0 ? " selected" : ""}`}
+                role="option"
+                data-value={t.value}
+                aria-selected={i === 0 ? "true" : "false"}
+              >{t.label}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
+      <!-- Language -->
       <div>
-        <label for="language" class="text-sm font-medium block mb-2 text-white">Language</label>
-        <select id="language" class="w-full bg-surface text-white border border-border rounded-md px-3 py-2">
-          {languages.map((language) => (
-            <option value={language.value} class="text-black">{language.label}</option>
-          ))}
-        </select>
+        <label class="label-mono text-foreground-muted block mb-2">Language</label>
+        <div class="custom-select-wrapper" data-name="language">
+          <input type="hidden" name="language" id="language" value={languages[0]?.value ?? ""} />
+          <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="custom-select-label">{languages[0]?.label ?? "English"}</span>
+            <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M6 8L1 3h10z" fill="#00D02B"/>
+            </svg>
+          </button>
+          <ul class="custom-select-menu" role="listbox">
+            {languages.map((l, i) => (
+              <li
+                class={`custom-select-item${i === 0 ? " selected" : ""}`}
+                role="option"
+                data-value={l.value}
+                aria-selected={i === 0 ? "true" : "false"}
+              >{l.label}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <div>
-        <label for="includeWords" class="text-sm font-medium block mb-2 text-white">Include (Optional)</label>
+      <!-- Include Words -->
+      <div class="md:col-span-2 lg:col-span-2">
+        <label for="includeWords" class="label-mono text-foreground-muted block mb-2">Include (Optional)</label>
         <textarea
           id="includeWords"
-          placeholder="Specific words or letters"
-          class="w-full bg-surface text-white border border-border rounded-md px-3 py-2 min-h-[80px] resize-none"
+          placeholder="Specific words or letters..."
+          class="generator-textarea"
         ></textarea>
       </div>
 
-      <div>
-        <label for="otherRequests" class="text-sm font-medium block mb-2 text-white">Other Requests</label>
+      <!-- Other Requests -->
+      <div class="md:col-span-2 lg:col-span-1">
+        <label for="otherRequests" class="label-mono text-foreground-muted block mb-2">Other Requests</label>
         <textarea
           id="otherRequests"
-          placeholder="Any special requirements"
-          class="w-full bg-surface text-white border border-border rounded-md px-3 py-2 min-h-[80px] resize-none"
+          placeholder="Any special requirements..."
+          class="generator-textarea"
         ></textarea>
       </div>
 
-      <div class="my-6 md:my-8 lg:my-10">
-        <label for="characterLimit" class="text-sm font-medium mb-3 block text-white">
-          Character Limit:
-          <span id="characterLimitValue" class="text-xbox-green">12</span>
+      <!-- Character Limit slider — full width -->
+      <div class="md:col-span-2 lg:col-span-3">
+        <label for="characterLimit" class="label-mono text-foreground-muted block mb-3">
+          Character Limit: <span id="characterLimitValue" class="text-brand ml-1">12</span>
         </label>
-
-        <input
-          id="characterLimit"
-          type="range"
-          min="3"
-          max="12"
-          step="1"
-          value="12"
-          class="w-full accent-[hsl(107_76%_26%)]"
-        />
+        <div class="flex items-center gap-4">
+          <span class="text-foreground-subtle font-ui text-sm">3</span>
+          <input
+            id="characterLimit"
+            type="range"
+            min="3"
+            max="12"
+            step="1"
+            value="12"
+            class="generator-range flex-1"
+          />
+          <span class="text-foreground-subtle font-ui text-sm">12</span>
+        </div>
       </div>
 
-      <button
-        id="generateBtn"
-        type="button"
-        class="bg-xbox-green hover:bg-xbox-green-light text-white font-semibold py-4 px-8 text-lg shadow-xbox transition-all duration-300 rounded-md"
-      >
-        Generate Gamertags
-      </button>
+      <!-- Generate button — full width -->
+      <div class="md:col-span-2 lg:col-span-3">
+        <button
+          id="generateBtn"
+          type="button"
+          class="btn-primary w-full py-4 text-base rounded-lg tracking-widest"
+        >
+          Generate Gamertags
+        </button>
+      </div>
+
     </div>
 
-    <div class="bg-gray-100 rounded-lg px-4 md:px-6 py-12 text-center border-2 border-dashed border-gray-300 mt-12 mb-12">
-      <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
-      <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
+    <!-- Ad slot -->
+    <div class="mt-10 rounded-lg px-6 py-10 text-center border border-dashed border-default bg-background-surface">
+      <p class="label-mono text-foreground-subtle mb-3">Advertisement</p>
+      <div class="h-20 md:h-28 rounded bg-background-alt"></div>
     </div>
   </div>
 
-  <div id="resultsSection" class="max-w-3xl mx-auto hidden">
-    <h2 class="text-3xl font-bold text-xbox-green text-center mb-8">
+  <!-- ═══ RESULTS ═══ -->
+  <div id="resultsSection" class="w-full mt-8 hidden">
+
+    <h2 class="heading-section text-2xl md:text-3xl text-brand text-center mb-8">
       Generated Gamertags
     </h2>
 
-    <div id="resultsGrid" class="grid md:grid-cols-2 gap-4 mb-8"></div>
-
+   <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8"></div>
     <div class="text-center">
       <button
         id="generateMoreBtn"
         type="button"
-        class="border border-xbox-green text-xbox-green hover:bg-xbox-green hover:text-white rounded-md px-6 py-3 transition-all duration-300"
+        class="btn-secondary px-8 py-3"
       >
         Generate More
       </button>
     </div>
 
-    <div class="bg-gray-100 rounded-lg p-4 md:p-6 text-center border-2 border-dashed border-gray-300 mt-8">
-      <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
-      <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
+    <!-- Ad slot -->
+    <div class="mt-10 rounded-lg px-6 py-10 text-center border border-dashed border-default bg-background-surface">
+      <p class="label-mono text-foreground-subtle mb-3">Advertisement</p>
+      <div class="h-20 md:h-28 rounded bg-background-alt"></div>
     </div>
   </div>
+
 </div>
 
-<script>
-    // @ts-nocheck
-  const genderEl = document.getElementById("gender");
-  const themeEl = document.getElementById("theme");
-  const languageEl = document.getElementById("language");
-  const includeWordsEl = document.getElementById("includeWords");
-  const otherRequestsEl = document.getElementById("otherRequests");
-  const characterLimitEl = document.getElementById("characterLimit");
-  const characterLimitValueEl = document.getElementById("characterLimitValue");
-  const generateBtn = document.getElementById("generateBtn");
-  const generateMoreBtn = document.getElementById("generateMoreBtn");
-  const resultsSection = document.getElementById("resultsSection");
-  const resultsGrid = document.getElementById("resultsGrid");
+<!-- ═══ STYLES ═══ -->
+<style is:global>
+  /* ── Custom select trigger ── */
+  .custom-select-wrapper {
+    position: relative;
+    width: 100%;
+    user-select: none;
+  }
+  .custom-select-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #050505;
+    color: #ffffff;
+    border: 1px solid #1F2937;
+    border-radius: 0.5rem;
+    padding: 10px 14px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    text-align: left;
+    outline: none;
+  }
+  .custom-select-trigger:hover {
+    border-color: #374151;
+  }
+  .custom-select-trigger.open {
+    border-color: #00D02B;
+    box-shadow: 0 0 0 2px rgba(0, 208, 43, 0.15);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .custom-select-arrow {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .custom-select-trigger.open .custom-select-arrow {
+    transform: rotate(180deg);
+  }
 
+  /* ── Dropdown menu ── */
+  .custom-select-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #050505;
+    border: 1px solid #00D02B;
+    border-top: none;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    overflow: hidden;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+  }
+  .custom-select-menu.open {
+    display: block;
+  }
+
+  /* ── Dropdown items ── */
+  .custom-select-item {
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    border-bottom: 1px solid #1F2937;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .custom-select-item:last-child { border-bottom: none; }
+  .custom-select-item:hover {
+    background-color: rgba(0, 208, 43, 0.12);
+    color: #00D02B;
+  }
+  .custom-select-item.selected {
+    background-color: rgba(0, 208, 43, 0.08);
+    color: #00D02B;
+  }
+  .custom-select-item.selected::after {
+    content: "✓";
+    font-size: 11px;
+    color: #00D02B;
+  }
+
+  /* ── Textarea ── */
+  .generator-textarea {
+    width: 100%;
+    background-color: #050505;
+    color: #ffffff;
+    border: 1px solid #1F2937;
+    border-radius: 0.5rem;
+    padding: 10px 14px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    min-height: 80px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .generator-textarea::placeholder { color: #4B5563; }
+  .generator-textarea:hover { border-color: #374151; }
+  .generator-textarea:focus {
+    border-color: #00D02B;
+    box-shadow: 0 0 0 2px rgba(0, 208, 43, 0.12);
+  }
+
+  /* ── Range slider ── */
+  .generator-range {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: #1F2937;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  .generator-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #00D02B;
+    cursor: pointer;
+    border: 2px solid #000;
+    box-shadow: 0 0 6px rgba(0, 208, 43, 0.5);
+    transition: box-shadow 0.2s ease;
+  }
+  .generator-range::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 12px rgba(0, 208, 43, 0.7);
+  }
+  .generator-range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #00D02B;
+    cursor: pointer;
+    border: 2px solid #000;
+    box-shadow: 0 0 6px rgba(0, 208, 43, 0.5);
+  }
+.result-card {
+  display: flex;
+  flex-direction: column; /* 🔥 THIS IS THE KEY CHANGE */
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 20px;
+  min-height: 110px;
+    background: linear-gradient(180deg, #050505 0%, #0a0f0a 100%);
+  border: 1px solid rgba(0, 208, 43, 0.2);
+  border-radius: 0.75rem;
+  padding: 22px;
+  min-height: 120px;
+  transition: all 0.2s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 208, 43, 0.4);
+  box-shadow: 0 0 20px rgba(0, 208, 43, 0.08);
+}
+
+.result-card-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(22px, 2.5vw, 28px); /* 🔥 bigger + responsive */
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;
+  word-break: break-word;
+  letter-spacing: 0.04em;
+}
+.result-copy-btn {
+  align-self: flex-end; /* move to bottom-right */
+  margin-top: auto;
+
+  background: rgba(0, 208, 43, 0.08);
+  color: #00D02B;
+  border: 1px solid rgba(0, 208, 43, 0.3);
+  border-radius: 0.5rem;
+  padding: 6px 12px;
+  font-size: 11px;
+}
+
+.result-copy-btn:hover {
+  background-color: #00D02B;
+  color: #000000;
+}  .result-copy-btn.copied {
+    background-color: #00D02B;
+    color: #000000;
+  }
+</style>
+
+<!-- ═══ SCRIPT ═══ -->
+<script>
+  // @ts-nocheck
+
+  /* ── Custom select logic ── */
+  document.querySelectorAll(".custom-select-wrapper").forEach((wrapper) => {
+    const trigger = wrapper.querySelector(".custom-select-trigger");
+    const menu    = wrapper.querySelector(".custom-select-menu");
+    const input   = wrapper.querySelector("input[type=hidden]");
+    const label   = wrapper.querySelector(".custom-select-label");
+    const items   = wrapper.querySelectorAll(".custom-select-item");
+
+    trigger?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = menu?.classList.contains("open");
+      // Close all other open dropdowns first
+      document.querySelectorAll(".custom-select-menu.open").forEach((m) => {
+        m.classList.remove("open");
+        m.previousElementSibling?.classList.remove("open");
+      });
+      if (!isOpen) {
+        menu?.classList.add("open");
+        trigger?.classList.add("open");
+        trigger?.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        const value = item.dataset.value ?? "";
+        const text  = item.textContent?.trim() ?? "";
+
+        if (input) input.value = value;
+        if (label) label.textContent = text;
+
+        items.forEach((i) => {
+          i.classList.remove("selected");
+          i.setAttribute("aria-selected", "false");
+        });
+        item.classList.add("selected");
+        item.setAttribute("aria-selected", "true");
+
+        menu?.classList.remove("open");
+        trigger?.classList.remove("open");
+        trigger?.setAttribute("aria-expanded", "false");
+      });
+    });
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".custom-select-menu.open").forEach((m) => {
+      m.classList.remove("open");
+      m.previousElementSibling?.classList.remove("open");
+    });
+  });
+
+  /* ── Form elements ── */
+  const genderEl             = document.getElementById("gender");
+  const themeEl              = document.getElementById("theme");
+  const languageEl           = document.getElementById("language");
+  const includeWordsEl       = document.getElementById("includeWords");
+  const otherRequestsEl      = document.getElementById("otherRequests");
+  const characterLimitEl     = document.getElementById("characterLimit");
+  const characterLimitValueEl = document.getElementById("characterLimitValue");
+  const generateBtn          = document.getElementById("generateBtn");
+  const generateMoreBtn      = document.getElementById("generateMoreBtn");
+  const resultsSection       = document.getElementById("resultsSection");
+  const resultsGrid          = document.getElementById("resultsGrid");
+
+  /* ── Character limit label ── */
   function updateCharacterLimitLabel() {
     if (characterLimitEl && characterLimitValueEl) {
       characterLimitValueEl.textContent = characterLimitEl.value;
     }
   }
-
   characterLimitEl?.addEventListener("input", updateCharacterLimitLabel);
 
-  /**
-   * @param {HTMLElement | null} element
-   * @returns {string}
-   */
-  function getValue(element) {
-    if (
-      element instanceof HTMLInputElement ||
-      element instanceof HTMLTextAreaElement ||
-      element instanceof HTMLSelectElement
-    ) {
-      return element.value;
+  function getValue(el) {
+    if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement || el instanceof HTMLSelectElement) {
+      return el.value;
     }
     return "";
   }
 
   function getFormData() {
     return {
-      gender: getValue(genderEl),
-      theme: getValue(themeEl),
-      language: getValue(languageEl),
-      includeWords: getValue(includeWordsEl),
-      otherRequests: getValue(otherRequestsEl),
+      gender:         getValue(genderEl),
+      theme:          getValue(themeEl),
+      language:       getValue(languageEl),
+      includeWords:   getValue(includeWordsEl),
+      otherRequests:  getValue(otherRequestsEl),
       characterLimit: Number(getValue(characterLimitEl) || 12),
     };
   }
 
+  /* ── Generate ── */
   async function generateTags() {
     if (!generateBtn) return;
-
     const originalText = generateBtn.textContent;
     generateBtn.textContent = "Generating...";
     generateBtn.setAttribute("disabled", "true");
 
     try {
-      const formData = getFormData();
-
       const response = await fetch("http://127.0.0.1:8000/api/generate-gamertags", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(formData)
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(getFormData()),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to generate gamertags.");
-      }
-
-      /** @type {{ tags: string[] }} */
+      if (!response.ok) throw new Error("Failed to generate gamertags.");
       const data = await response.json();
-
       renderResults(data.tags || []);
     } catch (error) {
       console.error(error);
@@ -198,49 +496,45 @@ import {
     }
   }
 
-  /**
-   * @param {string[]} tags
-   */
+  /* ── Render results ── */
   function renderResults(tags) {
     if (!resultsGrid || !resultsSection) return;
-
     resultsGrid.innerHTML = "";
 
     tags.forEach((tag) => {
       const card = document.createElement("div");
-      card.className = "bg-card rounded-lg p-4 flex items-center justify-between shadow-card gap-3";
+      card.className = "result-card";
 
       const name = document.createElement("span");
-      name.className = "font-medium text-lg break-all text-white";
+      name.className = "result-card-name";
       name.textContent = tag;
 
-      const button = document.createElement("button");
-      button.className =
-        "bg-xbox-green hover:bg-xbox-green-light text-white rounded-md px-3 py-2 text-sm shrink-0 transition-all duration-300";
-      button.type = "button";
-      button.textContent = "Copy";
-
-      button.addEventListener("click", async () => {
+      const btn = document.createElement("button");
+      btn.className = "result-copy-btn";
+      btn.type = "button";
+      btn.textContent = "Copy";
+      btn.addEventListener("click", async () => {
         try {
           await navigator.clipboard.writeText(tag);
-          button.textContent = "Copied!";
+          btn.textContent = "Copied!";
+          btn.classList.add("copied");
           setTimeout(() => {
-            button.textContent = "Copy";
+            btn.textContent = "Copy";
+            btn.classList.remove("copied");
           }, 1200);
         } catch {
-          button.textContent = "Failed";
-          setTimeout(() => {
-            button.textContent = "Copy";
-          }, 1200);
+          btn.textContent = "Failed";
+          setTimeout(() => { btn.textContent = "Copy"; }, 1200);
         }
       });
 
       card.appendChild(name);
-      card.appendChild(button);
+      card.appendChild(btn);
       resultsGrid.appendChild(card);
     });
 
     resultsSection.classList.remove("hidden");
+    resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   generateBtn?.addEventListener("click", generateTags);

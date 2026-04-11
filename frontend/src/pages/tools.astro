@@ -31,10 +31,10 @@ const tools: Tool[] = [
     href: "/",
     icon: "gamepad",
   },
-   {
+  {
     id: "2",
     title: "Xbox Gamertag Price Checker",
-    description: "Ever wondered what your gamertag might be worth on the market? This tool gives you a quick, data-based estimate of its potential value based on length, rarity, and demand.",
+    description: "Ever wondered what your gamertag might be worth? Get a quick data-based estimate based on length, rarity, and demand.",
     slug: "price-checker",
     available: true,
     href: "/tools/gamertag-price-checker",
@@ -43,7 +43,7 @@ const tools: Tool[] = [
   {
     id: "3",
     title: "Xbox Gamercard Generator",
-    description: "Instantly create a custom Xbox gamercard—a visual badge showing off your gamertag, gamerscore, and avatar. Great for forums, social bios, or bragging rights.",
+    description: "Create a custom Xbox gamercard — a visual badge showing off your gamertag, gamerscore, and avatar. Great for forums and social bios.",
     slug: "gamercard-generator",
     available: true,
     href: "/tools/gamercard-generator",
@@ -51,159 +51,257 @@ const tools: Tool[] = [
   },
   {
     id: "4",
-    title: "Xbox Clips Tool",
-    description: "Find and download Xbox gameplay clips and screenshots linked to any public profile.",
-    slug: "clips-downloader",
-    available: false,
-    href: "/tools/clips-downloader",
-    icon: "download",
-  },
-   {
-    id: "5",
     title: "Xbox Gamertag Availability Checker",
-    description: "Instantly see if your desired tag is still up for grabs (before someone else snags it).",
+    description: "Instantly see if your desired tag is still up for grabs before someone else snags it.",
     slug: "availability-checker",
     available: false,
-    href: "/xbox-gamertag-availability-checker",
+    href: "/tools/gamertag-availability-checker",
     icon: "search",
   },
   {
-    id: "6",
-    title: "Xbox Account Price/Value Checker",
-    description: "A rough valuation based on your tag, achievements, age, and stats—just don't get any ideas about selling it (see the legal section above 👀).",
-    slug: "account-value-checker",
-    available: false,
-    href: "/tools/account-value-checker",
-    icon: "trophy",
-  },
-
-  {
-    id: "7",
-    title: "Xbox Gamer Profile History & Stats Checker",
-    description: "View old stats, username changes, and public-facing history tied to a gamertag.",
+    id: "5",
+    title: "Xbox Gamer Profile & Stats Checker",
+    description: "View public stats, gamerscore, recent games, and achievement progress tied to any Xbox gamertag.",
     slug: "profile-stats-checker",
     available: false,
-    href: "/xbox-gamertag-search",
+    href: "/tools/gamer-profile-checker",
     icon: "chart",
-  }
+ }
+  // {
+  //   id: "6",
+  //   title: "Xbox Account Price/Value Checker",
+  //   description: "A rough valuation based on your tag, achievements, age, and stats — just don't get any ideas about selling it.",
+  //   slug: "account-value-checker",
+  //   available: false,
+  //   href: "/tools/account-value-checker",
+  //   icon: "trophy",
+  // },
+  // {
+  //   id: "7",
+  //   title: "Xbox Clips Tool",
+  //   description: "Find and download Xbox gameplay clips and screenshots linked to any public profile.",
+  //   slug: "clips-downloader",
+  //   available: false,
+  //   href: "/tools/clips-downloader",
+  //   icon: "download",
+  // },
+
+  
 ];
 
-const iconMap = {
-  gamepad: `
-    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12l-2 5a2 2 0 0 0 3 2l3-2h4l3 2a2 2 0 0 0 3-2l-2-5a6 6 0 0 0-12 0Z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11v2M7 12h2M16 12h.01M18 10h.01" />
-    </svg>
-  `,
-  search: `
-    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20l-3.5-3.5" />
-    </svg>
-  `,
-  chart: `
-    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 19h16" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V9" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16V5" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16v-7" />
-    </svg>
-  `,
-  download: `
-    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v11" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10l4 4 4-4" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 21h16" />
-    </svg>
-  `,
-  dollar: `
-    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5c0-1.9-2-3.5-4.5-3.5S7.5 5.6 7.5 7.5 9.5 11 12 11s4.5 1.6 4.5 3.5S14.5 18 12 18s-4.5-1.6-4.5-3.5" />
-    </svg>
-  `,
-  trophy: `
-    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4h8v3a4 4 0 0 1-8 0V4Z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4H4v2a4 4 0 0 0 4 4" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 4h2v2a4 4 0 0 1-4 4" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11v4" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 21h6" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 15h4v3h-4z" />
-    </svg>
-  `,
-  idcard: `
-    <svg class="h-10 w-10 text-xbox-green mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke-width="2"></rect>
-      <circle cx="9" cy="10" r="2" stroke-width="2"></circle>
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 16c.8-1.3 2-2 3-2s2.2.7 3 2" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 9h4M14 13h4" />
-    </svg>
-  `,
-} as const;
+const iconMap: Record<IconKey, string> = {
+  gamepad: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 12l-2 5a2 2 0 0 0 3 2l3-2h4l3 2a2 2 0 0 0 3-2l-2-5a6 6 0 0 0-12 0Z" />
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 11v2M7 12h2M16 12h.01M18 10h.01" />
+  </svg>`,
+  search: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <circle cx="11" cy="11" r="7" stroke-width="1.5"></circle>
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 20l-3.5-3.5" />
+  </svg>`,
+  chart: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 19h16M7 16V9M12 16V5M17 16v-7" />
+  </svg>`,
+  download: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v11M8 10l4 4 4-4M4 21h16" />
+  </svg>`,
+  dollar: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18M16.5 7.5c0-1.9-2-3.5-4.5-3.5S7.5 5.6 7.5 7.5 9.5 11 12 11s4.5 1.6 4.5 3.5S14.5 18 12 18s-4.5-1.6-4.5-3.5" />
+  </svg>`,
+  trophy: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 4h8v3a4 4 0 0 1-8 0V4ZM6 4H4v2a4 4 0 0 0 4 4M18 4h2v2a4 4 0 0 1-4 4M12 11v4M9 21h6M10 15h4v3h-4z" />
+  </svg>`,
+  idcard: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke-width="1.5"></rect>
+    <circle cx="9" cy="10" r="2" stroke-width="1.5"></circle>
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 16c.8-1.3 2-2 3-2s2.2.7 3 2M14 9h4M14 13h4" />
+  </svg>`,
+};
+
+const availableTools = tools.filter(t => t.available);
+const comingSoonTools = tools.filter(t => !t.available);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Xbox Gaming Tools",
+  "url": "https://xboxgamertaggenerator.com/tools",
+  "description": "Free Xbox gaming tools — gamertag generator, availability checker, gamer profile checker and more.",
+};
 ---
 
 <MainLayout
-  title="Xbox Gaming Tools & Utilities - Gamertag Generator, Checker & More"
-  description="Comprehensive collection of Xbox gaming tools including gamertag generators, availability checkers, profile stats analyzers, and more. Free Xbox utilities for gamers."
+  title="Xbox Gaming Tools & Utilities | Gamertag Generator, Checker & More"
+  description="Comprehensive collection of free Xbox gaming tools including gamertag generators, availability checkers, profile stats analyzers, and more."
+  keywords="xbox gaming tools, xbox utilities, gamertag checker, xbox profile tools, free xbox tools"
+  {schema}
 >
   <Header />
 
-  <div class="min-h-screen bg-light-grey">
-    <!-- Hero Section -->
-    <section class="bg-card h-[400px] flex items-center">
-      <div class="container mx-auto px-6 text-center">
-        <h1 class="text-5xl md:text-6xl font-bebas text-xbox-green mb-6">
-          EXPLORE ALL XBOX TOOLS
+  <div class="min-h-screen bg-background text-foreground font-ui">
+
+    <!-- Hero -->
+    <section class="section-dark border-b border-[#1F2937] py-16 md:py-24 relative overflow-hidden">
+      <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
+      <div class="max-w-4xl mx-auto px-8 sm:px-12 lg:px-16 text-center relative z-10">
+        <span class="label-green mb-4 block">Free Tools</span>
+        <h1 class="heading-hero text-5xl md:text-6xl lg:text-7xl mb-6 text-foreground">
+          All <span class="text-brand">Xbox</span> Tools
         </h1>
-        <h2 class="text-xl md:text-2xl text-foreground mb-6 max-w-3xl mx-auto">
+        <p class="text-lg md:text-xl text-foreground-muted max-w-2xl mx-auto leading-relaxed font-ui">
           Everything you need to manage, customize, and level up your Xbox identity.
-        </h2>
-        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-          From gamertag generators to availability checkers and profile tools, we've got you covered. Browse and find the tool that suits you.
+          Browse and find the tool that suits you.
         </p>
-      </div>
-    </section>
 
-    <!-- Tools Grid -->
-    <section class="py-16 px-4 md:px-12 lg:px-24 bg-light-grey">
-      <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tools.map((tool) => (
-            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xbox transition-all duration-300 border border-gray-200 relative">
-              {!tool.available && (
-                <div class="absolute top-2 right-2 bg-xbox-green text-white text-xs px-2 py-0.5 rounded-full">
-                  Coming Soon
-                </div>
-              )}
-
-              <div class="text-center mb-4" set:html={iconMap[tool.icon]}></div>
-
-              <h3 class="text-xl font-semibold mb-3 text-center text-gray-800 group-hover:text-xbox-green transition-colors">
-                {tool.title}
-              </h3>
-
-              <p class="text-gray-600 mb-6 text-center">{tool.description}</p>
-
-              {tool.available ? (
-                <a
-                  href={tool.href}
-                  class="w-full bg-xbox-green hover:bg-xbox-green-light text-white py-3 px-6 rounded-lg font-medium transition-colors duration-200 block text-center"
-                >
-                  Go to Tool
-                </a>
-              ) : (
-                <button
-                  disabled
-                  class="w-full bg-gray-300 text-gray-500 py-3 px-6 rounded-lg font-medium cursor-not-allowed block text-center"
-                >
-                  Coming Soon
-                </button>
-              )}
-            </div>
-          ))}
+        <!-- Stats row -->
+        <div class="flex items-center justify-center gap-8 md:gap-12 mt-10">
+          <div class="text-center">
+            <p class="heading-section text-3xl text-brand">{availableTools.length}</p>
+            <p class="label-mono mt-1">Live Tools</p>
+          </div>
+          <div class="w-px h-10 bg-[#1F2937]"></div>
+          <div class="text-center">
+            <p class="heading-section text-3xl text-foreground-muted">{comingSoonTools.length}</p>
+            <p class="label-mono mt-1">Coming Soon</p>
+          </div>
+          <div class="w-px h-10 bg-[#1F2937]"></div>
+          <div class="text-center">
+            <p class="heading-section text-3xl text-foreground">100%</p>
+            <p class="label-mono mt-1">Free</p>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Available Tools -->
+    <section class="section-dark-alt py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
+
+        <div class="flex items-center gap-3 mb-10">
+          <div class="w-1 h-6 bg-brand rounded-full"></div>
+          <h2 class="heading-section text-2xl text-foreground">Available Now</h2>
+          <span class="badge-brand ml-2">{availableTools.length} Tools</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {availableTools.map((tool) => (
+            
+           <a   href={tool.href}
+              class="feature-card-dark group flex flex-col h-full no-underline"
+            >
+              <!-- Icon -->
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:shadow-green"
+                style="background:rgba(0,208,43,0.08);border:1px solid rgba(0,208,43,0.2)">
+                <div class="text-brand" set:html={iconMap[tool.icon]}></div>
+              </div>
+
+              <!-- Content -->
+              <div class="flex-1">
+                <h3 class="heading-section text-lg text-foreground mb-3 group-hover:text-brand transition-colors duration-200">
+                  {tool.title}
+                </h3>
+                <p class="text-foreground-muted text-sm font-ui leading-relaxed line-clamp-3">
+                  {tool.description}
+                </p>
+              </div>
+
+              <!-- CTA -->
+              <div class="flex items-center justify-between mt-6 pt-5 border-t border-[#1F2937]">
+                <span class="label-green" style="font-size:10px">Go to Tool</span>
+                <div class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-brand group-hover:shadow-green"
+                  style="border:1px solid rgba(0,208,43,0.3)">
+                  <svg class="w-3.5 h-3.5 text-brand group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Coming Soon Tools -->
+    {comingSoonTools.length > 0 && (
+      <section class="section-dark py-16 md:py-20 border-t border-[#1F2937]">
+        <div class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
+
+          <div class="flex items-center gap-3 mb-10">
+            <div class="w-1 h-6 bg-[#1F2937] rounded-full"></div>
+            <h2 class="heading-section text-2xl text-foreground-muted">Coming Soon</h2>
+            <span class="badge-rarity-common ml-2 font-ui text-xs px-3 py-1 rounded"
+              style="font-size:10px;letter-spacing:0.15em;font-weight:700;text-transform:uppercase">
+              {comingSoonTools.length} Tools
+            </span>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {comingSoonTools.map((tool) => (
+              <div class="feature-card-dark flex flex-col h-full opacity-60 cursor-default select-none">
+
+                <!-- Icon (dimmed) -->
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  style="background:rgba(255,255,255,0.03);border:1px solid #1F2937">
+                  <div class="text-foreground-subtle" set:html={iconMap[tool.icon]}></div>
+                </div>
+
+                <!-- Content -->
+                <div class="flex-1">
+                  <div class="flex items-start justify-between gap-2 mb-3">
+                    <h3 class="heading-section text-lg text-foreground-muted leading-tight">
+                      {tool.title}
+                    </h3>
+                    <span class="shrink-0 text-xs font-bold font-ui uppercase tracking-widest px-2.5 py-1 rounded"
+                      style="background:rgba(255,255,255,0.04);border:1px solid #1F2937;color:#4B5563;white-space:nowrap;font-size:9px">
+                      Soon
+                    </span>
+                  </div>
+                  <p class="text-foreground-subtle text-sm font-ui leading-relaxed line-clamp-3">
+                    {tool.description}
+                  </p>
+                </div>
+
+                <!-- Disabled CTA -->
+                <div class="flex items-center justify-between mt-6 pt-5 border-t border-[#1F2937]">
+                  <span class="label-mono" style="font-size:10px;color:#4B5563">Not Available Yet</span>
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center"
+                    style="border:1px solid #1F2937">
+                    <svg class="w-3.5 h-3.5 text-foreground-subtle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0 0v2m0-2h2m-2 0H10M12 3a9 9 0 110 18A9 9 0 0112 3z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+    )}
+
+    <!-- CTA Section -->
+    <section class="section-cta-dark py-16 md:py-20">
+      <div class="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16 text-center">
+        <span class="label-green mb-4 block">Get Started</span>
+        <h2 class="heading-section text-3xl md:text-4xl text-foreground mb-4">
+          Ready to find your <span class="text-brand">perfect tag?</span>
+        </h2>
+        <p class="text-foreground-muted font-ui mb-8 leading-relaxed">
+          Start with our gamertag generator and explore all tools for free.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="btn-primary px-8 py-3.5 text-sm shadow-green hover:shadow-[0_0_30px_rgba(0,208,43,0.4)] inline-flex items-center justify-center gap-2">
+            Try the Generator
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="/blog" class="btn-secondary px-8 py-3.5 text-sm inline-flex items-center justify-center gap-2">
+            Read the Guides
+          </a>
+        </div>
+      </div>
+    </section>
+
   </div>
 </MainLayout>

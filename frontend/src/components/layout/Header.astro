@@ -16,20 +16,33 @@ const navigation = [
 const isActive = (path: string) => currentPath === path;
 ---
 
-<header class="bg-card sticky top-0 z-50 border-b border-border">
-  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="text-2xl font-bebas text-xbox-green">
-      XboxGamerTag
-    </a>
+<header class="site-header sticky top-0 z-50 border-b border-default">
+  <nav class="max-w-6xl mx-auto px-5 md:px-6 h-[72px] flex items-center justify-between">
+   <a href="/" class="flex items-center gap-3">
 
-    <div class="hidden md:flex items-center space-x-8">
+  <!-- Inline SVG logo -->
+  <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1" width="38" height="38" rx="6" stroke="#00D02B" stroke-width="1.5"/>
+    <path d="M10 10 L20 20 L10 30" stroke="#00D02B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 10 L30 20 L20 30" stroke="#00D02B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+    <rect x="18" y="18" width="4" height="4" rx="1" fill="#00D02B"/>
+  </svg>
+
+  <div class="flex flex-col leading-none gap-0.5">
+    <span class="font-[Orbitron] text-sm font-black text-white tracking-widest uppercase">XBOX</span>
+    <span class="font-[Rajdhani] text-[9px] font-bold text-[#00D02B] tracking-[3px] uppercase">GAMERTAG GENERATOR</span>
+  </div>
+
+</a>
+
+    <div class="hidden md:flex items-center gap-2">
       {navigation.map((item) => (
         <a
           href={item.path}
+          aria-current={isActive(item.path) ? "page" : undefined}
           class:list={[
-            "relative inline-block pb-1 text-foreground transition-colors hover:text-xbox-green after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-xbox-green after:transition-all after:duration-300 after:content-['']",
-            "hover:after:w-full",
-            isActive(item.path) && "text-xbox-green after:w-full"
+            "nav-link",
+            isActive(item.path) && "is-active"
           ]}
         >
           {item.name}
@@ -39,29 +52,30 @@ const isActive = (path: string) => currentPath === path;
 
     <button
       id="mobile-menu-button"
-      class="md:hidden text-foreground"
+      class="mobile-menu-toggle flex md:hidden"
       type="button"
       aria-label="Toggle menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
       <span id="menu-icon-open">
-        <Menu class="h-6 w-6" />
+        <Menu class="h-5 w-5" />
       </span>
       <span id="menu-icon-close" class="hidden">
-        <X class="h-6 w-6" />
+        <X class="h-5 w-5" />
       </span>
     </button>
   </nav>
 
-  <div id="mobile-menu" class="hidden md:hidden bg-card border-b border-border">
-    <div class="max-w-6xl mx-auto px-6 py-4 space-y-4">
+  <div id="mobile-menu" class="mobile-menu hidden md:hidden border-t border-default">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex flex-col gap-2">
       {navigation.map((item) => (
         <a
           href={item.path}
+          aria-current={isActive(item.path) ? "page" : undefined}
           class:list={[
-            "block transition-colors hover:text-xbox-green",
-            isActive(item.path) && "text-xbox-green"
+            "mobile-nav-link",
+            isActive(item.path) && "is-active"
           ]}
         >
           {item.name}
@@ -70,6 +84,121 @@ const isActive = (path: string) => currentPath === path;
     </div>
   </div>
 </header>
+
+<style is:global>
+  .site-header {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.94) 0%, rgba(5, 5, 5, 0.92) 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.9);
+  }
+
+  .site-logo {
+    position: relative;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    transition: var(--transition-smooth);
+  }
+
+  .site-logo:hover {
+    text-shadow: 0 0 18px rgba(0, 208, 43, 0.18);
+  }
+
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    padding: 0 14px;
+    border-radius: 0.5rem;
+    color: #94A3B8;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: var(--transition-smooth);
+  }
+
+  .nav-link:hover {
+    color: #FFFFFF;
+    background: rgba(0, 208, 43, 0.06);
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 6px;
+    height: 2px;
+    border-radius: 999px;
+    background: #00D02B;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-link.is-active {
+    color: #FFFFFF;
+    background: rgba(0, 208, 43, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(0, 208, 43, 0.18);
+  }
+
+ .mobile-menu-toggle {
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1F2937;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  color: #FFFFFF;
+  transition: var(--transition-smooth);
+}
+
+  .mobile-menu-toggle:hover {
+    border-color: rgba(0, 208, 43, 0.35);
+    color: #00D02B;
+    background: rgba(0, 208, 43, 0.06);
+  }
+
+  .mobile-menu {
+    background:
+      linear-gradient(180deg, rgba(5, 5, 5, 0.98) 0%, rgba(0, 0, 0, 0.98) 100%);
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 14px 16px;
+    border: 1px solid transparent;
+    border-radius: 0.85rem;
+    color: #E5E7EB;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: var(--transition-smooth);
+  }
+
+  .mobile-nav-link:hover {
+    color: #FFFFFF;
+    border-color: rgba(0, 208, 43, 0.18);
+    background: rgba(0, 208, 43, 0.06);
+  }
+
+  .mobile-nav-link.is-active {
+    color: #00D02B;
+    border-color: rgba(0, 208, 43, 0.3);
+    background: rgba(0, 208, 43, 0.08);
+  }
+</style>
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {

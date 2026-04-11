@@ -3,65 +3,76 @@ import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/layout/Header.astro";
 import { glossaryTerms } from "../data/glossaryTerms";
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Xbox & Gaming Glossary",
+  "url": "https://xboxgamertaggenerator.com/glossary",
+  "description": "Clear definitions of Xbox terms, naming rules, and gamer culture.",
+};
 ---
 
 <MainLayout
-  title="Xbox & Gaming Glossary"
-  description="Explore clear definitions of Xbox terms, naming rules, and gamer culture."
+  title="Xbox & Gaming Glossary | Terms, Rules & Gamer Culture"
+  description="Explore clear definitions of Xbox terms, naming rules, and gamer culture. Build your knowledge and level up your naming game."
+  keywords="xbox glossary, gaming terms, xbox terminology, gamer culture, xbox naming rules, gaming dictionary"
+  {schema}
 >
   <Header />
 
-  <div class="min-h-screen bg-gray-900 text-white">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-gray-900 to-gray-800 pt-14 pb-7 lg:pt-20 lg:pb-10">
-      <div class="max-w-7xl mx-auto px-12 sm:px-16 lg:px-20">
-        <div class="text-center lg:text-left max-w-4xl">
-          <h1 class="text-4xl lg:text-5xl font-bebas text-white mb-4">
-            Xbox & Gaming <span class="text-xbox-green border-b-4 border-xbox-green">Glossary</span>
+  <div class="min-h-screen bg-[#000000] text-white">
+
+    <!-- ── Hero ── -->
+    <section class="bg-[#000000] relative overflow-hidden pt-14 pb-10 lg:pt-20 lg:pb-14">
+      <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"></div>
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div class="text-center">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
+            <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Gaming Dictionary</span>
+          </div>
+          <h1 class="font-[Orbitron] text-3xl lg:text-5xl font-black text-white mb-4 leading-tight">
+            Xbox &amp; Gaming <span class="text-[#00D02B]">Glossary</span>
           </h1>
-          <p class="text-xl lg:text-2xl text-gray-300 mb-4 font-medium">
+          <p class="font-[Rajdhani] text-lg lg:text-xl text-[#94A3B8] mb-3 font-semibold">
             Understand the lingo. Game smarter.
           </p>
-          <p class="text-lg text-gray-400 leading-relaxed max-w-2xl">
+          <p class="font-[Rajdhani] text-base text-[#4B5563] leading-relaxed max-w-2xl mx-auto">
             Explore clear definitions of Xbox terms, naming rules, and gamer culture. Build your knowledge and level up your naming game.
           </p>
         </div>
       </div>
+      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, #1F2937 20%, #00D02B 50%, #1F2937 80%, transparent);"></div>
     </section>
 
-    <!-- Search & Filter Section -->
-    <section class="bg-gray-800 py-12">
-      <div class="max-w-7xl mx-auto px-12 sm:px-16 lg:px-20">
-        <!-- Search Bar -->
-        <div class="mb-16">
+    <!-- ── Search & Filter ── -->
+    <section class="bg-[#050505] py-10 border-b border-[#1F2937]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+
+        <!-- Search bar -->
+        <div class="mb-10">
           <div class="relative max-w-2xl mx-auto">
             <input
               id="searchInput"
               type="text"
               placeholder="Search terms..."
-              class="w-full h-14 px-6 pr-12 bg-gray-700 border-2 border-gray-600 rounded-xl text-white placeholder-gray-400 focus:border-xbox-green focus:outline-none transition-colors"
+              class="w-full h-12 px-5 pr-12 bg-[#050505] border border-[#1F2937] rounded-lg text-white placeholder-[#4B5563] font-[Rajdhani] text-sm font-semibold focus:border-[#00D02B] focus:outline-none focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
             />
-            <svg
-              class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+            <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#4B5563]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20l-3.5-3.5" />
             </svg>
           </div>
         </div>
 
-        <!-- Alphabetical Links -->
-        <div class="mb-8">
-          <h3 class="text-lg font-semibold text-white mb-4 text-center lg:text-left">Browse by Letter</h3>
-          <div id="lettersWrap" class="flex flex-wrap justify-center lg:justify-start gap-1 md:gap-2">
+        <!-- Alphabetical buttons -->
+        <div>
+          <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-4 text-center">Browse by Letter</p>
+          <div id="lettersWrap" class="flex flex-wrap justify-center gap-1.5">
             {letters.map((letter) => (
               <button
                 type="button"
-                class="letter-btn w-8 h-8 md:w-10 md:h-10 border border-gray-600 rounded-lg flex items-center justify-center font-semibold transition-colors text-sm md:text-base bg-gray-700 hover:bg-xbox-green hover:text-white text-white"
+                class="letter-btn w-8 h-8 md:w-9 md:h-9 border border-[#1F2937] rounded font-[Orbitron] text-[10px] font-bold text-[#94A3B8] bg-transparent flex items-center justify-center transition-all duration-150 hover:border-[#00D02B]/50 hover:text-[#00D02B] hover:bg-[#00D02B]/[0.06]"
                 data-letter={letter}
               >
                 {letter}
@@ -72,44 +83,41 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
       </div>
     </section>
 
-    <!-- Main Glossary Section -->
-    <section class="bg-gray-100 py-16">
-      <div class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
-        <div
-          id="glossaryData"
-          data-terms={JSON.stringify(glossaryTerms)}
-        ></div>
+    <!-- ── Glossary Grid ── -->
+    <section class="bg-[#000000] py-14">
+      <div class="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
 
-        <div id="noResults" class="hidden text-center py-12">
-          <p class="text-gray-600 text-lg">
-            No terms found matching your search criteria.
-          </p>
+        <div id="glossaryData" data-terms={JSON.stringify(glossaryTerms)}></div>
+
+        <div id="noResults" class="hidden text-center py-16">
+          <p class="font-[Orbitron] text-base text-[#94A3B8]">No terms found.</p>
+          <p class="font-[Rajdhani] text-sm text-[#4B5563] mt-2">Try a different search or letter.</p>
         </div>
 
-        <div id="termsGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-8"></div>
+        <div id="termsGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-4"></div>
 
         <!-- Pagination -->
-        <div id="paginationWrap" class="hidden flex justify-center items-center mt-12 space-x-4">
+        <div id="paginationWrap" class="hidden flex justify-center items-center mt-12 gap-3">
           <button
             id="prevBtn"
             type="button"
-            class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed rounded-md px-4 py-2 inline-flex items-center"
+            class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#1F2937] text-[#94A3B8] font-[Rajdhani] text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
           >
-            <svg class="h-4 w-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
-            Previous
+            Prev
           </button>
 
-          <div id="pageNumbers" class="flex space-x-2"></div>
+          <div id="pageNumbers" class="flex gap-2"></div>
 
           <button
             id="nextBtn"
             type="button"
-            class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed rounded-md px-4 py-2 inline-flex items-center"
+            class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#1F2937] text-[#94A3B8] font-[Rajdhani] text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
           >
             Next
-            <svg class="h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -117,6 +125,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
       </div>
     </section>
   </div>
+
   <script>
   /**
    * @typedef {{ term: string; definition: string; letter: string }} Term
@@ -161,76 +170,49 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     let selectedLetter = "";
     let currentPage = 1;
 
-    /**
-     * @returns {Term[]}
-     */
     function filterTerms() {
-      const filtered = glossaryTerms.filter((/** @type {Term} */ term) => {
+      const filtered = glossaryTerms.filter((term) => {
         const matchesSearch =
           term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
           term.definition.toLowerCase().includes(searchTerm.toLowerCase());
-
         const matchesLetter = !selectedLetter || term.letter === selectedLetter;
         return matchesSearch && matchesLetter;
       });
-
-      return filtered.sort((/** @type {Term} */ a, /** @type {Term} */ b) => a.term.localeCompare(b.term));
+      return filtered.sort((a, b) => a.term.localeCompare(b.term));
     }
 
-    /**
-     * @param {Term[]} terms
-     */
-   function renderCards(terms) {
-  safeTermsGrid.innerHTML = terms
-    .map(
-      (term) => `
-      <div class="bg-white rounded-xl p-6 hover:bg-gray-50 transition-colors shadow-sm">
-        <h3 class="text-xl font-semibold text-xbox-green mb-3">${term.term}</h3>
-        <p class="text-gray-600 leading-relaxed">${term.definition}</p>
-      </div>
-    `
-    )
-    .join("");
-}
+    function renderCards(terms) {
+      safeTermsGrid.innerHTML = terms.map((term) => `
+        <div class="bg-[#050505] border border-[#1F2937] rounded-lg p-5 transition-all duration-150 hover:border-[#00D02B]/35 hover:bg-[#00D02B]/[0.03]">
+          <h3 class="font-[Orbitron] text-sm font-bold text-[#00D02B] mb-2">${term.term}</h3>
+          <p class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed">${term.definition}</p>
+        </div>
+      `).join("");
+    }
 
-    /**
-     * @param {number} totalPages
-     */
     function renderPagination(totalPages) {
       safePageNumbers.innerHTML = "";
-
       for (let page = 1; page <= totalPages; page++) {
         const button = document.createElement("button");
         button.type = "button";
         button.textContent = String(page);
-        button.className =
-          currentPage === page
-            ? "bg-xbox-green text-white hover:bg-xbox-green-light rounded-md px-4 py-2"
-            : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-md px-4 py-2";
-
-        button.addEventListener("click", () => {
-          currentPage = page;
-          render();
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
+        button.className = currentPage === page
+          ? "w-8 h-8 bg-[#00D02B] text-black font-[Orbitron] text-[10px] font-bold rounded"
+          : "w-8 h-8 bg-transparent border border-[#1F2937] text-[#94A3B8] font-[Orbitron] text-[10px] font-bold rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150";
+        button.addEventListener("click", () => { currentPage = page; render(); window.scrollTo({ top: 0, behavior: "smooth" }); });
         safePageNumbers.appendChild(button);
       }
-
       safePrevBtn.disabled = currentPage === 1;
       safeNextBtn.disabled = currentPage === totalPages || totalPages === 0;
     }
 
     function updateLetterButtons() {
       safeLetterButtons.forEach((btn) => {
-        const btnLetter = /** @type {HTMLButtonElement} */ (btn).dataset.letter ?? "";
-
+        const btnLetter = btn.dataset.letter ?? "";
         if (btnLetter === selectedLetter) {
-          btn.className =
-            "letter-btn w-8 h-8 md:w-10 md:h-10 border border-gray-600 rounded-lg flex items-center justify-center font-semibold transition-colors text-sm md:text-base bg-xbox-green text-white";
+          btn.className = "letter-btn w-8 h-8 md:w-9 md:h-9 border border-[#00D02B] rounded font-[Orbitron] text-[10px] font-bold text-black bg-[#00D02B] flex items-center justify-center transition-all duration-150";
         } else {
-          btn.className =
-            "letter-btn w-8 h-8 md:w-10 md:h-10 border border-gray-600 rounded-lg flex items-center justify-center font-semibold transition-colors text-sm md:text-base bg-gray-700 hover:bg-xbox-green hover:text-white text-white";
+          btn.className = "letter-btn w-8 h-8 md:w-9 md:h-9 border border-[#1F2937] rounded font-[Orbitron] text-[10px] font-bold text-[#94A3B8] bg-transparent flex items-center justify-center transition-all duration-150 hover:border-[#00D02B]/50 hover:text-[#00D02B] hover:bg-[#00D02B]/[0.06]";
         }
       });
     }
@@ -240,22 +222,17 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
       const totalPages = Math.ceil(sortedTerms.length / itemsPerPage);
       const safePage = Math.min(currentPage, totalPages || 1);
       currentPage = safePage;
-
       const startIndex = (currentPage - 1) * itemsPerPage;
       const currentTerms = sortedTerms.slice(startIndex, startIndex + itemsPerPage);
-
       updateLetterButtons();
-
       if (currentTerms.length === 0) {
         safeTermsGrid.innerHTML = "";
         safeNoResults.classList.remove("hidden");
         safePaginationWrap.classList.add("hidden");
         return;
       }
-
       safeNoResults.classList.add("hidden");
       renderCards(currentTerms);
-
       if (totalPages > 1) {
         safePaginationWrap.classList.remove("hidden");
         renderPagination(totalPages);
@@ -265,15 +242,15 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     }
 
     safeSearchInput.addEventListener("input", () => {
-  searchTerm = safeSearchInput.value;
-  selectedLetter = ""; // clear selected letter when searching
-  currentPage = 1;
-  render();
-});
+      searchTerm = safeSearchInput.value;
+      selectedLetter = "";
+      currentPage = 1;
+      render();
+    });
 
     safeLetterButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
-        const letter = /** @type {HTMLButtonElement} */ (btn).dataset.letter ?? "";
+        const letter = btn.dataset.letter ?? "";
         selectedLetter = selectedLetter === letter ? "" : letter;
         currentPage = 1;
         render();
@@ -281,23 +258,15 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     });
 
     safePrevBtn.addEventListener("click", () => {
-      if (currentPage > 1) {
-        currentPage -= 1;
-        render();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      if (currentPage > 1) { currentPage -= 1; render(); window.scrollTo({ top: 0, behavior: "smooth" }); }
     });
 
     safeNextBtn.addEventListener("click", () => {
       const totalPages = Math.ceil(filterTerms().length / itemsPerPage);
-      if (currentPage < totalPages) {
-        currentPage += 1;
-        render();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      if (currentPage < totalPages) { currentPage += 1; render(); window.scrollTo({ top: 0, behavior: "smooth" }); }
     });
 
     render();
   }
-</script>
+  </script>
 </MainLayout>

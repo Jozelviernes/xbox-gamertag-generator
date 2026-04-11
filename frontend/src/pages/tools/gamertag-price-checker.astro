@@ -1,156 +1,172 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import Header from "../../components/layout/Header.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Xbox Gamertag Price Checker",
+  "url": "https://xboxgamertaggenerator.com/tools/gamertag-price-checker",
+  "description": "Check how much an Xbox gamertag costs to change. Find out the current price for gamertag changes on Xbox.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+};
 ---
 
 <MainLayout
-  title="Xbox Gamertag Price Checker – What Is Your Tag Worth?"
-  description="Find out how much your Xbox gamertag could be worth based on length, rarity, word quality, and demand. Get an instant estimate."
+  title="Xbox Gamertag Price Checker | How Much Does a Name Change Cost?"
+  description="Find out exactly how much it costs to change your Xbox gamertag. Check current Xbox name change pricing, free change eligibility, and what affects the cost."
+  keywords="xbox gamertag price, xbox name change cost, how much to change xbox gamertag, xbox gamertag change fee, xbox name change price"
+  {schema}
 >
   <Header />
 
-  <div class="min-h-screen relative bg-gray-950 text-gray-100">
+  <div class="min-h-screen bg-[#000000] text-white">
 
-    <div class="fixed inset-0 bg-gray-950/95 z-[-1]" />
+    <!-- ── Hero ── -->
+    <section class="bg-[#000000] relative overflow-hidden py-14 md:py-20">
+      <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"></div>
+      <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-8 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
+          <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Free Tool</span>
+        </div>
+        <h1 class="font-[Orbitron] text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
+          Xbox Gamertag <span class="text-[#00D02B]">Price Checker</span>
+        </h1>
+        <p class="font-[Rajdhani] text-base md:text-lg text-[#94A3B8] max-w-xl mx-auto leading-relaxed">
+          Ever wondered what your gamertag might be worth? Get a quick data-based
+          estimate based on length, rarity, and demand.
+        </p>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, #1F2937 20%, #00D02B 50%, #1F2937 80%, transparent);"></div>
+    </section>
 
-    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pt-8">
+    <!-- ── Tool ── -->
+    <section class="py-10 bg-[#050505]">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 space-y-5">
 
-      <!-- Hero -->
-      <section class="bg-gray-900 border border-gray-800 py-16 max-w-6xl mx-auto rounded-lg">
-        <div class="px-6 text-center">
-          <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">
-            Xbox Gamertag <span class="text-xbox-green">Price Checker</span>
-          </h1>
-          <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-            Ever wondered what your gamertag might be worth? Get a quick data-based
-            estimate based on length, rarity, and demand.
+        <!-- Input Card -->
+        <div class="bg-[#000000] border border-[#1F2937] rounded-xl p-6">
+          <label class="font-[Rajdhani] text-xs font-bold tracking-[2px] uppercase text-[#94A3B8] block mb-3">
+            Enter your Xbox Gamertag
+          </label>
+          <div class="flex gap-3">
+            <input
+              id="gamertagInput"
+              type="text"
+              maxlength="12"
+              placeholder="e.g. ShadowWolf"
+              class="flex-1 px-4 py-3 bg-[#050505] border border-[#1F2937] rounded-lg text-white placeholder-[#4B5563] font-[Rajdhani] text-sm font-semibold focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
+            />
+            <button
+              id="checkBtn"
+              class="px-6 py-3 bg-[#00D02B] hover:bg-[#00e830] text-black font-[Rajdhani] font-bold text-sm uppercase tracking-widest rounded-lg transition-colors duration-200 whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              Check Price
+            </button>
+          </div>
+          <p class="font-[Rajdhani] text-xs text-[#4B5563] mt-2">
+            Max 12 characters · Letters, numbers and spaces only
+          </p>
+          <p class="font-[Rajdhani] text-xs text-[#4B5563] mt-1 leading-relaxed">
+            Tip: Short, clean tags often score higher. Premium-looking names often use strong letters
+            like Z, X, V, K, or Y — but avoid too many numbers or old-style patterns like xX or underscores.
           </p>
         </div>
-      </section>
 
-      <!-- Tool -->
-      <section class="py-10">
-        <div class="max-w-2xl mx-auto space-y-6">
+        <!-- Loading -->
+        <div id="loadingState" class="hidden text-center py-12">
+         <div
+  class="inline-block w-8 h-8 rounded-full animate-spin mb-4"
+  style="border: 2px solid #1F2937; border-top-color: #00D02B;"
+></div>
+          <p class="font-[Rajdhani] text-sm text-[#94A3B8] tracking-wide">Analyzing your gamertag...</p>
+        </div>
 
-          <!-- Input Card -->
-          <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <label class="block text-sm font-medium text-gray-400 mb-2">
-              Enter your Xbox Gamertag
-            </label>
-            <div class="flex gap-3">
-              <input
-                id="gamertagInput"
-                type="text"
-                maxlength="12"
-                placeholder="e.g. ShadowWolf"
-                class="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-xbox-green focus:border-transparent transition-colors"
-              />
-              <button
-                id="checkBtn"
-                class="px-6 py-3 bg-xbox-green hover:bg-xbox-green-light text-white font-semibold rounded-lg transition-colors shadow-xbox whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Check Price
-              </button>
+        <!-- Error -->
+        <div id="errorState" class="hidden bg-red-500/[0.06] border border-red-500/30 rounded-xl p-6 text-center">
+          <p id="errorMsg" class="font-[Rajdhani] text-sm font-bold text-red-400"></p>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="hidden space-y-4">
+
+          <!-- Tier + Price Card -->
+          <div class="bg-[#000000] border border-[#1F2937] rounded-xl p-8 text-center">
+            <p class="font-[Rajdhani] text-xs font-bold tracking-[2px] uppercase text-[#4B5563] mb-2">Estimated value for</p>
+            <h2 id="resultTag" class="font-[Orbitron] text-3xl font-black text-white mb-5"></h2>
+
+            <div id="tierBadge"
+              class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-6">
             </div>
-            <p class="text-xs text-gray-600 mt-2">
-  Max 12 characters · Letters, numbers and spaces only
-</p>
-<p class="text-xs text-gray-500 mt-1 leading-relaxed">
-  Tip: Short, clean tags often score higher. Premium-looking names often use strong letters
-  like Z, X, V, K, or Y — but avoid too many numbers or old-style patterns like xX or underscores.
-</p>
+
+            <div class="font-[Orbitron] text-5xl font-black text-[#00D02B] mb-2" id="priceRange"></div>
+            <p class="font-[Rajdhani] text-xs text-[#4B5563] uppercase tracking-wider">Estimated market value</p>
           </div>
 
-          <!-- Loading -->
-          <div id="loadingState" class="hidden text-center py-12">
-            <div class="inline-block w-8 h-8 border-4 border-xbox-green border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p class="text-gray-400">Analyzing your gamertag...</p>
+          <!-- Score Bar Card -->
+          <div class="bg-[#000000] border border-[#1F2937] rounded-xl p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-[Rajdhani] text-xs font-bold tracking-[2px] uppercase text-[#94A3B8]">Rarity Score</span>
+              <span id="scoreValue" class="font-[Orbitron] text-sm font-bold text-[#00D02B]"></span>
+            </div>
+            <div class="w-full bg-[#1F2937] rounded-full h-3 overflow-hidden">
+              <div
+                id="scoreBar"
+                class="h-3 rounded-full transition-all duration-700 ease-out"
+                style="width: 0%"
+              ></div>
+            </div>
+            <div class="flex justify-between font-[Rajdhani] text-xs text-[#4B5563] mt-1.5">
+              <span>0</span>
+              <span>25</span>
+              <span>50</span>
+              <span>75</span>
+              <span>100</span>
+            </div>
           </div>
 
-          <!-- Error -->
-          <div id="errorState" class="hidden bg-red-900/30 border border-red-700 rounded-xl p-6 text-center">
-            <p id="errorMsg" class="text-red-400 font-medium"></p>
+          <!-- Breakdown Card -->
+          <div class="bg-[#000000] border border-[#1F2937] rounded-xl p-6">
+            <h3 class="font-[Orbitron] text-sm font-bold text-white mb-5">
+              Score Breakdown
+            </h3>
+            <div id="breakdownList" class="space-y-0"></div>
           </div>
 
-          <!-- Results -->
-          <div id="results" class="hidden space-y-6">
-
-            <!-- Tier + Price Card -->
-            <div class="bg-gray-900 border border-gray-800 rounded-xl p-8 text-center">
-              <p class="text-gray-500 text-sm mb-1">Estimated value for</p>
-              <h2 id="resultTag" class="text-3xl font-bold text-white mb-5"></h2>
-
-              <div id="tierBadge"
-                class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-6">
-              </div>
-
-              <div class="text-5xl font-bold text-xbox-green mb-2" id="priceRange"></div>
-              <p class="text-gray-500 text-sm">Estimated market value</p>
-            </div>
-
-            <!-- Score Bar Card -->
-            <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-sm font-medium text-gray-400">Rarity Score</span>
-                <span id="scoreValue" class="text-sm font-bold text-xbox-green"></span>
-              </div>
-              <div class="w-full bg-gray-800 rounded-full h-4 overflow-hidden">
-                <div
-                  id="scoreBar"
-                  class="h-4 rounded-full transition-all duration-700 ease-out"
-                  style="width: 0%"
-                ></div>
-              </div>
-              <div class="flex justify-between text-xs text-gray-600 mt-1">
-                <span>0</span>
-                <span>25</span>
-                <span>50</span>
-                <span>75</span>
-                <span>100</span>
-              </div>
-            </div>
-
-            <!-- Breakdown Card -->
-            <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-              <h3 class="text-lg font-semibold text-white mb-4">
-                Score Breakdown
-              </h3>
-              <div id="breakdownList" class="space-y-3"></div>
-            </div>
-
-            <!-- Try Another -->
-            <div class="text-center">
-              <button
-                id="resetBtn"
-                class="px-6 py-3 border border-gray-700 hover:border-xbox-green text-gray-400 hover:text-xbox-green font-medium rounded-lg transition-colors"
-              >
-                Check Another Gamertag
-              </button>
-            </div>
-
-            <!-- Disclaimer -->
-            <p class="text-xs text-gray-600 text-center px-4 pb-4">
-              ⚠️ This is an estimate for entertainment purposes only. Actual gamertag
-              value depends on buyer demand and is not guaranteed. Selling Xbox
-              gamertags may violate Microsoft's Terms of Service.
-            </p>
-
+          <!-- Try Another -->
+          <div class="text-center">
+            <button
+              id="resetBtn"
+              class="px-6 py-3 bg-transparent border border-[#1F2937] hover:border-[#00D02B]/40 text-[#94A3B8] hover:text-[#00D02B] font-[Rajdhani] font-bold text-sm uppercase tracking-widest rounded-lg transition-all duration-150"
+            >
+              Check Another Gamertag
+            </button>
           </div>
+
+          <!-- Disclaimer -->
+          <p class="font-[Rajdhani] text-xs text-[#4B5563] text-center px-4 pb-4 leading-relaxed">
+            This is an estimate for entertainment purposes only. Actual gamertag
+            value depends on buyer demand and is not guaranteed. Selling Xbox
+            gamertags may violate Microsoft's Terms of Service.
+          </p>
 
         </div>
-      </section>
 
-      <!-- Ad Banner -->
-      <section class="pb-16">
-        <div class="max-w-2xl mx-auto">
-          <div class="bg-gray-900 border border-dashed border-gray-700 rounded-lg px-4 py-6 text-center">
-            <p class="text-xs text-gray-600 mb-2">Advertisement</p>
-            <div class="h-24 md:h-32 bg-gray-800 rounded"></div>
-          </div>
+      </div>
+    </section>
+
+    <!-- ── Ad slot ── -->
+    <section class="pb-16 bg-[#050505]">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6">
+        <div class="bg-white/[0.02] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center">
+          <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">Advertisement</p>
+          <div class="bg-[#050505] rounded h-24 md:h-32"></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-    </div>
   </div>
 
   <script>
@@ -176,24 +192,24 @@ import Header from "../../components/layout/Header.astro";
 
     const tierStyles: Record<Tier, { badge: string; bar: string }> = {
       "Legendary" : {
-        badge : "bg-yellow-500/20 text-yellow-400 border border-yellow-500/50",
+        badge : "bg-yellow-500/20 text-yellow-400 border border-yellow-500/40",
         bar   : "bg-gradient-to-r from-yellow-500 to-yellow-300",
       },
       "Rare"      : {
-        badge : "bg-purple-500/20 text-purple-400 border border-purple-500/50",
+        badge : "bg-purple-500/20 text-purple-400 border border-purple-500/40",
         bar   : "bg-gradient-to-r from-purple-500 to-purple-400",
       },
       "Uncommon"  : {
-        badge : "bg-blue-500/20 text-blue-400 border border-blue-500/50",
+        badge : "bg-blue-500/20 text-blue-400 border border-blue-500/40",
         bar   : "bg-gradient-to-r from-blue-500 to-blue-400",
       },
       "Common"    : {
-        badge : "bg-green-500/20 text-green-400 border border-green-500/50",
-        bar   : "bg-gradient-to-r from-green-500 to-green-400",
+        badge : "bg-[#00D02B]/10 text-[#00D02B] border border-[#00D02B]/30",
+        bar   : "bg-[#00D02B]",
       },
       "Low Value" : {
-        badge : "bg-gray-500/20 text-gray-400 border border-gray-500/50",
-        bar   : "bg-gray-500",
+        badge : "bg-white/[0.04] text-[#94A3B8] border border-[#1F2937]",
+        bar   : "bg-[#4B5563]",
       },
     };
 
@@ -230,7 +246,7 @@ import Header from "../../components/layout/Header.astro";
       scoreValue.textContent = `${data.score} / 100`;
 
       // Score bar color + animate
-      scoreBar.className = `h-4 rounded-full transition-all duration-700 ease-out ${style.bar}`;
+      scoreBar.className = `h-3 rounded-full transition-all duration-700 ease-out ${style.bar}`;
       setTimeout(() => {
         scoreBar.style.width = `${data.score}%`;
       }, 100);
@@ -243,17 +259,17 @@ import Header from "../../components/layout/Header.astro";
       breakdownList.innerHTML = data.breakdown
         .map(
           (item) => `
-          <div class="flex items-start justify-between py-3 border-b border-gray-800 last:border-0 gap-4">
+          <div class="flex items-start justify-between py-3 border-b border-[#1F2937] last:border-0 gap-4">
             <div class="flex-1">
-              <p class="text-sm text-gray-300 font-medium">${item.label}</p>
-              <p class="text-xs text-gray-500 mt-0.5">${item.note}</p>
+              <p class="font-[Rajdhani] text-sm font-bold text-white">${item.label}</p>
+              <p class="font-[Rajdhani] text-xs text-[#4B5563] mt-0.5">${item.note}</p>
             </div>
-            <span class="text-sm font-bold shrink-0 ${
+            <span class="font-[Orbitron] text-xs font-bold shrink-0 ${
               item.points > 0
-                ? "text-xbox-green"
+                ? "text-[#00D02B]"
                 : item.points < 0
                 ? "text-red-400"
-                : "text-gray-500"
+                : "text-[#4B5563]"
             }">
               ${item.points > 0 ? "+" : ""}${item.points} pts
             </span>

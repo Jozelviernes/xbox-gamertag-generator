@@ -1,148 +1,439 @@
 @import "tailwindcss";
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+/* ============================================================
+   CARDFORGE DESIGN SYSTEM
+   Dark Tech Minimalist — "The Obsidian + Brand Green" Theme
+   ============================================================ */
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* match your navbar height */
+}
 
 @theme {
-  --color-xbox-green: hsl(107 76% 26%);
-  --color-xbox-green-light: hsl(107 76% 35%);
-  --color-xbox-green-dark: hsl(107 76% 20%);
-  --color-xbox-green-glow: hsl(107 76% 26%);
 
-  --color-background: hsl(218 30% 9%);
-  --color-foreground: hsl(210 40% 98%);
+  /* --- Brand Green --- */
+  --color-brand:              #00D02B;
+  --color-brand-light:        #00e830;
+  --color-brand-dark:         #00a021;
+  --color-brand-glow:         rgba(0, 208, 43, 0.10);
+  --color-brand-glow-strong:  rgba(0, 208, 43, 0.20);
 
-  --color-card: hsl(218 30% 12%);
-  --color-card-foreground: hsl(210 40% 98%);
+  /* --- Backgrounds --- */
+  --color-background:         #000000;   /* True black — hero, navbar, footer */
+  --color-background-alt:     #050505;   /* Near black — alternate dark sections */
+  --color-background-surface: #0a0f0a;   /* Slightly lifted surface */
 
-  --color-surface: hsl(218 30% 16%);
-  --color-surface-foreground: hsl(210 40% 98%);
+  /* --- Foreground / Text --- */
+  --color-foreground:         #FFFFFF;   /* Primary headlines on dark */
+  --color-foreground-muted:   #94A3B8;   /* Secondary text, labels */
+  --color-foreground-subtle:  #4B5563;   /* Disabled, placeholder */
 
-  --color-light-grey: hsl(220 14% 96%);
-  --color-light-grey-foreground: hsl(220 8.9% 46.1%);
-  --color-light-grey-subtle: hsl(220 14% 94%);
-  --color-light-grey-softer: hsl(220 14% 98%);
+  /* --- White Section Colors --- */
+  --color-white-bg:           #FFFFFF;
+  --color-white-heading:      #050505;
+  --color-white-body:         #64748B;
+  --color-white-subtle:       #F8FAFC;
+  --color-white-border:       #E2E8F0;
 
-  --color-primary: hsl(107 76% 26%);
-  --color-primary-foreground: hsl(210 40% 98%);
+  /* --- Cards & Surfaces --- */
+  --color-card:               #000000;
+  --color-card-foreground:    #FFFFFF;
+  --color-card-hover:         rgba(0, 208, 43, 0.04);
 
-  --color-secondary: hsl(218 30% 16%);
-  --color-secondary-foreground: hsl(210 40% 98%);
+  /* --- Borders --- */
+  --color-border:             #1F2937;   /* Ghost border — default */
+  --color-border-green:       rgba(0, 208, 43, 0.35);
+  --color-border-green-strong:rgba(0, 208, 43, 0.65);
 
-  --color-muted: hsl(218 30% 16%);
-  --color-muted-foreground: hsl(215 20.2% 65.1%);
+  /* --- Inputs --- */
+  --color-input:              #050505;
+  --color-ring:               #00D02B;
 
-  --color-accent: hsl(107 76% 26%);
-  --color-accent-foreground: hsl(210 40% 98%);
+  /* --- Semantic --- */
+  --color-destructive:        hsl(0 84.2% 60.2%);
+  --color-destructive-fg:     #FFFFFF;
+  --color-success:            #00D02B;
+  --color-warning:            #F59E0B;
 
-  --color-destructive: hsl(0 84.2% 60.2%);
-  --color-destructive-foreground: hsl(210 40% 98%);
+  /* --- Rarity Tier Colors --- */
+  --color-rarity-common:      #94A3B8;
+  --color-rarity-uncommon:    #4ADE80;
+  --color-rarity-rare:        #60A5FA;
+  --color-rarity-epic:        #C084FC;
+  --color-rarity-legendary:   #00D02B;
 
-  --color-border: hsl(218 30% 18%);
-  --color-input: hsl(218 30% 18%);
-  --color-ring: hsl(107 76% 26%);
+  /* --- Radius --- */
+  --radius:                   0.5rem;
+  --radius-md:                0.5rem;
+  --radius-lg:                0.75rem;
+  --radius-xl:                1rem;
 
-  --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(224 71.4% 4.1%);
-
-  --radius: 0.75rem;
-
-  --shadow-xbox: 0 0 20px hsl(107 76% 26% / 0.3);
-  --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+  /* --- Shadows --- */
+  --shadow-card:   0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  --shadow-green:  0 0 20px rgba(0, 208, 43, 0.25);
+  --shadow-green-lg: 0 0 40px rgba(0, 208, 43, 0.15);
 }
 
+/* ============================================================
+   ROOT VARIABLES (not in @theme — used as CSS custom props)
+   ============================================================ */
 :root {
-  --gradient-primary: linear-gradient(135deg, hsl(107 76% 26%), hsl(107 76% 35%));
-  --gradient-dark: linear-gradient(180deg, hsl(218 30% 12%), hsl(218 30% 9%));
-  --gradient-hero: linear-gradient(135deg, hsl(218 30% 12%), hsl(218 30% 9%));
+  /* Gradients */
+  --gradient-hero:    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);
+  --gradient-card:    linear-gradient(160deg, #0a1a0a 0%, #020800 100%);
+  --gradient-section: linear-gradient(180deg, #000000 0%, #050505 100%);
+  --gradient-green:   linear-gradient(135deg, #00D02B, #00e830);
+
+  /* Transitions */
+  --transition-base:   all 0.2s ease;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-bounce: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Glow pulse for legendary cards */
+  --glow-legendary: 0 0 16px rgba(0, 208, 43, 0.5), 0 0 40px rgba(0, 208, 43, 0.2);
 }
 
+/* ============================================================
+   BASE
+   ============================================================ */
 html {
   color-scheme: dark;
 }
 
-* {
-  border-color: hsl(218 30% 18%);
+*,
+*::before,
+*::after {
+  border-color: #1F2937;
 }
 
 body {
-  background-color: hsl(218 30% 9%);
-  color: hsl(210 40% 98%);
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: 'Rajdhani', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.bg-gradient-hero {
+/* Display font for headings, logo, card names */
+h1, h2, h3, .font-display {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* ============================================================
+   BACKGROUND UTILITIES
+   ============================================================ */
+.bg-background       { background-color: #000000; }
+.bg-background-alt   { background-color: #050505; }
+.bg-surface          { background-color: #0a0f0a; }
+.bg-card             { background-color: #000000; }
+.bg-white-section    { background-color: #FFFFFF; }
+.bg-white-subtle     { background-color: #F8FAFC; }
+
+/* Hero glow — place behind headline text */
+.bg-hero-glow {
   background: var(--gradient-hero);
 }
 
-.bg-gradient-primary {
-  background: var(--gradient-primary);
+/* Solid brand green */
+.bg-brand            { background-color: #00D02B; }
+.bg-brand-light      { background-color: #00e830; }
+.bg-brand-dim        { background-color: rgba(0, 208, 43, 0.08); }
+
+/* ============================================================
+   TEXT UTILITIES
+   ============================================================ */
+.text-foreground        { color: #FFFFFF; }
+.text-foreground-muted  { color: #94A3B8; }
+.text-foreground-subtle { color: #4B5563; }
+.text-brand             { color: #00D02B; }
+.text-brand-light       { color: #00e830; }
+
+/* White section text */
+.text-dark-heading      { color: #050505; }
+.text-dark-body         { color: #64748B; }
+
+/* Card foreground */
+.text-card-foreground   { color: #FFFFFF; }
+
+/* Muted alias */
+.text-muted-foreground  { color: #94A3B8; }
+
+/* Rarity text colors */
+.text-rarity-common     { color: #94A3B8; }
+.text-rarity-uncommon   { color: #4ADE80; }
+.text-rarity-rare       { color: #60A5FA; }
+.text-rarity-epic       { color: #C084FC; }
+.text-rarity-legendary  { color: #00D02B; }
+
+/* ============================================================
+   BORDER UTILITIES
+   ============================================================ */
+.border-default         { border: 1px solid #1F2937; }
+.border-green           { border: 1px solid rgba(0, 208, 43, 0.35); }
+.border-green-strong    { border: 1px solid rgba(0, 208, 43, 0.65); }
+.border-white-section   { border-color: #E2E8F0; }
+
+/* ============================================================
+   SHADOW UTILITIES
+   ============================================================ */
+.shadow-card            { box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7); }
+.shadow-green           { box-shadow: 0 0 20px rgba(0, 208, 43, 0.25); }
+.shadow-green-lg        { box-shadow: 0 0 40px rgba(0, 208, 43, 0.15); }
+.shadow-legendary       { box-shadow: var(--glow-legendary); }
+
+/* ============================================================
+   COMPONENT: NAVBAR
+   ============================================================ */
+.navbar {
+  background-color: #000000;
+  border-bottom: 1px solid #1F2937;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
-.bg-gradient-dark {
-  background: var(--gradient-dark);
+/* ============================================================
+   COMPONENT: BUTTONS
+   ============================================================ */
+.btn-primary {
+  background-color: #00D02B;
+  color: #000000;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.btn-primary:hover  { background-color: #00e830; }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-secondary {
+  background-color: transparent;
+  color: #FFFFFF;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid #1F2937;
+  border-radius: var(--radius);
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.btn-secondary:hover  { border-color: #94A3B8; color: #FFFFFF; }
+.btn-secondary:active { transform: scale(0.98); }
+
+.btn-ghost {
+  background: transparent;
+  color: #94A3B8;
+  border: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+.btn-ghost:hover { color: #FFFFFF; }
+
+/* ============================================================
+   COMPONENT: INPUTS
+   ============================================================ */
+.input-dark {
+  background-color: #050505;
+  border: 1px solid #1F2937;
+  color: #FFFFFF;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  border-radius: var(--radius);
+  padding: 9px 14px;
+  width: 100%;
+  outline: none;
+  transition: var(--transition-base);
+}
+.input-dark::placeholder { color: #4B5563; }
+.input-dark:focus         { border-color: #00D02B; }
+.input-dark:hover         { border-color: #374151; }
+
+/* ============================================================
+   COMPONENT: GAME CARD
+   ============================================================ */
+.game-card {
+  background: var(--gradient-card);
+  border: 1px solid #1F2937;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+.game-card:hover {
+  border-color: rgba(0, 208, 43, 0.4);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 0 20px rgba(0, 208, 43, 0.12);
+}
+.game-card.legendary {
+  border-color: rgba(0, 208, 43, 0.5);
+  animation: legendaryPulse 3s ease-in-out infinite;
 }
 
-.shadow-xbox {
-  box-shadow: var(--shadow-xbox);
+/* Stat bars inside cards */
+.stat-bar-track {
+  height: 3px;
+  background: #1F2937;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.stat-bar-fill {
+  height: 100%;
+  background: #00D02B;
+  border-radius: 2px;
+  animation: statGrow 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.stat-bar-fill.muted {
+  background: #94A3B8;
 }
 
-.shadow-card {
-  box-shadow: var(--shadow-card);
+/* ============================================================
+   COMPONENT: BADGES / PILLS
+   ============================================================ */
+.badge-brand {
+  background: rgba(0, 208, 43, 0.12);
+  border: 1px solid rgba(0, 208, 43, 0.35);
+  color: #00D02B;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 3px;
 }
 
-.text-xbox-green {
-  color: hsl(107 76% 26%);
+.badge-rarity-legendary {
+  background: rgba(0, 208, 43, 0.15);
+  border: 1px solid rgba(0, 208, 43, 0.5);
+  color: #00D02B;
+}
+.badge-rarity-epic {
+  background: rgba(192, 132, 252, 0.1);
+  border: 1px solid rgba(192, 132, 252, 0.4);
+  color: #C084FC;
+}
+.badge-rarity-rare {
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  color: #60A5FA;
+}
+.badge-rarity-common {
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid #1F2937;
+  color: #94A3B8;
 }
 
-.text-xbox-green-light {
-  color: hsl(107 76% 35%);
+/* ============================================================
+   SECTION RHYTHM (dark ↔ white alternating)
+   ============================================================ */
+.section-dark {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+.section-dark-alt {
+  background-color: #050505;
+  color: #FFFFFF;
+}
+.section-white {
+  background-color: #FFFFFF;
+  color: #050505;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+.section-white-subtle {
+  background-color: #F8FAFC;
+  color: #050505;
 }
 
-.bg-xbox-green {
-  background-color: hsl(107 76% 26%);
+/* Green accent top border for CTA section */
+.section-cta-dark {
+  background-color: #000000;
+  border-top: 3px solid #00D02B;
 }
 
-.bg-xbox-green-light {
-  background-color: hsl(107 76% 35%);
+/* ============================================================
+   FEATURE CARDS (white section)
+   ============================================================ */
+.feature-card-white {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: var(--transition-smooth);
+}
+.feature-card-white:hover {
+  border-top-color: #00D02B;
+  border-top-width: 2px;
 }
 
-.border-border {
-  border-color: hsl(218 30% 18%);
+.feature-card-dark {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #1F2937;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: var(--transition-smooth);
+}
+.feature-card-dark:hover {
+  border-color: rgba(0, 208, 43, 0.3);
+  background: rgba(0, 208, 43, 0.03);
 }
 
-.bg-background {
-  background-color: hsl(218 30% 9%);
+/* ============================================================
+   TYPOGRAPHY HELPERS
+   ============================================================ */
+.font-display  { font-family: 'Orbitron', sans-serif; }
+.font-ui       { font-family: 'Rajdhani', sans-serif; }
+
+.heading-hero {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.heading-section {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.label-mono {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #94A3B8;
+}
+.label-green {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #00D02B;
 }
 
-.text-foreground {
-  color: hsl(210 40% 98%);
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-
-.bg-card {
-  background-color: hsl(218 30% 12%);
-}
-
-.text-card-foreground {
-  color: hsl(210 40% 98%);
-}
-
-.bg-surface {
-  background-color: hsl(218 30% 16%);
-}
-
-.text-surface-foreground {
-  color: hsl(210 40% 98%);
-}
-
-.text-muted-foreground {
-  color: hsl(215 20.2% 65.1%);
-}
-
-.rounded-xl-theme {
-  border-radius: 0.75rem;
-}
-
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -150,17 +441,47 @@ body {
   overflow: hidden;
 }
 
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.5s ease-out both;
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.animate-fade-in-up-delay {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.15s both;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes statGrow {
+  from { width: 0%; }
+}
+
+@keyframes legendaryPulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(0, 208, 43, 0.3); }
+  50%       { box-shadow: 0 0 28px rgba(0, 208, 43, 0.55); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.08; }
+  50%       { opacity: 0.16; }
+}
+
+body {
+  font-family: 'Rajdhani', 'Segoe UI', system-ui, sans-serif;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Orbitron', sans-serif;
 }

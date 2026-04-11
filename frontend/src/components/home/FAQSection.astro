@@ -258,51 +258,62 @@ Bottom line? If the name you want is taken, the suffix system gives you a second
   ];
 ---
 
-<section class="pt-16 pb-2 md:pb-4 bg-light-grey-subtle">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6">
-    <h2 class="text-2xl sm:text-3xl font-bebas text-xbox-green text-center mb-8 sm:mb-12">
-      FAQ: Your New Gamertag - What You Need to Know
-    </h2>
 
-    <div class="max-w-3xl mx-auto space-y-3 sm:space-y-4">
+<section class="section-white py-16 md:py-20">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+    <!-- Section header -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 mb-4" style="background:rgba(0,208,43,0.08);border:1px solid rgba(0,208,43,0.25);border-radius:3px;padding:3px 12px;">
+        <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#00D02B;">FAQ</span>
+      </div>
+      <h2 class="heading-section text-2xl sm:text-3xl text-dark-heading">
+        Your New Gamertag — What You Need to Know
+      </h2>
+      <p class="font-ui text-dark-body text-sm mt-3 max-w-xl mx-auto">
+        Everything you need to know about creating the perfect Xbox gamertag.
+      </p>
+    </div>
+
+    <!-- FAQ items -->
+    <div class="space-y-3">
       {faqItems.map((item) => (
-        <div class="bg-white rounded-lg overflow-hidden shadow-md">
-          
-          <!-- BUTTON -->
-          <button
-            class="faq-toggle w-full text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors"
-            data-id={item.id}
-          >
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
-                {item.question}
-              </span>
+        <div class="faq-item" style="border:1px solid #E2E8F0;border-radius:0.625rem;overflow:hidden;background:#ffffff;transition:border-color 0.2s ease;">
 
-              <span class="icon text-xbox-green text-lg">+</span>
-            </div>
+          <!-- Toggle button -->
+          <button
+            class="faq-toggle w-full text-left px-5 py-4 sm:px-6 sm:py-5"
+            data-id={item.id}
+            style="background:transparent;cursor:pointer;outline:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;"
+          >
+            <span class="faq-question" style="font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:#050505;line-height:1.4;flex:1;">
+              {item.question}
+            </span>
+
+            <span class="faq-icon" style="width:26px;height:26px;border-radius:50%;border:1.5px solid #00D02B;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background-color 0.2s ease;color:#00D02B;font-size:16px;font-weight:400;line-height:1;">
+              +
+            </span>
           </button>
 
-          <!-- CONTENT -->
-          <div class="faq-content hidden px-4 sm:px-6 pb-4 sm:pb-6 animate-fade-in">
+          <!-- Content -->
+          <div class="faq-content" style="display:none;padding:0 24px 20px;">
+
+            <!-- Divider line -->
+            <div style="height:1px;background:#E2E8F0;margin-bottom:16px;"></div>
+
             {item.answer.split('[AD_BANNER]').map((part, index) => (
               <>
                 {part && (
-                  <div class="text-gray-600 whitespace-pre-line leading-relaxed mb-4">
+                  <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:400;color:#64748B;line-height:1.75;white-space:pre-line;margin-bottom:12px;">
                     {part.trim()}
                   </div>
                 )}
 
                 {index < item.answer.split('[AD_BANNER]').length - 1 && (
-                  <div class="my-6 p-3 sm:p-4 bg-gradient-to-r from-xbox-green/10 to-xbox-green/5 border border-xbox-green/20 rounded-lg">
-                    <div class="text-center">
-                      <p class="text-xs sm:text-sm text-xbox-green font-semibold mb-2">
-                        Advertisement
-                      </p>
-                      <div class="bg-white/50 rounded p-4 sm:p-6 lg:p-8 border-2 border-dashed border-xbox-green/30">
-                        <p class="text-gray-500 text-xs sm:text-sm">
-                          Ad Banner Space
-                        </p>
-                      </div>
+                  <div style="margin:16px 0;padding:14px 16px;background:#F8FAFC;border:1px dashed #E2E8F0;border-radius:0.5rem;text-align:center;">
+                    <p style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;margin-bottom:8px;">Advertisement</p>
+                    <div style="background:#ffffff;border:1px dashed #E2E8F0;border-radius:4px;padding:24px;">
+                      <p style="font-family:'Rajdhani',sans-serif;font-size:12px;color:#CBD5E1;">Ad Banner Space</p>
                     </div>
                   </div>
                 )}
@@ -313,8 +324,33 @@ Bottom line? If the name you want is taken, the suffix system gives you a second
         </div>
       ))}
     </div>
+
   </div>
 </section>
+
+<style>
+  .faq-item:hover {
+    border-color: rgba(0, 208, 43, 0.3) !important;
+  }
+  .faq-item.open {
+    border-color: rgba(0, 208, 43, 0.4) !important;
+  }
+  .faq-item.open .faq-icon {
+    background-color: #00D02B !important;
+    color: #000000 !important;
+  }
+  .faq-item.open .faq-question {
+    color: #00D02B !important;
+  }
+  .faq-content.visible {
+    display: block !important;
+    animation: faqOpen 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @keyframes faqOpen {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
@@ -322,27 +358,28 @@ Bottom line? If the name you want is taken, the suffix system gives you a second
 
     buttons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        const parent = btn.parentElement;
-        if (!parent) return;
+        const item    = btn.parentElement;
+        const content = item?.querySelector('.faq-content');
+        const icon    = btn.querySelector('.faq-icon');
+        if (!item || !content || !icon) return;
 
-        const content = parent.querySelector('.faq-content');
-        const icon = btn.querySelector('.icon');
+        const isOpen = item.classList.contains('open');
 
-        if (!content || !icon) return;
-
-        const isOpen = !content.classList.contains('hidden');
-
-        // close all
+        // Close all
+        document.querySelectorAll('.faq-item').forEach((el) => {
+          el.classList.remove('open');
+        });
         document.querySelectorAll('.faq-content').forEach((el) => {
-          el.classList.add('hidden');
+          el.classList.remove('visible');
+        });
+        document.querySelectorAll('.faq-icon').forEach((ic) => {
+          ic.textContent = '+';
         });
 
-        document.querySelectorAll('.icon').forEach((i) => {
-          i.textContent = '+';
-        });
-
+        // Open clicked if it was closed
         if (!isOpen) {
-          content.classList.remove('hidden');
+          item.classList.add('open');
+          content.classList.add('visible');
           icon.textContent = '−';
         }
       });

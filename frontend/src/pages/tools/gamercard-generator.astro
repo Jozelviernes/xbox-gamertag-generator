@@ -1,12 +1,24 @@
-
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import Header from "../../components/layout/Header.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Xbox Gamercard Generator",
+  "url": "https://xboxgamertaggenerator.com/tools/gamercard-generator",
+  "description": "Generate a custom Xbox gamercard image for your profile.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+};
 ---
 
 <MainLayout
-  title="Xbox Gamercard Generator – Create Your Custom Xbox Badge"
+  title="Xbox Gamercard Generator | Create Your Custom Xbox Badge"
   description="Create a custom Xbox gamercard showing your gamertag, gamerscore, status, badges, and avatar. Download as PNG and share on forums, social bios, or anywhere."
+  keywords="xbox gamercard generator, custom xbox badge, xbox gamertag card, xbox profile card, xbox gamercard maker"
+  {schema}
 >
   <Header />
 
@@ -18,93 +30,104 @@ import Header from "../../components/layout/Header.astro";
     .gc-mono  { font-family: 'Share Tech Mono', monospace; }
 
     .panel {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 12px;
+      background: #000000;
+      border: 1px solid #1F2937;
+      border-radius: 10px;
       padding: 20px;
     }
 
     .panel-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: #4B5563;
       margin-bottom: 14px;
     }
 
     .gc-input {
       width: 100%;
       padding: 10px 14px;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #050505;
+      border: 1px solid #1F2937;
       border-radius: 8px;
       color: #fff;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 600;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .gc-input::placeholder { color: rgba(255,255,255,0.2); }
-    .gc-input:focus { border-color: var(--accent, #107C10); }
+    .gc-input::placeholder { color: #4B5563; }
+    .gc-input:hover { border-color: #374151; }
+    .gc-input:focus { border-color: #00D02B; box-shadow: 0 0 0 2px rgba(0,208,43,0.12); }
 
     .gc-select {
       width: 100%;
       padding: 10px 14px;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #050505;
+      border: 1px solid #1F2937;
       border-radius: 8px;
       color: #fff;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 600;
       outline: none;
       appearance: none;
+      -webkit-appearance: none;
       cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300D02B' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 34px;
+      transition: border-color 0.2s;
     }
+    .gc-select:hover { border-color: #374151; }
+    .gc-select:focus { border-color: #00D02B; outline: none; }
+    .gc-select option { background-color: #050505; color: #ffffff; }
 
     .field-label {
       display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: #4B5563;
       margin-bottom: 6px;
     }
 
     .avatar-btn {
       aspect-ratio: 1;
-      border-radius: 10px;
+      border-radius: 8px;
       font-size: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0.35);
-      border: 2px solid transparent;
+      background: #050505;
+      border: 1px solid #1F2937;
       cursor: pointer;
-      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+      transition: border-color 0.15s, background 0.15s;
     }
-    .avatar-btn:hover { border-color: rgba(255,255,255,0.25); }
+    .avatar-btn:hover { border-color: rgba(0,208,43,0.3); background: rgba(0,208,43,0.04); }
     .avatar-btn.active {
-      border-color: var(--accent, #107C10);
-      background: rgba(0,0,0,0.5);
-      box-shadow: 0 0 0 1px var(--accent, #107C10), 0 0 14px rgba(0,0,0,0.22);
+      border-color: #00D02B;
+      background: rgba(0,208,43,0.08);
+      box-shadow: 0 0 0 1px rgba(0,208,43,0.2);
     }
 
     .badge-btn {
       padding: 7px 10px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(0,0,0,0.3);
-      color: rgba(255,255,255,0.45);
-      font-family: 'Barlow Condensed', sans-serif;
+      border-radius: 6px;
+      border: 1px solid #1F2937;
+      background: #050505;
+      color: #4B5563;
+      font-family: 'Rajdhani', sans-serif;
       font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       cursor: pointer;
       transition: all 0.15s;
       text-align: left;
@@ -122,24 +145,25 @@ import Header from "../../components/layout/Header.astro";
       stroke-width: 1.8;
       opacity: 0.9;
     }
-    .badge-btn:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
+    .badge-btn:hover { border-color: rgba(0,208,43,0.3); color: #94A3B8; }
     .badge-btn.active {
-      border-color: var(--accent,#107C10);
-      color: #fff;
-      background: rgba(0,0,0,0.5);
-      box-shadow: 0 0 0 1px rgba(16,124,16,0.12);
+      border-color: #00D02B;
+      color: #ffffff;
+      background: rgba(0,208,43,0.08);
+      box-shadow: 0 0 0 1px rgba(0,208,43,0.12);
     }
 
     .theme-btn {
       padding: 10px 14px;
-      border-radius: 10px;
-      border: 2px solid rgba(255,255,255,0.08);
-      background: rgba(0,0,0,0.3);
-      color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid #1F2937;
+      background: #050505;
+      color: #94A3B8;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: 0.05em;
+      text-transform: uppercase;
       cursor: pointer;
       transition: all 0.15s;
       display: flex;
@@ -150,39 +174,35 @@ import Header from "../../components/layout/Header.astro";
 
     .style-btn {
       padding: 10px 14px;
-      border-radius: 10px;
-      border: 2px solid rgba(255,255,255,0.08);
-      background: rgba(0,0,0,0.3);
-      color: rgba(255,255,255,0.7);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid #1F2937;
+      background: #050505;
+      color: #94A3B8;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: 0.05em;
+      text-transform: uppercase;
       cursor: pointer;
       transition: all 0.15s;
     }
 
     .theme-btn:hover,
     .style-btn:hover {
-      border-color: rgba(255,255,255,0.2);
-      color: #fff;
+      border-color: rgba(0,208,43,0.3);
+      color: #ffffff;
     }
 
     .theme-btn.active,
     .style-btn.active {
-      border-color: var(--accent, #107C10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      color: #fff;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.04),
-        0 0 0 1px var(--accent, #107C10),
-        0 10px 24px rgba(0,0,0,0.22);
+      border-color: #00D02B;
+      background: rgba(0,208,43,0.07);
+      color: #ffffff;
+      box-shadow: 0 0 0 1px rgba(0,208,43,0.15);
     }
 
     .theme-btn.active .accent-dot {
-      box-shadow:
-        0 0 0 3px rgba(255,255,255,0.06),
-        0 0 14px var(--accent, #107C10);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.06), 0 0 10px var(--accent, #00D02B);
     }
 
     .upload-zone {
@@ -190,40 +210,40 @@ import Header from "../../components/layout/Header.astro";
       align-items: center;
       gap: 12px;
       padding: 12px 16px;
-      background: rgba(0,0,0,0.35);
-      border: 1px dashed rgba(255,255,255,0.15);
-      border-radius: 10px;
+      background: #050505;
+      border: 1px dashed #1F2937;
+      border-radius: 8px;
       cursor: pointer;
       transition: border-color 0.2s;
     }
-    .upload-zone:hover { border-color: var(--accent,#107C10); }
+    .upload-zone:hover { border-color: rgba(0,208,43,0.4); }
 
     .dl-btn {
       width: 100%;
       padding: 12px;
-      background: var(--accent, #107C10);
-      color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 16px;
+      background: #00D02B;
+      color: #000000;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: opacity 0.2s;
+      transition: background 0.2s, opacity 0.2s;
     }
-    .dl-btn:hover { opacity: 0.88; }
+    .dl-btn:hover { background: #00e830; }
 
     .canvas-wrap {
-      background: #080808;
-      border-radius: 14px;
+      background: #050505;
+      border-radius: 10px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid #1F2937;
     }
 
     .tip-item {
@@ -231,49 +251,55 @@ import Header from "../../components/layout/Header.astro";
       align-items: flex-start;
       gap: 10px;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.4);
-      line-height: 1.4;
+      font-size: 13px;
+      font-weight: 600;
+      color: #4B5563;
+      line-height: 1.5;
     }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 3px; }
 
     .accent-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 
-    input[type=range] { accent-color: var(--accent,#107C10); }
+    input[type=range] { accent-color: var(--accent, #00D02B); }
     input[type=color] { cursor: pointer; }
 
     .section-divider {
       height: 1px;
-      background: rgba(255,255,255,0.06);
+      background: #1F2937;
       margin: 4px 0;
     }
   </style>
 
-  <div class="gc-root min-h-screen bg-[#070a0e] text-gray-100" style="--accent:#107C10">
-    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 pt-8 pb-20">
+  <div class="gc-root min-h-screen bg-[#000000] text-white" style="--accent:#00D02B">
+    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 pt-0 pb-20">
 
-      <section class="max-w-7xl mx-auto mb-8 text-center py-12 px-6"
-        style="background:linear-gradient(135deg,rgba(16,124,16,0.12) 0%,rgba(0,0,0,0) 60%);border:1px solid rgba(16,124,16,0.18);border-radius:16px;">
-        <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full gc-mono text-xs"
-          style="background:rgba(16,124,16,0.15);border:1px solid rgba(16,124,16,0.3);color:#4ade80;">
-          ● GAMERCARD STUDIO
+      <!-- ── Hero ── -->
+      <section class="bg-[#000000] relative overflow-hidden py-14 mb-8">
+        <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-5">
+            <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Free Tool</span>
+          </div>
+          <h1 class="gc-title text-4xl md:text-5xl font-extrabold tracking-wide text-white mb-3">
+            Xbox <span class="text-[#00D02B]">Gamercard</span> Generator
+          </h1>
+          <p class="font-[Rajdhani] text-base md:text-lg text-[#94A3B8] max-w-2xl mx-auto">
+            Build a realistic Xbox-style profile card. Choose your style, theme, badges, and export in social-ready sizes.
+          </p>
         </div>
-        <h1 class="gc-title text-4xl md:text-5xl font-extrabold tracking-wide text-white mb-3">
-          Xbox <span style="color:var(--accent)">Gamercard</span> Generator
-        </h1>
-        <p class="text-base text-gray-400 max-w-2xl mx-auto" style="font-family:'Rajdhani',sans-serif;font-size:17px;">
-          Build a realistic Xbox-style profile card. Choose your style, theme, badges, and export in social-ready sizes.
-        </p>
+        <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, #1F2937 20%, #00D02B 50%, #1F2937 80%, transparent);"></div>
       </section>
 
-      <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.3fr] gap-6">
+      <!-- ── Main grid ── -->
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.3fr] gap-5">
 
+        <!-- ── Left — Controls ── -->
         <div class="space-y-4">
 
+          <!-- Profile Info -->
           <div class="panel">
             <div class="panel-label">Profile Info</div>
             <div class="space-y-3">
@@ -313,10 +339,11 @@ import Header from "../../components/layout/Header.astro";
             </div>
           </div>
 
+          <!-- Avatar -->
           <div class="panel">
             <div class="flex items-center justify-between mb-3">
               <div class="panel-label mb-0">Avatar</div>
-              <select id="avatarShape" class="gc-select" style="width:auto;padding:6px 12px;font-size:13px;">
+              <select id="avatarShape" class="gc-select" style="width:auto;padding:6px 12px;font-size:12px;">
                 <option value="circle">Circle</option>
                 <option value="rounded">Rounded</option>
               </select>
@@ -325,29 +352,31 @@ import Header from "../../components/layout/Header.astro";
             <div>
               <label class="field-label">Upload Custom Avatar</label>
               <label class="upload-zone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                <span id="avatarUploadLabel" class="text-xs text-gray-500 truncate" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:0.05em;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span id="avatarUploadLabel" class="font-[Rajdhani] text-xs text-[#4B5563] truncate tracking-wide">
                   Click to upload (square recommended)
                 </span>
                 <input id="avatarUpload" type="file" accept="image/*" class="hidden" />
               </label>
-              <button id="clearAvatarBtn" class="hidden mt-2 text-xs text-red-400 hover:text-red-300 transition-colors" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em;">
-                ✕ Remove avatar
+              <button id="clearAvatarBtn" class="hidden mt-2 font-[Rajdhani] text-xs font-bold text-red-400 hover:text-red-300 uppercase tracking-wider transition-colors">
+                Remove avatar
               </button>
             </div>
           </div>
 
+          <!-- Badges -->
           <div class="panel">
             <div class="flex items-center justify-between mb-3">
               <div class="panel-label mb-0">Badges</div>
               <label class="flex items-center gap-2 cursor-pointer">
-                <input id="toggleBadges" type="checkbox" class="accent-[#107C10]" />
-                <span class="field-label mb-0" style="font-size:11px;">Show badges</span>
+                <input id="toggleBadges" type="checkbox" class="accent-[#00D02B]" />
+                <span class="field-label mb-0">Show badges</span>
               </label>
             </div>
             <div id="badgeGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
           </div>
 
+          <!-- Style & Theme -->
           <div class="panel space-y-4">
             <div class="panel-label">Style & Theme</div>
 
@@ -364,8 +393,8 @@ import Header from "../../components/layout/Header.astro";
             <div class="grid grid-cols-2 gap-3">
               <div>
                 <label class="field-label">Accent Color</label>
-                <input id="accentColor" type="color" value="#107C10"
-                  class="w-full h-11 bg-transparent border border-white/10 rounded-lg cursor-pointer" />
+                <input id="accentColor" type="color" value="#00D02B"
+                  class="w-full h-11 bg-[#050505] border border-[#1F2937] rounded-lg cursor-pointer hover:border-[#374151] transition-colors" />
               </div>
               <div>
                 <label class="field-label">Background</label>
@@ -382,30 +411,32 @@ import Header from "../../components/layout/Header.astro";
             </div>
           </div>
 
+          <!-- Background Upload -->
           <div class="panel">
             <div class="panel-label">Background Upload</div>
             <label class="upload-zone">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              <span id="bgUploadLabel" class="text-xs text-gray-500 truncate" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:0.05em;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span id="bgUploadLabel" class="font-[Rajdhani] text-xs text-[#4B5563] truncate tracking-wide">
                 Click to upload background image
               </span>
               <input id="bgUpload" type="file" accept="image/*" class="hidden" />
             </label>
-            <button id="clearBgBtn" class="hidden mt-2 text-xs text-red-400 hover:text-red-300 transition-colors" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em;">
-              ✕ Remove background
+            <button id="clearBgBtn" class="hidden mt-2 font-[Rajdhani] text-xs font-bold text-red-400 hover:text-red-300 uppercase tracking-wider transition-colors">
+              Remove background
             </button>
             <div id="bgOpacityRow" class="hidden mt-4">
               <div class="flex items-center justify-between mb-1.5">
                 <label class="field-label mb-0">Overlay Darkness</label>
-                <span id="bgOpacityVal" class="gc-mono text-xs text-gray-500">55%</span>
+                <span id="bgOpacityVal" class="gc-mono text-xs text-[#4B5563]">55%</span>
               </div>
               <input id="bgOpacity" type="range" min="0" max="90" value="55" class="w-full" />
-              <div class="flex justify-between mt-1" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:rgba(255,255,255,0.25);">
-                <span>LIGHTER</span><span>DARKER</span>
+              <div class="flex justify-between mt-1 font-[Rajdhani] text-[10px] text-[#4B5563] uppercase tracking-wider">
+                <span>Lighter</span><span>Darker</span>
               </div>
             </div>
           </div>
 
+          <!-- Export Settings -->
           <div class="panel">
             <div class="panel-label">Export Settings</div>
             <div class="grid grid-cols-2 gap-3">
@@ -432,13 +463,15 @@ import Header from "../../components/layout/Header.astro";
 
         </div>
 
+        <!-- ── Right — Preview ── -->
         <div class="space-y-4">
           <div class="lg:sticky lg:top-6 space-y-4">
 
+            <!-- Live Preview -->
             <div class="panel">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                 <div class="panel-label mb-0">Live Preview</div>
-                <span id="previewSizeLabel" class="gc-mono text-xs text-gray-500">Wide Card • 600×200</span>
+                <span id="previewSizeLabel" class="gc-mono text-xs text-[#4B5563]">Wide Card • 600×200</span>
               </div>
 
               <div class="canvas-wrap mb-4">
@@ -446,19 +479,35 @@ import Header from "../../components/layout/Header.astro";
               </div>
 
               <button id="downloadBtn" class="dl-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Download PNG
               </button>
             </div>
 
+            <!-- Pro Tips -->
             <div class="panel">
               <div class="panel-label">Pro Tips</div>
               <div class="space-y-3">
-                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> Square avatar images give cleanest results</div>
-                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> Use 4x or higher for very sharp downloads</div>
-                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> 50–70% overlay keeps text readable over photos</div>
-                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> Banner format is perfect for Twitter / X headers</div>
-                <div class="tip-item"><span style="color:var(--accent);flex-shrink:0;">›</span> Square export is ideal for Instagram posts</div>
+                <div class="tip-item">
+                  <span class="text-[#00D02B] flex-shrink-0 font-bold">›</span>
+                  Square avatar images give cleanest results
+                </div>
+                <div class="tip-item">
+                  <span class="text-[#00D02B] flex-shrink-0 font-bold">›</span>
+                  Use 4x or higher for very sharp downloads
+                </div>
+                <div class="tip-item">
+                  <span class="text-[#00D02B] flex-shrink-0 font-bold">›</span>
+                  50–70% overlay keeps text readable over photos
+                </div>
+                <div class="tip-item">
+                  <span class="text-[#00D02B] flex-shrink-0 font-bold">›</span>
+                  Banner format is perfect for Twitter / X headers
+                </div>
+                <div class="tip-item">
+                  <span class="text-[#00D02B] flex-shrink-0 font-bold">›</span>
+                  Square export is ideal for Instagram posts
+                </div>
               </div>
             </div>
 
@@ -466,10 +515,11 @@ import Header from "../../components/layout/Header.astro";
         </div>
       </div>
 
+      <!-- ── Ad slot ── -->
       <div class="max-w-7xl mx-auto mt-8">
-        <div class="panel text-center">
-          <p class="gc-mono text-xs text-gray-600 mb-3">Advertisement</p>
-          <div class="h-24 rounded-lg" style="background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.06);"></div>
+        <div class="bg-white/[0.02] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center">
+          <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">Advertisement</p>
+          <div class="h-24 rounded bg-[#050505] border border-[#1F2937]"></div>
         </div>
       </div>
 
@@ -615,6 +665,7 @@ import Header from "../../components/layout/Header.astro";
   elStyleGrid.innerHTML = cardStyles.map(s=>`
     <button data-style="${s.id}" class="style-btn ${s.id===selStyle.id?"active":""}">${s.label}</button>
   `).join("");
+
 elAvatarGrid.querySelectorAll<HTMLButtonElement>(".avatar-btn").forEach(btn=>{
   btn.addEventListener("click",()=>{
     selAvatar=avatarPresets.find(a=>a.id===btn.dataset.avatar)!;

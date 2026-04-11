@@ -9,104 +9,186 @@ const tableOfContents = [
 ];
 ---
 
-<section class="pt-8 pb-8 bg-light-grey-subtle">
-  <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <div class="max-w-4xl mx-auto">
-      <div class="bg-gray-100 rounded-lg px-4 md:px-6 py-6 text-center border-2 border-dashed border-gray-300 mb-6">
-        <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
-        <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
+<section class="bg-[#050505] py-14 md:py-20">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-12">
+
+    <!-- Ad slot top -->
+    <div class="bg-white/[0.02] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center mb-10">
+      <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">Advertisement</p>
+      <div class="bg-[#050505] rounded h-24 md:h-36"></div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="bg-[#00D02B]/[0.03] border border-[#00D02B]/20 rounded-xl px-5 py-5 mb-12">
+
+      <!-- TOC header -->
+      <div class="flex items-center gap-2 mb-3 pb-3 border-b border-[#1F2937]">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="0" y="1" width="14" height="2" rx="1" fill="#00D02B"/>
+          <rect x="0" y="6" width="10" height="2" rx="1" fill="#00D02B"/>
+          <rect x="0" y="11" width="12" height="2" rx="1" fill="#00D02B"/>
+        </svg>
+        <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">
+          Table of Contents
+        </span>
       </div>
 
-      <div class="max-w-none">
-        <div class="mb-8">
-          <h2 class="text-3xl font-bebas text-xbox-green mt-12 mb-3">
-            Types of Xbox Gamertags (The Gamertag Idea Factory)
-          </h2>
+      <!-- TOC links -->
+      <ol class="flex flex-col gap-0.5 list-none m-0 p-0">
+        {tableOfContents.map((item, i) => (
+          <li>
+            <a
+              href={`#${item.anchor}`}
+              class="flex items-center gap-3 px-2.5 py-2 rounded font-[Rajdhani] text-sm font-semibold text-[#94A3B8] no-underline transition-colors duration-150 hover:bg-[#00D02B]/[0.08] hover:text-[#00D02B]"
+            >
+              <span class="font-[Orbitron] text-[10px] font-bold text-[#00D02B]/70 min-w-[22px]">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span>{item.title}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
 
-          <p class="text-gray-700 mb-6 whitespace-pre-line">
-            Now that you know how Xbox gamertags work—and how to create one that actually says something about you—it's time to explore your options.
+    <!-- Article body -->
+    <div>
 
-            We've built a massive, organized library of gamertag ideas designed to match every kind of gamer vibe.
+      <!-- H2 -->
+      <h2 id="what-is-gamertag" class="scroll-mt-24 font-[Orbitron] text-xl md:text-2xl font-bold text-white mt-10 mb-4 pb-2.5 border-b border-[#1F2937] leading-snug flex items-center gap-3">
+        <span class="inline-block w-1 self-stretch bg-[#00D02B] rounded-sm shrink-0"></span>
+        Types of Xbox Gamertags (The Gamertag Idea Factory)
+      </h2>
 
-            Whether you're going for something funny, dark, aesthetic, or inspired by your favorite anime or game genre, this isn't just about throwing words together—it's about finding a name that fits your style, your energy, and how you show up in-game.
-          </p>
+      <p class="font-[Rajdhani] text-[15px] text-[#94A3B8] leading-relaxed mb-4">
+        Now that you know how Xbox gamertags work—and how to create one that actually says something about you—it's time to explore your options.
+      </p>
+      <p class="font-[Rajdhani] text-[15px] text-[#94A3B8] leading-relaxed mb-4">
+        We've built a massive, organized library of gamertag ideas designed to match every kind of gamer vibe.
+      </p>
+      <p class="font-[Rajdhani] text-[15px] text-[#94A3B8] leading-relaxed mb-4">
+        Whether you're going for something funny, dark, aesthetic, or inspired by your favorite anime or game genre, this isn't just about throwing words together—it's about finding a name that fits your style, your energy, and how you show up in-game.
+      </p>
 
-          <div class="bg-gray-100 rounded-lg p-4 md:p-6 text-center border-2 border-dashed border-gray-300 my-8">
-            <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
-            <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
-          </div>
-
-          <h3 class="text-2xl font-bebas text-xbox-green mb-4">
-            By Style &amp; Vibe
-          </h3>
-
-          <p class="text-gray-700 mb-4">
-            Go by how you want your name to feel:
-          </p>
-
-          <ul class="text-gray-700 mb-6 space-y-2 list-disc list-inside">
-            <li>Funny Xbox Gamertags: From harmless memes to chaotic energy.</li>
-            <li>Dark Humour Xbox Gamertags: For the edgelords among us 😈.</li>
-            <li>Cool &amp; Stylish Xbox Gamertags: Sleek, bold, and battle-ready.</li>
-            <li>Aesthetic &amp; Soft Gamertags: Think cozy gamer-core meets Tumblr nostalgia.</li>
-            <li>OG &amp; Classic Style Gamertags: Clean, one-worders with legacy vibes.</li>
-            <li>Unique One-Word Gamertags: Minimal. Memorable. Marketable.</li>
-            <li>Pro Gaming Names: For when you're ready to compete—or fake it.</li>
-            <li>Gamertags for Streamers: Built with brandability and cross-platform swagger.</li>
-            <li>Multiplatform Gamertags: Great across Xbox, PS, Steam, and more.</li>
-          </ul>
-
-          <div class="bg-gray-100 rounded-lg p-4 md:p-6 text-center border-2 border-dashed border-gray-300 my-8">
-            <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
-            <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
-          </div>
-
-          <h3 class="text-2xl font-bebas text-xbox-green mb-4">
-            By Identity
-          </h3>
-
-          <p class="text-gray-700 mb-4">
-            Match your tag to your voice and vibe:
-          </p>
-
-          <ul class="text-gray-700 mb-6 space-y-2 list-disc list-inside">
-            <li>Xbox Gamertags for Guys</li>
-            <li>Xbox Gamertags for Girls</li>
-            <li>Xbox Gamertags for Non-Binary or Gender-Neutral Individuals</li>
-          </ul>
-
-          <div class="bg-gray-100 rounded-lg p-4 md:p-6 text-center border-2 border-dashed border-gray-300 my-8">
-            <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
-            <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
-          </div>
-
-          <h3 class="text-2xl font-bebas text-xbox-green mb-4">
-            By Interest or Theme
-          </h3>
-
-          <p class="text-gray-700 mb-4">
-            Dial in on what you love:
-          </p>
-
-          <ul class="text-gray-700 mb-6 space-y-2 list-disc list-inside">
-            <li>Anime-Inspired Xbox Gamertags: From Naruto to Chainsaw Man fans.</li>
-            <li>Stoner &amp; Chill Xbox Gamertags: Laid-back, vibey, and probably listening to lo-fi.</li>
-            <li>Gamertags by Game Genre (FPS, RPG, etc.): Tailored to your playstyle.</li>
-            <li>Gamertags by Personality Trait: Based on you—not just what you play.</li>
-            <li>Gamertag Themes (Fantasy, Retro, Mythology etc.): Get creative with genre-inspired tags.</li>
-            <li>Xbox Gamertags for Sports Fans: Perfect for FIFA, 2K, and Madden junkies.</li>
-          </ul>
-
-          <p class="text-gray-700 mb-6">
-            No matter how niche or broad your taste is, there's a name set here to get the ideas flowing.
-          </p>
-
-          <div class="bg-gray-100 rounded-lg p-4 md:p-6 text-center border-2 border-dashed border-gray-300 my-8">
-            <p class="text-xs md:text-sm text-gray-500 mb-2">Advertisement</p>
-            <div class="h-20 md:h-32 lg:h-40 bg-gray-200 rounded"></div>
-          </div>
-        </div>
+      <!-- Ad slot mid -->
+      <div class="bg-white/[0.02] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center my-10">
+        <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">Advertisement</p>
+        <div class="bg-[#050505] rounded h-24 md:h-36"></div>
       </div>
+
+      <!-- H3 -->
+      <h3 id="classic-vs-modern" class="scroll-mt-24 font-[Orbitron] text-base md:text-lg font-bold text-[#00D02B] mt-8 mb-3 leading-snug">
+        By Style &amp; Vibe
+      </h3>
+      <p class="font-[Rajdhani] text-[15px] text-[#94A3B8] leading-relaxed mb-4">
+        Go by how you want your name to feel:
+      </p>
+
+      <ul class="flex flex-col gap-1.5 mb-8 list-none p-0 m-0">
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Funny Xbox Gamertags:</span> From harmless memes to chaotic energy.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Dark Humour Xbox Gamertags:</span> For the edgelords among us.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Cool &amp; Stylish Xbox Gamertags:</span> Sleek, bold, and battle-ready.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Aesthetic &amp; Soft Gamertags:</span> Think cozy gamer-core meets Tumblr nostalgia.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">OG &amp; Classic Style Gamertags:</span> Clean, one-worders with legacy vibes.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Unique One-Word Gamertags:</span> Minimal. Memorable. Marketable.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Pro Gaming Names:</span> For when you're ready to compete—or fake it.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Gamertags for Streamers:</span> Built with brandability and cross-platform swagger.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Multiplatform Gamertags:</span> Great across Xbox, PS, Steam, and more.
+        </li>
+      </ul>
+
+      <!-- Ad slot -->
+      <div class="bg-white/[0.02] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center my-10">
+        <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">Advertisement</p>
+        <div class="bg-[#050505] rounded h-24 md:h-36"></div>
+      </div>
+
+      <!-- H3 -->
+      <h3 id="how-generator-works" class="scroll-mt-24 font-[Orbitron] text-base md:text-lg font-bold text-[#00D02B] mt-8 mb-3 leading-snug">
+        By Identity
+      </h3>
+      <p class="font-[Rajdhani] text-[15px] text-[#94A3B8] leading-relaxed mb-4">
+        Match your tag to your voice and vibe:
+      </p>
+
+      <ul class="flex flex-col gap-1.5 mb-8 list-none p-0 m-0">
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          Xbox Gamertags for Guys
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          Xbox Gamertags for Girls
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          Xbox Gamertags for Non-Binary or Gender-Neutral Individuals
+        </li>
+      </ul>
+
+      <!-- Ad slot -->
+      <div class="bg-white/[0.02] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center my-10">
+        <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">Advertisement</p>
+        <div class="bg-[#050505] rounded h-24 md:h-36"></div>
+      </div>
+
+      <!-- H3 -->
+      <h3 id="tips-great-tag" class="scroll-mt-24 font-[Orbitron] text-base md:text-lg font-bold text-[#00D02B] mt-8 mb-3 leading-snug">
+        By Interest or Theme
+      </h3>
+      <p class="font-[Rajdhani] text-[15px] text-[#94A3B8] leading-relaxed mb-4">
+        Dial in on what you love:
+      </p>
+
+      <ul class="flex flex-col gap-1.5 mb-8 list-none p-0 m-0">
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Anime-Inspired Xbox Gamertags:</span> From Naruto to Chainsaw Man fans.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Stoner &amp; Chill Xbox Gamertags:</span> Laid-back, vibey, and probably listening to lo-fi.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Gamertags by Game Genre (FPS, RPG, etc.):</span> Tailored to your playstyle.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Gamertags by Personality Trait:</span> Based on you—not just what you play.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Gamertag Themes (Fantasy, Retro, Mythology etc.):</span> Get creative with genre-inspired tags.
+        </li>
+        <li class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed px-3.5 py-2.5 bg-white/[0.02] border border-[#1F2937] border-l-[3px] border-l-[#00D02B] rounded transition-colors duration-150 hover:bg-[#00D02B]/[0.04] hover:border-[#00D02B]/30">
+          <span class="text-white font-bold">Xbox Gamertags for Sports Fans:</span> Perfect for FIFA, 2K, and Madden junkies.
+        </li>
+      </ul>
+
+      <p class="font-[Rajdhani] text-[15px] text-[#94A3B8] leading-relaxed mb-4">
+        No matter how niche or broad your taste is, there's a name set here to get the ideas flowing.
+      </p>
+
+      <!-- Placeholder anchors for remaining TOC items -->
+      <div id="naming-rules" class="scroll-mt-24"></div>
+      <div id="claim-gamertag" class="scroll-mt-24"></div>
+
+      <!-- Ad slot bottom -->
+      <div class="bg-white/[0.02] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center mt-10">
+        <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">Advertisement</p>
+        <div class="bg-[#050505] rounded h-24 md:h-36"></div>
+      </div>
+
     </div>
   </div>
 </section>

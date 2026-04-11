@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block API and admin routes
+Disallow: /api/
+Disallow: /admin/
+
+# Block tracking query strings only
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+
+# Sitemap
+Sitemap: https://xboxgamertaggenerator.com/sitemap-index.xml

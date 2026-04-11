@@ -1,0 +1,68 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+---
+
+<MainLayout
+  title="Page Not Found — Xbox Gamertag Generator"
+  description="The page you're looking for doesn't exist. Browse our free Xbox gaming tools."
+  noindex={true}
+>
+  <Header />
+
+  <div class="min-h-screen bg-background text-foreground font-ui flex items-center">
+    <div class="max-w-2xl mx-auto px-8 sm:px-12 lg:px-16 py-24 text-center">
+
+      <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
+
+      <span class="label-green block mb-4">404 Error</span>
+      <h1 class="heading-hero text-6xl md:text-8xl text-foreground mb-4">
+        4<span class="text-brand">0</span>4
+      </h1>
+      <p class="heading-section text-xl text-foreground mb-3">
+        Page Not Found
+      </p>
+      <p class="text-foreground-muted font-ui mb-10 leading-relaxed">
+        The page you're looking for doesn't exist or has been moved.
+        Let's get you back on track.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+        <a href="/"
+          class="btn-primary px-8 py-3.5 text-sm shadow-green inline-flex items-center justify-center gap-2">
+          Go to Homepage
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="/tools"
+          class="btn-secondary px-8 py-3.5 text-sm inline-flex items-center justify-center gap-2">
+          Browse Tools
+        </a>
+      </div>
+
+      <!-- Quick links -->
+      <div class="border-t border-[#1F2937] pt-10">
+        <p class="label-mono mb-5">Popular Pages</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {[
+            { label: "Generator",             href: "/"                                        },
+            { label: "Price Checker",         href: "/tools/gamertag-price-checker"            },
+            { label: "Availability Checker",  href: "/tools/gamertag-availability-checker"    },
+            { label: "Profile Checker",       href: "/tools/gamer-profile-checker"            },
+            { label: "Gamercard Generator",   href: "/tools/gamercard-generator"              },
+            { label: "Blog",                  href: "/blog"                                   },
+          ].map(link => (
+            <a href={link.href}
+              class="px-4 py-2 rounded-lg text-sm font-ui font-semibold text-foreground-muted hover:text-brand transition-colors"
+              style="background:rgba(255,255,255,0.03);border:1px solid #1F2937"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</MainLayout>
