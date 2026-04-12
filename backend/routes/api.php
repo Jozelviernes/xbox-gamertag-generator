@@ -12,10 +12,16 @@ Route::get('/run-setup', function () {
     Artisan::call('migrate', ['--force' => true]);
     $migrateOutput = Artisan::output();
 
-    Artisan::call('db:seed', ['--class' => 'FullGeneratorSeeder']);
+    Artisan::call('db:seed', [
+        '--class' => 'FullGeneratorSeeder',
+        '--force' => true,
+    ]);
     $seeder1Output = Artisan::output();
 
-    Artisan::call('db:seed', ['--class' => 'GamertagValueSeeder']);
+    Artisan::call('db:seed', [
+        '--class' => 'GamertagValueSeeder',
+        '--force' => true,
+    ]);
     $seeder2Output = Artisan::output();
 
     return response()->json([
