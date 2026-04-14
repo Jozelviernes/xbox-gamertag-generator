@@ -29,15 +29,15 @@ const schema = {
       <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
         <div class="text-center">
           <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
-            <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Gaming Dictionary</span>
+            <span class=" text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Gaming Dictionary</span>
           </div>
           <h1 class="font-[Orbitron] text-3xl lg:text-5xl font-black text-white mb-4 leading-tight">
             Xbox &amp; Gaming <span class="text-[#00D02B]">Glossary</span>
           </h1>
-          <p class="font-[Rajdhani] text-lg lg:text-xl text-[#94A3B8] mb-3 font-semibold">
+          <p class=" text-lg lg:text-xl text-[#94A3B8] mb-3 font-semibold">
             Understand the lingo. Game smarter.
           </p>
-          <p class="font-[Rajdhani] text-base text-[#4B5563] leading-relaxed max-w-2xl mx-auto">
+          <p class=" text-base text-[#4B5563] leading-relaxed max-w-2xl mx-auto">
             Explore clear definitions of Xbox terms, naming rules, and gamer culture. Build your knowledge and level up your naming game.
           </p>
         </div>
@@ -56,7 +56,7 @@ const schema = {
               id="searchInput"
               type="text"
               placeholder="Search terms..."
-              class="w-full h-12 px-5 pr-12 bg-[#050505] border border-[#1F2937] rounded-lg text-white placeholder-[#4B5563] font-[Rajdhani] text-sm font-semibold focus:border-[#00D02B] focus:outline-none focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
+              class="w-full h-12 px-5 pr-12 bg-[#050505] border border-[#1F2937] rounded-lg text-white placeholder-[#4B5563] text-sm font-semibold focus:border-[#00D02B] focus:outline-none focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
             />
             <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#4B5563]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
@@ -67,7 +67,7 @@ const schema = {
 
         <!-- Alphabetical buttons -->
         <div>
-          <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-4 text-center">Browse by Letter</p>
+          <p class=" text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-4 text-center">Browse by Letter</p>
           <div id="lettersWrap" class="flex flex-wrap justify-center gap-1.5">
             {letters.map((letter) => (
               <button
@@ -91,7 +91,7 @@ const schema = {
 
         <div id="noResults" class="hidden text-center py-16">
           <p class="font-[Orbitron] text-base text-[#94A3B8]">No terms found.</p>
-          <p class="font-[Rajdhani] text-sm text-[#4B5563] mt-2">Try a different search or letter.</p>
+          <p class=" text-sm text-[#4B5563] mt-2">Try a different search or letter.</p>
         </div>
 
         <div id="termsGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-4"></div>
@@ -101,7 +101,7 @@ const schema = {
           <button
             id="prevBtn"
             type="button"
-            class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#1F2937] text-[#94A3B8] font-[Rajdhani] text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
+            class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#1F2937] text-[#94A3B8]  text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
           >
             <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -114,7 +114,7 @@ const schema = {
           <button
             id="nextBtn"
             type="button"
-            class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#1F2937] text-[#94A3B8] font-[Rajdhani] text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
+            class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#1F2937] text-[#94A3B8]  text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
           >
             Next
             <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -184,8 +184,8 @@ const schema = {
     function renderCards(terms) {
       safeTermsGrid.innerHTML = terms.map((term) => `
         <div class="bg-[#050505] border border-[#1F2937] rounded-lg p-5 transition-all duration-150 hover:border-[#00D02B]/35 hover:bg-[#00D02B]/[0.03]">
-          <h3 class="font-[Orbitron] text-sm font-bold text-[#00D02B] mb-2">${term.term}</h3>
-          <p class="font-[Rajdhani] text-sm text-[#94A3B8] leading-relaxed">${term.definition}</p>
+          <h3 class=" text-md font-bold text-[#00D02B] mb-2">${term.term}</h3>
+          <p class=" text-sm text-[#94A3B8] leading-relaxed">${term.definition}</p>
         </div>
       `).join("");
     }

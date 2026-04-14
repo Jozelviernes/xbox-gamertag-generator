@@ -1,15 +1,67 @@
 @import "tailwindcss";
 
 /* ============================================================
-   CARDFORGE DESIGN SYSTEM
-   Dark Tech Minimalist — "The Obsidian + Brand Green" Theme
+   BASE
    ============================================================ */
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* match your navbar height */
+  scroll-padding-top: 80px;
 }
 
+*,
+*::before,
+*::after {
+  border-color: #1F2937;
+}
+
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Large / display text only */
+h1,
+.font-display,
+.heading-hero,
+.heading-section {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Everything else */
+button,
+nav a,
+.font-ui,
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.badge-brand,
+.label-mono,
+.label-green,
+input,
+select,
+textarea,
+p,
+li,
+article,
+.font-reading,
+.prose p,
+.prose li,
+.prose blockquote,
+.faq-answer,
+.description-text,
+.article-body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ============================================================
+   @THEME
+   ============================================================ */
 @theme {
 
   /* --- Brand Green --- */
@@ -20,14 +72,14 @@ html {
   --color-brand-glow-strong:  rgba(0, 208, 43, 0.20);
 
   /* --- Backgrounds --- */
-  --color-background:         #000000;   /* True black — hero, navbar, footer */
-  --color-background-alt:     #050505;   /* Near black — alternate dark sections */
-  --color-background-surface: #0a0f0a;   /* Slightly lifted surface */
+  --color-background:         #000000;
+  --color-background-alt:     #050505;
+  --color-background-surface: #0a0f0a;
 
   /* --- Foreground / Text --- */
-  --color-foreground:         #FFFFFF;   /* Primary headlines on dark */
-  --color-foreground-muted:   #94A3B8;   /* Secondary text, labels */
-  --color-foreground-subtle:  #4B5563;   /* Disabled, placeholder */
+  --color-foreground:         #FFFFFF;
+  --color-foreground-muted:   #94A3B8;
+  --color-foreground-subtle:  #4B5563;
 
   /* --- White Section Colors --- */
   --color-white-bg:           #FFFFFF;
@@ -42,7 +94,7 @@ html {
   --color-card-hover:         rgba(0, 208, 43, 0.04);
 
   /* --- Borders --- */
-  --color-border:             #1F2937;   /* Ghost border — default */
+  --color-border:             #1F2937;
   --color-border-green:       rgba(0, 208, 43, 0.35);
   --color-border-green-strong:rgba(0, 208, 43, 0.65);
 
@@ -70,54 +122,25 @@ html {
   --radius-xl:                1rem;
 
   /* --- Shadows --- */
-  --shadow-card:   0 10px 30px -10px rgba(0, 0, 0, 0.7);
-  --shadow-green:  0 0 20px rgba(0, 208, 43, 0.25);
+  --shadow-card:     0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  --shadow-green:    0 0 20px rgba(0, 208, 43, 0.25);
   --shadow-green-lg: 0 0 40px rgba(0, 208, 43, 0.15);
 }
 
 /* ============================================================
-   ROOT VARIABLES (not in @theme — used as CSS custom props)
+   ROOT VARIABLES
    ============================================================ */
 :root {
-  /* Gradients */
   --gradient-hero:    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);
   --gradient-card:    linear-gradient(160deg, #0a1a0a 0%, #020800 100%);
   --gradient-section: linear-gradient(180deg, #000000 0%, #050505 100%);
   --gradient-green:   linear-gradient(135deg, #00D02B, #00e830);
 
-  /* Transitions */
   --transition-base:   all 0.2s ease;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-  /* Glow pulse for legendary cards */
   --glow-legendary: 0 0 16px rgba(0, 208, 43, 0.5), 0 0 40px rgba(0, 208, 43, 0.2);
-}
-
-/* ============================================================
-   BASE
-   ============================================================ */
-html {
-  color-scheme: dark;
-}
-
-*,
-*::before,
-*::after {
-  border-color: #1F2937;
-}
-
-body {
-  background-color: #000000;
-  color: #FFFFFF;
-  font-family: 'Rajdhani', 'Segoe UI', system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Display font for headings, logo, card names */
-h1, h2, h3, .font-display {
-  font-family: 'Orbitron', sans-serif;
 }
 
 /* ============================================================
@@ -129,13 +152,7 @@ h1, h2, h3, .font-display {
 .bg-card             { background-color: #000000; }
 .bg-white-section    { background-color: #FFFFFF; }
 .bg-white-subtle     { background-color: #F8FAFC; }
-
-/* Hero glow — place behind headline text */
-.bg-hero-glow {
-  background: var(--gradient-hero);
-}
-
-/* Solid brand green */
+.bg-hero-glow        { background: var(--gradient-hero); }
 .bg-brand            { background-color: #00D02B; }
 .bg-brand-light      { background-color: #00e830; }
 .bg-brand-dim        { background-color: rgba(0, 208, 43, 0.08); }
@@ -148,18 +165,12 @@ h1, h2, h3, .font-display {
 .text-foreground-subtle { color: #4B5563; }
 .text-brand             { color: #00D02B; }
 .text-brand-light       { color: #00e830; }
-
-/* White section text */
 .text-dark-heading      { color: #050505; }
 .text-dark-body         { color: #64748B; }
-
-/* Card foreground */
 .text-card-foreground   { color: #FFFFFF; }
-
-/* Muted alias */
 .text-muted-foreground  { color: #94A3B8; }
 
-/* Rarity text colors */
+/* Rarity */
 .text-rarity-common     { color: #94A3B8; }
 .text-rarity-uncommon   { color: #4ADE80; }
 .text-rarity-rare       { color: #60A5FA; }
@@ -199,7 +210,7 @@ h1, h2, h3, .font-display {
 .btn-primary {
   background-color: #00D02B;
   color: #000000;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -215,7 +226,7 @@ h1, h2, h3, .font-display {
 .btn-secondary {
   background-color: transparent;
   color: #FFFFFF;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -232,7 +243,7 @@ h1, h2, h3, .font-display {
   background: transparent;
   color: #94A3B8;
   border: none;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -248,7 +259,7 @@ h1, h2, h3, .font-display {
   background-color: #050505;
   border: 1px solid #1F2937;
   color: #FFFFFF;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-size: 14px;
   border-radius: var(--radius);
   padding: 9px 14px;
@@ -281,7 +292,6 @@ h1, h2, h3, .font-display {
   animation: legendaryPulse 3s ease-in-out infinite;
 }
 
-/* Stat bars inside cards */
 .stat-bar-track {
   height: 3px;
   background: #1F2937;
@@ -305,7 +315,7 @@ h1, h2, h3, .font-display {
   background: rgba(0, 208, 43, 0.12);
   border: 1px solid rgba(0, 208, 43, 0.35);
   color: #00D02B;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -336,7 +346,7 @@ h1, h2, h3, .font-display {
 }
 
 /* ============================================================
-   SECTION RHYTHM (dark ↔ white alternating)
+   SECTION RHYTHM
    ============================================================ */
 .section-dark {
   background-color: #000000;
@@ -356,15 +366,13 @@ h1, h2, h3, .font-display {
   background-color: #F8FAFC;
   color: #050505;
 }
-
-/* Green accent top border for CTA section */
 .section-cta-dark {
   background-color: #000000;
   border-top: 3px solid #00D02B;
 }
 
 /* ============================================================
-   FEATURE CARDS (white section)
+   FEATURE CARDS
    ============================================================ */
 .feature-card-white {
   background: #FFFFFF;
@@ -394,7 +402,8 @@ h1, h2, h3, .font-display {
    TYPOGRAPHY HELPERS
    ============================================================ */
 .font-display  { font-family: 'Orbitron', sans-serif; }
-.font-ui       { font-family: 'Rajdhani', sans-serif; }
+.font-ui       { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+.font-reading  { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
 
 .heading-hero {
   font-family: 'Orbitron', sans-serif;
@@ -402,27 +411,152 @@ h1, h2, h3, .font-display {
   letter-spacing: -0.02em;
   line-height: 1.05;
 }
+
 .heading-section {
   font-family: 'Orbitron', sans-serif;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.15;
 }
+
 .label-mono {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #94A3B8;
 }
+
 .label-green {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #00D02B;
+}
+
+/* ============================================================
+   PROSE — Blog posts, articles, long-form content
+   ============================================================ */
+.prose {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #94A3B8;
+}
+
+.prose p {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #94A3B8;
+  margin-bottom: 1.25rem;
+}
+
+.prose h2 {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #00D02B;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.prose h3 {
+   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.prose li {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #94A3B8;
+  margin-bottom: 0.4rem;
+}
+
+.prose ul {
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+  list-style-type: disc;
+}
+
+.prose ol {
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+  list-style-type: decimal;
+}
+
+.prose strong {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.prose em {
+  font-style: italic;
+  color: #94A3B8;
+}
+
+.prose a {
+  color: #00D02B;
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+.prose a:hover {
+  text-decoration: underline;
+  color: #00e830;
+}
+
+.prose blockquote {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-style: italic;
+  border-left: 3px solid #00D02B;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #94A3B8;
+}
+
+.prose code {
+  font-size: 13px;
+  color: #00D02B;
+  background: rgba(0, 208, 43, 0.08);
+  border: 1px solid rgba(0, 208, 43, 0.2);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+.prose pre {
+  background: #050505;
+  border: 1px solid #1F2937;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  color: #94A3B8;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #1F2937;
+  margin: 2rem 0;
 }
 
 /* ============================================================
@@ -470,18 +604,10 @@ h1, h2, h3, .font-display {
 
 @keyframes legendaryPulse {
   0%, 100% { box-shadow: 0 0 12px rgba(0, 208, 43, 0.3); }
-  50%       { box-shadow: 0 0 28px rgba(0, 208, 43, 0.55); }
+  50%      { box-shadow: 0 0 28px rgba(0, 208, 43, 0.55); }
 }
 
 @keyframes glowPulse {
   0%, 100% { opacity: 0.08; }
-  50%       { opacity: 0.16; }
-}
-
-body {
-  font-family: 'Rajdhani', 'Segoe UI', system-ui, sans-serif;
-}
-
-h1, h2, h3, .font-display {
-  font-family: 'Orbitron', sans-serif;
+  50%      { opacity: 0.16; }
 }

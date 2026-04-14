@@ -29,7 +29,6 @@ const fullTitle = title.includes(siteName)
   ? title
   : `${title} | ${siteName}`;
 
-// Normalize canonical — always trailing-slash free
 const canonicalClean = canonical.endsWith("/") && canonical !== "https://xboxgamertaggenerator.com/"
   ? canonical.slice(0, -1)
   : canonical;
@@ -74,7 +73,6 @@ const canonicalClean = canonical.endsWith("/") && canonical !== "https://xboxgam
     <meta name="twitter:site"        content="@XboxGamertagGen" />
 
     <!-- ── Favicon ── -->
-     
     <link rel="icon"             type="image/x-icon" href="/favicon.ico" />
     <link rel="icon"             type="image/png"    href="/favicon-32x32.png" sizes="32x32" />
     <link rel="icon"             type="image/png"    href="/favicon-16x16.png" sizes="16x16" />
@@ -88,22 +86,28 @@ const canonicalClean = canonical.endsWith("/") && canonical !== "https://xboxgam
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- ── Font preload (non-blocking) ── -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
+   <!-- ── Fonts: Orbitron + Inter (non-blocking) ── -->
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
+  />
+</noscript>
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
       />
     </noscript>
 

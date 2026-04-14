@@ -35,19 +35,23 @@ const schema = {
   ogType="article"
   {schema}
 >
-  <div class="min-h-screen bg-background text-foreground font-ui">
+  <div class="min-h-screen bg-[#000000] text-white">
 
     <Header />
 
     <!-- Hero -->
-    <section class="section-dark border-b border-[#1F2937] py-14 md:py-20 relative overflow-hidden">
-      <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
-      <div class="max-w-4xl mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
+    <section class="relative overflow-hidden border-b border-[#1F2937] py-14 md:py-20 bg-[#000000]">
+      <div
+        class="pointer-events-none absolute inset-0"
+        style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"
+      ></div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
 
         <!-- Back link -->
-        
-         <a  href="/blog"
-          class="inline-flex items-center gap-1.5 text-foreground-muted hover:text-brand text-sm font-ui font-semibold mb-8 transition-colors group"
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-1.5 text-[#94A3B8] hover:text-[#00D02B] text-sm font-reading font-semibold mb-8 transition-colors group"
         >
           <svg class="h-4 w-4 transition-transform group-hover:-translate-x-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -55,11 +59,15 @@ const schema = {
           Back to Blog
         </a>
 
-        <!-- Read time -->
-        <div class="flex items-center gap-2 mb-5">
-          <span class="label-green">Article</span>
-          <span class="text-[#1F2937]">·</span>
-          <div class="flex items-center gap-1.5 text-foreground-muted text-xs font-ui font-semibold uppercase tracking-widest">
+        <!-- Meta -->
+        <div class="flex items-center gap-2 mb-5 flex-wrap">
+          <span class="inline-flex items-center px-3 py-1 rounded-sm bg-[#00D02B]/[0.08] border border-[#00D02B]/25 font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">
+            Article
+          </span>
+
+          <span class="text-[#4B5563]">·</span>
+
+          <div class="flex items-center gap-1.5 text-[#94A3B8] text-xs font-reading font-semibold uppercase tracking-widest">
             <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
@@ -68,150 +76,157 @@ const schema = {
         </div>
 
         <!-- Title -->
-        <h1 class="heading-hero text-3xl md:text-5xl lg:text-6xl text-foreground leading-tight">
+        <h1 class="font-display text-3xl md:text-5xl lg:text-6xl text-white leading-tight">
           {post.title}
         </h1>
-
       </div>
     </section>
 
     <!-- Article Body -->
-    <section class="section-dark-alt py-12 md:py-16">
-      <div class="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16">
+    <section class="bg-[#F8FAFC] py-12 md:py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- Image placeholder -->
-        <div
-          class="w-full h-56 md:h-72 rounded-xl flex items-center justify-center mb-10 border border-[#1F2937]"
-          style="background:rgba(255,255,255,0.02)"
-        >
-          <div class="text-center">
-            <div class="text-3xl mb-2">🎮</div>
-            <span class="text-foreground-subtle text-xs font-ui uppercase tracking-widest">
-              Article Image
-            </span>
+        <article class="bg-white border border-[#E2E8F0] rounded-2xl shadow-[0_14px_34px_-18px_rgba(0,0,0,0.18)] overflow-hidden">
+
+          <!-- Image placeholder -->
+          <div class="w-full h-56 md:h-72 border-b border-[#E2E8F0] flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,208,43,0.08),transparent_65%)] bg-[#F8FAFC]">
+            <div class="text-center">
+              <div class="text-3xl mb-2">🎮</div>
+              <span class="font-reading text-[11px] text-[#94A3B8] uppercase tracking-[0.2em]">
+                Article Image
+              </span>
+            </div>
           </div>
-        </div>
 
-        <!-- Excerpt callout -->
-        <div
-          class="mb-10 p-5 rounded-r-xl border-l-4"
-          style="background:rgba(0,208,43,0.05);border-left-color:#00D02B"
-        >
-          <p class="text-foreground-muted text-base font-ui leading-relaxed italic">
-            {post.excerpt}
-          </p>
-        </div>
+          <div class="px-5 sm:px-8 md:px-10 py-8 md:py-10">
 
-        <!-- Article content -->
-        <div
-          class="
-            prose prose-lg max-w-none
-            prose-invert
-            prose-p:text-foreground-muted prose-p:leading-relaxed prose-p:mb-5 prose-p:font-ui
-            prose-h2:text-brand prose-h2:font-display prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:tracking-tight
-            prose-h3:text-foreground prose-h3:font-display prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-strong:text-foreground prose-strong:font-bold
-            prose-a:text-brand prose-a:no-underline hover:prose-a:underline
-            prose-li:text-foreground-muted prose-li:font-ui
-            prose-ul:my-4 prose-ol:my-4
-            prose-blockquote:border-l-brand prose-blockquote:text-foreground-muted
-            prose-code:text-brand prose-code:bg-background-surface prose-code:rounded prose-code:px-1.5 prose-code:py-0.5
-          "
-          set:html={post.content}
-        />
+            <!-- Excerpt callout -->
+            <div class="mb-10 p-5 rounded-xl border border-[#00D02B]/20 bg-[#00D02B]/[0.05]">
+              <p class="text-[#64748B] text-base font-reading leading-relaxed italic">
+                {post.excerpt}
+              </p>
+            </div>
 
-        <!-- Divider -->
-        <div class="my-12 border-t border-[#1F2937]"></div>
+          <!-- Article content -->
+<div
+  class="
+    prose prose-lg max-w-none
+    prose-p:text-[#475569] prose-p:leading-8 prose-p:mb-5 prose-p:font-reading
+    prose-headings:font-reading
+    prose-h2:font-reading prose-h2:text-[#050505] prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-10 prose-h2:mb-4
+    prose-h3:font-reading prose-h3:text-[#050505] prose-h3:text-xl prose-h3:font-bold prose-h3:mt-8 prose-h3:mb-3
+    prose-strong:text-[#050505] prose-strong:font-semibold
+    prose-a:text-[#00A021] prose-a:no-underline hover:prose-a:underline
+    prose-li:text-[#475569] prose-li:font-reading
+    prose-ul:my-4 prose-ol:my-4
+    prose-blockquote:border-l-[#00D02B] prose-blockquote:text-[#64748B]
+    prose-code:text-[#00A021] prose-code:bg-[#F8FAFC] prose-code:rounded prose-code:px-1.5 prose-code:py-0.5
+    prose-pre:bg-[#050505] prose-pre:text-[#E2E8F0] prose-pre:border prose-pre:border-[#1F2937]
+    prose-hr:border-[#E2E8F0]
+  "
+  set:html={post.content}
+/>
+            <!-- Divider -->
+            <div class="my-10 border-t border-[#E2E8F0]"></div>
 
-        <!-- Back button -->
-        <div class="flex items-center justify-between flex-wrap gap-4">
-          
-            <a href="/blog"
-            class="btn-secondary inline-flex items-center gap-2 px-6 py-3 text-sm"
-          >
-            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-            </svg>
-            Back to All Articles
-          </a>
+            <!-- Footer actions -->
+            <div class="flex items-center justify-between flex-wrap gap-4">
+              <a
+                href="/blog"
+                class="inline-flex items-center gap-2 px-6 py-3 text-sm bg-white border border-[#D7E0E8] hover:border-[#00D02B]/45 text-[#050505] font-reading font-semibold rounded-lg transition-colors"
+              >
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Back to All Articles
+              </a>
 
-          <!-- Share -->
-          <div class="flex items-center gap-3">
-            <span class="label-mono">Share</span>
-            
-            <a  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://xboxgamertaggenerator.com/blog/${post.slug}`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:shadow-green"
-              style="background:rgba(0,208,43,0.08);border:1px solid rgba(0,208,43,0.2)"
-              title="Share on X / Twitter"
-            >
-              <svg class="w-4 h-4 text-brand" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </a>
-            <button
-              id="copyLinkBtn"
-              class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:shadow-green"
-              style="background:rgba(0,208,43,0.08);border:1px solid rgba(0,208,43,0.2)"
-              title="Copy link"
-            >
-              <svg class="w-4 h-4 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-4 10h6a2 2 0 002-2v-8a2 2 0 00-2-2h-6a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-              </svg>
-            </button>
-            <span id="copiedMsg" class="hidden text-xs text-brand font-ui font-semibold">✅ Copied!</span>
+              <div class="flex items-center gap-3 flex-wrap">
+                <span class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8]">
+                  Share
+                </span>
+
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://xboxgamertaggenerator.com/blog/${post.slug}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 bg-[#00D02B]/[0.08] border border-[#00D02B]/20 hover:border-[#00D02B]/45"
+                  title="Share on X / Twitter"
+                >
+                  <svg class="w-4 h-4 text-[#00D02B]" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+
+                <button
+                  id="copyLinkBtn"
+                  class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 bg-[#00D02B]/[0.08] border border-[#00D02B]/20 hover:border-[#00D02B]/45"
+                  title="Copy link"
+                >
+                  <svg class="w-4 h-4 text-[#00D02B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-4 10h6a2 2 0 002-2v-8a2 2 0 00-2-2h-6a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                  </svg>
+                </button>
+
+                <span id="copiedMsg" class="hidden text-xs text-[#00A021] font-reading font-semibold">
+                  Copied!
+                </span>
+              </div>
+            </div>
+
           </div>
-        </div>
+        </article>
 
       </div>
     </section>
 
     <!-- Related Posts -->
     {relatedPosts.length > 0 && (
-      <section class="section-dark border-t border-[#1F2937] py-14 md:py-20">
-        <div class="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
+      <section class="bg-[#000000] border-t border-[#1F2937] py-14 md:py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div class="flex items-center gap-3 mb-10">
-            <div class="w-1 h-6 bg-brand rounded-full"></div>
-            <h2 class="heading-section text-2xl text-foreground">
-              Related <span class="text-brand">Articles</span>
+            <div class="w-1 h-6 bg-[#00D02B] rounded-full"></div>
+            <h2 class="font-reading text-2xl font-bold text-white">
+              Related <span class="text-[#00D02B]">Articles</span>
             </h2>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {relatedPosts.map((related) => (
-              
-               <a href={`/blog/${related.slug}`}
-                class="feature-card-dark group flex flex-col no-underline"
-              >
-                <!-- Image placeholder -->
-                <div
-                  class="w-full h-40 rounded-lg flex items-center justify-center mb-5 border border-[#1F2937] transition-colors group-hover:border-brand/30"
-                  style="background:rgba(255,255,255,0.02)"
-                >
+             <a
+  href={`/blog/${related.slug}`}
+  class="group flex flex-col h-full bg-white border-2 border-[#00D02B] rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5 no-underline"
+>
+                <div class="h-1 w-full bg-[#00D02B]"></div>
+
+                <div class="w-full h-40 border-b border-[#00D02B]/25 flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,208,43,0.08),transparent_65%)] bg-[#F8FAFC]">
                   <span class="text-2xl">🎮</span>
                 </div>
 
-                <!-- Content -->
-                <div class="flex-1">
-                  <h3 class="heading-section text-base text-foreground mb-2 leading-snug group-hover:text-brand transition-colors duration-200">
-                    {related.title}
-                  </h3>
-                  <p class="text-foreground-muted text-sm font-ui leading-relaxed line-clamp-2 mb-4">
-                    {related.excerpt}
-                  </p>
-                </div>
+                <div class="p-5 flex flex-col h-full">
+                  <div class="flex-1">
+                    <h3 class="font-reading text-base font-bold text-[#050505] mb-2 leading-snug group-hover:text-[#00A021] transition-colors duration-200">
+                      {related.title}
+                    </h3>
 
-                <!-- Footer -->
-                <div class="flex items-center justify-between pt-4 border-t border-[#1F2937] mt-auto">
-                  <span class="flex items-center gap-1.5 text-foreground-subtle text-xs font-ui">
-                    <svg class="h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    {related.readTime}
-                  </span>
-                  <span class="label-green" style="font-size:10px">Read More →</span>
+                    <p class="font-reading text-sm text-[#64748B] leading-relaxed line-clamp-2 mb-4">
+                      {related.excerpt}
+                    </p>
+                  </div>
+
+                  <div class="flex items-center justify-between pt-4 border-t border-[#E2E8F0] mt-auto">
+                    <span class="flex items-center gap-1.5 text-[#94A3B8] text-xs font-reading">
+                      <svg class="h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      {related.readTime}
+                    </span>
+
+                    <span class="font-reading text-[10px] font-bold tracking-[2px] uppercase text-[#00D02B]">
+                      Read More
+                    </span>
+                  </div>
                 </div>
               </a>
             ))}
@@ -222,28 +237,34 @@ const schema = {
     )}
 
     <!-- CTA -->
-    <section class="section-cta-dark py-14 md:py-20">
-      <div class="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16 text-center">
-        <span class="label-green block mb-4">Free Tool</span>
-        <h2 class="heading-section text-2xl md:text-3xl text-foreground mb-4">
-          Ready to find your <span class="text-brand">perfect gamertag?</span>
+    <section class="bg-[#000000] border-t-4 border-[#00D02B] py-14 md:py-20">
+      <div class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <span class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B] block mb-4">
+          Free Tool
+        </span>
+
+        <h2 class="font-reading text-2xl md:text-3xl font-bold text-white mb-4">
+          Ready to find your <span class="text-[#00D02B]">perfect gamertag?</span>
         </h2>
-        <p class="text-foreground-muted font-ui mb-8 leading-relaxed text-sm">
+
+        <p class="text-[#94A3B8] font-reading mb-8 leading-relaxed text-sm">
           Use our free generator to create unique Xbox gamertags instantly.
         </p>
+
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          
-           <a href="/"
-            class="btn-primary px-8 py-3.5 text-sm shadow-green hover:shadow-[0_0_30px_rgba(0,208,43,0.4)] inline-flex items-center justify-center gap-2"
+          <a
+            href="/"
+            class="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm bg-[#00D02B] hover:bg-[#00e830] text-black font-reading font-bold rounded-lg transition-colors"
           >
             Try the Generator
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
           </a>
-          
-          <a  href="/tools"
-            class="btn-secondary px-8 py-3.5 text-sm inline-flex items-center justify-center gap-2"
+
+          <a
+            href="/tools"
+            class="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm bg-transparent border border-[#1F2937] hover:border-[#00D02B]/45 text-white font-reading font-semibold rounded-lg transition-colors"
           >
             Explore All Tools
           </a>
@@ -252,11 +273,13 @@ const schema = {
     </section>
 
     <!-- Ad -->
-    <section class="section-dark-alt py-10 border-t border-[#1F2937]">
-      <div class="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16">
-        <div class="feature-card-dark p-6 text-center" style="border-style:dashed">
-          <p class="label-mono mb-3">Advertisement</p>
-          <div class="h-24 md:h-32 lg:h-48 bg-background rounded-lg"></div>
+    <section class="bg-[#050505] py-10 border-t border-[#1F2937]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-[#000000] border border-dashed border-[#1F2937] rounded-2xl px-5 py-4 text-center">
+          <p class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">
+            Advertisement
+          </p>
+          <div class="h-24 md:h-32 lg:h-48 bg-[#050505] border border-[#1F2937] rounded-xl"></div>
         </div>
       </div>
     </section>
@@ -266,6 +289,7 @@ const schema = {
   <script>
     const btn = document.getElementById("copyLinkBtn");
     const msg = document.getElementById("copiedMsg");
+
     if (btn && msg) {
       btn.addEventListener("click", () => {
         navigator.clipboard.writeText(window.location.href).then(() => {
