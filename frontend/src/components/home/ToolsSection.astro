@@ -7,186 +7,187 @@ import UserCheck from "@lucide/astro/icons/user-check";
 import Gift from "@lucide/astro/icons/gift";
 
 type Tool = {
-  id        : string;
-  title     : string;
+  id: string;
+  title: string;
   description: string;
-  icon      : typeof Search;
-  slug      : string;
+  icon: typeof Search;
+  slug: string;
   comingSoon?: boolean;
 };
 
 const tools: Tool[] = [
-  {
-    id         : "1",
-    title      : "Xbox Gamertag Availability Checker",
-    description: "Instantly see if your desired tag is still up for grabs before someone else snags it.",
-    icon       : Search,
-    slug       : "availability-checker",
+  
+     {
+    id: "1",
+    title: "Xbox Gamertag Generator",
+    description: "Instantly create unique, funny, and cool gamertags with AI-powered suggestions.",
+    slug: "/",
+    icon: UserCheck,
   },
-  {
-    id         : "2",
-    title      : "Xbox Gamer Profile & Stats Checker",
-    description: "View public stats, gamerscore, recent games, and achievement progress tied to any gamertag.",
-    icon       : BarChart3,
-    slug       : "profile-stats-checker",
-  },
-  {
-    id         : "3",
-    title      : "Xbox Gamertag Price Checker",
-    description: "Estimate the potential market value of any gamertag based on length, rarity, and demand.",
-    icon       : DollarSign,
-    slug       : "price-checker",
-  },
-  {
-    id         : "4",
-    title      : "Xbox Gamercard Generator",
+   {
+    id: "2",
+    title: "Xbox Gamercard Generator",
     description: "Create a custom Xbox gamercard badge showing your gamertag, gamerscore, and avatar.",
-    icon       : Gift,
-    slug       : "gamercard-generator",
+    icon: Gift,
+    slug: "gamercard-generator",
   },
   {
-    id         : "5",
-    title      : "Xbox Account Price/Value Checker",
-    description: "A rough valuation based on your tag, achievements, age, and stats.",
-    icon       : UserCheck,
-    slug       : "account-value-checker",
-    comingSoon : true,
+    id: "3",
+    title: "Xbox Gamertag Price Checker",
+    description: "Estimate the potential market value of any gamertag based on length, rarity, and demand.",
+    icon: DollarSign,
+    slug: "price-checker",
+  },
+ 
+  {
+    id: "4",
+    title: "Xbox Gamer Profile & Stats Checker",
+    description: "View public stats, gamerscore, recent games, and achievement progress tied to any gamertag.",
+    icon: BarChart3,
+    slug: "profile-stats-checker",
+      comingSoon: true,
   },
   {
-    id         : "6",
-    title      : "Xbox Clips Tool",
-    description: "Find and download Xbox gameplay clips and screenshots linked to any public profile.",
-    icon       : Download,
-    slug       : "clips-downloader",
-    comingSoon : true,
-  },
+  
+    id: "5",
+    title: "Xbox Gamertag Availability Checker",
+    description: "Instantly see if your desired tag is still up for grabs before someone else snags it.",
+    icon: Search,
+    slug: "availability-checker",
+      comingSoon: true,
+  }
 ];
 
 const getToolLink = (slug: string): string => {
+  // if homepage
+  if (slug === "/") return "/";
+
   const map: Record<string, string> = {
-    "availability-checker" : "/tools/gamertag-availability-checker",
-    "profile-stats-checker": "/tools/gamer-profile-checker",
-    "price-checker"        : "/tools/gamertag-price-checker",
-    "gamercard-generator"  : "/tools/gamercard-generator",
-    "account-value-checker": "/tools/account-value-checker",
-    "clips-downloader"     : "/tools/clips-downloader",
+    "gamercard-generator": "/gamercard-generator",
+    "price-checker": "/gamertag-price-checker",
+    "profile-stats-checker": "/gamer-profile-checker",
+    "availability-checker": "/gamertag-availability-checker",
+    "account-value-checker": "/account-value-checker",
+    "clips-downloader": "/clips-downloader",
   };
-  return map[slug] ?? `/tools/${slug}`;
+
+  return map[slug] ?? `/${slug}`;
 };
 
-const availableTools  = tools.filter(t => !t.comingSoon);
-const comingSoonTools = tools.filter(t =>  t.comingSoon);
 ---
 
-<section class="section-dark border-t border-[#1F2937] py-16 md:py-20">
-  <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+<section class="section-white-subtle py-16 md:py-20 border-t border-[#E5E7EB]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
 
     <!-- Section Header -->
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 md:mb-12">
       <div>
-        <span class="label-green block mb-2">Free Tools</span>
-        <h2 class="heading-section text-2xl md:text-3xl text-foreground">
-          Explore More <span class="text-brand">Tools</span>
+        <span class="inline-block mb-3 px-3 py-1 rounded-full text-[11px] md:text-xs font-bold tracking-[0.18em] uppercase text-[#00B324] bg-[#00D02B]/10 border border-[#00D02B]/20">
+          Free Tools
+        </span>
+        <h2 class="font-ui text-3xl md:text-4xl font-extrabold tracking-tight text-[#111827] leading-tight">
+          Explore More <span class="text-[#00B324]">Tools</span>
         </h2>
       </div>
-      
-        <a href="/tools"
-        class="btn-ghost text-sm inline-flex items-center gap-1.5 group shrink-0"
+
+      <a
+        href="/tools"
+        class="inline-flex items-center gap-2 text-base md:text-lg font-semibold text-[#00B324] hover:text-[#00961e] transition-colors"
       >
         View All Tools
         <svg
-          class="w-4 h-4 transition-transform group-hover:translate-x-1"
-          fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          class="w-4 h-4 transition-transform hover:translate-x-0.5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </a>
     </div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-8">
+  {tools.map((tool) => {
+    const Icon = tool.icon;
+    return tool.comingSoon ? (
 
-    <!-- Available Tools Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4 mb-4">
-      {availableTools.map((tool) => {
-        const Icon = tool.icon;
-        return (
-          
-           <a href={getToolLink(tool.slug)}
-            class="feature-card-dark group flex items-start gap-4 no-underline p-5"
+      <!-- COMING SOON (ICON TOP + BADGE RIGHT) -->
+      <div class="bg-white border border-[#E5E7EB] rounded-2xl p-5 md:p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] flex flex-col h-full opacity-80">
+
+        <!-- ICON + BADGE -->
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center bg-[#F3F4F6] border border-[#E5E7EB]">
+            <Icon class="h-5 w-5 md:h-6 md:w-6 text-[#94A3B8]" />
+          </div>
+
+          <span class="px-2 py-1 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-[0.12em] text-[#6B7280] bg-[#F3F4F6] border border-[#E5E7EB] whitespace-nowrap">
+            Coming Soon
+          </span>
+        </div>
+
+        <!-- TITLE -->
+        <h3 class="font-ui text-base md:text-lg font-extrabold text-[#374151] leading-snug mb-2">
+          {tool.title}
+        </h3>
+
+        <!-- DESCRIPTION -->
+        <p class="font-ui text-sm md:text-[15px] leading-7 text-[#6B7280] mb-4">
+          {tool.description}
+        </p>
+
+        <!-- BUTTON -->
+        <div class="mt-auto">
+          <button
+            disabled
+            class="w-full bg-[#E5E7EB] text-[#9CA3AF] text-sm md:text-[15px] font-semibold px-4 py-2.5 rounded-lg cursor-not-allowed"
           >
-            <!-- Icon -->
-            <div
-              class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:shadow-green"
-              style="background:rgba(0,208,43,0.08);border:1px solid rgba(0,208,43,0.2)"
-            >
-              <Icon class="h-5 w-5 text-brand" />
-            </div>
+            Coming Soon
+          </button>
+        </div>
 
-            <!-- Text -->
-            <div class="flex-1 min-w-0">
-              <div class="flex items-start justify-between gap-2 mb-1.5">
-                <h3 class="heading-section text-base text-foreground group-hover:text-brand transition-colors duration-200 leading-snug">
-                  {tool.title}
-                </h3>
-                <svg
-                  class="w-4 h-4 text-foreground-subtle shrink-0 mt-0.5 transition-all duration-300 group-hover:text-brand group-hover:translate-x-0.5"
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </div>
-              <p class="text-foreground-muted text-sm font-ui leading-relaxed line-clamp-2">
-                {tool.description}
-              </p>
-            </div>
-          </a>
-        );
-      })}
-    </div>
-
-    <!-- Coming Soon Tools — compact row -->
-    {comingSoonTools.length > 0 && (
-      <div class="grid md:grid-cols-2 gap-4 mb-8">
-        {comingSoonTools.map((tool) => {
-          const Icon = tool.icon;
-          return (
-            <div class="feature-card-dark flex items-start gap-4 p-5 opacity-50 cursor-default select-none">
-              <!-- Icon dimmed -->
-              <div
-                class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-                style="background:rgba(255,255,255,0.03);border:1px solid #1F2937"
-              >
-                <Icon class="h-5 w-5 text-foreground-subtle" />
-              </div>
-
-              <!-- Text -->
-              <div class="flex-1 min-w-0">
-                <div class="flex items-start justify-between gap-2 mb-1.5">
-                  <h3 class="heading-section text-base text-foreground-muted leading-snug">
-                    {tool.title}
-                  </h3>
-                  <span
-                    class="shrink-0 font-ui font-bold uppercase tracking-widest px-2 py-0.5 rounded"
-                    style="font-size:9px;background:rgba(255,255,255,0.04);border:1px solid #1F2937;color:#4B5563;white-space:nowrap"
-                  >
-                    Soon
-                  </span>
-                </div>
-                <p class="text-foreground-subtle text-sm font-ui leading-relaxed line-clamp-2">
-                  {tool.description}
-                </p>
-              </div>
-            </div>
-          );
-        })}
       </div>
-    )}
+
+    ) : (
+
+      <!-- AVAILABLE TOOL -->
+      <div class="group bg-white border border-[#E5E7EB] rounded-2xl p-5 md:p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] hover:shadow-[0_14px_32px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 transition-all duration-200 flex flex-col h-full">
+
+        <!-- ICON -->
+        <div class="w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center bg-[#00D02B]/10 border border-[#00D02B]/20 mb-4">
+          <Icon class="h-5 w-5 md:h-6 md:w-6 text-[#00B324]" />
+        </div>
+
+        <!-- TITLE -->
+        <h3 class="font-ui text-base md:text-lg font-extrabold text-[#111827] leading-snug mb-2 group-hover:text-[#00B324] transition-colors">
+          {tool.title}
+        </h3>
+
+        <!-- DESCRIPTION -->
+        <p class="font-ui text-sm md:text-[15px] leading-7 text-[#4B5563] mb-4">
+          {tool.description}
+        </p>
+
+        <!-- BUTTON -->
+        <div class="mt-auto">
+          <a
+            href={getToolLink(tool.slug)}
+            class="block w-full text-center bg-[#00B324] hover:bg-[#00961e] text-white text-sm md:text-[15px] font-semibold px-4 py-2.5 rounded-lg transition-colors"
+          >
+            Go to Tool
+          </a>
+        </div>
+
+      </div>
+
+    );
+  })}
+</div>
+
+
 
     <!-- Ad Banner -->
-    <div
-      class="feature-card-dark p-6 text-center"
-      style="border-style:dashed"
-    >
-      <p class="label-mono mb-3">Advertisement</p>
-      <div class="h-20 md:h-32 bg-background rounded-lg"></div>
+    <div class="bg-[#F3F4F6] rounded-xl px-4 md:px-6 py-6 text-center border-2 border-dashed border-[#D1D5DB] mt-8">
+      <p class="font-ui text-sm md:text-base text-[#6B7280] mb-2">Advertisement</p>
+      <div class="h-20 md:h-32 lg:h-40 bg-[#E5E7EB] rounded-lg"></div>
     </div>
 
   </div>

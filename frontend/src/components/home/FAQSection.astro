@@ -284,9 +284,9 @@ Bottom line? If the name you want is taken, the suffix system gives you a second
           <button
             class="faq-toggle w-full text-left px-5 py-4 sm:px-6 sm:py-5"
             data-id={item.id}
-            style="background:transparent;cursor:pointer;outline:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;"
+            style="background:transparent;cursor:pointer;outline:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;"
           >
-            <span class="faq-question" style="font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:#050505;line-height:1.4;flex:1;">
+            <span class="faq-question" style="font-size:25px;font-weight:700;color:#050505;line-height:1.4;flex:1;">
               {item.question}
             </span>
 
@@ -304,16 +304,16 @@ Bottom line? If the name you want is taken, the suffix system gives you a second
             {item.answer.split('[AD_BANNER]').map((part, index) => (
               <>
                 {part && (
-                  <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:400;color:#64748B;line-height:1.75;white-space:pre-line;margin-bottom:12px;">
+                  <div style="font-size:18px;font-weight:400;color:#64748B;line-height:1.75;white-space:pre-line;margin-bottom:12px;">
                     {part.trim()}
                   </div>
                 )}
 
                 {index < item.answer.split('[AD_BANNER]').length - 1 && (
                   <div style="margin:16px 0;padding:14px 16px;background:#F8FAFC;border:1px dashed #E2E8F0;border-radius:0.5rem;text-align:center;">
-                    <p style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;margin-bottom:8px;">Advertisement</p>
+                    <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;margin-bottom:8px;">Advertisement</p>
                     <div style="background:#ffffff;border:1px dashed #E2E8F0;border-radius:4px;padding:24px;">
-                      <p style="font-family:'Rajdhani',sans-serif;font-size:12px;color:#CBD5E1;">Ad Banner Space</p>
+                      <p style="font-size:12px;color:#CBD5E1;">Ad Banner Space</p>
                     </div>
                   </div>
                 )}
@@ -351,32 +351,34 @@ Bottom line? If the name you want is taken, the suffix system gives you a second
     to   { opacity: 1; transform: translateY(0); }
   }
 </style>
-
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
+  const initFaq = () => {
     const buttons = document.querySelectorAll('.faq-toggle');
 
     buttons.forEach((btn) => {
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+
       btn.addEventListener('click', () => {
-        const item    = btn.parentElement;
+        const item = btn.parentElement;
         const content = item?.querySelector('.faq-content');
-        const icon    = btn.querySelector('.faq-icon');
+        const icon = btn.querySelector('.faq-icon');
         if (!item || !content || !icon) return;
 
         const isOpen = item.classList.contains('open');
 
-        // Close all
         document.querySelectorAll('.faq-item').forEach((el) => {
           el.classList.remove('open');
         });
+
         document.querySelectorAll('.faq-content').forEach((el) => {
           el.classList.remove('visible');
         });
+
         document.querySelectorAll('.faq-icon').forEach((ic) => {
           ic.textContent = '+';
         });
 
-        // Open clicked if it was closed
         if (!isOpen) {
           item.classList.add('open');
           content.classList.add('visible');
@@ -384,5 +386,8 @@ Bottom line? If the name you want is taken, the suffix system gives you a second
         }
       });
     });
-  });
+  };
+
+  initFaq();
+  document.addEventListener('astro:page-load', initFaq);
 </script>

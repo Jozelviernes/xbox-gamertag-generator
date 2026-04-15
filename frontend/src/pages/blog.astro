@@ -23,7 +23,7 @@ const schema = {
 >
   <Header />
 
-  <div class="min-h-screen bg-[#000000] text-white">
+  <div class="min-h-screen">
 
     <!-- Hero -->
     <section class="relative overflow-hidden py-16 md:py-20 border-b border-[#1F2937] bg-[#000000]">
@@ -59,14 +59,14 @@ const schema = {
     </section>
 
     <!-- Search -->
-    <section class="bg-[#050505] py-12 border-b border-[#1F2937]">
+    <section class="section-white py-12 border-b border-[#E5E7EB]">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 md:px-8">
 
         <div class="text-center mb-8">
-          <h2 class="font-reading text-xl font-bold text-white">
+          <h2 class="font-reading text-2xl md:text-3xl font-bold text-[#111827]">
             Tips, Guides &amp; Articles
           </h2>
-          <p class="font-reading text-sm text-[#64748B] mt-2">
+          <p class="font-reading text-sm md:text-base text-[#64748B] mt-2">
             Search through our latest Xbox gamertag articles and guides.
           </p>
         </div>
@@ -74,7 +74,7 @@ const schema = {
         <div class="flex flex-col sm:flex-row gap-3 items-center">
           <div class="relative flex-1 w-full">
             <svg
-              class="absolute left-3 top-1/2 -translate-y-1/2 text-[#4B5563] h-4 w-4"
+              class="absolute left-3 top-1/2 -translate-y-1/2 text-[#9CA3AF] h-4 w-4"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -87,7 +87,7 @@ const schema = {
               id="searchInput"
               type="text"
               placeholder="Search for articles..."
-              class="w-full h-11 pl-10 pr-4 bg-[#0A0F0A] border border-[#1F2937] rounded-lg font-reading text-sm text-white placeholder-[#4B5563] focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
+              class="w-full h-11 pl-10 pr-4 bg-white border border-[#E5E7EB] rounded-lg font-reading text-sm text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
             />
           </div>
 
@@ -100,26 +100,26 @@ const schema = {
         </div>
 
         <!-- Ad slot -->
-        <div class="bg-[#000000] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center mt-8">
-          <p class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">
+        <div class="bg-[#F3F4F6] border border-dashed border-[#D1D5DB] rounded-lg px-5 py-4 text-center mt-8">
+          <p class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">
             Advertisement
           </p>
-          <div class="bg-[#050505] border border-[#1F2937] rounded h-20 md:h-32 lg:h-40"></div>
+          <div class="bg-[#E5E7EB] rounded h-20 md:h-32 lg:h-40"></div>
         </div>
 
       </div>
     </section>
 
     <!-- Articles Grid -->
-    <section class="bg-[#000000] pt-10 pb-8">
+    <section class="section-white pt-10 pb-8">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
 
-        <h2 id="sectionTitle" class="font-reading text-xl font-bold text-white text-center mb-8">
+        <h2 id="sectionTitle" class="font-reading text-2xl md:text-3xl font-bold text-[#111827] text-center mb-8">
           Latest Articles
         </h2>
 
         <div id="resultsHeader" class="hidden flex items-center justify-between mb-6">
-          <h2 id="resultsTitle" class="font-reading text-xl font-bold text-white"></h2>
+          <h2 id="resultsTitle" class="font-reading text-2xl font-bold text-[#111827]"></h2>
           <button
             id="clearBtn"
             class="font-reading text-sm font-bold text-[#00D02B] hover:underline uppercase tracking-wide"
@@ -129,7 +129,7 @@ const schema = {
         </div>
 
         <div id="noResults" class="hidden text-center py-16">
-          <p id="noResultsMsg" class="font-reading text-base font-semibold text-[#94A3B8] mb-3"></p>
+          <p id="noResultsMsg" class="font-reading text-base font-semibold text-[#4B5563] mb-3"></p>
           <p class="font-reading text-sm text-[#64748B] mb-6">
             Try searching with different keywords or browse our latest articles below.
           </p>
@@ -140,92 +140,92 @@ const schema = {
             View All Articles
           </button>
         </div>
-<div
-  id="blogGrid"
-  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
-  data-posts={JSON.stringify(blogPosts)}
->
-  {blogPosts.map((post) => (
-    <article class="group bg-white border-2 border-[#00D02B] rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5">
-      <div class="h-1.5 w-full bg-[#00D02B]"></div>
 
-      <div class="w-full h-44 md:h-48 border-b border-[#00D02B]/30 flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,208,43,0.08),transparent_65%)] bg-[#F8FAFC]">
-        <span class="font-reading text-xs text-[#94A3B8] uppercase tracking-[0.2em]">
-          Gaming Image
-        </span>
-      </div>
-
-      <div class="p-6">
-        <h3 class="font-reading text-lg font-bold text-[#050505] mb-3 leading-snug group-hover:text-[#00A021] transition-colors duration-200 line-clamp-2">
-          {post.title}
-        </h3>
-
-        <p class="font-reading text-md text-[#64748B] mb-5 line-clamp-4 leading-relaxed">
-          {post.excerpt}
-        </p>
-
-        <a
-          href={`/blog/${post.slug}`}
-          class="inline-flex items-center gap-1.5 font-reading text-sm font-bold uppercase tracking-wider text-[#00D02B]"
+        <div
+          id="blogGrid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
+          data-posts={JSON.stringify(blogPosts)}
         >
-          Read More
-          <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
-    </article>
-  ))}
-</div>
+          {blogPosts.map((post) => (
+            <article class="group bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(15,23,42,0.08)]">
+              <div class="h-1.5 w-full bg-[#00D02B]"></div>
+
+              <div class="w-full h-44 md:h-48 border-b border-[#E5E7EB] flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,208,43,0.08),transparent_65%)] bg-[#F8FAFC]">
+                <span class="font-reading text-xs text-[#94A3B8] uppercase tracking-[0.2em]">
+                  Gaming Image
+                </span>
+              </div>
+
+              <div class="p-6">
+                <h3 class="font-reading text-lg md:text-xl font-bold text-[#050505] mb-3 leading-snug group-hover:text-[#00A021] transition-colors duration-200 line-clamp-2">
+                  {post.title}
+                </h3>
+
+                <p class="font-reading text-base text-[#64748B] mb-5 line-clamp-4 leading-relaxed">
+                  {post.excerpt}
+                </p>
+
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="inline-flex items-center gap-1.5 font-reading text-sm font-bold uppercase tracking-wider text-[#00D02B]"
+                >
+                  Read More
+                  <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 
-  
-{totalPages > 1 && (
-  <section class="bg-[#000000] pb-10 border-b border-[#1F2937]">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
-      <div class="flex justify-center items-center gap-2 sm:gap-3">
-        <button class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#1F2937] text-[#94A3B8] font-reading text-xs font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150">
-          <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-          Prev
-        </button>
-
-        <div class="flex gap-1.5">
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              class:list={[
-                "w-8 h-8 font-reading text-[10px] font-bold rounded transition-all",
-                i === 0
-                  ? "bg-[#00D02B] text-black"
-                  : "bg-transparent border border-[#1F2937] text-[#94A3B8] hover:border-[#00D02B]/40 hover:text-[#00D02B]"
-              ]}
-            >
-              {i + 1}
+    {totalPages > 1 && (
+      <section class="section-white pb-10 border-b border-[#E5E7EB]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div class="flex justify-center items-center gap-2 sm:gap-3">
+            <button class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#E5E7EB] text-[#6B7280] font-reading text-xs font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150">
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              Prev
             </button>
-          ))}
-        </div>
 
-        <button class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#1F2937] text-[#94A3B8] font-reading text-xs font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150">
-          Next
-          <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </section>
-)}
+            <div class="flex gap-1.5">
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  class:list={[
+                    "w-8 h-8 font-reading text-[10px] font-bold rounded transition-all",
+                    i === 0
+                      ? "bg-[#00D02B] text-black"
+                      : "bg-white border border-[#E5E7EB] text-[#6B7280] hover:border-[#00D02B]/40 hover:text-[#00D02B]"
+                  ]}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+
+            <button class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#E5E7EB] text-[#6B7280] font-reading text-xs font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150">
+              Next
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    )}
 
     <!-- Bottom Ad -->
-    <section class="bg-[#000000] py-12">
+    <section class="section-white py-12">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div class="bg-[#050505] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center">
-          <p class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">
+        <div class="bg-[#F3F4F6] border border-dashed border-[#D1D5DB] rounded-lg px-5 py-4 text-center">
+          <p class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">
             Advertisement
           </p>
-          <div class="bg-[#0A0F0A] rounded h-24 md:h-32 lg:h-48 border border-[#1F2937]"></div>
+          <div class="bg-[#E5E7EB] rounded h-24 md:h-32 lg:h-48"></div>
         </div>
       </div>
     </section>
@@ -256,17 +256,17 @@ const schema = {
 
     function cardHTML(post: Post): string {
       return `
-        <article class="group bg-[#050505] border border-[#1F2937] rounded-xl overflow-hidden transition-all duration-200 hover:border-[#00D02B]/40 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-12px_rgba(0,208,43,0.25)]">
-          <div class="h-0.5 w-full bg-[#1F2937] group-hover:bg-[#00D02B] transition-colors duration-200"></div>
-          <div class="w-full h-36 bg-[#0A0F0A] border-b border-[#1F2937] flex items-center justify-center">
-            <span class="font-reading text-xs text-[#4B5563] uppercase tracking-wider">Gaming Image</span>
+        <article class="group bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(15,23,42,0.08)]">
+          <div class="h-1.5 w-full bg-[#00D02B]"></div>
+          <div class="w-full h-44 md:h-48 border-b border-[#E5E7EB] flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,208,43,0.08),transparent_65%)] bg-[#F8FAFC]">
+            <span class="font-reading text-xs text-[#94A3B8] uppercase tracking-[0.2em]">Gaming Image</span>
           </div>
-          <div class="p-4">
-            <h3 class="font-reading text-sm font-bold text-white mb-2 leading-snug line-clamp-2 transition-colors duration-200 group-hover:text-[#00D02B]">${post.title}</h3>
-            <p class="font-reading text-sm text-[#94A3B8] mb-4 line-clamp-3 leading-relaxed">${post.excerpt}</p>
-            <a href="/blog/${post.slug}" class="inline-flex items-center gap-1.5 font-reading text-xs font-bold uppercase tracking-wider text-[#00D02B]" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+          <div class="p-6">
+            <h3 class="font-reading text-lg md:text-xl font-bold text-[#050505] mb-3 leading-snug line-clamp-2 transition-colors duration-200 group-hover:text-[#00D02B]">${post.title}</h3>
+            <p class="font-reading text-base text-[#64748B] mb-5 line-clamp-4 leading-relaxed">${post.excerpt}</p>
+            <a href="/blog/${post.slug}" class="inline-flex items-center gap-1.5 font-reading text-sm font-bold uppercase tracking-wider text-[#00D02B]" onclick="window.scrollTo({top:0,behavior:'smooth'})">
               Read More
-              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
             </a>

@@ -1,15 +1,23 @@
 <?php
 
+use App\Http\Controllers\Admin\GlossaryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/login');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('admin.glossaries.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('glossaries', GlossaryController::class)->only([
+        'index',
+        'store',
+        'update',
+        'destroy',
+    ]);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
