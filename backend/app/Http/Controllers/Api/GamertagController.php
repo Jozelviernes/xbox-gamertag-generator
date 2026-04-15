@@ -88,9 +88,12 @@ class GamertagController extends Controller
             $safety++;
         }
 
-       return response()->json([
-    'has_probe' => in_array('JozelProbe', $baseWords, true),
-    'base_words_count' => count($baseWords),
+    return response()->json([
+    'db_host' => config('database.connections.mysql.host'),
+    'db_port' => config('database.connections.mysql.port'),
+    'db_name' => config('database.connections.mysql.database'),
+    'db_probe_exists' => \App\Models\GeneratorWord::where('word', 'JozelProbe')->exists(),
+    'total_generator_words' => \App\Models\GeneratorWord::count(),
     'sample_words' => array_slice($baseWords, 0, 5),
 ]);
     }
