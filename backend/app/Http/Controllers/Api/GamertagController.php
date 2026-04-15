@@ -36,12 +36,21 @@ class GamertagController extends Controller
 
         $parsedRequests = $this->parseOtherRequests($validated['otherRequests'] ?? '');
 
-        // Load data with fallback helper
-        $baseWords       = $this->fetchWords($language, $theme);
-        $prefixes        = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'prefix') : [];
-        $suffixGender    = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'suffix') : [];
-        $languageSuffixes = $this->fetchSuffixes($language);
-        $numbers         = GeneratorNumber::pluck('value')->toArray() ?: ['01', '07', '13', '99', '47'];
+     // Load data with fallback helper
+$baseWords = $this->fetchWords($language, $theme);
+
+logger()->info('generator_live_check', [
+    'theme' => $theme,
+    'language' => $language,
+    'base_words_count' => count($baseWords),
+    'has_probe' => in_array('JozelProbe', $baseWords, true),
+    'sample_words' => array_slice($baseWords, 0, 5),
+]);
+
+$prefixes = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'prefix') : [];
+$suffixGender = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'suffix') : [];
+$languageSuffixes = $this->fetchSuffixes($language);
+$numbers = GeneratorNumber::pluck('value')->toArray() ?: ['01', '07', '13', '99', '47'];
 
         $generated       = [];
         $usedCustomWords = [];
