@@ -214,25 +214,27 @@ import {
     transform: rotate(180deg);
   }
 
-  /* ── Dropdown menu ── */
-  .custom-select-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #050505;
-    border: 1px solid #00D02B;
-    border-top: none;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    overflow: hidden;
-    z-index: 100;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
-    list-style: none;
-    margin: 0;
-    padding: 4px 0;
-  }
+.custom-select-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #050505;
+  border: 1px solid #00D02B;
+  border-top: none;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+
+  max-height: 260px;      /* ✅ add this */
+  overflow-y: auto;       /* ✅ add this */
+  overflow-x: hidden;     /* ✅ add this */
+}
   .custom-select-menu.open {
     display: block;
   }
