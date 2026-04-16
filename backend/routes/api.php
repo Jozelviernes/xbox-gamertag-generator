@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\GamertagController;
+use App\Http\Controllers\Api\GlossaryController;
 use App\Http\Controllers\PriceCheckerController;
 
 Route::post('/generate-gamertags', [GamertagController::class, 'generate']);
 Route::post('/check-price', [PriceCheckerController::class, 'check']);
+Route::get('/glossary', [GlossaryController::class, 'index']);
 
 Route::get('/test-cors', function () {
     return response()->json([

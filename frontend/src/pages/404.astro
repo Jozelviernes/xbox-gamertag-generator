@@ -41,17 +41,16 @@ import Header from "../components/layout/Header.astro";
         </a>
       </div>
 
-      <!-- Quick links -->
       <div class="border-t border-[#1F2937] pt-10">
         <p class="label-mono mb-5">Popular Pages</p>
         <div class="flex flex-wrap justify-center gap-3">
           {[
-            { label: "Generator",             href: "/"                                        },
-            { label: "Price Checker",         href: "/tools/gamertag-price-checker"            },
-            { label: "Availability Checker",  href: "/tools/gamertag-availability-checker"    },
-            { label: "Profile Checker",       href: "/tools/gamer-profile-checker"            },
-            { label: "Gamercard Generator",   href: "/tools/gamercard-generator"              },
-            { label: "Blog",                  href: "/blog"                                   },
+            { label: "Generator",            href: "/" },
+            { label: "Price Checker",        href: "/gamertag-price-checker" },
+            { label: "Availability Checker", href: "/gamertag-availability-checker" },
+            { label: "Profile Checker",      href: "/gamer-profile-checker" },
+            { label: "Gamercard Generator",  href: "/gamercard-generator" },
+            { label: "Blog",                 href: "/blog" },
           ].map(link => (
             <a href={link.href}
               class="px-4 py-2 rounded-lg text-sm font-ui font-semibold text-foreground-muted hover:text-brand transition-colors"

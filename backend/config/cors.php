@@ -6,7 +6,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => explode(',', env('CORS_ALLOWED_ORIGINS', 'http://localhost:4321,http://127.0.0.1:4321')),
+    'allowed_origins' => array_map('trim', explode(',', env('CORS_ALLOWED_ORIGINS', 'http://localhost:4321,http://127.0.0.1:4321,https://xboxgamertaggenerator.com,https://www.xboxgamertaggenerator.com'))),
 
     'allowed_origins_patterns' => [],
 

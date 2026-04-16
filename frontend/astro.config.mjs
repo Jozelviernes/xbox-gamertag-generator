@@ -2,6 +2,23 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
+const toolPages = new Set([
+  "/gamertag-price-checker",
+  "/gamercard-generator",
+  "/gamertag-availability-checker",
+  "/gamer-profile-checker",
+]);
+
+const standardPages = new Set([
+  "/",
+  "/blog",
+  "/tools",
+  "/about",
+  "/contact",
+  "/privacy-policy",
+  "/terms-and-conditions",
+]);
+
 export default defineConfig({
   output: "static",
   site: "https://xboxgamertaggenerator.com",
@@ -12,15 +29,20 @@ export default defineConfig({
         !page.includes("/admin/"),
 
       serialize(item) {
-        if (item.url === "https://xboxgamertaggenerator.com/") {
+        const path = new URL(item.url).pathname;
+
+        if (path === "/") {
           return { ...item, priority: 1.0, changefreq: "daily" };
         }
-        if (item.url.includes("/tools/")) {
+
+        if (toolPages.has(path)) {
           return { ...item, priority: 0.9, changefreq: "weekly" };
         }
-        if (item.url.includes("/blog/")) {
+
+        if (!standardPages.has(path)) {
           return { ...item, priority: 0.8, changefreq: "monthly" };
         }
+
         return { ...item, priority: 0.6, changefreq: "monthly" };
       },
     }),

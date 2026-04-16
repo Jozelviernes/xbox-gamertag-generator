@@ -24,68 +24,68 @@ const featuredPosts = blogPosts.slice(0, 6);
       </p>
     </div>
 
-    <!-- Blog grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {featuredPosts.map((post) => (
-        <article class="group bg-white border border-[#E2E8F0] rounded-xl overflow-hidden transition-all duration-200 hover:border-[#00D02B]/40 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.12)]">
+   <!-- Blog grid -->
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {featuredPosts.map((post) => (
+    <article class="group bg-white border border-[#E2E8F0] rounded-xl overflow-hidden transition-all duration-200 hover:border-[#00D02B]/40 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.12)]">
 
-          <!-- Card top accent bar -->
-          <div class="h-0.5 w-full bg-[#E2E8F0] group-hover:bg-[#00D02B] transition-colors duration-200"></div>
+      <!-- Card top accent bar -->
+      <div class="h-0.5 w-full bg-[#E2E8F0] group-hover:bg-[#00D02B] transition-colors duration-200"></div>
 
-          <div class="p-5 flex flex-col h-full">
+      <div class="p-5 flex flex-col h-full">
 
-           <h3 class="font-reading text-sm font-bold text-[#050505] mb-3 leading-snug group-hover:text-[#00D02B] transition-colors duration-200 line-clamp-2">
-  {post.title}
-</h3>
+        <h3 class="font-reading text-sm font-bold text-[#050505] mb-3 leading-snug group-hover:text-[#00D02B] transition-colors duration-200 line-clamp-2">
+          {post.title}
+        </h3>
 
-            <!-- Excerpt -->
-            <p class="font-reading text-sm text-[#64748B] leading-relaxed mb-4 line-clamp-3 flex-1">
-              {post.excerpt}
-            </p>
+        <!-- Excerpt -->
+        <p class="font-reading text-sm text-[#64748B] leading-relaxed mb-4 line-clamp-3 flex-1">
+          {post.excerpt}
+        </p>
 
-            <!-- Footer row -->
-            <div class="flex items-center justify-between gap-3 pt-3 border-t border-[#E2E8F0]">
+        <!-- Footer row -->
+        <div class="flex items-center justify-between gap-3 pt-3 border-t border-[#E2E8F0]">
 
-              <!-- Read time -->
-              <div class="flex items-center gap-1.5">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <circle cx="6" cy="6" r="5" stroke="#94A3B8" stroke-width="1.5"/>
-                  <path d="M6 3.5V6l1.5 1.5" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="font-reading text-xs font-medium text-[#94A3B8]">
-                  {post.readTime}
-                </span>
-              </div>
-
-              <!-- Read more link -->
-              <a
-                href={`/blog/${post.slug}`}
-                class="inline-flex items-center gap-1 font-reading text-xs font-bold uppercase tracking-wider text-[#00D02B] transition-transform duration-150 group-hover:translate-x-0.5"
-              >
-                Read More
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6h8M7 3l3 3-3 3" stroke="#00D02B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-
-            </div>
+          <!-- Read time -->
+          <div class="flex items-center gap-1.5">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <circle cx="6" cy="6" r="5" stroke="#94A3B8" stroke-width="1.5"/>
+              <path d="M6 3.5V6l1.5 1.5" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-reading text-xs font-medium text-[#94A3B8]">
+              {post.readTime}
+            </span>
           </div>
-        </article>
-      ))}
-    </div>
 
-    <!-- View all CTA -->
-    <div class="text-center mt-10">
-      <a
-        href="/blog"
-        class="inline-flex items-center gap-2 px-7 py-3 bg-[#00D02B] hover:bg-[#00e830] text-black font-reading font-bold text-sm uppercase tracking-widest rounded transition-colors duration-200"
-      >
-        View All Posts
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M2 7h10M8 3l4 4-4 4" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
+          <!-- Read more link -->
+          <a
+            href={`/${post.slug}`}
+            class="inline-flex items-center gap-1 font-reading text-xs font-bold uppercase tracking-wider text-[#00D02B] transition-transform duration-150 group-hover:translate-x-0.5"
+          >
+            Read More
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 6h8M7 3l3 3-3 3" stroke="#00D02B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+    </article>
+  ))}
+</div>
+
+<!-- View all CTA -->
+<div class="text-center mt-10">
+  <a
+    href="/blog"
+    class="inline-flex items-center gap-2 px-7 py-3 bg-[#00D02B] hover:bg-[#00e830] text-black font-reading font-bold text-sm uppercase tracking-widest rounded transition-colors duration-200"
+  >
+    View All Posts
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M2 7h10M8 3l4 4-4 4" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
 
     <!-- Ad slot -->
     <div class="bg-[#F8FAFC] border border-dashed border-[#E2E8F0] rounded-lg px-5 py-4 text-center mt-10">
