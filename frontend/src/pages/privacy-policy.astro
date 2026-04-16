@@ -1,0 +1,156 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "url": "https://xboxgamertaggenerator.com/privacy-policy",
+  "description": "Privacy Policy for Xbox Gamertag Generator.",
+};
+---
+
+<MainLayout
+  title="Privacy Policy"
+  description="Learn how Xbox Gamertag Generator collects, uses, and protects your information."
+  keywords="privacy policy, xbox gamertag generator privacy"
+  {schema}
+>
+  <Header />
+
+  <div class="min-h-screen bg-[#F8FAFC]">
+
+    <!-- Hero -->
+    <section class="bg-white border-b border-[#E2E8F0] py-14 md:py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
+          <span class="text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Legal</span>
+        </div>
+        <h1 class="font-display text-3xl md:text-4xl font-black text-[#050505] mb-4 leading-tight">
+          Privacy <span class="text-[#00D02B]">Policy</span>
+        </h1>
+        <p class="text-base md:text-lg text-[#64748B] max-w-2xl mx-auto leading-relaxed">
+          Learn how we collect, use, and protect information when you use Xbox Gamertag Generator.
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-14 md:py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12">
+
+        <p class="text-sm text-[#94A3B8] mb-10">Effective Date: April 2026</p>
+
+        <p class="text-[17px] leading-8 text-[#64748B] mb-12">
+          At Xbox Gamertag Generator ("we", "our", or "us"), accessible from
+          https://xboxgamertaggenerator.com, we value your privacy and are committed to
+          protecting your information.
+        </p>
+
+        <div class="space-y-10">
+
+          {[
+            {
+              number: "1",
+              title: "Information We Collect",
+              content: "We do not require users to create an account or submit personal information to use our tools. However, we may collect limited data such as:",
+              list: [
+                "Non-personal information such as browser type, device type, and IP address",
+                "Usage data such as pages visited and tool interactions",
+                "Cookies and analytics data",
+              ],
+            },
+            {
+              number: "2",
+              title: "How We Use Information",
+              content: "We use collected data to:",
+              list: [
+                "Improve website performance and user experience",
+                "Analyze traffic and usage patterns",
+                "Maintain and optimize our tools and services",
+              ],
+            },
+          ].map((section) => (
+            <div class="bg-white border border-[#E2E8F0] rounded-xl  mb-8 p-6 md:p-8">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
+                  <span class="text-black text-xs font-bold">{section.number}</span>
+                </div>
+                <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">{section.title}</h2>
+              </div>
+              <p class="text-[16px] leading-8 text-[#64748B] mb-4">{section.content}</p>
+              <ul class="space-y-2 pl-1">
+                {section.list.map((item) => (
+                  <li class="flex items-start gap-3 text-[16px] leading-7 text-[#64748B]">
+                    <div class="w-1.5 h-1.5 bg-[#00D02B] rounded-full mt-2.5 flex-shrink-0"></div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {[
+            {
+              number: "3",
+              title: "Cookies",
+              content: "We may use cookies and similar technologies to remember user preferences and analyze site traffic. You can disable cookies through your browser settings.",
+            },
+            {
+              number: "4",
+              title: "Third-Party Services",
+              content: "We may use third-party services such as analytics providers or advertising networks. These services may collect data in accordance with their own privacy policies.",
+            },
+            {
+              number: "5",
+              title: "Data Security",
+              content: "We implement reasonable security measures to help protect your data. However, no method of transmission over the Internet is completely secure.",
+            },
+            {
+              number: "6",
+              title: "External Links",
+              content: "Our website may contain links to external websites. We are not responsible for the privacy practices or content of those sites.",
+            },
+            {
+              number: "7",
+              title: "Children's Privacy",
+              content: "Our services are not directed to individuals under the age of 13. We do not knowingly collect personal information from children.",
+            },
+            {
+              number: "8",
+              title: "Changes to This Policy",
+              content: "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date.",
+            },
+          ].map((section) => (
+            <div class="bg-white border mb-8 border-[#E2E8F0] rounded-xl p-6 md:p-8">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
+                  <span class="text-black text-xs font-bold">{section.number}</span>
+                </div>
+                <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">{section.title}</h2>
+              </div>
+              <p class="text-[16px] leading-8 text-[#64748B]">{section.content}</p>
+            </div>
+          ))}
+
+          <!-- Contact -->
+          <div class="bg-white border-l-4 border-l-[#00D02B] border border-[#E2E8F0] rounded-xl p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
+                <span class="text-black text-xs font-bold">9</span>
+              </div>
+              <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">Contact Us</h2>
+            </div>
+            <p class="text-[16px] leading-8 text-[#64748B] mb-3">
+              If you have any questions about this Privacy Policy, you may contact us at:
+            </p>
+            <p class="text-[16px] font-bold text-[#050505]">xboxgamegenerator@gmail.com</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+</MainLayout>
