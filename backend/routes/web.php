@@ -1,8 +1,17 @@
 <?php
 
 use App\Http\Controllers\Admin\GlossaryController;
-use App\Http\Controllers\ProfileController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\GamertagController;
+use App\Http\Controllers\Api\ProfileController;
+
+Route::prefix('xbox')->group(function () {
+    Route::post('gamertag/check',  [GamertagController::class, 'check']);
+    Route::get('profile',          [ProfileController::class,  'show']);
+});
+
+
 
 Route::redirect('/', '/login');
 
