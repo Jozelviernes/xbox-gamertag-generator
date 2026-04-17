@@ -25,7 +25,7 @@ import Header from '../components/layout/Header.astro';
 
       <!-- Search Card -->
       <div class="game-card p-6 md:p-8 animate-fade-in-up-delay">
-        <div class="flex gap-3">
+        <div class="flex flex-col sm:flex-row gap-3">
           <input
             id="profile-input"
             class="input-dark flex-1"
@@ -58,9 +58,9 @@ import Header from '../components/layout/Header.astro';
       <!-- Profile Card -->
       <div id="profile-card" class="hidden mt-8 animate-fade-in-up">
         <div class="game-card p-6 md:p-8">
-          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
 
-            <!-- Avatar -->
+          <!-- Top section -->
+          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
             <div class="relative shrink-0">
               <img
                 id="profile-avatar"
@@ -69,49 +69,37 @@ import Header from '../components/layout/Header.astro';
                 class="w-24 h-24 rounded-lg border border-green object-cover shadow-green bg-surface"
                 onerror="this.onerror=null; this.src='https://avatar-ssl.xboxlive.com/avatar/Major%20Nelson/avatar-body.png'"
               />
-              <div id="tier-badge" class="absolute -bottom-2 -right-2"></div>
             </div>
 
-            <!-- Identity -->
-            <div class="text-center sm:text-left flex-1">
+            <div class="text-center sm:text-left flex-1 min-w-0">
               <h2 id="profile-gamertag" class="heading-hero text-2xl md:text-3xl text-foreground"></h2>
-              <p id="profile-bio" class="text-foreground-muted text-sm mt-2 max-w-sm"></p>
-              <div class="flex flex-wrap justify-center sm:justify-start gap-3 mt-3">
-                <span id="profile-location" class="hidden label-mono flex items-center gap-1"></span>
-                <span id="profile-realname" class="hidden label-mono flex items-center gap-1 text-foreground-subtle"></span>
-              </div>
-            </div>
 
+              <p id="profile-bio" class="hidden text-foreground-muted text-sm mt-2 max-w-xl"></p>
+
+              <div id="profile-meta" class="hidden flex flex-wrap justify-center sm:justify-start gap-3 mt-3"></div>
+
+              <div id="profile-badges" class="hidden flex flex-wrap justify-center sm:justify-start gap-2 mt-4"></div>
+            </div>
           </div>
 
-          <div class="border-t border-default my-6"></div>
+          <!-- Divider -->
+          <div id="stats-divider" class="hidden border-t border-default my-6"></div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div class="text-center p-3 rounded-lg bg-background-alt border border-default">
-              <p class="text-brand font-display font-bold text-xl" id="stat-gamerscore">—</p>
-              <p class="label-mono mt-1">Gamerscore</p>
-            </div>
-            <div class="text-center p-3 rounded-lg bg-background-alt border border-default">
-              <p class="text-foreground font-bold text-xl" id="stat-tenure">—</p>
-              <p class="label-mono mt-1">Tenure (yrs)</p>
-            </div>
-            <div class="text-center p-3 rounded-lg bg-background-alt border border-default">
-              <p class="text-foreground font-bold text-xl" id="stat-followers">—</p>
-              <p class="label-mono mt-1">Followers</p>
-            </div>
-            <div class="text-center p-3 rounded-lg bg-background-alt border border-default">
-              <p class="text-foreground font-bold text-xl" id="stat-following">—</p>
-              <p class="label-mono mt-1">Following</p>
-            </div>
-          </div>
+          <!-- Dynamic Stats Grid -->
+          <div
+            id="profile-stats-grid"
+            class="hidden grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+          ></div>
         </div>
       </div>
 
+      <!-- Ad slot -->
+      <div class="mt-10 max-w-2xl mx-auto rounded-lg px-6 py-10 text-center border border-dashed border-default bg-background-surface">
+        <p class="label-mono text-foreground-subtle mb-3">Advertisement</p>
+        <div class="h-20 md:h-28 rounded bg-background-alt"></div>
+      </div>
+
     </div>
-  <div class="mt-10 max-w-2xl mx-auto rounded-lg px-6 py-10 text-center border border-dashed border-default bg-background-surface">
-  <p class="label-mono text-foreground-subtle mb-3">Advertisement</p>
-  <div class="h-20 md:h-28 rounded bg-background-alt"></div>
-</div>
   </section>
 </MainLayout>
 
@@ -140,65 +128,130 @@ import Header from '../components/layout/Header.astro';
     errorMsg.textContent = msg;
   }
 
+  function statCard(label: string, value: string, highlight = false) {
+    return `
+      <div class="text-center p-3 rounded-lg bg-background-alt border border-default">
+        <p class="${highlight ? 'text-brand font-display' : 'text-foreground'} font-bold text-xl">${escHtml(value)}</p>
+        <p class="label-mono mt-1">${escHtml(label)}</p>
+      </div>
+    `;
+  }
+
+  function badge(text: string, variant: 'brand' | 'muted' = 'muted') {
+    if (variant === 'brand') {
+      return `<span class="badge-brand">${escHtml(text)}</span>`;
+    }
+
+    return `<span class="badge-rarity-common text-xs px-2 py-1 rounded">${escHtml(text)}</span>`;
+  }
+
   function resetProfileUI() {
     const avatar = document.getElementById('profile-avatar') as HTMLImageElement;
-    const tierBadge = document.getElementById('tier-badge')!;
-    const locEl = document.getElementById('profile-location')!;
-    const nameEl = document.getElementById('profile-realname')!;
     const bioEl = document.getElementById('profile-bio')!;
+    const metaEl = document.getElementById('profile-meta')!;
+    const badgesEl = document.getElementById('profile-badges')!;
+    const statsGrid = document.getElementById('profile-stats-grid')!;
+    const divider = document.getElementById('stats-divider')!;
 
     avatar.src = '';
     avatar.alt = 'Avatar';
-    tierBadge.innerHTML = '';
-    locEl.textContent = '';
-    nameEl.textContent = '';
-    bioEl.textContent = '';
-
-    locEl.classList.add('hidden');
-    nameEl.classList.add('hidden');
 
     (document.getElementById('profile-gamertag')!).textContent = '';
-    (document.getElementById('stat-gamerscore')!).textContent = '—';
-    (document.getElementById('stat-tenure')!).textContent = '—';
-    (document.getElementById('stat-followers')!).textContent = '—';
-    (document.getElementById('stat-following')!).textContent = '—';
+
+    bioEl.textContent = '';
+    bioEl.classList.add('hidden');
+
+    metaEl.innerHTML = '';
+    metaEl.classList.add('hidden');
+
+    badgesEl.innerHTML = '';
+    badgesEl.classList.add('hidden');
+
+    statsGrid.innerHTML = '';
+    statsGrid.classList.add('hidden');
+
+    divider.classList.add('hidden');
   }
 
   function populateProfile(p: Record<string, any>) {
     resetProfileUI();
 
     const avatar = document.getElementById('profile-avatar') as HTMLImageElement;
+    const bioEl = document.getElementById('profile-bio')!;
+    const metaEl = document.getElementById('profile-meta')!;
+    const badgesEl = document.getElementById('profile-badges')!;
+    const statsGrid = document.getElementById('profile-stats-grid')!;
+    const divider = document.getElementById('stats-divider')!;
+
     avatar.src = p.avatar || '';
     avatar.alt = p.gamertag ?? 'Avatar';
 
     (document.getElementById('profile-gamertag')!).textContent = p.gamertag ?? '—';
 
-    const bioEl = document.getElementById('profile-bio')!;
-    bioEl.textContent = p.bio || 'No bio set.';
-
-    const tierBadge = document.getElementById('tier-badge')!;
-    if (p.account_tier === 'Gold') {
-      tierBadge.innerHTML = `<span class="badge-brand text-xs px-2 py-0.5 rounded">GOLD</span>`;
-    } else if (p.account_tier) {
-      tierBadge.innerHTML = `<span class="badge-rarity-common text-xs px-2 py-0.5 rounded">${escHtml(p.account_tier)}</span>`;
+    if (p.bio) {
+      bioEl.textContent = p.bio;
+      bioEl.classList.remove('hidden');
     }
 
-    const locEl = document.getElementById('profile-location')!;
-    if (p.location) {
-      locEl.textContent = '📍 ' + p.location;
-      locEl.classList.remove('hidden');
-    }
+    const metaParts: string[] = [];
 
-    const nameEl = document.getElementById('profile-realname')!;
     if (p.real_name) {
-      nameEl.textContent = p.real_name;
-      nameEl.classList.remove('hidden');
+      metaParts.push(
+        `<span class="label-mono flex items-center gap-1 text-foreground-subtle">${escHtml(p.real_name)}</span>`
+      );
     }
 
-    (document.getElementById('stat-gamerscore')!).textContent = fmt(p.gamerscore ?? 0);
-    (document.getElementById('stat-tenure')!).textContent     = p.tenure ?? '—';
-    (document.getElementById('stat-followers')!).textContent  = fmt(p.followers ?? 0);
-    (document.getElementById('stat-following')!).textContent  = fmt(p.following ?? 0);
+    if (p.location) {
+      metaParts.push(
+        `<span class="label-mono flex items-center gap-1">📍 ${escHtml(p.location)}</span>`
+      );
+    }
+
+    if (metaParts.length) {
+      metaEl.innerHTML = metaParts.join('');
+      metaEl.classList.remove('hidden');
+    }
+
+    const badges: string[] = [];
+
+    if (p.account_tier) {
+      badges.push(badge(String(p.account_tier), 'brand'));
+    }
+
+    if (p.reputation) {
+      badges.push(badge(String(p.reputation)));
+    }
+
+    if (p.verified === true) {
+      badges.push(badge('Verified', 'brand'));
+    }
+
+    if (p.has_game_pass === true) {
+      badges.push(badge('Game Pass', 'brand'));
+    }
+
+    if (badges.length) {
+      badgesEl.innerHTML = badges.join('');
+      badgesEl.classList.remove('hidden');
+    }
+
+    const stats: string[] = [];
+
+    stats.push(statCard('Gamerscore', fmt(Number(p.gamerscore ?? 0)), true));
+
+    if (typeof p.followers !== 'undefined') {
+      stats.push(statCard('Followers', fmt(Number(p.followers))));
+    }
+
+    if (typeof p.following !== 'undefined') {
+      stats.push(statCard('Following', fmt(Number(p.following))));
+    }
+
+    if (stats.length) {
+      statsGrid.innerHTML = stats.join('');
+      statsGrid.classList.remove('hidden');
+      divider.classList.remove('hidden');
+    }
   }
 
   async function lookupProfile() {

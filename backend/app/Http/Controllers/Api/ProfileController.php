@@ -59,14 +59,34 @@ class ProfileController extends Controller
             'gamertag'     => $match['gamertag'] ?? $gamertag,
             'gamerscore'   => (int) ($match['gamerScore'] ?? 0),
             'avatar'       => $match['displayPicRaw'] ?? null,
-            'account_tier' => $detail['accountTier'] ?? null,
+            'real_name'    => $match['realName'] ?? null,
             'bio'          => $detail['bio'] ?? null,
-            'tenure'       => $detail['tenure'] ?? null,
-            'followers'    => (int) ($detail['followerCount'] ?? 0),
-            'following'    => (int) ($detail['followingCount'] ?? 0),
-            'real_name'    => $detail['realName'] ?? null,
             'location'     => $detail['location'] ?? null,
+            'account_tier' => $detail['accountTier'] ?? null,
+            'reputation'   => $match['xboxOneRep'] ?? null,
+            'followers'    => array_key_exists('followerCount', $detail) ? (int) $detail['followerCount'] : null,
+            'following'    => array_key_exists('followingCount', $detail) ? (int) $detail['followingCount'] : null,
         ];
+
+        if (($detail['isVerified'] ?? false) === true) {
+            $profile['verified'] = true;
+        }
+
+        if (($detail['hasGamePass'] ?? false) === true) {
+            $profile['has_game_pass'] = true;
+        }
+
+        $profile = array_filter($profile, function ($value) {
+            if ($value === null) {
+                return false;
+            }
+
+            if (is_string($value) && trim($value) === '') {
+                return false;
+            }
+
+            return true;
+        });
 
         return response()->json([
             'found'   => true,

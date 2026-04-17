@@ -16,15 +16,14 @@ type Tool = {
 };
 
 const tools: Tool[] = [
-  
-     {
+  {
     id: "1",
     title: "Xbox Gamertag Generator",
     description: "Instantly create unique, funny, and cool gamertags with AI-powered suggestions.",
     slug: "/",
     icon: UserCheck,
   },
-   {
+  {
     id: "2",
     title: "Xbox Gamercard Generator",
     description: "Create a custom Xbox gamercard badge showing your gamertag, gamerscore, and avatar.",
@@ -36,44 +35,36 @@ const tools: Tool[] = [
     title: "Xbox Gamertag Price Checker",
     description: "Estimate the potential market value of any gamertag based on length, rarity, and demand.",
     icon: DollarSign,
-    slug: "price-checker",
+    slug: "gamertag-price-checker",
   },
- 
   {
     id: "4",
     title: "Xbox Gamer Profile & Stats Checker",
     description: "View public stats, gamerscore, recent games, and achievement progress tied to any gamertag.",
     icon: BarChart3,
-    slug: "profile-stats-checker",
-      comingSoon: true,
+    slug: "gamer-profile",
   },
   {
-  
     id: "5",
     title: "Xbox Gamertag Availability Checker",
     description: "Instantly see if your desired tag is still up for grabs before someone else snags it.",
     icon: Search,
-    slug: "availability-checker",
-      comingSoon: true,
+    slug: "gamertag-checker",
   }
 ];
 
 const getToolLink = (slug: string): string => {
-  // if homepage
   if (slug === "/") return "/";
 
   const map: Record<string, string> = {
     "gamercard-generator": "/gamercard-generator",
-    "price-checker": "/gamertag-price-checker",
-    "profile-stats-checker": "/gamer-profile-checker",
-    "availability-checker": "/gamertag-availability-checker",
-    "account-value-checker": "/account-value-checker",
-    "clips-downloader": "/clips-downloader",
+    "gamertag-price-checker": "/gamertag-price-checker",
+    "gamer-profile": "/gamer-profile",
+    "gamertag-checker": "/gamertag-checker",
   };
 
   return map[slug] ?? `/${slug}`;
 };
-
 ---
 
 <section class="section-white-subtle py-16 md:py-20 border-t border-[#E5E7EB]">
