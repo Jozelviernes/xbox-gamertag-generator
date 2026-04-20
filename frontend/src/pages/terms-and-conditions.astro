@@ -1,6 +1,16 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/layout/Header.astro";
+import ShieldAlert from "@lucide/astro/icons/shield-alert";
+import BadgeInfo from "@lucide/astro/icons/badge-info";
+import ScrollText from "@lucide/astro/icons/scroll-text";
+import Copyright from "@lucide/astro/icons/copyright";
+import UserCheck from "@lucide/astro/icons/user-check";
+import TriangleAlert from "@lucide/astro/icons/triangle-alert";
+import ExternalLink from "@lucide/astro/icons/external-link";
+import RefreshCcw from "@lucide/astro/icons/refresh-ccw";
+import Ban from "@lucide/astro/icons/ban";
+import Mail from "@lucide/astro/icons/mail";
 
 const schema = {
   "@context": "https://schema.org",
@@ -9,6 +19,19 @@ const schema = {
   "url": "https://xboxgamertaggenerator.com/terms-and-conditions",
   "description": "Terms and Conditions for Xbox Gamertag Generator.",
 };
+
+const tocItems = [
+  { id: "use-of-website", label: "1. Use of the Website" },
+  { id: "no-affiliation", label: "2. No Affiliation with Microsoft" },
+  { id: "tool-accuracy", label: "3. Tool Accuracy Disclaimer" },
+  { id: "intellectual-property", label: "4. Intellectual Property" },
+  { id: "user-responsibility", label: "5. User Responsibility" },
+  { id: "limitation-liability", label: "6. Limitation of Liability" },
+  { id: "third-party-links", label: "7. Third-Party Links" },
+  { id: "modifications", label: "8. Modifications" },
+  { id: "termination", label: "9. Termination" },
+  { id: "contact", label: "10. Contact" },
+];
 ---
 
 <MainLayout
@@ -19,144 +42,174 @@ const schema = {
 >
   <Header />
 
-  <div class="min-h-screen bg-[#F8FAFC]">
+  <div class="bg-[#E5E7EB] text-[#111827] min-h-screen">
+    <main class="py-16 md:py-20 lg:py-16 px-4 md:px-6 lg:px-0">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Page Title -->
+        <div class="mb-12 text-center md:text-left">
+          <h1 class="relative inline-block text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand mb-4 leading-none">
+            Terms &amp; Conditions
+            <span class="absolute -bottom-2 left-0 w-full md:w-24 h-1 bg-brand"></span>
+          </h1>
 
-    <!-- Hero -->
-    <section class="bg-white border-b border-[#E2E8F0] py-14 md:py-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
-          <span class="text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Legal</span>
+          <p class="text-[#4B5563] text-base md:text-lg mt-6 leading-relaxed max-w-3xl">
+            Please read these terms carefully before using Xbox Gamertag Generator.
+          </p>
         </div>
-        <h1 class="font-display text-3xl md:text-4xl font-black text-[#050505] mb-4 leading-tight">
-          Terms &amp; <span class="text-[#00D02B]">Conditions</span>
-        </h1>
-        <p class="text-base md:text-lg text-[#64748B] max-w-2xl mx-auto leading-relaxed">
-          Please read these terms carefully before using Xbox Gamertag Generator.
-        </p>
-      </div>
-    </section>
 
-    <!-- Content -->
-    <section class="py-14 md:py-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12">
+        <!-- Table of Contents -->
+        <div class="mb-12 bg-white rounded-lg shadow-sm border border-gray-300 p-4 md:p-6">
+          <h2 class="text-xl md:text-2xl font-bold text-brand mb-4">
+            Table of Contents
+          </h2>
 
-        <p class="text-sm text-[#94A3B8] mb-10">Effective Date: April 2026</p>
-
-        <p class="text-[17px] leading-8 text-[#64748B] mb-12">
-          By accessing and using https://xboxgamertaggenerator.com, you agree to the following terms.
-        </p>
-
-        <div class="space-y-10">
-
-          {[
-            {
-              number: "1",
-              title: "Use of the Website",
-              content: "This website provides free tools for generating and analyzing Xbox gamertags. You agree to use the site only for lawful purposes.",
-            },
-            {
-              number: "2",
-              title: "No Affiliation with Microsoft",
-              content: "This website is not affiliated with, endorsed by, or sponsored by Microsoft or Xbox. All trademarks belong to their respective owners.",
-            },
-          ].map((section) => (
-            <div class="bg-white border border-[#E2E8F0] mb-8  rounded-xl p-6 md:p-8">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
-                  <span class="text-black text-xs font-bold">{section.number}</span>
-                </div>
-                <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">{section.title}</h2>
-              </div>
-              <p class="text-[16px] leading-8 text-[#64748B]">{section.content}</p>
-            </div>
-          ))}
-
-          <!-- Section 3 with list -->
-          <div class="bg-white border border-[#E2E8F0] rounded-xl p-6 md:p-8">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
-                <span class="text-black text-xs font-bold">3</span>
-              </div>
-              <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">Tool Accuracy Disclaimer</h2>
-            </div>
-            <p class="text-[16px] leading-8 text-[#64748B] mb-4">
-              All tools, including gamertag generators and price estimators, are provided for
-              informational and entertainment purposes only. We do not guarantee:
-            </p>
-            <ul class="space-y-2 pl-1">
-              {[
-                "Accuracy of generated names",
-                "Availability of gamertags",
-                "Actual market value of gamertags",
-              ].map((item) => (
-                <li class="flex items-start gap-3 text-[16px] leading-7 text-[#64748B]">
-                  <div class="w-1.5 h-1.5 bg-[#00D02B] rounded-full mt-2.5 flex-shrink-0"></div>
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {tocItems.map((item) => (
+              <a
+                href={`#${item.id}`}
+                class="text-[#374151] hover:text-brand transition-colors duration-200 py-2 px-3 rounded hover:bg-gray-100 block text-sm md:text-base"
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
+        </div>
 
-          {[
-            {
-              number: "4",
-              title: "Intellectual Property",
-              content: "All content on this website, including design, text, tools, and code, is owned by us unless otherwise stated. You may not copy, reproduce, or distribute any content without permission.",
-            },
-            {
-              number: "5",
-              title: "User Responsibility",
-              content: "You are responsible for how you use the generated gamertags and tools. We are not liable for username conflicts, Xbox policy violations, or misuse of generated content.",
-            },
-            {
-              number: "6",
-              title: "Limitation of Liability",
-              content: "We are not responsible for any damages resulting from the use or inability to use the website, inaccuracies in the tools, or issues caused by third-party services or links.",
-            },
-            {
-              number: "7",
-              title: "Third-Party Links",
-              content: "Our website may include links to third-party websites. We are not responsible for their content, services, or policies.",
-            },
-            {
-              number: "8",
-              title: "Modifications",
-              content: "We reserve the right to update or change these terms at any time without prior notice. Continued use of the website means you accept those changes.",
-            },
-            {
-              number: "9",
-              title: "Termination",
-              content: "We may restrict or terminate access to the website if users violate these terms.",
-            },
-          ].map((section) => (
-            <div class="bg-white border border-[#E2E8F0] rounded-xl mb-8 p-6 md:p-8">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
-                  <span class="text-black text-xs font-bold">{section.number}</span>
-                </div>
-                <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">{section.title}</h2>
-              </div>
-              <p class="text-[16px] leading-8 text-[#64748B]">{section.content}</p>
-            </div>
-          ))}
+        <!-- Legal Content -->
+        <div class="space-y-8 md:space-y-12">
+          <section id="use-of-website">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Use of the Website
+            </h2>
 
-          <!-- Contact -->
-          <div class="bg-white border-l-4 border-l-[#00D02B] border border-[#E2E8F0] rounded-xl p-6 md:p-8">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
-                <span class="text-black text-xs font-bold">10</span>
-              </div>
-              <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">Contact</h2>
-            </div>
-            <p class="text-[16px] leading-8 text-[#64748B] mb-3">
-              For any questions regarding these Terms, contact:
+            <p class="text-[#374151] leading-relaxed text-base md:text-lg">
+              This website provides free tools for generating and analyzing Xbox gamertags. You agree to use the site only for lawful purposes.
             </p>
-            <p class="text-[16px] font-bold text-[#050505]">xboxgamegenerator@gmail.com</p>
-          </div>
+          </section>
+
+          <section id="no-affiliation">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              No Affiliation with Microsoft
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              This website is not affiliated with, endorsed by, or sponsored by Microsoft or Xbox. All trademarks belong to their respective owners.
+            </p>
+
+            <div class="bg-white border-l-4 border-brand p-4 md:p-6 rounded-r-lg shadow-sm">
+              <p class="text-[#1F2937] font-semibold text-sm md:text-base leading-relaxed">
+                <BadgeInfo class="inline w-4 h-4 md:w-5 md:h-5 text-brand mr-2" />
+                Xbox and Microsoft trademarks remain the property of their respective owners.
+              </p>
+            </div>
+          </section>
+
+          <section id="tool-accuracy">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Tool Accuracy Disclaimer
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              All tools, including gamertag generators and price estimators, are provided for informational and entertainment purposes only. We do not guarantee:
+            </p>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-300 p-4 md:p-6">
+              <ul class="list-disc list-inside text-[#374151] space-y-2 md:space-y-3 ml-2 text-base md:text-lg leading-relaxed">
+                <li>Accuracy of generated names</li>
+                <li>Availability of gamertags</li>
+                <li>Actual market value of gamertags</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="intellectual-property">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Intellectual Property
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed text-base md:text-lg">
+              All content on this website, including design, text, tools, and code, is owned by us unless otherwise stated. You may not copy, reproduce, or distribute any content without permission.
+            </p>
+          </section>
+
+          <section id="user-responsibility">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              User Responsibility
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed text-base md:text-lg">
+              You are responsible for how you use the generated gamertags and tools. We are not liable for username conflicts, Xbox policy violations, or misuse of generated content.
+            </p>
+          </section>
+
+          <section id="limitation-liability">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Limitation of Liability
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed text-base md:text-lg">
+              We are not responsible for any damages resulting from the use or inability to use the website, inaccuracies in the tools, or issues caused by third-party services or links.
+            </p>
+          </section>
+
+          <section id="third-party-links">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Third-Party Links
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed text-base md:text-lg">
+              Our website may include links to third-party websites. We are not responsible for their content, services, or policies.
+            </p>
+          </section>
+
+          <section id="modifications">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Modifications
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed text-base md:text-lg">
+              We reserve the right to update or change these terms at any time without prior notice. Continued use of the website means you accept those changes.
+            </p>
+          </section>
+
+          <section id="termination">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Termination
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed text-base md:text-lg">
+              We may restrict or terminate access to the website if users violate these terms.
+            </p>
+          </section>
+
+          <section id="contact">
+  <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+    Contact Information
+  </h2>
+
+  <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+    If you have any questions about these Terms &amp; Conditions, please contact us:
+  </p>
+
+  <div class="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-300">
+    <p class="text-[#1F2937] text-sm md:text-lg mb-3">
+      <strong>Email:</strong>
+      <a
+        href="/contact"
+        class="text-brand hover:underline transition-colors"
+      >
+        Visit our Contact Page
+      </a>
+    </p>
+
+    <p class="text-[#1F2937] text-sm md:text-lg">
+      <strong>Last Updated:</strong> January 2025
+    </p>
+  </div>
+</section>
 
         </div>
       </div>
-    </section>
-
+    </main>
   </div>
 </MainLayout>

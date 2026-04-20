@@ -4,7 +4,7 @@ import Header from "../components/layout/Header.astro";
 import { blogPosts } from "../data/blogPosts";
 
 const postsPerPage = 6;
-const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+const totalPages = Math.max(1, Math.ceil(blogPosts.length / postsPerPage));
 
 const schema = {
   "@context": "https://schema.org",
@@ -24,49 +24,35 @@ const schema = {
   <Header />
 
   <div class="min-h-screen">
-
-    <!-- Hero -->
-    <section class="relative overflow-hidden py-16 md:py-20 border-b border-[#1F2937] bg-[#000000]">
-      <div
-        class="pointer-events-none absolute inset-0"
-        style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"
-      ></div>
-
-      <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
-          <span class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">
-            Gaming Guides
-          </span>
-        </div>
-
-        <h1 class="font-display text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
-          Xbox Naming Tips, <span class="text-[#00D02B]">Guides</span> &amp; Strategies
+  <!-- Hero -->
+<section class="section-dark-alt py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+    <section class="bg-card py-16 rounded-lg">
+      <div class="px-6 text-center">
+        <h1 class="font-ui text-3xl md:text-4xl font-bold mb-4 text-foreground">
+          Xbox Naming Tips, <span class="text-brand">Guides</span> &amp; Strategies
         </h1>
 
-        <p class="font-reading text-base md:text-lg text-[#94A3B8] mb-3 max-w-2xl mx-auto leading-relaxed">
+        <p class="font-ui text-lg md:text-xl text-foreground-muted mb-4 max-w-3xl mx-auto">
           Everything you need to create, manage, and master your Xbox gamertag.
         </p>
 
-        <p class="font-reading text-sm md:text-base text-[#64748B] max-w-xl mx-auto leading-relaxed">
+        <p class="font-ui text-base text-foreground-muted max-w-2xl mx-auto">
           Explore in-depth guides, naming trends, and branding strategies to make your gamer identity stand out.
         </p>
       </div>
-
-      <div
-        class="absolute bottom-0 left-0 right-0 h-px"
-        style="background: linear-gradient(90deg, transparent, #1F2937 20%, #00D02B 50%, #1F2937 80%, transparent);"
-      ></div>
     </section>
+  </div>
+</section>
 
     <!-- Search -->
     <section class="section-white py-12 border-b border-[#E5E7EB]">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 md:px-8">
-
         <div class="text-center mb-8">
-          <h2 class="font-reading text-2xl md:text-3xl font-bold text-[#111827]">
+          <h2 class="font-ui text-2xl md:text-3xl font-bold text-[#111827]">
             Tips, Guides &amp; Articles
           </h2>
-          <p class="font-reading text-sm md:text-base text-[#64748B] mt-2">
+          <p class="font-ui text-sm md:text-base text-[#64748B] mt-2">
             Search through our latest Xbox gamertag articles and guides.
           </p>
         </div>
@@ -80,156 +66,144 @@ const schema = {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
             </svg>
 
             <input
               id="searchInput"
               type="text"
               placeholder="Search for articles..."
-              class="w-full h-11 pl-10 pr-4 bg-white border border-[#E5E7EB] rounded-lg font-reading text-sm text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
+              class="w-full h-11 pl-10 pr-4 bg-white border border-[#E5E7EB] rounded-lg font-ui text-sm text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
             />
           </div>
 
-          <button
-            id="searchBtn"
-            class="w-full sm:w-auto px-6 h-11 bg-[#00D02B] hover:bg-[#00e830] text-black font-reading font-bold text-sm uppercase tracking-wider rounded-lg transition-colors duration-200"
-          >
-            Search
-          </button>
+         <button
+  id="searchBtn"
+  class="w-full sm:w-auto px-6 py-3 bg-brand hover:bg-brand-light text-white font-semibold rounded-lg transition-colors font-ui"
+>
+  Search
+</button>
         </div>
 
         <!-- Ad slot -->
         <div class="bg-[#F3F4F6] border border-dashed border-[#D1D5DB] rounded-lg px-5 py-4 text-center mt-8">
-          <p class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">
+          <p class="font-ui text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">
             Advertisement
           </p>
           <div class="bg-[#E5E7EB] rounded h-20 md:h-32 lg:h-40"></div>
         </div>
-
       </div>
     </section>
 
-    <!-- Articles Grid -->
-    <section class="section-white pt-10 pb-8">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
+  <!-- Articles Grid -->
+<section class="pt-8 pb-16 section-white-subtle">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
+    <h2 id="sectionTitle" class="font-ui text-3xl font-bold text-center mb-6 text-gray-800">
+      Latest Articles
+    </h2>
 
-        <h2 id="sectionTitle" class="font-reading text-2xl md:text-3xl font-bold text-[#111827] text-center mb-8">
-          Latest Articles
-        </h2>
+    <div id="resultsHeader" class="hidden items-center justify-between mb-6">
+      <h2 id="resultsTitle" class="font-ui text-3xl font-bold text-gray-800"></h2>
+      <button
+        id="clearBtn"
+        class="text-brand hover:underline font-ui"
+      >
+        Clear Search
+      </button>
+    </div>
 
-        <div id="resultsHeader" class="hidden flex items-center justify-between mb-6">
-          <h2 id="resultsTitle" class="font-reading text-2xl font-bold text-[#111827]"></h2>
-          <button
-            id="clearBtn"
-            class="font-reading text-sm font-bold text-[#00D02B] hover:underline uppercase tracking-wide"
-          >
-            Clear Search
-          </button>
-        </div>
+    <div id="noResults" class="hidden text-center py-12">
+      <p id="noResultsMsg" class="text-xl text-gray-600 mb-4 font-ui"></p>
+      <p class="text-gray-500 font-ui">
+        Try searching with different keywords or browse our latest articles below.
+      </p>
+      <button
+        id="viewAllBtn"
+        class="mt-4 px-6 py-2 bg-brand text-white rounded-lg hover:bg-brand-light transition-colors font-ui"
+      >
+        View All Articles
+      </button>
+    </div>
 
-        <div id="noResults" class="hidden text-center py-16">
-          <p id="noResultsMsg" class="font-reading text-base font-semibold text-[#4B5563] mb-3"></p>
-          <p class="font-reading text-sm text-[#64748B] mb-6">
-            Try searching with different keywords or browse our latest articles below.
-          </p>
-          <button
-            id="viewAllBtn"
-            class="inline-flex items-center justify-center px-6 py-2.5 bg-[#00D02B] hover:bg-[#00e830] text-black font-reading font-bold text-sm uppercase tracking-wider rounded transition-colors duration-200"
-          >
-            View All Articles
-          </button>
-        </div>
-
-        <div
-          id="blogGrid"
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
-          data-posts={JSON.stringify(blogPosts)}
-        >
-          {blogPosts.map((post) => (
-            <article class="group bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(15,23,42,0.08)]">
-              <div class="h-1.5 w-full bg-[#00D02B]"></div>
-
-              <div class="w-full h-44 md:h-48 border-b border-[#E5E7EB] flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,208,43,0.08),transparent_65%)] bg-[#F8FAFC]">
-                <span class="font-reading text-xs text-[#94A3B8] uppercase tracking-[0.2em]">
-                  Gaming Image
-                </span>
-              </div>
-
-              <div class="p-6">
-                <h3 class="font-reading text-lg md:text-xl font-bold text-[#050505] mb-3 leading-snug group-hover:text-[#00A021] transition-colors duration-200 line-clamp-2">
-                  {post.title}
-                </h3>
-
-                <p class="font-reading text-base text-[#64748B] mb-5 line-clamp-4 leading-relaxed">
-                  {post.excerpt}
-                </p>
-
-                <a
-  href={`/${post.slug}`}
-                  class="inline-flex items-center gap-1.5 font-reading text-sm font-bold uppercase tracking-wider text-[#00D02B]"
-                >
-                  Read More
-                  <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                  </svg>
-                </a>
-
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {totalPages > 1 && (
-      <section class="section-white pb-10 border-b border-[#E5E7EB]">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
-          <div class="flex justify-center items-center gap-2 sm:gap-3">
-            <button class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#E5E7EB] text-[#6B7280] font-reading text-xs font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150">
-              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-              </svg>
-              Prev
-            </button>
-
-            <div class="flex gap-1.5">
-              {Array.from({ length: totalPages }, (_, i) => (
-                <button
-                  class:list={[
-                    "w-8 h-8 font-reading text-[10px] font-bold rounded transition-all",
-                    i === 0
-                      ? "bg-[#00D02B] text-black"
-                      : "bg-white border border-[#E5E7EB] text-[#6B7280] hover:border-[#00D02B]/40 hover:text-[#00D02B]"
-                  ]}
-                >
-                  {i + 1}
-                </button>
-              ))}
-            </div>
-
-            <button class="flex items-center gap-1.5 px-4 py-2 bg-transparent border border-[#E5E7EB] text-[#6B7280] font-reading text-xs font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150">
-              Next
-              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </button>
+    <div
+      id="blogGrid"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      data-posts={JSON.stringify(blogPosts)}
+    >
+      {blogPosts.slice(0, postsPerPage).map((post) => (
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
+            <span class="text-gray-500 text-sm font-ui">Gaming Image Placeholder</span>
           </div>
-        </div>
-      </section>
-    )}
 
-    <!-- Bottom Ad -->
-    <section class="section-white py-12">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div class="bg-[#F3F4F6] border border-dashed border-[#D1D5DB] rounded-lg px-5 py-4 text-center">
-          <p class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">
-            Advertisement
-          </p>
-          <div class="bg-[#E5E7EB] rounded h-24 md:h-32 lg:h-48"></div>
-        </div>
-      </div>
-    </section>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold mb-2 text-gray-800 font-ui line-clamp-2">
+              {post.title}
+            </h3>
+
+            <p class="text-gray-600 mb-3 text-sm font-ui line-clamp-4">
+              {post.excerpt}
+            </p>
+
+            <a
+              href={`/${post.slug}`}
+              class="text-brand font-medium hover:underline inline-flex items-center font-ui"
+            >
+              Read More
+              <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<!-- Pagination -->
+<section class="section-white-subtle pb-10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div
+      id="paginationWrap"
+      class="flex justify-center items-center gap-2 sm:gap-3"
+      data-posts-per-page={postsPerPage}
+    >
+      <button
+        id="prevPageBtn"
+        class="flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E5E7EB] text-[#6B7280] font-ui text-xs font-bold uppercase tracking-wide rounded transition-all duration-150 hover:border-[#00D02B]/40 hover:text-[#00B324] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-[#E5E7EB] disabled:hover:text-[#6B7280]"
+      >
+        <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Prev
+      </button>
+
+      <div id="pageNumbers" class="flex gap-1.5"></div>
+
+      <button
+        id="nextPageBtn"
+        class="flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E5E7EB] text-[#6B7280] font-ui text-xs font-bold uppercase tracking-wide rounded transition-all duration-150 hover:border-[#00D02B]/40 hover:text-[#00B324] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-[#E5E7EB] disabled:hover:text-[#6B7280]"
+      >
+        Next
+        <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom Ad -->
+<section class="section-white-subtle py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="bg-white border border-dashed border-[#D1D5DB] rounded-lg px-5 py-4 text-center">
+      <p class="font-ui text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">
+        Advertisement
+      </p>
+      <div class="bg-[#E5E7EB] rounded h-24 md:h-32 lg:h-48"></div>
+    </div>
+  </div>
+</section>
 
   </div>
 
@@ -242,83 +216,186 @@ const schema = {
       slug: string;
     };
 
-    const grid          = document.getElementById("blogGrid")      as HTMLElement;
-    const sectionTitle  = document.getElementById("sectionTitle")  as HTMLElement;
+    const grid = document.getElementById("blogGrid") as HTMLElement;
+    const sectionTitle = document.getElementById("sectionTitle") as HTMLElement;
     const resultsHeader = document.getElementById("resultsHeader") as HTMLElement;
-    const resultsTitle  = document.getElementById("resultsTitle")  as HTMLElement;
-    const noResults     = document.getElementById("noResults")     as HTMLElement;
-    const noResultsMsg  = document.getElementById("noResultsMsg")  as HTMLElement;
-    const searchInput   = document.getElementById("searchInput")   as HTMLInputElement;
-    const searchBtn     = document.getElementById("searchBtn")     as HTMLButtonElement;
-    const clearBtn      = document.getElementById("clearBtn")      as HTMLButtonElement;
-    const viewAllBtn    = document.getElementById("viewAllBtn")    as HTMLButtonElement;
+    const resultsTitle = document.getElementById("resultsTitle") as HTMLElement;
+    const noResults = document.getElementById("noResults") as HTMLElement;
+    const noResultsMsg = document.getElementById("noResultsMsg") as HTMLElement;
+    const searchInput = document.getElementById("searchInput") as HTMLInputElement;
+    const searchBtn = document.getElementById("searchBtn") as HTMLButtonElement;
+    const clearBtn = document.getElementById("clearBtn") as HTMLButtonElement;
+    const viewAllBtn = document.getElementById("viewAllBtn") as HTMLButtonElement;
+
+    const prevPageBtn = document.getElementById("prevPageBtn") as HTMLButtonElement;
+    const nextPageBtn = document.getElementById("nextPageBtn") as HTMLButtonElement;
+    const pageNumbers = document.getElementById("pageNumbers") as HTMLElement;
+    const paginationWrap = document.getElementById("paginationWrap") as HTMLElement;
 
     const posts: Post[] = JSON.parse(grid.dataset.posts ?? "[]");
+    const postsPerPage = Number(paginationWrap.dataset.postsPerPage ?? "6");
 
-    function cardHTML(post: Post): string {
-      return `
-        <article class="group bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(15,23,42,0.08)]">
-          <div class="h-1.5 w-full bg-[#00D02B]"></div>
-          <div class="w-full h-44 md:h-48 border-b border-[#E5E7EB] flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,208,43,0.08),transparent_65%)] bg-[#F8FAFC]">
-            <span class="font-reading text-xs text-[#94A3B8] uppercase tracking-[0.2em]">Gaming Image</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-reading text-lg md:text-xl font-bold text-[#050505] mb-3 leading-snug line-clamp-2 transition-colors duration-200 group-hover:text-[#00D02B]">${post.title}</h3>
-            <p class="font-reading text-base text-[#64748B] mb-5 line-clamp-4 leading-relaxed">${post.excerpt}</p>
-            <a href="/${post.slug}" class="inline-flex items-center gap-1.5 font-reading text-sm font-bold uppercase tracking-wider text-[#00D02B]" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-              Read More
-              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>`;
+    let currentPosts: Post[] = [...posts];
+    let currentPage = 1;
+    let isSearching = false;
+
+    function getTotalPages(list: Post[]): number {
+      return Math.max(1, Math.ceil(list.length / postsPerPage));
+    }
+
+  function cardHTML(post: Post): string {
+  return `
+    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+      <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
+        <span class="text-gray-500 text-sm font-ui">Gaming Image Placeholder</span>
+      </div>
+
+      <div class="p-4 flex flex-col flex-1">
+        <h3 class="text-lg font-semibold mb-2 text-gray-800 font-ui line-clamp-2">
+          ${post.title}
+        </h3>
+
+        <p class="text-gray-600 mb-3 text-sm font-ui line-clamp-4">
+          ${post.excerpt}
+        </p>
+
+        <a
+          href="/${post.slug}"
+          class="text-brand font-medium hover:underline inline-flex items-center font-ui mt-auto"
+        >
+          Read More
+          <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </article>
+  `;
+}
+
+   function renderPagination(list: Post[]) {
+  const totalPages = Math.max(1, getTotalPages(list));
+
+  pageNumbers.innerHTML = Array.from({ length: totalPages }, (_, i) => {
+    const page = i + 1;
+
+    return `
+      <button
+        type="button"
+        data-page="${page}"
+        class="${
+          page === currentPage
+            ? "w-8 h-8 font-ui text-[10px] font-bold rounded bg-[#00D02B] text-black"
+            : "w-8 h-8 font-ui text-[10px] font-bold rounded bg-white border border-[#E5E7EB] text-[#6B7280] hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all"
+        }"
+      >
+        ${page}
+      </button>
+    `;
+  }).join("");
+
+  prevPageBtn.disabled = currentPage === 1;
+  nextPageBtn.disabled = currentPage === totalPages;
+
+  const pageButtons = pageNumbers.querySelectorAll("[data-page]");
+  pageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = Number((button as HTMLButtonElement).dataset.page);
+      renderPosts(list, target);
+      window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
+    });
+  });
+}
+
+    function renderPosts(list: Post[], page = 1) {
+      const totalPages = getTotalPages(list);
+      currentPage = Math.min(Math.max(page, 1), totalPages);
+
+      if (list.length === 0) {
+        grid.classList.add("hidden");
+        noResults.classList.remove("hidden");
+        paginationWrap.classList.add("hidden");
+        return;
+      }
+
+      const start = (currentPage - 1) * postsPerPage;
+      const visiblePosts = list.slice(start, start + postsPerPage);
+
+      grid.classList.remove("hidden");
+      noResults.classList.add("hidden");
+      paginationWrap.classList.remove("hidden");
+      grid.innerHTML = visiblePosts.map(cardHTML).join("");
+
+      renderPagination(list);
     }
 
     function showAll() {
+      isSearching = false;
+      currentPosts = [...posts];
+      currentPage = 1;
+
+      searchInput.value = "";
       sectionTitle.textContent = "Latest Articles";
       sectionTitle.classList.remove("hidden");
       resultsHeader.classList.add("hidden");
       noResults.classList.add("hidden");
-      grid.classList.remove("hidden");
-      grid.innerHTML = posts.map(cardHTML).join("");
-      searchInput.value = "";
+
+      renderPosts(currentPosts, 1);
     }
 
     function handleSearch() {
       const term = searchInput.value.trim().toLowerCase();
-      if (!term) return;
 
-      sectionTitle.textContent = "Searching...";
-      sectionTitle.classList.remove("hidden");
-      resultsHeader.classList.add("hidden");
+      if (!term) {
+        showAll();
+        return;
+      }
 
-      setTimeout(() => {
-        const results = posts.filter(
-          (p) => p.title.toLowerCase().includes(term) || p.excerpt.toLowerCase().includes(term)
-        );
+      isSearching = true;
 
-        sectionTitle.classList.add("hidden");
-        resultsHeader.classList.remove("hidden");
-        resultsTitle.textContent = `Search Results (${results.length})`;
+      const results = posts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(term) ||
+          post.excerpt.toLowerCase().includes(term)
+      );
 
-        if (results.length === 0) {
-          noResultsMsg.textContent = `No articles found for "${searchInput.value}"`;
-          noResults.classList.remove("hidden");
-          grid.classList.add("hidden");
-        } else {
-          noResults.classList.add("hidden");
-          grid.classList.remove("hidden");
-          grid.innerHTML = results.map(cardHTML).join("");
-        }
-      }, 500);
+      currentPosts = results;
+      currentPage = 1;
+
+      sectionTitle.classList.add("hidden");
+      resultsHeader.classList.remove("hidden");
+      resultsTitle.textContent = `Search Results (${results.length})`;
+
+      if (results.length === 0) {
+        noResultsMsg.textContent = `No articles found for "${searchInput.value}"`;
+      }
+
+      renderPosts(currentPosts, 1);
     }
 
+    prevPageBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        renderPosts(currentPosts, currentPage - 1);
+        window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
+      }
+    });
+
+    nextPageBtn.addEventListener("click", () => {
+      if (currentPage < getTotalPages(currentPosts)) {
+        renderPosts(currentPosts, currentPage + 1);
+        window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
+      }
+    });
+
     searchBtn.addEventListener("click", handleSearch);
+
     searchInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") handleSearch();
     });
+
     clearBtn.addEventListener("click", showAll);
     viewAllBtn.addEventListener("click", showAll);
+
+    renderPosts(currentPosts, 1);
   </script>
 </MainLayout>

@@ -1,6 +1,5 @@
 ---
 import Menu from "@lucide/astro/icons/menu";
-import X from "@lucide/astro/icons/x";
 
 const currentPath = Astro.url.pathname;
 
@@ -13,69 +12,75 @@ const navigation = [
   { name: "Contact", path: "/contact" },
 ];
 
-const isActive = (path: string) => currentPath === path;
+const normalizePath = (path: string) =>
+  path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path;
+
+const isActive = (path: string) =>
+  normalizePath(currentPath) === normalizePath(path);
 ---
 
-<header class="site-header sticky top-0 z-50 border-b border-default">
-  <nav class="max-w-6xl mx-auto px-5 md:px-6 h-[72px] flex items-center justify-between">
-   <a href="/" class="flex items-center gap-3">
-
-  <!-- Inline SVG logo -->
-  <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="1" y="1" width="38" height="38" rx="6" stroke="#00D02B" stroke-width="1.5"/>
-    <path d="M10 10 L20 20 L10 30" stroke="#00D02B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M20 10 L30 20 L20 30" stroke="#00D02B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
-    <rect x="18" y="18" width="4" height="4" rx="1" fill="#00D02B"/>
-  </svg>
-
-  <div class="flex flex-col leading-none gap-0.5">
-    <span class="font-[Orbitron] text-sm font-black text-white tracking-widest uppercase">XBOX</span>
-    <span class="font-[Orbitron] text-[9px] font-bold text-[#00D02B] tracking-[3px] uppercase">GAMERTAG GENERATOR</span>
-  </div>
-
-</a>
-
-    <div class="hidden md:flex items-center gap-2">
-      {navigation.map((item) => (
-        <a
-          href={item.path}
-          aria-current={isActive(item.path) ? "page" : undefined}
-          class:list={[
-            "nav-link",
-            isActive(item.path) && "is-active"
-          ]}
-        >
-          {item.name}
-        </a>
-      ))}
-    </div>
-
-    <button
-      id="mobile-menu-button"
-      class="mobile-menu-toggle flex md:hidden"
-      type="button"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
+<header class="navbar border-default">
+  <nav class="container-responsive flex h-16 items-center justify-between gap-4 md:h-[72px]">
+    <a
+      href="/"
+      aria-label="Xbox Gamertag Generator home"
+      class="flex min-w-0 items-center gap-3"
     >
-      <span id="menu-icon-open">
-        <Menu class="h-5 w-5" />
-      </span>
-      <span id="menu-icon-close" class="hidden">
-        <X class="h-5 w-5" />
-      </span>
-    </button>
-  </nav>
+      <img
+        src="/apple-touch-icon.png"
+        alt="Xbox Gamertag Generator logo"
+        width="40"
+        height="40"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        class="h-10 w-10 shrink-0 object-cover"
+      />
 
-  <div id="mobile-menu" class="mobile-menu hidden md:hidden border-t border-default">
-    <div class="max-w-6xl mx-auto px-5 py-4 flex flex-col gap-2">
+      <div class="min-w-0 leading-none">
+        <span class="font-site-title block truncate text-sm font-black uppercase tracking-[0.18em] text-foreground md:text-base">
+          Xbox
+        </span>
+        <span class="block truncate font-ui text-[0.62rem] font-bold uppercase tracking-[0.22em] text-brand md:text-[0.7rem]">
+          Gamertag Generator
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden items-center gap-6 md:flex">
       {navigation.map((item) => (
         <a
           href={item.path}
           aria-current={isActive(item.path) ? "page" : undefined}
           class:list={[
-            "mobile-nav-link",
-            isActive(item.path) && "is-active"
+            "relative inline-flex h-10 items-center font-ui text-[12px] font-bold uppercase tracking-[0.12em] transition-colors duration-200",
+            "text-foreground-muted hover:text-foreground",
+            "after:absolute after:left-0 after:right-0 after:bottom-1 after:h-[2px] after:origin-center after:rounded-full after:bg-brand after:transition-transform after:duration-300",
+            isActive(item.path) ? "text-foreground after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"
+          ]}
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+
+   <!-- Mobile nav -->
+<details class="md:hidden">
+  <summary class="flex h-11 w-11 cursor-pointer items-center justify-center rounded-[var(--radius)] border border-default bg-[hsl(218_30%_14%)] text-foreground transition-colors duration-200 hover:border-[hsl(107_76%_26%_/_0.35)] hover:bg-[hsl(107_76%_26%_/_0.08)] hover:text-brand">
+    <span class="sr-only">Toggle navigation menu</span>
+    <Menu class="h-5 w-5" />
+  </summary>
+
+  <div class="absolute left-0 right-0 top-full -mt-px z-50 border-y border-default bg-background-alt px-4 py-4 shadow-card">
+    <div class="flex flex-col">
+      {navigation.map((item) => (
+        <a
+          href={item.path}
+          aria-current={isActive(item.path) ? "page" : undefined}
+          class:list={[
+            "flex items-center justify-center text-center border-b border-[hsl(218_30%_18%)] py-3 font-ui text-[13px] font-bold uppercase tracking-[0.12em] transition-colors duration-200 last:border-b-0",
+            isActive(item.path) ? "text-brand" : "text-foreground hover:text-brand"
           ]}
         >
           {item.name}
@@ -83,146 +88,7 @@ const isActive = (path: string) => currentPath === path;
       ))}
     </div>
   </div>
+</details>
+    
+  </nav>
 </header>
-
-<style is:global>
-  .site-header {
-    background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.94) 0%, rgba(5, 5, 5, 0.92) 100%);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.9);
-  }
-
-  .site-logo {
-    position: relative;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    transition: var(--transition-smooth);
-  }
-
-  .site-logo:hover {
-    text-shadow: 0 0 18px rgba(0, 208, 43, 0.18);
-  }
-
-  .nav-link {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    height: 42px;
-    padding: 0 14px;
-    border-radius: 0.5rem;
-    color: #94A3B8;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: var(--transition-smooth);
-  }
-
-  .nav-link:hover {
-    color: #FFFFFF;
-    background: rgba(0, 208, 43, 0.06);
-  }
-
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 6px;
-    height: 2px;
-    border-radius: 999px;
-    background: #00D02B;
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.25s ease;
-  }
-
-  .nav-link:hover::after,
-  .nav-link.is-active::after {
-    transform: scaleX(1);
-  }
-
-  .nav-link.is-active {
-    color: #FFFFFF;
-    background: rgba(0, 208, 43, 0.08);
-    box-shadow: inset 0 0 0 1px rgba(0, 208, 43, 0.18);
-  }
-
- .mobile-menu-toggle {
-  width: 42px;
-  height: 42px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #1F2937;
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.02);
-  color: #FFFFFF;
-  transition: var(--transition-smooth);
-}
-
-  .mobile-menu-toggle:hover {
-    border-color: rgba(0, 208, 43, 0.35);
-    color: #00D02B;
-    background: rgba(0, 208, 43, 0.06);
-  }
-
-  .mobile-menu {
-    background:
-      linear-gradient(180deg, rgba(5, 5, 5, 0.98) 0%, rgba(0, 0, 0, 0.98) 100%);
-  }
-
-  .mobile-nav-link {
-    display: block;
-    padding: 14px 16px;
-    border: 1px solid transparent;
-    border-radius: 0.85rem;
-    color: #E5E7EB;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: var(--transition-smooth);
-  }
-
-  .mobile-nav-link:hover {
-    color: #FFFFFF;
-    border-color: rgba(0, 208, 43, 0.18);
-    background: rgba(0, 208, 43, 0.06);
-  }
-
-  .mobile-nav-link.is-active {
-    color: #00D02B;
-    border-color: rgba(0, 208, 43, 0.3);
-    background: rgba(0, 208, 43, 0.08);
-  }
-</style>
-
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const button = document.getElementById("mobile-menu-button");
-    const menu = document.getElementById("mobile-menu");
-    const openIcon = document.getElementById("menu-icon-open");
-    const closeIcon = document.getElementById("menu-icon-close");
-
-    if (!button || !menu || !openIcon || !closeIcon) return;
-
-    button.addEventListener("click", () => {
-      const isHidden = menu.classList.contains("hidden");
-
-      if (isHidden) {
-        menu.classList.remove("hidden");
-        openIcon.classList.add("hidden");
-        closeIcon.classList.remove("hidden");
-        button.setAttribute("aria-expanded", "true");
-      } else {
-        menu.classList.add("hidden");
-        openIcon.classList.remove("hidden");
-        closeIcon.classList.add("hidden");
-        button.setAttribute("aria-expanded", "false");
-      }
-    });
-  });
-</script>

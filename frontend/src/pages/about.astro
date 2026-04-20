@@ -10,6 +10,25 @@ const schema = {
   "url": "https://xboxgamertaggenerator.com/about",
   "description": "Learn about Xbox Gamertag Generator — helping gamers create perfect gaming identities.",
 };
+
+const features = [
+  {
+    title: "Advanced Gamertag Generator",
+    desc: "Powerful tools to create unique, memorable gamertags",
+  },
+  {
+    title: "Naming Guides and Tips",
+    desc: "Expert advice on creating the perfect gaming identity",
+  },
+  {
+    title: "Profile Management Tools",
+    desc: "Resources to optimize your Xbox gaming profile",
+  },
+  {
+    title: "Gaming Brand Resources",
+    desc: "Build and grow your presence in the gaming community",
+  },
+];
 ---
 
 <MainLayout
@@ -20,153 +39,157 @@ const schema = {
 >
   <Header />
 
-  <div class="min-h-screen bg-[#000000] text-white">
+  <div class="min-h-screen bg-[#F3F4F6] text-[#111827] font-ui">
+    <!-- Hero -->
+    <section class="bg-[#F3F4F6] py-16 md:py-24">
+      <div class="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 text-center md:text-left">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-[#111827] leading-tight">
+            About <span class="text-brand">Xbox GamerTag Generator</span>
+          </h1>
 
-    <!-- ── Hero ── -->
-    <section class="bg-[#000000] relative overflow-hidden py-16 md:py-24">
-      <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"></div>
-      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
-          <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Our Story</span>
-        </div>
-        <h1 class="font-[Orbitron] text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight">
-          About <span class="text-[#00D02B]">Xbox GamerTag Generator</span>
-        </h1>
-        <p class="font-[Rajdhani] text-xl md:text-2xl text-[#94A3B8] mb-4 font-semibold">
-          Helping gamers find their perfect name.
-        </p>
-        <p class="font-[Rajdhani] text-base text-[#4B5563] leading-relaxed max-w-2xl mx-auto">
-          We're dedicated to making naming effortless, creative, and fun—so you can focus on gaming.
-        </p>
-      </div>
-      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, #1F2937 20%, #00D02B 50%, #1F2937 80%, transparent);"></div>
-    </section>
-
-    <!-- ── Story & Mission — White section ── -->
-    <section class="bg-[#ffffff] py-16 md:py-20 border-t border-[#E2E8F0]">
-      <div class="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
-
-        <!-- Story -->
-        <div class="mb-14">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-5">
-            <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Background</span>
-          </div>
-          <h2 class="font-[Orbitron] text-2xl md:text-3xl font-bold text-[#050505] mb-6">
-            Our <span class="text-[#00D02B]">Story</span>
+          <h2 class="text-2xl md:text-3xl text-[#6B7280] mb-8 font-medium leading-snug">
+            Helping gamers find their perfect name.
           </h2>
-          <div class="border-l-4 border-[#00D02B] pl-6">
-            <p class="font-[Rajdhani] text-base md:text-lg text-[#64748B] leading-relaxed">
-              Born from frustration with taken or cringe Xbox names, XboxGamerTagGenerator.com exists to help gamers create identities they're proud of. We know that your gamertag is your online persona, your first impression, and part of your gamer legacy.
-            </p>
-          </div>
-        </div>
 
-        <!-- Mission -->
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-5">
-            <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Purpose</span>
-          </div>
-          <h2 class="font-[Orbitron] text-2xl md:text-3xl font-bold text-[#050505] mb-6">
-            Our <span class="text-[#00D02B]">Mission</span>
-          </h2>
-          <div class="border-l-4 border-[#00D02B] pl-6">
-            <p class="font-[Rajdhani] text-base md:text-lg text-[#64748B] leading-relaxed">
-              Our mission is to simplify the naming process, offer creative inspiration, and make sure every gamer has a name worth shouting across the lobby.
-            </p>
-          </div>
+          <p class="text-lg md:text-xl text-[#374151] leading-relaxed max-w-3xl">
+            We&apos;re dedicated to making naming effortless, creative, and fun—so you can focus on gaming.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ── What We Offer — White section ── -->
-    <section class="bg-[#F8FAFC] py-16 md:py-20 border-t border-[#E2E8F0]">
-      <div class="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div class="text-center mb-12">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-4">
-            <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Features</span>
-          </div>
-          <h2 class="font-[Orbitron] text-2xl md:text-3xl font-bold text-[#050505]">
-            What You'll Find <span class="text-[#00D02B]">Here</span>
-          </h2>
-        </div>
+    <!-- Brand Story + Mission -->
+    <section class="py-16 md:py-20 bg-[#E5E7EB]">
+      <div class="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16">
+        <div class="max-w-4xl mx-auto">
+          <div class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-center md:text-left text-[#111827]">
+              Our <span class="text-brand">Story</span>
+            </h2>
 
-        <div class="grid md:grid-cols-2 gap-5">
-          {[
-            { title: "Advanced Gamertag Generator", desc: "Powerful tools to create unique, memorable gamertags" },
-            { title: "Naming Guides and Tips", desc: "Expert advice on creating the perfect gaming identity" },
-            { title: "Profile Management Tools", desc: "Resources to optimize your Xbox gaming profile" },
-            { title: "Gaming Brand Resources", desc: "Build and grow your presence in the gaming community" },
-          ].map((item) => (
-            <div class="flex items-start gap-4 bg-white border border-[#E2E8F0] rounded-lg p-5 transition-all duration-150 hover:border-[#00D02B]/50">
-              <div class="flex-shrink-0 w-8 h-8 bg-[#00D02B] rounded flex items-center justify-center">
-                <svg class="text-black w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div>
-                <h3 class=" text-md font-bold text-[#050505] mb-1">{item.title}</h3>
-                <p class=" text-sm text-[#64748B] leading-relaxed">{item.desc}</p>
-              </div>
+            <div class="border-l-4 border-brand pl-6 mb-8">
+              <p class="text-base md:text-lg text-[#374151] leading-relaxed">
+                Born from frustration with taken or cringe Xbox names, XboxGamerTagGenerator.com exists to help gamers create identities they&apos;re proud of. We know that your gamertag is your online persona, your first impression, and part of your gamer legacy.
+              </p>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Team — White subtle section ── -->
-    <section class="bg-[#ffffff] py-16 md:py-20 border-t border-[#E2E8F0]">
-      <div class="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-5">
-          <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Team</span>
-        </div>
-        <h2 class="font-[Orbitron] text-2xl md:text-3xl font-bold text-[#050505] mb-8">
-          Who's <span class="text-[#00D02B]">Behind This</span>
-        </h2>
-        <div class="flex flex-col md:flex-row items-center gap-8 bg-white border border-[#E2E8F0] rounded-xl p-6 md:p-8">
-          <div class="flex-shrink-0">
-            <img
-              src={image.src}
-              alt="Team"
-              width="128"
-              height="128"
-              loading="lazy"
-              class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[#00D02B] object-cover"
-            />
           </div>
-          <div class="flex-1">
-            <p class="font-[Rajdhani] text-base md:text-lg text-[#64748B] leading-relaxed">
-              Our Xbox Gamertag Generator is designed to help gamers create unique, fun, and memorable Gamertags with ease. Whether you're looking for something cool, edgy, or completely random, our tool offers endless name ideas to suit every gaming style. We make it simple to find the perfect Gamertag so you can stand out and start playing faster.
-            </p>
+
+          <div>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-center md:text-left text-[#111827]">
+              Our <span class="text-brand">Mission</span>
+            </h2>
+
+            <div class="border-l-4 border-brand pl-6">
+              <p class="text-base md:text-lg text-[#374151] leading-relaxed">
+                Our mission is to simplify the naming process, offer creative inspiration, and make sure every gamer has a name worth shouting across the lobby.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── CTA — White section with green top border ── -->
-    <section class="bg-[#F8FAFC] border-t-[3px] border-t-[#00D02B] py-16 md:py-20 border-b border-[#E2E8F0]">
-      <div class="max-w-3xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
-        <h2 class="font-[Orbitron] text-2xl md:text-3xl font-bold text-[#050505] mb-4">
-          Ready to find your <span class="text-[#00D02B]">perfect tag?</span>
-        </h2>
-        <p class="text-base text-[#64748B] mb-8">
-          Jump in and generate your ideal gamertag in seconds.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          
-           <a href="/"
-            class="inline-flex items-center justify-center px-8 py-3 bg-[#00D02B] hover:bg-[#00e830] text-black  font-bold text-sm uppercase tracking-widest rounded transition-colors duration-200 w-full sm:w-auto"
-          >
-            Try the Generator
-          </a>
-          
-           <a href="/tools"
-            class="inline-flex items-center justify-center px-8 py-3 bg-transparent border border-[#CBD5E1] hover:border-[#94A3B8] text-[#374151]  font-bold text-sm uppercase tracking-widest rounded transition-colors duration-200 w-full sm:w-auto"
-          >
-            Explore All Tools
-          </a>
+    <!-- What We Offer -->
+    <section class="py-16 md:py-20 bg-[#F3F4F6]">
+      <div class="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-10 text-center md:text-left text-[#111827]">
+            What You&apos;ll Find <span class="text-brand">Here</span>
+          </h2>
+
+          <div class="space-y-6">
+            {features.map((item) => (
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-brand rounded-full flex items-center justify-center mt-0.5">
+                  <svg class="text-white h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+
+                <div>
+                  <h3 class="text-xl md:text-2xl font-semibold mb-2 text-[#111827]">
+                    {item.title}
+                  </h3>
+                  <p class="text-base md:text-lg text-[#4B5563] leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
+  <!-- Team -->
+<section class="py-16 md:py-20 bg-[#E5E7EB]">
+  <div class="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16">
+    <div class="max-w-4xl mx-auto text-center md:text-left">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-[#111827]">
+        Who&apos;s <span class="text-brand">Behind This</span>
+      </h2>
+
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="flex-shrink-0 text-center">
+          <img
+            src={image.src}
+            alt="Jonathan Caldwell"
+            width="128"
+            height="128"
+            loading="lazy"
+            class="w-32 h-32 rounded-full border-4 border-brand object-cover mx-auto"
+          />
+
+          <h3 class="mt-4 text-2xl font-bold text-[#111827]">
+            Jonathan Caldwell
+          </h3>
+          <p class="text-brand font-semibold mt-1">
+            Founder &amp; Gaming Expert
+          </p>
+        </div>
+
+        <div class="flex-1">
+          <p class="text-base md:text-lg text-[#374151] leading-relaxed">
+            Jonathan is a gaming enthusiast and Xbox community expert who created this tool after experiencing the frustration of finding the perfect gamertag. With years of experience in the gaming community, he understands what makes a great gamertag and how to help gamers find their perfect online identity.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- CTA -->
+    <section class="py-16 md:py-20 bg-[#F3F4F6]">
+      <div class="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 text-center">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-[#111827] leading-tight">
+            Ready to find your <span class="text-brand">perfect tag?</span>
+          </h2>
+
+          <p class="text-base md:text-lg text-[#4B5563] mb-8">
+            Jump in and generate your ideal gamertag in seconds.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="/"
+              class="bg-brand hover:bg-brand-light text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center"
+            >
+              Try the Generator
+            </a>
+
+            <a
+              href="/tools"
+              class="text-brand hover:text-brand-light font-medium underline decoration-2 underline-offset-4 min-h-[48px] flex items-center"
+            >
+              Explore All Tools
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </MainLayout>

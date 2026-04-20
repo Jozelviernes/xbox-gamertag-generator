@@ -22,54 +22,61 @@ const schema = {
 >
   <Header />
 
-  <div class="min-h-screen">
+  <div class="min-h-screen bg-[#F3F4F6] font-ui text-[#111827]">
+    <!-- Hero -->
+    <section class="section-dark-alt py-8">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="bg-card border border-default rounded-xl py-14 md:py-16 px-6 md:px-10 text-center shadow-card relative overflow-hidden">
+          <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
 
-    <!-- ── Hero ── -->
-    <section class="bg-[#000000] relative overflow-hidden py-14 md:py-20">
-      <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"></div>
-      <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-8 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
-          <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Free Tool</span>
+          <div class="relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-dim border border-green rounded-sm mb-6">
+              <span class="label-green">Free Tool</span>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 leading-tight">
+              Xbox Gamertag <span class="text-brand">Price Checker</span>
+            </h1>
+
+            <p class="text-base md:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
+              Ever wondered what your gamertag might be worth? Get a quick data-based
+              estimate based on length, rarity, and demand.
+            </p>
+          </div>
         </div>
-        <h1 class="font-[Orbitron] text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
-          Xbox Gamertag <span class="text-[#00D02B]">Price Checker</span>
-        </h1>
-        <p class="font-[Rajdhani] text-base md:text-lg text-[#94A3B8] max-w-xl mx-auto leading-relaxed">
-          Ever wondered what your gamertag might be worth? Get a quick data-based
-          estimate based on length, rarity, and demand.
-        </p>
       </div>
-      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, #1F2937 20%, #00D02B 50%, #1F2937 80%, transparent);"></div>
     </section>
 
-    <!-- ── Tool ── -->
-    <section class="section-white py-10 border-t border-[#E5E7EB]">
-      <div class="max-w-2xl mx-auto px-4 sm:px-6 space-y-5">
-
+    <!-- Tool -->
+    <section class="section-white-subtle py-10">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-5">
         <!-- Input Card -->
-        <div class="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
-          <label class="font-[Rajdhani] text-xs font-bold tracking-[2px] uppercase text-[#6B7280] block mb-3">
+        <div class="bg-white border border-[#E5E7EB] rounded-xl p-6 md:p-7 shadow-lg">
+          <label class="text-xs font-bold tracking-[0.18em] uppercase text-[#6B7280] block mb-3">
             Enter your Xbox Gamertag
           </label>
+
           <div class="flex flex-col sm:flex-row gap-3">
             <input
               id="gamertagInput"
               type="text"
               maxlength="12"
               placeholder="e.g. ShadowWolf"
-              class="flex-1 px-4 py-3 bg-white border border-[#E5E7EB] rounded-lg text-[#111827] placeholder-[#9CA3AF] font-[Rajdhani] text-sm font-semibold focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
+              class="flex-1 px-4 py-3 bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg text-[#111827] placeholder-[#9CA3AF] text-sm font-medium focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
             />
             <button
               id="checkBtn"
-              class="px-6 py-3 bg-[#00D02B] hover:bg-[#00e830] text-black font-[Rajdhani] font-bold text-sm uppercase tracking-widest rounded-lg transition-colors duration-200 whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed"
+              class="px-6 py-3 bg-brand hover:bg-brand-light text-white font-semibold text-sm uppercase tracking-[0.14em] rounded-lg transition-colors duration-200 whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed"
             >
               Check Price
             </button>
           </div>
-          <p class="font-[Rajdhani] text-xs text-[#9CA3AF] mt-2">
+
+          <p class="text-xs text-[#9CA3AF] mt-2">
             Max 12 characters · Letters, numbers and spaces only
           </p>
-          <p class="font-[Rajdhani] text-xs text-[#9CA3AF] mt-1 leading-relaxed">
+
+          <p class="text-xs text-[#9CA3AF] mt-1 leading-relaxed">
             Tip: Short, clean tags often score higher. Premium-looking names often use strong letters
             like Z, X, V, K, or Y — but avoid too many numbers or old-style patterns like xX or underscores.
           </p>
@@ -81,37 +88,40 @@ const schema = {
             class="inline-block w-8 h-8 rounded-full animate-spin mb-4"
             style="border: 2px solid #E5E7EB; border-top-color: #00D02B;"
           ></div>
-          <p class="font-[Rajdhani] text-sm text-[#6B7280] tracking-wide">Analyzing your gamertag...</p>
+          <p class="text-sm text-[#6B7280] tracking-wide">Analyzing your gamertag...</p>
         </div>
 
         <!-- Error -->
-        <div id="errorState" class="hidden bg-red-500/[0.06] border border-red-500/30 rounded-2xl p-6 text-center">
-          <p id="errorMsg" class="font-[Rajdhani] text-sm font-bold text-red-500"></p>
+        <div id="errorState" class="hidden bg-red-500/[0.06] border border-red-500/30 rounded-xl p-6 text-center">
+          <p id="errorMsg" class="text-sm font-bold text-red-500"></p>
         </div>
 
         <!-- Results -->
         <div id="results" class="hidden space-y-4">
-
           <!-- Tier + Price Card -->
-          <div class="bg-white border border-[#E5E7EB] rounded-2xl p-8 text-center shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
-            <p class="font-[Rajdhani] text-xs font-bold tracking-[2px] uppercase text-[#9CA3AF] mb-2">Estimated value for</p>
-            <h2 id="resultTag" class="font-[Orbitron] text-3xl font-black text-[#111827] mb-5"></h2>
+          <div class="bg-white border border-[#E5E7EB] rounded-xl p-8 text-center shadow-lg">
+            <p class="text-xs font-bold tracking-[0.16em] uppercase text-[#9CA3AF] mb-2">
+              Estimated value for
+            </p>
+
+            <h2 id="resultTag" class="text-3xl md:text-4xl font-extrabold text-[#111827] mb-5"></h2>
 
             <div
               id="tierBadge"
               class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-6"
             ></div>
 
-            <div class="font-[Orbitron] text-4xl md:text-5xl font-black text-[#00D02B] mb-2" id="priceRange"></div>
-            <p class="font-[Rajdhani] text-xs text-[#9CA3AF] uppercase tracking-wider">Estimated market value</p>
+            <div class="text-4xl md:text-5xl font-extrabold text-brand mb-2" id="priceRange"></div>
+            <p class="text-xs text-[#9CA3AF] uppercase tracking-wider">Estimated market value</p>
           </div>
 
           <!-- Score Bar Card -->
-          <div class="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
+          <div class="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-lg">
             <div class="flex items-center justify-between mb-3">
-              <span class="font-[Rajdhani] text-xs font-bold tracking-[2px] uppercase text-[#6B7280]">Rarity Score</span>
-              <span id="scoreValue" class="font-[Orbitron] text-sm font-bold text-[#00D02B]"></span>
+              <span class="text-xs font-bold tracking-[0.16em] uppercase text-[#6B7280]">Rarity Score</span>
+              <span id="scoreValue" class="text-sm font-extrabold text-brand"></span>
             </div>
+
             <div class="w-full bg-[#E5E7EB] rounded-full h-3 overflow-hidden">
               <div
                 id="scoreBar"
@@ -119,7 +129,8 @@ const schema = {
                 style="width: 0%"
               ></div>
             </div>
-            <div class="flex justify-between font-[Rajdhani] text-xs text-[#9CA3AF] mt-1.5">
+
+            <div class="flex justify-between text-xs text-[#9CA3AF] mt-1.5">
               <span>0</span>
               <span>25</span>
               <span>50</span>
@@ -129,8 +140,8 @@ const schema = {
           </div>
 
           <!-- Breakdown Card -->
-          <div class="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
-            <h3 class="font-[Orbitron] text-sm font-bold text-[#111827] mb-5">
+          <div class="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-lg">
+            <h3 class="text-sm font-bold text-[#111827] mb-5">
               Score Breakdown
             </h3>
             <div id="breakdownList" class="space-y-0"></div>
@@ -140,34 +151,31 @@ const schema = {
           <div class="text-center">
             <button
               id="resetBtn"
-              class="px-6 py-3 bg-white border border-[#D1D5DB] hover:border-[#00D02B]/40 text-[#6B7280] hover:text-[#00D02B] font-[Rajdhani] font-bold text-sm uppercase tracking-widest rounded-lg transition-all duration-150"
+              class="px-6 py-3 bg-white border border-[#D1D5DB] hover:border-[#00D02B]/40 text-[#6B7280] hover:text-[#00B324] font-semibold text-sm uppercase tracking-[0.14em] rounded-lg transition-all duration-150"
             >
               Check Another Gamertag
             </button>
           </div>
 
           <!-- Disclaimer -->
-          <p class="font-[Rajdhani] text-xs text-[#9CA3AF] text-center px-4 pb-4 leading-relaxed">
+          <p class="text-xs text-[#9CA3AF] text-center px-4 pb-4 leading-relaxed">
             This is an estimate for entertainment purposes only. Actual gamertag
             value depends on buyer demand and is not guaranteed. Selling Xbox
             gamertags may violate Microsoft's Terms of Service.
           </p>
-
         </div>
-
       </div>
     </section>
 
-    <!-- ── Ad slot ── -->
-    <section class="pb-16 section-white">
-      <div class="max-w-2xl mx-auto px-4 sm:px-6">
-        <div class="bg-[#F3F4F6] border border-dashed border-[#D1D5DB] rounded-lg px-5 py-4 text-center">
-          <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">Advertisement</p>
+    <!-- Ad slot -->
+    <section class="pb-16 section-white-subtle">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="bg-white border border-dashed border-[#D1D5DB] rounded-lg px-5 py-4 text-center">
+          <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">Advertisement</p>
           <div class="bg-[#E5E7EB] rounded h-24 md:h-32"></div>
         </div>
       </div>
     </section>
-
   </div>
 
   <script>
@@ -193,19 +201,19 @@ const schema = {
 
     const tierStyles: Record<Tier, { badge: string; bar: string }> = {
       "Legendary" : {
-        badge : "bg-yellow-500/15 text-yellow-600 border border-yellow-500/30",
+        badge : "bg-yellow-500/12 text-yellow-700 border border-yellow-500/25",
         bar   : "bg-gradient-to-r from-yellow-500 to-yellow-300",
       },
       "Rare"      : {
-        badge : "bg-purple-500/15 text-purple-600 border border-purple-500/30",
+        badge : "bg-purple-500/12 text-purple-700 border border-purple-500/25",
         bar   : "bg-gradient-to-r from-purple-500 to-purple-400",
       },
       "Uncommon"  : {
-        badge : "bg-blue-500/15 text-blue-600 border border-blue-500/30",
+        badge : "bg-blue-500/12 text-blue-700 border border-blue-500/25",
         bar   : "bg-gradient-to-r from-blue-500 to-blue-400",
       },
       "Common"    : {
-        badge : "bg-[#00D02B]/10 text-[#00B324] border border-[#00D02B]/30",
+        badge : "bg-[#00D02B]/10 text-[#00B324] border border-[#00D02B]/25",
         bar   : "bg-[#00D02B]",
       },
       "Low Value" : {
@@ -259,10 +267,10 @@ const schema = {
           (item) => `
           <div class="flex items-start justify-between py-3 border-b border-[#E5E7EB] last:border-0 gap-4">
             <div class="flex-1">
-              <p class="font-[Rajdhani] text-sm font-bold text-[#111827]">${item.label}</p>
-              <p class="font-[Rajdhani] text-xs text-[#9CA3AF] mt-0.5">${item.note}</p>
+              <p class="text-sm font-bold text-[#111827]">${item.label}</p>
+              <p class="text-xs text-[#9CA3AF] mt-0.5">${item.note}</p>
             </div>
-            <span class="font-[Orbitron] text-xs font-bold shrink-0 ${
+            <span class="text-xs font-bold shrink-0 ${
               item.points > 0
                 ? "text-[#00B324]"
                 : item.points < 0

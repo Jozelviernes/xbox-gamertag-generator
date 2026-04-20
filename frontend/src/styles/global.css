@@ -1,42 +1,87 @@
 @import "tailwindcss";
 
 /* ============================================================
-   current theme
+   GOOGLE FONTS — add this in your <head> in BaseLayout.astro:
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
+   Note: Orbitron is ONLY used for .font-site-title (the "Xbox Gamertag | Generator" logo text)
+   ============================================================ */
+
+/* ============================================================
+   PERFORMANCE — font-display swap prevents FOIT/FOUT
+   ============================================================ */
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+  src: local('Inter');
+}
+@font-face {
+  font-family: 'Orbitron';
+  font-display: swap;
+  src: local('Orbitron');
+}
+
+/* ============================================================
+   BASE RESET
    ============================================================ */
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 *,
 *::before,
 *::after {
-  border-color: #1F2937;
+  box-sizing: border-box;
+  border-color: hsl(218 30% 18%);
+}
+
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+  content-visibility: auto;
 }
 
 body {
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: hsl(218 30% 9%);
+  color: hsl(210 40% 98%);
+  /* Inter — same as ReactJS project */
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  font-size: 15px;
+  font-size: clamp(14px, 2vw, 15px);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Large / display text only */
-h1,
-.font-display,
-.heading-hero,
-.heading-section {
-  font-family: 'Orbitron', sans-serif;
-}
+/* ============================================================
+   FONT ROLES
+   Inter         → everything, including h1–h6
+   Orbitron      → .font-site-title ONLY
+                   ("Xbox Gamertag | Generator" logo text)
+   ============================================================ */
 
-/* Everything else */
+/* Inter for literally everything */
+h1, h2, h3, h4, h5, h6,
 button,
 nav a,
+.font-display,
 .font-ui,
+.font-reading,
+.heading-hero,
+.heading-section,
 .btn-primary,
 .btn-secondary,
 .btn-ghost,
@@ -49,7 +94,6 @@ textarea,
 p,
 li,
 article,
-.font-reading,
 .prose p,
 .prose li,
 .prose blockquote,
@@ -59,189 +103,230 @@ article,
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
+/* Orbitron — site title logo text ONLY */
+.font-site-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+}
+
 /* ============================================================
-   @THEME
+   @THEME — ReactJS Xbox palette applied to gaming design system
    ============================================================ */
 @theme {
 
-  /* --- Brand Green --- */
-  --color-brand:              #00D02B;
-  --color-brand-light:        #00e830;
-  --color-brand-dark:         #00a021;
-  --color-brand-glow:         rgba(0, 208, 43, 0.10);
-  --color-brand-glow-strong:  rgba(0, 208, 43, 0.20);
+  /* --- Brand Green (Xbox-style, matches ReactJS hsl(107 76% 26%)) --- */
+  --color-brand:               hsl(107 76% 30%);
+  --color-brand-light:         hsl(107 76% 38%);
+  --color-brand-dark:          hsl(107 76% 22%);
+  --color-brand-glow:          hsl(107 76% 26% / 0.10);
+  --color-brand-glow-strong:   hsl(107 76% 26% / 0.22);
 
-  /* --- Backgrounds --- */
-  --color-background:         #000000;
-  --color-background-alt:     #050505;
-  --color-background-surface: #0a0f0a;
+  /* --- Backgrounds (ReactJS: hsl(218 30% 9 / 12 / 16%)) --- */
+  --color-background:          hsl(218 30% 9%);
+  --color-background-alt:      hsl(218 30% 11%);
+  --color-background-surface:  hsl(218 30% 16%);
 
   /* --- Foreground / Text --- */
-  --color-foreground:         #FFFFFF;
-  --color-foreground-muted:   #94A3B8;
-  --color-foreground-subtle:  #4B5563;
+  --color-foreground:          hsl(210 40% 98%);
+  --color-foreground-muted:    hsl(215 20% 65%);
+  --color-foreground-subtle:   hsl(218 15% 35%);
 
   /* --- White Section Colors --- */
-  --color-white-bg:           #FFFFFF;
-  --color-white-heading:      #050505;
-  --color-white-body:         #64748B;
-  --color-white-subtle:       #F8FAFC;
-  --color-white-border:       #E2E8F0;
+  --color-white-bg:            #FFFFFF;
+  --color-white-heading:       hsl(218 30% 9%);
+  --color-white-body:          hsl(215 16% 47%);
+  --color-white-subtle:        hsl(220 14% 96%);
+  --color-white-border:        hsl(220 13% 91%);
 
-  /* --- Cards & Surfaces --- */
-  --color-card:               #000000;
-  --color-card-foreground:    #FFFFFF;
-  --color-card-hover:         rgba(0, 208, 43, 0.04);
+  /* --- Cards & Surfaces (ReactJS: hsl(218 30% 12%)) --- */
+  --color-card:                hsl(218 30% 12%);
+  --color-card-foreground:     hsl(210 40% 98%);
+  --color-card-hover:          hsl(107 76% 26% / 0.05);
 
-  /* --- Borders --- */
-  --color-border:             #1F2937;
-  --color-border-green:       rgba(0, 208, 43, 0.35);
-  --color-border-green-strong:rgba(0, 208, 43, 0.65);
+  /* --- Borders (ReactJS: hsl(218 30% 18%)) --- */
+  --color-border:              hsl(218 30% 18%);
+  --color-border-green:        hsl(107 76% 26% / 0.35);
+  --color-border-green-strong: hsl(107 76% 26% / 0.65);
 
   /* --- Inputs --- */
-  --color-input:              #050505;
-  --color-ring:               #00D02B;
+  --color-input:               hsl(218 30% 14%);
+  --color-ring:                hsl(107 76% 30%);
 
   /* --- Semantic --- */
-  --color-destructive:        hsl(0 84.2% 60.2%);
-  --color-destructive-fg:     #FFFFFF;
-  --color-success:            #00D02B;
-  --color-warning:            #F59E0B;
+  --color-destructive:         hsl(0 84.2% 60.2%);
+  --color-destructive-fg:      hsl(210 40% 98%);
+  --color-success:             hsl(107 76% 30%);
+  --color-warning:             hsl(38 92% 50%);
 
   /* --- Rarity Tier Colors --- */
-  --color-rarity-common:      #94A3B8;
-  --color-rarity-uncommon:    #4ADE80;
-  --color-rarity-rare:        #60A5FA;
-  --color-rarity-epic:        #C084FC;
-  --color-rarity-legendary:   #00D02B;
+  --color-rarity-common:       hsl(215 20% 65%);
+  --color-rarity-uncommon:     hsl(142 69% 58%);
+  --color-rarity-rare:         hsl(213 94% 68%);
+  --color-rarity-epic:         hsl(270 95% 75%);
+  --color-rarity-legendary:    hsl(107 76% 30%);
 
-  /* --- Radius --- */
-  --radius:                   0.5rem;
-  --radius-md:                0.5rem;
-  --radius-lg:                0.75rem;
-  --radius-xl:                1rem;
+  /* --- Radius (ReactJS uses 0.75rem) --- */
+  --radius:                    0.75rem;
+  --radius-md:                 0.75rem;
+  --radius-lg:                 1rem;
+  --radius-xl:                 1.25rem;
 
   /* --- Shadows --- */
-  --shadow-card:     0 10px 30px -10px rgba(0, 0, 0, 0.7);
-  --shadow-green:    0 0 20px rgba(0, 208, 43, 0.25);
-  --shadow-green-lg: 0 0 40px rgba(0, 208, 43, 0.15);
+  --shadow-card:     0 10px 30px -10px hsl(218 30% 4% / 0.8);
+  --shadow-green:    0 0 20px hsl(107 76% 26% / 0.25);
+  --shadow-green-lg: 0 0 40px hsl(107 76% 26% / 0.15);
 }
 
 /* ============================================================
    ROOT VARIABLES
    ============================================================ */
 :root {
-  --gradient-hero:    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);
-  --gradient-card:    linear-gradient(160deg, #0a1a0a 0%, #020800 100%);
-  --gradient-section: linear-gradient(180deg, #000000 0%, #050505 100%);
-  --gradient-green:   linear-gradient(135deg, #00D02B, #00e830);
+  --gradient-hero:    radial-gradient(ellipse 80% 50% at 50% 0%, hsl(107 76% 26% / 0.10) 0%, transparent 65%);
+  --gradient-card:    linear-gradient(160deg, hsl(218 30% 14%) 0%, hsl(218 30% 10%) 100%);
+  --gradient-section: linear-gradient(180deg, hsl(218 30% 9%) 0%, hsl(218 30% 11%) 100%);
+  --gradient-green:   linear-gradient(135deg, hsl(107 76% 26%), hsl(107 76% 35%));
 
   --transition-base:   all 0.2s ease;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-  --glow-legendary: 0 0 16px rgba(0, 208, 43, 0.5), 0 0 40px rgba(0, 208, 43, 0.2);
+  --glow-legendary: 0 0 16px hsl(107 76% 26% / 0.5), 0 0 40px hsl(107 76% 26% / 0.2);
+}
+
+/* ============================================================
+   REDUCED MOTION — accessibility + performance
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ============================================================
    BACKGROUND UTILITIES
    ============================================================ */
-.bg-background       { background-color: #000000; }
-.bg-background-alt   { background-color: #050505; }
-.bg-surface          { background-color: #0a0f0a; }
-.bg-card             { background-color: #000000; }
-.bg-white-section    { background-color: #FFFFFF; }
-.bg-white-subtle     { background-color: #F8FAFC; }
-.bg-hero-glow        { background: var(--gradient-hero); }
-.bg-brand            { background-color: #00D02B; }
-.bg-brand-light      { background-color: #00e830; }
-.bg-brand-dim        { background-color: rgba(0, 208, 43, 0.08); }
+.bg-background      { background-color: hsl(218 30% 9%); }
+.bg-background-alt  { background-color: hsl(218 30% 11%); }
+.bg-surface         { background-color: hsl(218 30% 16%); }
+.bg-card            { background-color: hsl(218 30% 12%); }
+.bg-white-section   { background-color: #FFFFFF; }
+.bg-white-subtle    { background-color: hsl(220 14% 96%); }
+.bg-hero-glow       { background: var(--gradient-hero); }
+.bg-brand           { background-color: hsl(107 76% 30%); }
+.bg-brand-light     { background-color: hsl(107 76% 38%); }
+.bg-brand-dim       { background-color: hsl(107 76% 26% / 0.08); }
 
 /* ============================================================
    TEXT UTILITIES
    ============================================================ */
-.text-foreground        { color: #FFFFFF; }
-.text-foreground-muted  { color: #94A3B8; }
-.text-foreground-subtle { color: #4B5563; }
-.text-brand             { color: #00D02B; }
-.text-brand-light       { color: #00e830; }
-.text-dark-heading      { color: #050505; }
-.text-dark-body         { color: #64748B; }
-.text-card-foreground   { color: #FFFFFF; }
-.text-muted-foreground  { color: #94A3B8; }
+.text-foreground        { color: hsl(210 40% 98%); }
+.text-foreground-muted  { color: hsl(215 20% 65%); }
+.text-foreground-subtle { color: hsl(218 15% 35%); }
+.text-brand             { color: hsl(107 76% 30%); }
+.text-brand-light       { color: hsl(107 76% 38%); }
+.text-dark-heading      { color: hsl(218 30% 9%); }
+.text-dark-body         { color: hsl(215 16% 47%); }
+.text-card-foreground   { color: hsl(210 40% 98%); }
+.text-muted-foreground  { color: hsl(215 20% 65%); }
 
 /* Rarity */
-.text-rarity-common     { color: #94A3B8; }
-.text-rarity-uncommon   { color: #4ADE80; }
-.text-rarity-rare       { color: #60A5FA; }
-.text-rarity-epic       { color: #C084FC; }
-.text-rarity-legendary  { color: #00D02B; }
+.text-rarity-common    { color: hsl(215 20% 65%); }
+.text-rarity-uncommon  { color: hsl(142 69% 58%); }
+.text-rarity-rare      { color: hsl(213 94% 68%); }
+.text-rarity-epic      { color: hsl(270 95% 75%); }
+.text-rarity-legendary { color: hsl(107 76% 30%); }
 
 /* ============================================================
    BORDER UTILITIES
    ============================================================ */
-.border-default         { border: 1px solid #1F2937; }
-.border-green           { border: 1px solid rgba(0, 208, 43, 0.35); }
-.border-green-strong    { border: 1px solid rgba(0, 208, 43, 0.65); }
-.border-white-section   { border-color: #E2E8F0; }
+.border-default         { border: 1px solid hsl(218 30% 18%); }
+.border-green           { border: 1px solid hsl(107 76% 26% / 0.35); }
+.border-green-strong    { border: 1px solid hsl(107 76% 26% / 0.65); }
+.border-white-section   { border-color: hsl(220 13% 91%); }
 
 /* ============================================================
    SHADOW UTILITIES
    ============================================================ */
-.shadow-card            { box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7); }
-.shadow-green           { box-shadow: 0 0 20px rgba(0, 208, 43, 0.25); }
-.shadow-green-lg        { box-shadow: 0 0 40px rgba(0, 208, 43, 0.15); }
-.shadow-legendary       { box-shadow: var(--glow-legendary); }
+.shadow-card      { box-shadow: 0 10px 30px -10px hsl(218 30% 4% / 0.8); }
+.shadow-green     { box-shadow: 0 0 20px hsl(107 76% 26% / 0.25); }
+.shadow-green-lg  { box-shadow: 0 0 40px hsl(107 76% 26% / 0.15); }
+.shadow-legendary { box-shadow: var(--glow-legendary); }
 
 /* ============================================================
    COMPONENT: NAVBAR
    ============================================================ */
 .navbar {
-  background-color: #000000;
-  border-bottom: 1px solid #1F2937;
+  background-color: hsl(218 30% 9% / 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid hsl(218 30% 18%);
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 /* ============================================================
    COMPONENT: BUTTONS
    ============================================================ */
 .btn-primary {
-  background-color: #00D02B;
-  color: #000000;
+  background-color: hsl(107 76% 26%);
+  color: hsl(210 40% 98%);
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   border: none;
   border-radius: var(--radius);
   padding: 10px 24px;
   cursor: pointer;
   transition: var(--transition-smooth);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  touch-action: manipulation;
 }
-.btn-primary:hover  { background-color: #00e830; }
+.btn-primary:hover  { background-color: hsl(107 76% 34%); }
 .btn-primary:active { transform: scale(0.98); }
 
 .btn-secondary {
   background-color: transparent;
-  color: #FFFFFF;
+  color: hsl(210 40% 98%);
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  border: 1px solid #1F2937;
+  border: 1px solid hsl(218 30% 18%);
   border-radius: var(--radius);
   padding: 10px 24px;
   cursor: pointer;
   transition: var(--transition-smooth);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  touch-action: manipulation;
 }
-.btn-secondary:hover  { border-color: #94A3B8; color: #FFFFFF; }
+.btn-secondary:hover  { border-color: hsl(215 20% 65%); color: hsl(210 40% 98%); }
 .btn-secondary:active { transform: scale(0.98); }
 
 .btn-ghost {
   background: transparent;
-  color: #94A3B8;
+  color: hsl(215 20% 65%);
   border: none;
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-weight: 600;
@@ -249,16 +334,38 @@ article,
   text-transform: uppercase;
   cursor: pointer;
   transition: var(--transition-base);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
 }
-.btn-ghost:hover { color: #FFFFFF; }
+.btn-ghost:hover { color: hsl(210 40% 98%); }
+
+/* Full-width on small mobile */
+@media (max-width: 479px) {
+  .btn-primary.btn-full-mobile,
+  .btn-secondary.btn-full-mobile {
+    width: 100%;
+  }
+}
+
+/* Larger tap targets on touch devices */
+@media (pointer: coarse) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    min-height: 48px;
+  }
+}
 
 /* ============================================================
    COMPONENT: INPUTS
    ============================================================ */
 .input-dark {
-  background-color: #050505;
-  border: 1px solid #1F2937;
-  color: #FFFFFF;
+  background-color: hsl(218 30% 14%);
+  border: 1px solid hsl(218 30% 18%);
+  color: hsl(210 40% 98%);
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-size: 14px;
   border-radius: var(--radius);
@@ -266,55 +373,71 @@ article,
   width: 100%;
   outline: none;
   transition: var(--transition-base);
+  min-height: 44px;
 }
-.input-dark::placeholder { color: #4B5563; }
-.input-dark:focus         { border-color: #00D02B; }
-.input-dark:hover         { border-color: #374151; }
+.input-dark::placeholder { color: hsl(218 15% 35%); }
+.input-dark:focus {
+  border-color: hsl(107 76% 30%);
+  box-shadow: 0 0 0 2px hsl(107 76% 26% / 0.15);
+}
+.input-dark:hover { border-color: hsl(218 30% 28%); }
+
+@media (pointer: coarse) {
+  .input-dark { min-height: 48px; }
+}
 
 /* ============================================================
    COMPONENT: GAME CARD
    ============================================================ */
 .game-card {
   background: var(--gradient-card);
-  border: 1px solid #1F2937;
+  border: 1px solid hsl(218 30% 18%);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: var(--transition-smooth);
   position: relative;
+  will-change: transform;
 }
 .game-card:hover {
-  border-color: rgba(0, 208, 43, 0.4);
+  border-color: hsl(107 76% 26% / 0.4);
   transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 0 20px rgba(0, 208, 43, 0.12);
+  box-shadow: 0 0 20px hsl(107 76% 26% / 0.12);
 }
 .game-card.legendary {
-  border-color: rgba(0, 208, 43, 0.5);
+  border-color: hsl(107 76% 26% / 0.5);
   animation: legendaryPulse 3s ease-in-out infinite;
+}
+
+/* Disable translate on touch — no accidental hover state */
+@media (pointer: coarse) {
+  .game-card:hover {
+    transform: none;
+  }
 }
 
 .stat-bar-track {
   height: 3px;
-  background: #1F2937;
+  background: hsl(218 30% 18%);
   border-radius: 2px;
   overflow: hidden;
 }
 .stat-bar-fill {
   height: 100%;
-  background: #00D02B;
+  background: hsl(107 76% 30%);
   border-radius: 2px;
   animation: statGrow 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 .stat-bar-fill.muted {
-  background: #94A3B8;
+  background: hsl(215 20% 65%);
 }
 
 /* ============================================================
    COMPONENT: BADGES / PILLS
    ============================================================ */
 .badge-brand {
-  background: rgba(0, 208, 43, 0.12);
-  border: 1px solid rgba(0, 208, 43, 0.35);
-  color: #00D02B;
+  background: hsl(107 76% 26% / 0.12);
+  border: 1px solid hsl(107 76% 26% / 0.35);
+  color: hsl(107 76% 42%);
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-size: 10px;
   font-weight: 700;
@@ -322,53 +445,62 @@ article,
   text-transform: uppercase;
   padding: 3px 10px;
   border-radius: 3px;
+  white-space: nowrap;
 }
 
 .badge-rarity-legendary {
-  background: rgba(0, 208, 43, 0.15);
-  border: 1px solid rgba(0, 208, 43, 0.5);
-  color: #00D02B;
+  background: hsl(107 76% 26% / 0.15);
+  border: 1px solid hsl(107 76% 26% / 0.5);
+  color: hsl(107 76% 42%);
 }
 .badge-rarity-epic {
-  background: rgba(192, 132, 252, 0.1);
-  border: 1px solid rgba(192, 132, 252, 0.4);
-  color: #C084FC;
+  background: hsl(270 95% 75% / 0.1);
+  border: 1px solid hsl(270 95% 75% / 0.4);
+  color: hsl(270 95% 75%);
 }
 .badge-rarity-rare {
-  background: rgba(96, 165, 250, 0.1);
-  border: 1px solid rgba(96, 165, 250, 0.4);
-  color: #60A5FA;
+  background: hsl(213 94% 68% / 0.1);
+  border: 1px solid hsl(213 94% 68% / 0.4);
+  color: hsl(213 94% 68%);
 }
 .badge-rarity-common {
-  background: rgba(148, 163, 184, 0.08);
-  border: 1px solid #1F2937;
-  color: #94A3B8;
+  background: hsl(215 20% 65% / 0.08);
+  border: 1px solid hsl(218 30% 18%);
+  color: hsl(215 20% 65%);
 }
 
 /* ============================================================
    SECTION RHYTHM
    ============================================================ */
 .section-dark {
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: hsl(218 30% 9%);
+  color: hsl(210 40% 98%);
 }
 .section-dark-alt {
-  background-color: #050505;
-  color: #FFFFFF;
+  background-color: hsl(218 30% 11%);
+  color: hsl(210 40% 98%);
 }
 .section-white {
   background-color: #FFFFFF;
-  color: #050505;
-  border-top: 1px solid #E2E8F0;
-  border-bottom: 1px solid #E2E8F0;
+  color: hsl(218 30% 9%);
+  border-top: 1px solid hsl(220 13% 91%);
+  border-bottom: 1px solid hsl(220 13% 91%);
 }
 .section-white-subtle {
-  background-color: #F8FAFC;
-  color: #050505;
+  background-color: hsl(220 14% 96%);
+  color: hsl(218 30% 9%);
 }
 .section-cta-dark {
-  background-color: #000000;
-  border-top: 3px solid #00D02B;
+  background-color: hsl(218 30% 9%);
+  border-top: 3px solid hsl(107 76% 30%);
+}
+
+/* Fluid vertical padding for all sections */
+.section-padding {
+  padding-top: clamp(3rem, 8vw, 6rem);
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+  padding-left: clamp(1rem, 5vw, 2rem);
+  padding-right: clamp(1rem, 5vw, 2rem);
 }
 
 /* ============================================================
@@ -376,47 +508,50 @@ article,
    ============================================================ */
 .feature-card-white {
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  border: 1px solid hsl(220 13% 91%);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
   transition: var(--transition-smooth);
 }
 .feature-card-white:hover {
-  border-top-color: #00D02B;
+  border-top-color: hsl(107 76% 30%);
   border-top-width: 2px;
 }
 
 .feature-card-dark {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid #1F2937;
+  background: hsl(210 40% 98% / 0.02);
+  border: 1px solid hsl(218 30% 18%);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
   transition: var(--transition-smooth);
 }
 .feature-card-dark:hover {
-  border-color: rgba(0, 208, 43, 0.3);
-  background: rgba(0, 208, 43, 0.03);
+  border-color: hsl(107 76% 26% / 0.3);
+  background: hsl(107 76% 26% / 0.03);
 }
 
 /* ============================================================
    TYPOGRAPHY HELPERS
    ============================================================ */
-.font-display  { font-family: 'Orbitron', sans-serif; }
-.font-ui       { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-.font-reading  { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+.font-display { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+.font-ui      { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+.font-reading { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
 
 .heading-hero {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  letter-spacing: -0.02em;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   line-height: 1.05;
+  /* Fluid: 2rem mobile → 4rem desktop */
+  font-size: clamp(2rem, 6vw, 4rem);
 }
 
 .heading-section {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   line-height: 1.15;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .label-mono {
@@ -425,7 +560,7 @@ article,
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #94A3B8;
+  color: hsl(215 20% 65%);
 }
 
 .label-green {
@@ -434,7 +569,63 @@ article,
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #00D02B;
+  color: hsl(107 76% 42%);
+}
+
+/* ============================================================
+   RESPONSIVE CONTAINER
+   ============================================================ */
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+@media (min-width: 640px)  { .container-responsive { max-width: 640px; } }
+@media (min-width: 768px)  { .container-responsive { max-width: 768px; } }
+@media (min-width: 1024px) { .container-responsive { max-width: 1024px; } }
+@media (min-width: 1280px) { .container-responsive { max-width: 1280px; } }
+@media (min-width: 1536px) { .container-responsive { max-width: 1400px; } }
+
+/* ============================================================
+   RESPONSIVE GRID HELPERS
+   ============================================================ */
+
+/* Auto-fill — adapts columns to available space */
+.grid-auto-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: clamp(12px, 2.5vw, 24px);
+}
+
+/* 2-col tablet+, 1-col mobile */
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, 2.5vw, 24px);
+}
+@media (min-width: 640px) {
+  .grid-2-col { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 3-col desktop, 2-col tablet, 1-col mobile */
+.grid-3-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, 2.5vw, 24px);
+}
+@media (min-width: 640px)  { .grid-3-col { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .grid-3-col { grid-template-columns: repeat(3, 1fr); } }
+
+/* 4-col desktop, 2-col mobile+ */
+.grid-4-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(12px, 2.5vw, 20px);
+}
+@media (min-width: 1024px) {
+  .grid-4-col { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* ============================================================
@@ -442,24 +633,25 @@ article,
    ============================================================ */
 .prose {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  font-size: 15px;
+  font-size: clamp(14px, 2vw, 15px);
   line-height: 1.8;
-  color: #94A3B8;
+  color: hsl(215 20% 65%);
+  max-width: 68ch;
 }
 
 .prose p {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  font-size: 15px;
+  font-size: clamp(14px, 2vw, 15px);
   line-height: 1.8;
-  color: #94A3B8;
+  color: hsl(215 20% 65%);
   margin-bottom: 1.25rem;
 }
 
 .prose h2 {
-    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  font-size: 1.35rem;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
   font-weight: 700;
-  color: #00D02B;
+  color: hsl(107 76% 42%);
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
   line-height: 1.2;
@@ -467,10 +659,10 @@ article,
 }
 
 .prose h3 {
-   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  font-size: 1.1rem;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   font-weight: 700;
-  color: #FFFFFF;
+  color: hsl(210 40% 98%);
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -478,9 +670,9 @@ article,
 
 .prose li {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  font-size: 15px;
+  font-size: clamp(14px, 2vw, 15px);
   line-height: 1.75;
-  color: #94A3B8;
+  color: hsl(215 20% 65%);
   margin-bottom: 0.4rem;
 }
 
@@ -499,50 +691,52 @@ article,
 .prose strong {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-weight: 600;
-  color: #FFFFFF;
+  color: hsl(210 40% 98%);
 }
 
 .prose em {
   font-style: italic;
-  color: #94A3B8;
+  color: hsl(215 20% 65%);
 }
 
 .prose a {
-  color: #00D02B;
+  color: hsl(107 76% 42%);
   text-decoration: none;
   transition: var(--transition-base);
 }
 .prose a:hover {
   text-decoration: underline;
-  color: #00e830;
+  color: hsl(107 76% 50%);
 }
 
 .prose blockquote {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   font-style: italic;
-  border-left: 3px solid #00D02B;
+  border-left: 3px solid hsl(107 76% 30%);
   padding-left: 1rem;
   margin: 1.5rem 0;
-  color: #94A3B8;
+  color: hsl(215 20% 65%);
 }
 
 .prose code {
   font-size: 13px;
-  color: #00D02B;
-  background: rgba(0, 208, 43, 0.08);
-  border: 1px solid rgba(0, 208, 43, 0.2);
+  color: hsl(107 76% 42%);
+  background: hsl(107 76% 26% / 0.08);
+  border: 1px solid hsl(107 76% 26% / 0.2);
   border-radius: 4px;
   padding: 2px 6px;
   font-family: 'Fira Code', 'Courier New', monospace;
 }
 
 .prose pre {
-  background: #050505;
-  border: 1px solid #1F2937;
+  background: hsl(218 30% 11%);
+  border: 1px solid hsl(218 30% 18%);
   border-radius: var(--radius-lg);
   padding: 1.25rem;
   overflow-x: auto;
   margin: 1.5rem 0;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .prose pre code {
@@ -550,12 +744,12 @@ article,
   border: none;
   padding: 0;
   font-size: 13px;
-  color: #94A3B8;
+  color: hsl(215 20% 65%);
 }
 
 .prose hr {
   border: none;
-  border-top: 1px solid #1F2937;
+  border-top: 1px solid hsl(218 30% 18%);
   margin: 2rem 0;
 }
 
@@ -573,6 +767,29 @@ article,
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Accessible hide — keeps element for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Remove 300ms tap delay across all interactive elements */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea {
+  touch-action: manipulation;
 }
 
 /* ============================================================
@@ -603,11 +820,35 @@ article,
 }
 
 @keyframes legendaryPulse {
-  0%, 100% { box-shadow: 0 0 12px rgba(0, 208, 43, 0.3); }
-  50%      { box-shadow: 0 0 28px rgba(0, 208, 43, 0.55); }
+  0%, 100% { box-shadow: 0 0 12px hsl(107 76% 26% / 0.3); }
+  50%      { box-shadow: 0 0 28px hsl(107 76% 26% / 0.55); }
 }
 
 @keyframes glowPulse {
   0%, 100% { opacity: 0.08; }
   50%      { opacity: 0.16; }
+}
+
+/* ============================================================
+   REDUCED MOTION — disable all animations at once
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   HIGH CONTRAST — extra definition for accessibility
+   ============================================================ */
+@media (prefers-contrast: high) {
+  .btn-primary  { outline: 2px solid hsl(107 76% 60%); }
+  .game-card    { border-width: 2px; }
+  .badge-brand  { border-width: 2px; }
+  .input-dark:focus { box-shadow: 0 0 0 3px hsl(107 76% 26% / 0.4); }
 }

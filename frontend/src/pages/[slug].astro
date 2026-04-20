@@ -8,21 +8,81 @@ export async function getStaticPaths() {
   return blogPosts.map((post) => ({ params: { slug: post.slug } }));
 }
 
+type TocItem = {
+  id: string;
+  title: string;
+  level: number;
+};
+
 const { slug } = Astro.params;
 const post = blogPosts.find((p) => p.slug === slug);
-if (!post) return Astro.redirect("/blog");
+
+if (!post) {
+  return Astro.redirect("/blog");
+}
 
 const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
+const articleUrl = `https://xboxgamertaggenerator.com/${post.slug}`;
+
+const slugify = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/&amp;|&/g, " and ")
+    .replace(/<[^>]*>/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+
+const toc: TocItem[] = [];
+const idCounts = new Map<string, number>();
+
+const contentWithIds = post.content.replace(
+  /<h([23])>(.*?)<\/h\1>/gi,
+  (_match, level, rawTitle) => {
+    const plainTitle = rawTitle
+      .replace(/<[^>]+>/g, "")
+      .replace(/&amp;/g, "&")
+      .trim();
+
+    const baseId = slugify(plainTitle) || `section-${toc.length + 1}`;
+    const count = (idCounts.get(baseId) ?? 0) + 1;
+    idCounts.set(baseId, count);
+
+    const finalId = count > 1 ? `${baseId}-${count}` : baseId;
+
+    toc.push({
+      id: finalId,
+      title: plainTitle,
+      level: Number(level),
+    });
+
+    return `<h${level} id="${finalId}">${rawTitle}</h${level}>`;
+  }
+);
+
+const relatedTools = [
+  {
+    title: "Xbox Gamertag Generator",
+    description: "Generate unique Xbox gamertags instantly with our AI-powered tool.",
+    href: "/",
+  },
+  {
+    title: "Availability Checker",
+    description: "Check if your desired gamertag is still available before someone else takes it.",
+    href: "/gamertag-checker",
+  },
+];
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": post.title,
- "url": `https://xboxgamertaggenerator.com/${post.slug}`,
-  "description": post.excerpt,
-  "author": {
+  headline: post.title,
+  url: articleUrl,
+  description: post.excerpt,
+  author: {
     "@type": "Organization",
-    "name": "Xbox Gamertag Generator",
+    name: "Xbox Gamertag Generator",
   },
 };
 ---
@@ -31,272 +91,221 @@ const schema = {
   title={`${post.title} | Xbox Gamertag Guide`}
   description={post.excerpt}
   keywords={`${post.title.toLowerCase()}, xbox gamertag guide, gaming tips, xbox naming`}
- canonical={`https://xboxgamertaggenerator.com/${post.slug}`}
+  canonical={articleUrl}
   ogType="article"
   {schema}
-> 
-  <div class="min-h-screen bg-[#000000] text-white">
+>
+  <Header />
 
-    <Header />
+  <div class="min-h-screen bg-gray-100 font-ui">
+    <!-- Hero Section -->
+    <section class="pt-5 pb-5 sm:pt-6 sm:pb-6 md:pt-8 md:pb-8 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg p-8 sm:p-12 text-center shadow-sm">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">
+            {post.title}
+          </h1>
 
-    <!-- Hero -->
-    <section class="relative overflow-hidden border-b border-[#1F2937] py-14 md:py-20 bg-[#000000]">
-      <div
-        class="pointer-events-none absolute inset-0"
-        style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"
-      ></div>
+          <p class="text-base sm:text-lg md:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
+            {post.excerpt}
+          </p>
 
-      <div class="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-gray-600">
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A10.966 10.966 0 0112 15c2.125 0 4.109.602 5.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>By Xbox Gamertag Generator</span>
+            </div>
 
-        <!-- Back link -->
-        <a
-          href="/blog"
-          class="inline-flex items-center gap-1.5 text-[#94A3B8] hover:text-[#00D02B] text-sm font-reading font-semibold mb-8 transition-colors group"
-        >
-          <svg class="h-4 w-4 transition-transform group-hover:-translate-x-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-          Back to Blog
-        </a>
-
-        <!-- Meta -->
-        <div class="flex items-center gap-2 mb-5 flex-wrap">
-          <span class="inline-flex items-center px-3 py-1 rounded-sm bg-[#00D02B]/[0.08] border border-[#00D02B]/25 font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">
-            Article
-          </span>
-
-          <span class="text-[#4B5563]">·</span>
-
-          <div class="flex items-center gap-1.5 text-[#94A3B8] text-xs font-reading font-semibold uppercase tracking-widest">
-            <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            {post.readTime}
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{post.readTime}</span>
+            </div>
           </div>
         </div>
-
-        <!-- Title -->
-        <h1 class="font-display text-3xl md:text-5xl lg:text-6xl text-white leading-tight">
-          {post.title}
-        </h1>
       </div>
     </section>
 
-    <!-- Article Body -->
-    <section class="bg-[#F8FAFC] py-12 md:py-16">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <article class="bg-white border border-[#E2E8F0] rounded-2xl shadow-[0_14px_34px_-18px_rgba(0,0,0,0.18)] overflow-hidden">
-
-          <!-- Image placeholder -->
-          <div class="w-full h-56 md:h-72 border-b border-[#E2E8F0] flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,208,43,0.08),transparent_65%)] bg-[#F8FAFC]">
+    <!-- Featured Image -->
+    <section class="px-4 sm:px-6 lg:px-8 -mt-8 relative z-10 pt-[20px] pb-[35px] bg-white">
+      <div class="max-w-4xl mx-auto">
+        <div class="relative aspect-video rounded-xl overflow-hidden shadow-lg bg-gray-200">
+          <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center">
-              <div class="text-3xl mb-2">🎮</div>
-              <span class="font-reading text-[11px] text-[#94A3B8] uppercase tracking-[0.2em]">
-                Article Image
-              </span>
+              <div class="text-4xl mb-2">🎮</div>
+              <p class="text-sm text-gray-500 font-medium">Article Image Placeholder</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="px-5 sm:px-8 md:px-10 py-8 md:py-10">
-
-            <!-- Excerpt callout -->
-            <div class="mb-10 p-5 rounded-xl border border-[#00D02B]/20 bg-[#00D02B]/[0.05]">
-              <p class="text-[#64748B] text-base font-reading leading-relaxed italic">
-                {post.excerpt}
-              </p>
-            </div>
-
-          <!-- Article content -->
-<div
-  class="
-    prose prose-lg max-w-none
-    prose-p:text-[#475569] prose-p:leading-8 prose-p:mb-5 prose-p:font-reading
-    prose-headings:font-reading
-    prose-h2:font-reading prose-h2:text-[#050505] prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-10 prose-h2:mb-4
-    prose-h3:font-reading prose-h3:text-[#050505] prose-h3:text-xl prose-h3:font-bold prose-h3:mt-8 prose-h3:mb-3
-    prose-strong:text-[#050505] prose-strong:font-semibold
-    prose-a:text-[#00A021] prose-a:no-underline hover:prose-a:underline
-    prose-li:text-[#475569] prose-li:font-reading
-    prose-ul:my-4 prose-ol:my-4
-    prose-blockquote:border-l-[#00D02B] prose-blockquote:text-[#64748B]
-    prose-code:text-[#00A021] prose-code:bg-[#F8FAFC] prose-code:rounded prose-code:px-1.5 prose-code:py-0.5
-    prose-pre:bg-[#050505] prose-pre:text-[#E2E8F0] prose-pre:border prose-pre:border-[#1F2937]
-    prose-hr:border-[#E2E8F0]
-  "
-  set:html={post.content}
-/>
-            <!-- Divider -->
-            <div class="my-10 border-t border-[#E2E8F0]"></div>
-
-            <!-- Footer actions -->
-            <div class="flex items-center justify-between flex-wrap gap-4">
-              <a
-                href="/blog"
-                class="inline-flex items-center gap-2 px-6 py-3 text-sm bg-white border border-[#D7E0E8] hover:border-[#00D02B]/45 text-[#050505] font-reading font-semibold rounded-lg transition-colors"
-              >
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                </svg>
-                Back to All Articles
-              </a>
-
-              <div class="flex items-center gap-3 flex-wrap">
-                <span class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8]">
-                  Share
-                </span>
-
-                <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://xboxgamertaggenerator.com/${post.slug}`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 bg-[#00D02B]/[0.08] border border-[#00D02B]/20 hover:border-[#00D02B]/45"
-                  title="Share on X / Twitter"
-                >
-                  <svg class="w-4 h-4 text-[#00D02B]" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                </a>
-
-                <button
-                  id="copyLinkBtn"
-                  class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 bg-[#00D02B]/[0.08] border border-[#00D02B]/20 hover:border-[#00D02B]/45"
-                  title="Copy link"
-                >
-                  <svg class="w-4 h-4 text-[#00D02B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-4 10h6a2 2 0 002-2v-8a2 2 0 00-2-2h-6a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                  </svg>
-                </button>
-
-                <span id="copiedMsg" class="hidden text-xs text-[#00A021] font-reading font-semibold">
-                  Copied!
-                </span>
+    <!-- Main Content with Right Ad -->
+    <div class="bg-gray-100 min-h-screen pt-2 pb-0">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-0">
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- Main Article Content -->
+          <main class="flex-1 max-w-none order-1 lg:order-1">
+            <!-- Mobile & Tablet Ad Banner -->
+            <div class="lg:hidden">
+              <div class="bg-gray-100 rounded-lg p-4 text-center border-2 border-dashed border-gray-300 mb-6 mt-2">
+                <p class="text-xs text-gray-500">Advertisement</p>
+                <div class="h-32 bg-gray-200 rounded mt-2"></div>
               </div>
             </div>
 
-          </div>
-        </article>
+            <div class="bg-white rounded-t-lg shadow-sm pb-12 min-h-screen my-0 py-[15px]">
+              <article class="p-6 sm:p-8">
+                {toc.length > 0 && (
+                  <div class="mb-8">
+                    <details class="bg-white rounded-lg shadow-sm border border-gray-200" open>
+                      <summary class="list-none p-5 border-b border-gray-100 cursor-pointer">
+                        <div class="w-full flex items-center justify-between text-lg font-semibold text-gray-800 hover:text-brand transition-colors">
+                          <div class="flex items-center gap-2">
+                            <svg class="h-5 w-5 text-brand" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            Table of Contents
+                          </div>
 
-      </div>
-    </section>
+                          <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </summary>
 
-   <!-- Related Posts -->
-    {relatedPosts.length > 0 && (
-      <section class="bg-[#F8FAFC] border-t border-[#E2E8F0] py-14 md:py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div class="flex items-center gap-3 mb-10">
-            <div class="w-1 h-6 bg-[#00D02B] rounded-full"></div>
-            <h2 class="font-reading text-2xl font-bold text-[#050505]">
-              Related <span class="text-[#00D02B]">Articles</span>
-            </h2>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {relatedPosts.map((related) => (
-              
-                <a href={`/${related.slug}`}
-                class="group flex flex-col h-full bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden transition-all duration-200 hover:border-[#00D02B]/50 hover:-translate-y-0.5 no-underline"
-              >
-                <div class="h-1 w-full bg-[#00D02B]"></div>
-
-                <div class="w-full h-40 border-b border-[#E2E8F0] flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,208,43,0.06),transparent_65%)] bg-[#F8FAFC]">
-                  <span class="text-2xl">🎮</span>
-                </div>
-
-                <div class="p-5 flex flex-col h-full">
-                  <div class="flex-1">
-                    <h3 class="font-reading text-base font-bold text-[#050505] mb-2 leading-snug group-hover:text-[#00A021] transition-colors duration-200">
-                      {related.title}
-                    </h3>
-
-                    <p class="font-reading text-sm text-[#64748B] leading-relaxed line-clamp-2 mb-4">
-                      {related.excerpt}
-                    </p>
+                      <nav class="p-5">
+                        <ul class="space-y-2">
+                          {toc.map((item) => (
+                            <li>
+                              <a
+                                href={`#${item.id}`}
+                                class:list={[
+                                  "block text-sm transition-colors hover:text-brand",
+                                  item.level === 3
+                                    ? "pl-4 text-gray-600"
+                                    : "text-gray-700 font-medium"
+                                ]}
+                              >
+                                {item.title}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </nav>
+                    </details>
                   </div>
+                )}
 
-                  <div class="flex items-center justify-between pt-4 border-t border-[#E2E8F0] mt-auto">
-                    <span class="flex items-center gap-1.5 text-[#94A3B8] text-xs font-reading">
-                      <svg class="h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                      </svg>
-                      {related.readTime}
-                    </span>
+                <div
+                  class="
+                    prose prose-lg max-w-none
+                    prose-p:text-gray-700 prose-p:leading-8 prose-p:mb-5
+                    prose-headings:font-ui
+                    prose-h2:text-brand prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-10 prose-h2:mb-4
+                    prose-h3:text-gray-800 prose-h3:text-xl prose-h3:font-bold prose-h3:mt-8 prose-h3:mb-3
+                    prose-strong:text-gray-900 prose-strong:font-semibold
+                    prose-a:text-brand prose-a:no-underline hover:prose-a:underline
+                    prose-li:text-gray-700
+                    prose-ul:my-4 prose-ol:my-4
+                    prose-blockquote:border-l-[#00D02B] prose-blockquote:text-gray-600
+                    prose-code:text-[#00A021] prose-code:bg-gray-100 prose-code:rounded prose-code:px-1.5 prose-code:py-0.5
+                    prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:border prose-pre:border-gray-700
+                    prose-hr:border-gray-200
+                  "
+                  set:html={contentWithIds}
+                />
+              </article>
 
-                    <span class="text-[10px] font-bold tracking-[2px] uppercase text-[#00D02B]">
-                      Read More
-                    </span>
+              <!-- Call to Action -->
+              <div class="bg-brand rounded-lg p-6 text-center text-white m-6">
+                <h3 class="text-xl font-bold mb-2">Ready to Create Your Gamertag?</h3>
+                <p class="mb-4">
+                  Use our free Xbox Gamertag Generator to find the perfect name for your gaming identity.
+                </p>
+                <a
+                  href="/"
+                  class="inline-flex items-center justify-center bg-white text-brand hover:bg-gray-100 font-semibold px-6 py-3 rounded-lg transition-colors"
+                >
+                  Try Generator Now
+                </a>
+              </div>
+
+              <!-- Related Posts -->
+              {relatedPosts.length > 0 && (
+                <section class="p-6 sm:p-8 border-t border-gray-200">
+                  <h2 class="text-2xl font-bold text-gray-800 mb-6">Related Posts</h2>
+
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {relatedPosts.map((relatedPost) => (
+                      <a
+                        href={`/${relatedPost.slug}`}
+                        class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow group"
+                      >
+                        <div class="h-40 bg-gray-200 flex items-center justify-center">
+                          <span class="text-gray-500 text-sm">Gaming Image Placeholder</span>
+                        </div>
+
+                        <div class="p-4">
+                          <h3 class="font-semibold text-gray-800 mb-2 group-hover:text-brand transition-colors">
+                            {relatedPost.title}
+                          </h3>
+                          <p class="text-sm text-gray-600">{relatedPost.readTime}</p>
+                        </div>
+                      </a>
+                    ))}
                   </div>
+                </section>
+              )}
+
+              <!-- Ad Banner after Related Posts -->
+              <div class="m-6 bg-gray-100 rounded-lg p-6 text-center border-2 border-dashed border-gray-300">
+                <p class="text-sm text-gray-500 mb-2">Advertisement</p>
+                <div class="h-32 bg-gray-200 rounded"></div>
+              </div>
+
+              <!-- Related Tools -->
+              <section class="p-6 sm:p-8 border-t border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Related Tools</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {relatedTools.map((tool) => (
+                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                      <h3 class="text-xl font-bold mb-2 text-brand">{tool.title}</h3>
+                      <p class="text-gray-600 mb-4">{tool.description}</p>
+                      <a
+                        href={tool.href}
+                        class="inline-flex items-center justify-center bg-brand hover:bg-brand-light text-white font-semibold px-5 py-3 rounded-lg transition-colors"
+                      >
+                        Go to Tool
+                      </a>
+                    </div>
+                  ))}
                 </div>
-              </a>
-            ))}
-          </div>
+              </section>
 
-        </div>
-      </section>
-    )}
+              <!-- Bottom Ad Space -->
+              <div class="mx-6 mt-6 mb-0 bg-gray-100 rounded-lg p-6 text-center border-2 border-dashed border-gray-300">
+                <p class="text-sm text-gray-500 mb-2">Advertisement</p>
+                <div class="h-32 bg-gray-200 rounded"></div>
+              </div>
+            </div>
+          </main>
 
-    <!-- CTA -->
-    <section class="bg-[#000000] border-t-4 border-[#00D02B] py-14 md:py-20">
-      <div class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-        <span class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B] block mb-4">
-          Free Tool
-        </span>
-
-        <h2 class="font-reading text-2xl md:text-3xl font-bold text-white mb-4">
-          Ready to find your <span class="text-[#00D02B]">perfect gamertag?</span>
-        </h2>
-
-        <p class="text-[#94A3B8] font-reading mb-8 leading-relaxed text-sm">
-          Use our free generator to create unique Xbox gamertags instantly.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/"
-            class="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm bg-[#00D02B] hover:bg-[#00e830] text-black font-reading font-bold rounded-lg transition-colors"
-          >
-            Try the Generator
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
-
-          <a
-            href="/tools"
-            class="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm bg-transparent border border-[#1F2937] hover:border-[#00D02B]/45 text-white font-reading font-semibold rounded-lg transition-colors"
-          >
-            Explore All Tools
-          </a>
+          <!-- Sticky Ad Space - Desktop Sidebar on Right -->
+          <aside class="hidden lg:block lg:w-64 flex-shrink-0 order-2 lg:order-2">
+            <div class="sticky top-4 space-y-6 transition-all duration-200 my-0 py-[50px]">
+              <div class="bg-gray-100 rounded-lg p-4 text-center border-2 border-dashed border-gray-300">
+                <p class="text-xs text-gray-500">Advertisement</p>
+                <div class="h-64 bg-gray-200 rounded mt-2"></div>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
-    </section>
-
-    <!-- Ad -->
-    <section class="bg-[#050505] py-10 border-t border-[#1F2937]">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-[#000000] border border-dashed border-[#1F2937] rounded-2xl px-5 py-4 text-center">
-          <p class="font-reading text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">
-            Advertisement
-          </p>
-          <div class="h-24 md:h-32 lg:h-48 bg-[#050505] border border-[#1F2937] rounded-xl"></div>
-        </div>
-      </div>
-    </section>
-
+    </div>
   </div>
-
-  <script>
-    const btn = document.getElementById("copyLinkBtn");
-    const msg = document.getElementById("copiedMsg");
-
-    if (btn && msg) {
-      btn.addEventListener("click", () => {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          msg.classList.remove("hidden");
-          setTimeout(() => msg.classList.add("hidden"), 2000);
-        });
-      });
-    }
-  </script>
 </MainLayout>

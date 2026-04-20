@@ -1,154 +1,165 @@
 ---
 import "../styles/global.css";
 import Footer from "../components/layout/Footer.astro";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
-  title        : string;
-  description  : string;
-  keywords?    : string;
-  ogImage?     : string;
-  ogType?      : string;
-  canonical?   : string;
-  noindex?     : boolean;
-  schema?      : object | object[];
+  title: string;
+  description: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: string;
+  canonical?: string;
+  noindex?: boolean;
+  schema?: object | object[];
 }
 
 const {
   title,
   description,
   keywords,
-  ogImage   = "https://xboxgamertaggenerator.com/og-default.jpg",
-  ogType    = "website",
-  canonical = Astro.url.href.split("?")[0],
-  noindex   = false,
+  ogImage,
+  ogType = "website",
+  canonical,
+  noindex = false,
   schema,
 } = Astro.props;
 
-const siteName  = "Xbox Gamertag Generator";
+const siteName = "Xbox Gamertag Generator";
+const siteUrl = "https://xboxgamertaggenerator.com";
+
 const fullTitle = title.includes(siteName)
   ? title
   : `${title} | ${siteName}`;
 
-const canonicalClean = canonical.endsWith("/") && canonical !== "https://xboxgamertaggenerator.com/"
-  ? canonical.slice(0, -1)
-  : canonical;
+const rawCanonical = canonical ?? Astro.url.href.split("?")[0];
+const canonicalClean =
+  rawCanonical.endsWith("/") && rawCanonical !== `${siteUrl}/`
+    ? rawCanonical.slice(0, -1)
+    : rawCanonical;
+
+const defaultOgImage = `${siteUrl}/og-image.jpg`;
+const resolvedOgImage = ogImage
+  ? (ogImage.startsWith("http") ? ogImage : new URL(ogImage, siteUrl).toString())
+  : defaultOgImage;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="hsl(107 76% 30%)" />
+    <meta name="color-scheme" content="dark" />
 
-    <!-- ── Primary SEO ── -->
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
-    <meta name="author"      content="Xbox Gamertag Generator" />
-    <meta name="robots"      content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
-    <meta name="theme-color" content="#00D02B" />
+    <meta name="author" content={siteName} />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"}
+    />
 
-    <!-- ── Canonical ── -->
     <link rel="canonical" href={canonicalClean} />
-
-    <!-- ── Open Graph ── -->
-    <meta property="og:type"         content={ogType} />
-    <meta property="og:url"          content={canonicalClean} />
-    <meta property="og:title"        content={fullTitle} />
-    <meta property="og:description"  content={description} />
-    <meta property="og:image"        content={ogImage} />
-    <meta property="og:image:width"  content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt"    content={fullTitle} />
-    <meta property="og:site_name"    content={siteName} />
-    <meta property="og:locale"       content="en_US" />
-
-    <!-- ── Twitter Card ── -->
-    <meta name="twitter:card"        content="summary_large_image" />
-    <meta name="twitter:title"       content={fullTitle} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image"       content={ogImage} />
-    <meta name="twitter:image:alt"   content={fullTitle} />
-    <meta name="twitter:site"        content="@XboxGamertagGen" />
-
-    <!-- ── Favicon ── -->
-    <link rel="icon"             type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon"             type="image/png"    href="/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon"             type="image/png"    href="/favicon-16x16.png" sizes="16x16" />
-    <link rel="apple-touch-icon" sizes="180x180"     href="/apple-touch-icon.png" />
-    <link rel="manifest"                              href="/site.webmanifest" />
-
-    <!-- ── Sitemap ── -->
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
-    <!-- ── Font preconnect ── -->
+    <!-- Faster-feeling internal navigation -->
+ <ClientRouter fallback="swap" />
+
+    <!-- Favicons / app icons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalClean} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={fullTitle} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedOgImage} />
+    <meta name="twitter:image:alt" content={fullTitle} />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-   <!-- ── Fonts: Orbitron + Inter (non-blocking) ── -->
-<link
-  rel="preload"
-  as="style"
-  href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
-/>
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
-  media="print"
-  onload="this.media='all'"
-/>
-<noscript>
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
-  />
-</noscript>
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&display=swap"
       />
     </noscript>
 
-    <!-- ── Page-specific Schema.org JSON-LD ── -->
+    <!-- Page schema -->
     {schema && (
       Array.isArray(schema)
-        ? schema.map(s => (
+        ? schema.map((s) => (
             <script type="application/ld+json" set:html={JSON.stringify(s)} />
           ))
         : <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     )}
 
-    <!-- ── Global WebSite Schema ── -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type"   : "WebSite",
-      "name"    : siteName,
-      "url"     : "https://xboxgamertaggenerator.com",
-      "potentialAction": {
-        "@type"      : "SearchAction",
-        "target"     : "https://xboxgamertaggenerator.com/?q={search_term_string}",
-        "query-input": "required name=search_term_string",
-      },
-    })} />
+    <!-- Global WebSite schema -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: siteName,
+        url: siteUrl,
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${siteUrl}/?q={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      })}
+    />
 
-    <!-- ── Global Organization Schema ── -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type"   : "Organization",
-      "name"    : siteName,
-      "url"     : "https://xboxgamertaggenerator.com",
-      "logo"    : "https://xboxgamertaggenerator.com/favicon-32x32.png",
-      "sameAs"  : [
-        "https://x.com/xbox_tag_gen",
-        "https://www.facebook.com/xboxgamertaggenerator/",
-      ],
-    })} />
+    <!-- Global Organization schema -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: siteName,
+        url: siteUrl,
+        logo: `${siteUrl}/android-chrome-512x512.png`,
+        sameAs: [
+          "https://x.com/xbox_tag_gen",
+          "https://www.facebook.com/xboxgamertaggenerator/",
+        ],
+      })}
+    />
   </head>
 
-  <body class="bg-[#000000] text-white min-h-screen flex flex-col">
-    <main class="flex-1">
+  <body class="bg-background text-foreground min-h-screen flex flex-col font-ui">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer />

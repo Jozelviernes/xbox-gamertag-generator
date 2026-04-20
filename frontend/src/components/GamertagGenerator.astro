@@ -12,19 +12,19 @@ import {
 <div class="w-full">
 
   <!-- ═══ FORM CARD ═══ -->
-  <div class="w-full bg-card border border-default rounded-xl p-6 md:p-8 shadow-card">
+  <div class="gtg-card">
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Gender -->
       <div>
-        <label class="label-mono text-foreground-muted block mb-2">Gender</label>
+        <label class="gtg-label block mb-2">Gender</label>
         <div class="custom-select-wrapper" data-name="gender">
           <input type="hidden" name="gender" id="gender" value="any" />
           <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
             <span class="custom-select-label">Any</span>
             <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M6 8L1 3h10z" fill="#00D02B"/>
+              <path d="M6 8L1 3h10z" fill="currentColor"/>
             </svg>
           </button>
           <ul class="custom-select-menu" role="listbox">
@@ -38,13 +38,13 @@ import {
 
       <!-- Character Theme -->
       <div>
-        <label class="label-mono text-foreground-muted block mb-2">Character Theme</label>
+        <label class="gtg-label block mb-2">Character Theme</label>
         <div class="custom-select-wrapper" data-name="theme">
           <input type="hidden" name="theme" id="theme" value={themes[0]?.value ?? ""} />
           <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
             <span class="custom-select-label">{themes[0]?.label ?? "Any"}</span>
             <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M6 8L1 3h10z" fill="#00D02B"/>
+              <path d="M6 8L1 3h10z" fill="currentColor"/>
             </svg>
           </button>
           <ul class="custom-select-menu" role="listbox">
@@ -62,13 +62,13 @@ import {
 
       <!-- Language -->
       <div>
-        <label class="label-mono text-foreground-muted block mb-2">Language</label>
+        <label class="gtg-label block mb-2">Language</label>
         <div class="custom-select-wrapper" data-name="language">
           <input type="hidden" name="language" id="language" value={languages[0]?.value ?? ""} />
           <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
             <span class="custom-select-label">{languages[0]?.label ?? "English"}</span>
             <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M6 8L1 3h10z" fill="#00D02B"/>
+              <path d="M6 8L1 3h10z" fill="currentColor"/>
             </svg>
           </button>
           <ul class="custom-select-menu" role="listbox">
@@ -86,7 +86,7 @@ import {
 
       <!-- Include Words -->
       <div class="md:col-span-2 lg:col-span-2">
-        <label for="includeWords" class="label-mono text-foreground-muted block mb-2">Include (Optional)</label>
+        <label for="includeWords" class="gtg-label block mb-2">Include <span class="gtg-label-optional">(Optional)</span></label>
         <textarea
           id="includeWords"
           placeholder="Specific words or letters..."
@@ -96,7 +96,7 @@ import {
 
       <!-- Other Requests -->
       <div class="md:col-span-2 lg:col-span-1">
-        <label for="otherRequests" class="label-mono text-foreground-muted block mb-2">Other Requests</label>
+        <label for="otherRequests" class="gtg-label block mb-2">Other Requests</label>
         <textarea
           id="otherRequests"
           placeholder="Any special requirements..."
@@ -106,11 +106,12 @@ import {
 
       <!-- Character Limit slider — full width -->
       <div class="md:col-span-2 lg:col-span-3">
-        <label for="characterLimit" class="label-mono text-foreground-muted block mb-3">
-          Character Limit: <span id="characterLimitValue" class="text-brand ml-1">12</span>
+        <label for="characterLimit" class="gtg-label block mb-3">
+          Character Limit:
+          <span id="characterLimitValue" class="gtg-limit-value">12</span>
         </label>
         <div class="flex items-center gap-4">
-          <span class="text-foreground-subtle font-ui text-sm">3</span>
+          <span class="gtg-range-bound">3</span>
           <input
             id="characterLimit"
             type="range"
@@ -120,7 +121,7 @@ import {
             value="12"
             class="generator-range flex-1"
           />
-          <span class="text-foreground-subtle font-ui text-sm">12</span>
+          <span class="gtg-range-bound">12</span>
         </div>
       </div>
 
@@ -129,43 +130,46 @@ import {
         <button
           id="generateBtn"
           type="button"
-          class="btn-primary w-full py-4 text-base rounded-lg tracking-widest"
+          class="gtg-generate-btn"
         >
-          Generate Gamertags
+          <span class="gtg-btn-inner">
+            <svg class="gtg-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            <span class="gtg-btn-text">Generate Gamertags</span>
+          </span>
+          <span class="gtg-btn-shimmer"></span>
         </button>
       </div>
 
     </div>
 
     <!-- Ad slot -->
-    <div class="mt-10 rounded-lg px-6 py-10 text-center border border-dashed border-default bg-background-surface">
-      <p class="label-mono text-foreground-subtle mb-3">Advertisement</p>
-      <div class="h-20 md:h-28 rounded bg-background-alt"></div>
+    <div class="gtg-ad-slot">
+      <p class="gtg-label gtg-label-subtle mb-3">Advertisement</p>
+      <div class="gtg-ad-placeholder"></div>
     </div>
   </div>
 
   <!-- ═══ RESULTS ═══ -->
   <div id="resultsSection" class="w-full mt-8 hidden">
 
-    <h2 class="heading-section text-2xl md:text-3xl text-brand text-center mb-8">
+    <h2 class="gtg-results-heading">
       Generated Gamertags
     </h2>
 
-   <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8"></div>
+    <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8"></div>
+
     <div class="text-center">
-      <button
-        id="generateMoreBtn"
-        type="button"
-        class="btn-secondary px-8 py-3"
-      >
+      <button id="generateMoreBtn" type="button" class="gtg-more-btn">
         Generate More
       </button>
     </div>
 
     <!-- Ad slot -->
-    <div class="mt-10 rounded-lg px-6 py-10 text-center border border-dashed border-default bg-background-surface">
-      <p class="label-mono text-foreground-subtle mb-3">Advertisement</p>
-      <div class="h-20 md:h-28 rounded bg-background-alt"></div>
+    <div class="gtg-ad-slot mt-10">
+      <p class="gtg-label gtg-label-subtle mb-3">Advertisement</p>
+      <div class="gtg-ad-placeholder"></div>
     </div>
   </div>
 
@@ -173,130 +177,221 @@ import {
 
 <!-- ═══ STYLES ═══ -->
 <style is:global>
-  /* ── Custom select trigger ── */
+
+  /* ─────────────────────────────────────────────
+     CARD
+  ───────────────────────────────────────────── */
+  .gtg-card {
+    width: 100%;
+    background: hsl(218 30% 12%);
+    border: 1px solid hsl(218 30% 20%);
+    border-radius: 1rem;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    box-shadow:
+      0 0 0 1px hsl(218 30% 22% / 0.5),
+      0 20px 60px -10px hsl(218 30% 4% / 0.7);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Subtle top-edge highlight */
+  .gtg-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(107 76% 30% / 0.5) 50%,
+      transparent 100%
+    );
+  }
+
+  /* ─────────────────────────────────────────────
+     LABELS
+  ───────────────────────────────────────────── */
+  .gtg-label {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: hsl(215 20% 60%);
+  }
+  .gtg-label-optional {
+    font-weight: 400;
+    opacity: 0.6;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 10px;
+  }
+  .gtg-label-subtle {
+    color: hsl(218 15% 35%);
+  }
+  .gtg-limit-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: hsl(107 76% 42%);
+    margin-left: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .gtg-range-bound {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: hsl(218 15% 38%);
+    min-width: 16px;
+    text-align: center;
+  }
+
+  /* ─────────────────────────────────────────────
+     CUSTOM SELECT
+  ───────────────────────────────────────────── */
   .custom-select-wrapper {
     position: relative;
     width: 100%;
     user-select: none;
   }
+
   .custom-select-trigger {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #050505;
-    color: #ffffff;
-    border: 1px solid #1F2937;
-    border-radius: 0.5rem;
+    background-color: hsl(218 30% 10%);
+    color: hsl(210 40% 92%);
+    border: 1px solid hsl(218 30% 22%);
+    border-radius: 0.75rem;
     padding: 10px 14px;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     text-align: left;
     outline: none;
+    min-height: 44px;
   }
   .custom-select-trigger:hover {
-    border-color: #374151;
+    border-color: hsl(218 30% 32%);
+    background-color: hsl(218 30% 12%);
   }
   .custom-select-trigger.open {
-    border-color: #00D02B;
-    box-shadow: 0 0 0 2px rgba(0, 208, 43, 0.15);
+    border-color: hsl(107 76% 30%);
+    box-shadow: 0 0 0 2px hsl(107 76% 26% / 0.18);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    background-color: hsl(218 30% 12%);
   }
+
   .custom-select-arrow {
     flex-shrink: 0;
+    color: hsl(107 76% 42%);
     transition: transform 0.2s ease;
   }
   .custom-select-trigger.open .custom-select-arrow {
     transform: rotate(180deg);
   }
 
-.custom-select-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: #050505;
-  border: 1px solid #00D02B;
-  border-top: none;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-  z-index: 100;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
-  list-style: none;
-  margin: 0;
-  padding: 4px 0;
+  .custom-select-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: hsl(218 30% 11%);
+    border: 1px solid hsl(107 76% 30%);
+    border-top: none;
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    z-index: 100;
+    box-shadow:
+      0 16px 40px hsl(218 30% 4% / 0.8),
+      0 0 0 1px hsl(107 76% 26% / 0.1);
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    max-height: 260px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .custom-select-menu.open { display: block; }
 
-  max-height: 260px;      
-  overflow-y: auto;       
-  overflow-x: hidden;    
-}
-  .custom-select-menu.open {
-    display: block;
+  /* Scrollbar styling */
+  .custom-select-menu::-webkit-scrollbar { width: 4px; }
+  .custom-select-menu::-webkit-scrollbar-track { background: transparent; }
+  .custom-select-menu::-webkit-scrollbar-thumb {
+    background: hsl(107 76% 26% / 0.3);
+    border-radius: 2px;
   }
 
-  /* ── Dropdown items ── */
   .custom-select-item {
-    color: #ffffff;
-    font-family: 'Rajdhani', sans-serif;
+    color: hsl(210 40% 88%);
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     padding: 10px 14px;
     cursor: pointer;
     transition: background-color 0.15s ease, color 0.15s ease;
-    border-bottom: 1px solid #1F2937;
+    border-bottom: 1px solid hsl(218 30% 18%);
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   .custom-select-item:last-child { border-bottom: none; }
   .custom-select-item:hover {
-    background-color: rgba(0, 208, 43, 0.12);
-    color: #00D02B;
+    background-color: hsl(107 76% 26% / 0.1);
+    color: hsl(107 76% 50%);
   }
   .custom-select-item.selected {
-    background-color: rgba(0, 208, 43, 0.08);
-    color: #00D02B;
+    background-color: hsl(107 76% 26% / 0.08);
+    color: hsl(107 76% 46%);
   }
   .custom-select-item.selected::after {
     content: "✓";
     font-size: 11px;
-    color: #00D02B;
+    color: hsl(107 76% 46%);
   }
 
-  /* ── Textarea ── */
+  /* ─────────────────────────────────────────────
+     TEXTAREA
+  ───────────────────────────────────────────── */
   .generator-textarea {
     width: 100%;
-    background-color: #050505;
-    color: #ffffff;
-    border: 1px solid #1F2937;
-    border-radius: 0.5rem;
+    background-color: hsl(218 30% 10%);
+    color: hsl(210 40% 92%);
+    border: 1px solid hsl(218 30% 22%);
+    border-radius: 0.75rem;
     padding: 10px 14px;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
     font-size: 14px;
     font-weight: 400;
     min-height: 80px;
     resize: none;
     outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    line-height: 1.6;
   }
-  .generator-textarea::placeholder { color: #4B5563; }
-  .generator-textarea:hover { border-color: #374151; }
+  .generator-textarea::placeholder { color: hsl(218 20% 38%); }
+  .generator-textarea:hover {
+    border-color: hsl(218 30% 30%);
+    background-color: hsl(218 30% 11%);
+  }
   .generator-textarea:focus {
-    border-color: #00D02B;
-    box-shadow: 0 0 0 2px rgba(0, 208, 43, 0.12);
+    border-color: hsl(107 76% 30%);
+    box-shadow: 0 0 0 2px hsl(107 76% 26% / 0.14);
+    background-color: hsl(218 30% 11%);
   }
 
-  /* ── Range slider ── */
+  /* ─────────────────────────────────────────────
+     RANGE SLIDER
+  ───────────────────────────────────────────── */
   .generator-range {
     -webkit-appearance: none;
     appearance: none;
     height: 4px;
-    background: #1F2937;
+    background: hsl(218 30% 22%);
     border-radius: 2px;
     outline: none;
     cursor: pointer;
@@ -304,77 +399,285 @@ import {
   .generator-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: #00D02B;
+    background: hsl(107 76% 28%);
     cursor: pointer;
-    border: 2px solid #000;
-    box-shadow: 0 0 6px rgba(0, 208, 43, 0.5);
-    transition: box-shadow 0.2s ease;
+    border: 2px solid hsl(218 30% 12%);
+    box-shadow: 0 0 8px hsl(107 76% 26% / 0.5);
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
   }
   .generator-range::-webkit-slider-thumb:hover {
-    box-shadow: 0 0 12px rgba(0, 208, 43, 0.7);
+    box-shadow: 0 0 16px hsl(107 76% 26% / 0.75);
+    transform: scale(1.1);
   }
   .generator-range::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: #00D02B;
+    background: hsl(107 76% 28%);
     cursor: pointer;
-    border: 2px solid #000;
-    box-shadow: 0 0 6px rgba(0, 208, 43, 0.5);
+    border: 2px solid hsl(218 30% 12%);
+    box-shadow: 0 0 8px hsl(107 76% 26% / 0.5);
   }
-.result-card {
-  display: flex;
-  flex-direction: column; /* 🔥 THIS IS THE KEY CHANGE */
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 20px;
-  min-height: 110px;
-    background: linear-gradient(180deg, #050505 0%, #0a0f0a 100%);
-  border: 1px solid rgba(0, 208, 43, 0.2);
-  border-radius: 0.75rem;
-  padding: 22px;
-  min-height: 120px;
-  transition: all 0.2s ease;
-}
 
-.result-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0, 208, 43, 0.4);
-  box-shadow: 0 0 20px rgba(0, 208, 43, 0.08);
-}
-
-.result-card-name {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(22px, 2.5vw, 28px); /* 🔥 bigger + responsive */
-  font-weight: 800;
-  line-height: 1.2;
-  color: #ffffff;
-  word-break: break-word;
-  letter-spacing: 0.04em;
-}
-.result-copy-btn {
-  align-self: flex-end; /* move to bottom-right */
-  margin-top: auto;
-
-  background: rgba(0, 208, 43, 0.08);
-  color: #00D02B;
-  border: 1px solid rgba(0, 208, 43, 0.3);
-  border-radius: 0.5rem;
-  padding: 6px 12px;
-  font-size: 11px;
-}
-
-.result-copy-btn:hover {
-  background-color: #00D02B;
-  color: #000000;
-}  .result-copy-btn.copied {
-    background-color: #00D02B;
-    color: #000000;
+  /* ─────────────────────────────────────────────
+     GENERATE BUTTON
+  ───────────────────────────────────────────── */
+  .gtg-generate-btn {
+    position: relative;
+    width: 100%;
+    background: hsl(107 76% 22%);
+    color: hsl(107 10% 95%);
+    border: 1px solid hsl(107 76% 30%);
+    border-radius: 0.75rem;
+    padding: 14px 28px;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+    min-height: 52px;
   }
+  .gtg-generate-btn:hover {
+    background: hsl(107 76% 27%);
+    border-color: hsl(107 76% 42%);
+    box-shadow:
+      0 0 24px hsl(107 76% 26% / 0.3),
+      0 0 60px hsl(107 76% 26% / 0.1);
+    transform: translateY(-1px);
+  }
+  .gtg-generate-btn:active {
+    transform: scale(0.99) translateY(0);
+  }
+  .gtg-generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .gtg-btn-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .gtg-btn-icon {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  .gtg-generate-btn:hover .gtg-btn-icon {
+    transform: rotate(-12deg) scale(1.1);
+  }
+
+  /* Moving shimmer on hover */
+  .gtg-btn-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      hsl(107 76% 60% / 0.12) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0s;
+  }
+  .gtg-generate-btn:hover .gtg-btn-shimmer {
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+  }
+
+  /* ─────────────────────────────────────────────
+     MORE BUTTON
+  ───────────────────────────────────────────── */
+  .gtg-more-btn {
+    background: transparent;
+    color: hsl(210 40% 88%);
+    border: 1px solid hsl(218 30% 24%);
+    border-radius: 0.75rem;
+    padding: 11px 32px;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    min-height: 44px;
+  }
+  .gtg-more-btn:hover {
+    border-color: hsl(107 76% 30% / 0.6);
+    color: hsl(107 76% 50%);
+    background: hsl(107 76% 26% / 0.06);
+  }
+
+  /* ─────────────────────────────────────────────
+     AD SLOT
+  ───────────────────────────────────────────── */
+  .gtg-ad-slot {
+    margin-top: 2.5rem;
+    border-radius: 0.75rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px dashed hsl(218 30% 24%);
+    background: hsl(218 30% 10%);
+  }
+  .gtg-ad-placeholder {
+    height: clamp(5rem, 10vw, 7rem);
+    border-radius: 0.5rem;
+    background: hsl(218 30% 13%);
+  }
+
+  /* ─────────────────────────────────────────────
+     RESULTS HEADING
+  ───────────────────────────────────────────── */
+  .gtg-results-heading {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 800;
+    color: hsl(107 76% 42%);
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+    /* Subtle glow on the heading text */
+    text-shadow: 0 0 28px hsl(107 76% 26% / 0.4);
+  }
+
+  /* ─────────────────────────────────────────────
+     RESULT CARDS
+  ───────────────────────────────────────────── */
+  .result-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 22px;
+    min-height: 120px;
+    background: hsl(218 30% 13%);
+    border: 1px solid hsl(107 76% 26% / 0.18);
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+    /* Staggered entrance animation set by JS */
+    opacity: 0;
+    transform: translateY(10px);
+    animation: cardEntrance 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  /* Top micro-line accent */
+  .result-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(107 76% 30% / 0.6),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .result-card:hover::before { opacity: 1; }
+
+  .result-card:hover {
+    transform: translateY(-3px);
+    border-color: hsl(107 76% 30% / 0.45);
+    box-shadow:
+      0 8px 30px hsl(218 30% 4% / 0.5),
+      0 0 20px hsl(107 76% 26% / 0.08);
+  }
+
+  @keyframes cardEntrance {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .result-card-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(20px, 2.5vw, 27px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: hsl(210 40% 97%);
+    word-break: break-word;
+    letter-spacing: 0.04em;
+  }
+
+  /* Copy button */
+  .result-copy-btn {
+    align-self: flex-end;
+    margin-top: auto;
+    background: hsl(107 76% 26% / 0.1);
+    color: hsl(107 76% 46%);
+    border: 1px solid hsl(107 76% 26% / 0.28);
+    border-radius: 0.5rem;
+    padding: 6px 14px;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .result-copy-btn:hover {
+    background-color: hsl(107 76% 28%);
+    color: hsl(210 40% 97%);
+    border-color: hsl(107 76% 36%);
+  }
+  .result-copy-btn.copied {
+    background-color: hsl(107 76% 26%);
+    color: hsl(210 40% 97%);
+    border-color: hsl(107 76% 36%);
+  }
+
+  /* ─────────────────────────────────────────────
+     LOADING STATE — spinning bolt icon
+  ───────────────────────────────────────────── */
+  .gtg-generate-btn.loading .gtg-btn-icon {
+    animation: boltSpin 0.7s linear infinite;
+  }
+  @keyframes boltSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* ─────────────────────────────────────────────
+     MOBILE ADJUSTMENTS
+  ───────────────────────────────────────────── */
+  @media (max-width: 479px) {
+    .result-card-name {
+      font-size: 18px;
+    }
+  }
+
+  /* Disable hover lift on touch */
+  @media (pointer: coarse) {
+    .result-card:hover  { transform: none; }
+    .gtg-generate-btn:hover { transform: none; }
+  }
+
+  /* ─────────────────────────────────────────────
+     REDUCED MOTION
+  ───────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .result-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .gtg-generate-btn.loading .gtg-btn-icon { animation: none; }
+  }
+
 </style>
 
 <!-- ═══ SCRIPT ═══ -->
@@ -392,7 +695,6 @@ import {
     trigger?.addEventListener("click", (e) => {
       e.stopPropagation();
       const isOpen = menu?.classList.contains("open");
-      // Close all other open dropdowns first
       document.querySelectorAll(".custom-select-menu.open").forEach((m) => {
         m.classList.remove("open");
         m.previousElementSibling?.classList.remove("open");
@@ -408,17 +710,14 @@ import {
       item.addEventListener("click", () => {
         const value = item.dataset.value ?? "";
         const text  = item.textContent?.trim() ?? "";
-
         if (input) input.value = value;
         if (label) label.textContent = text;
-
         items.forEach((i) => {
           i.classList.remove("selected");
           i.setAttribute("aria-selected", "false");
         });
         item.classList.add("selected");
         item.setAttribute("aria-selected", "true");
-
         menu?.classList.remove("open");
         trigger?.classList.remove("open");
         trigger?.setAttribute("aria-expanded", "false");
@@ -426,7 +725,6 @@ import {
     });
   });
 
-  // Close dropdowns on outside click
   document.addEventListener("click", () => {
     document.querySelectorAll(".custom-select-menu.open").forEach((m) => {
       m.classList.remove("open");
@@ -435,17 +733,17 @@ import {
   });
 
   /* ── Form elements ── */
-  const genderEl             = document.getElementById("gender");
-  const themeEl              = document.getElementById("theme");
-  const languageEl           = document.getElementById("language");
-  const includeWordsEl       = document.getElementById("includeWords");
-  const otherRequestsEl      = document.getElementById("otherRequests");
-  const characterLimitEl     = document.getElementById("characterLimit");
+  const genderEl              = document.getElementById("gender");
+  const themeEl               = document.getElementById("theme");
+  const languageEl            = document.getElementById("language");
+  const includeWordsEl        = document.getElementById("includeWords");
+  const otherRequestsEl       = document.getElementById("otherRequests");
+  const characterLimitEl      = document.getElementById("characterLimit");
   const characterLimitValueEl = document.getElementById("characterLimitValue");
-  const generateBtn          = document.getElementById("generateBtn");
-  const generateMoreBtn      = document.getElementById("generateMoreBtn");
-  const resultsSection       = document.getElementById("resultsSection");
-  const resultsGrid          = document.getElementById("resultsGrid");
+  const generateBtn           = document.getElementById("generateBtn");
+  const generateMoreBtn       = document.getElementById("generateMoreBtn");
+  const resultsSection        = document.getElementById("resultsSection");
+  const resultsGrid           = document.getElementById("resultsGrid");
 
   /* ── Character limit label ── */
   function updateCharacterLimitLabel() {
@@ -476,13 +774,16 @@ import {
   /* ── Generate ── */
   async function generateTags() {
     if (!generateBtn) return;
-    const originalText = generateBtn.textContent;
-    generateBtn.textContent = "Generating...";
+
+    const btnText = generateBtn.querySelector(".gtg-btn-text");
+    const originalText = btnText?.textContent ?? "Generate Gamertags";
+    if (btnText) btnText.textContent = "Generating...";
     generateBtn.setAttribute("disabled", "true");
+    generateBtn.classList.add("loading");
 
     try {
-     const API = import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000";
-const response = await fetch(`${API}/api/generate-gamertags`, {
+      const API = import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000";
+      const response = await fetch(`${API}/api/generate-gamertags`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(getFormData()),
@@ -494,19 +795,22 @@ const response = await fetch(`${API}/api/generate-gamertags`, {
       console.error(error);
       alert("Something went wrong while generating gamertags.");
     } finally {
-      generateBtn.textContent = originalText;
+      if (btnText) btnText.textContent = originalText;
       generateBtn.removeAttribute("disabled");
+      generateBtn.classList.remove("loading");
     }
   }
 
-  /* ── Render results ── */
+  /* ── Render results with staggered entrance ── */
   function renderResults(tags) {
     if (!resultsGrid || !resultsSection) return;
     resultsGrid.innerHTML = "";
 
-    tags.forEach((tag) => {
+    tags.forEach((tag, index) => {
       const card = document.createElement("div");
       card.className = "result-card";
+      /* Stagger each card by 60ms */
+      card.style.animationDelay = `${index * 60}ms`;
 
       const name = document.createElement("span");
       name.className = "result-card-name";

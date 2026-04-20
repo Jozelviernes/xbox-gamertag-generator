@@ -22,6 +22,12 @@ const standardPages = new Set([
 export default defineConfig({
   output: "static",
   site: "https://xboxgamertaggenerator.com",
+
+  prefetch: {
+    prefetchAll: false,
+    defaultStrategy: "hover",
+  },
+
   integrations: [
     sitemap({
       filter: (page) =>
@@ -47,6 +53,7 @@ export default defineConfig({
       },
     }),
   ],
+
   vite: {
     plugins: [tailwindcss()],
   },

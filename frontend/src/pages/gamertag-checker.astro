@@ -9,44 +9,40 @@ import Header from '../components/layout/Header.astro';
 >
   <Header />
 
-  <div class="min-h-screen bg-background text-foreground">
+  <div class="min-h-screen bg-[#F3F4F6] text-[#111827] font-ui">
 
     <!-- ── Hero ── -->
-    <section class="bg-background relative overflow-hidden py-14 md:py-20">
-      <div
-        class="pointer-events-none absolute inset-0"
-        style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"
-      ></div>
+    <section class="section-dark-alt py-8">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="bg-card border border-default rounded-xl py-14 md:py-16 px-6 md:px-10 text-center shadow-card relative overflow-hidden">
+          <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
 
-      <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-8 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-dim border border-green rounded-sm mb-6">
-          <span class="label-green">Free Tool</span>
+          <div class="relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-dim border border-green rounded-sm mb-6">
+              <span class="label-green">Free Tool</span>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 leading-tight">
+              Xbox Gamertag <span class="text-brand">Checker</span>
+            </h1>
+
+            <p class="text-foreground-muted text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              Enter an Xbox gamertag to see if it is already taken or still likely available.
+            </p>
+          </div>
         </div>
-
-        <h1 class="heading-hero text-3xl md:text-4xl text-foreground mb-4">
-          Xbox Gamertag <span class="text-brand">Checker</span>
-        </h1>
-
-        <p class="text-foreground-muted text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-          Enter an Xbox gamertag to see if it is already taken or still likely available.
-        </p>
       </div>
-
-      <div
-        class="absolute bottom-0 left-0 right-0 h-px"
-        style="background: linear-gradient(90deg, transparent, #1F2937 20%, #00D02B 50%, #1F2937 80%, transparent);"
-      ></div>
     </section>
 
     <!-- ── Tool ── -->
-    <section class="section-dark py-10">
-      <div class="max-w-2xl mx-auto px-4 sm:px-6 space-y-5">
+    <section class="section-white-subtle py-10">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-5">
 
         <!-- Input Card -->
-        <div class="game-card p-6 shadow-card">
+        <div class="bg-white border border-[#E5E7EB] rounded-xl p-6 md:p-7 shadow-lg">
           <label
             for="gamertag-input"
-            class="label-mono block mb-3"
+            class="text-xs font-bold tracking-[0.18em] uppercase text-[#6B7280] block mb-3"
           >
             Enter Xbox Gamertag
           </label>
@@ -59,20 +55,20 @@ import Header from '../components/layout/Header.astro';
               placeholder="e.g. MajorNelson"
               autocomplete="off"
               spellcheck="false"
-              class="input-dark flex-1"
+              class="flex-1 px-4 py-3 bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg text-[#111827] placeholder-[#9CA3AF] text-sm font-medium focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
             />
             <button
               id="check-btn"
-              class="btn-primary whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed"
+              class="px-6 py-3 bg-brand hover:bg-brand-light text-white font-semibold text-sm uppercase tracking-[0.14em] rounded-lg transition-colors duration-200 whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed"
             >
               Check Tag
             </button>
           </div>
 
-          <p class="text-foreground-subtle text-xs mt-2">
+          <p class="text-[#9CA3AF] text-xs mt-2">
             Xbox gamertags are 1–15 characters. Results are based on live Xbox data.
           </p>
-          <p class="text-foreground-subtle text-xs mt-1 leading-relaxed">
+          <p class="text-[#9CA3AF] text-xs mt-1 leading-relaxed">
             “Likely available” means no matching public Xbox profile was found. It may still be reserved by Microsoft.
           </p>
         </div>
@@ -81,29 +77,29 @@ import Header from '../components/layout/Header.astro';
         <div id="loading" class="hidden text-center py-12">
           <div
             class="inline-block w-8 h-8 rounded-full animate-spin mb-4"
-            style="border: 2px solid #1F2937; border-top-color: #00D02B;"
+            style="border: 2px solid #E5E7EB; border-top-color: #00D02B;"
           ></div>
-          <p class="text-sm text-foreground-muted tracking-wide">Checking with Xbox Live...</p>
+          <p class="text-sm text-[#6B7280] tracking-wide">Checking with Xbox Live...</p>
         </div>
 
         <!-- Result -->
         <div id="result" class="hidden">
           <div
             id="result-inner"
-            class="game-card p-6 shadow-card"
+            class="bg-white border border-[#E5E7EB] rounded-xl p-6 md:p-7 shadow-lg"
           ></div>
         </div>
 
         <!-- Info note -->
-        <p class="text-center text-xs text-foreground-subtle px-4 leading-relaxed">
-          Results show whether a tag is <strong class="text-foreground">in use</strong> on Xbox Live.
+        <p class="text-center text-xs text-[#9CA3AF] px-4 leading-relaxed">
+          Results show whether a tag is <strong class="text-[#111827]">in use</strong> on Xbox Live.
           “Likely available” means no profile was found — it may still be reserved by Microsoft.
         </p>
 
         <!-- Ad slot -->
-        <div class="mt-10 max-w-2xl mx-auto rounded-lg px-6 py-10 text-center border border-dashed border-default bg-background-surface">
-          <p class="label-mono text-foreground-subtle mb-3">Advertisement</p>
-          <div class="h-20 md:h-28 rounded bg-background-alt"></div>
+        <div class="mt-10 max-w-3xl mx-auto rounded-lg px-6 py-10 text-center border border-dashed border-[#D1D5DB] bg-white">
+          <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">Advertisement</p>
+          <div class="h-20 md:h-28 rounded bg-[#E5E7EB]"></div>
         </div>
 
       </div>
@@ -139,10 +135,10 @@ import Header from '../components/layout/Header.astro';
       loading.classList.add('hidden');
       result.classList.remove('hidden');
 
-    if (data.error) {
-  inner.innerHTML = errorHTML(data.message ?? 'Could not connect to Xbox API. Please try again.');
-  return;
-}
+      if (data.error) {
+        inner.innerHTML = errorHTML(data.message ?? 'Could not connect to Xbox API. Please try again.');
+        return;
+      }
 
       const isAvailable = data.available;
       inner.innerHTML   = isAvailable ? availableHTML(data.gamertag) : takenHTML(data.gamertag);
@@ -159,15 +155,15 @@ import Header from '../components/layout/Header.astro';
   function availableHTML(tag: string) {
     return `
       <div class="flex items-start gap-4">
-        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-brand-dim border border-green shrink-0">
-          <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-[#00D02B]/10 border border-[#00D02B]/25 shrink-0">
+          <svg class="w-6 h-6 text-[#00B324]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
           </svg>
         </div>
         <div>
-          <p class="font-display text-foreground font-bold text-lg">${escHtml(tag)}</p>
-          <p class="label-green mt-1">Likely Available</p>
-          <p class="text-foreground-muted text-sm mt-1">
+          <p class="text-[#111827] font-bold text-lg">${escHtml(tag)}</p>
+          <p class="text-[#00B324] text-xs font-bold uppercase tracking-[0.16em] mt-1">Likely Available</p>
+          <p class="text-[#6B7280] text-sm mt-1">
             No Xbox profile matched this gamertag. It may be free to claim.
           </p>
         </div>
@@ -178,15 +174,15 @@ import Header from '../components/layout/Header.astro';
   function takenHTML(tag: string) {
     return `
       <div class="flex items-start gap-4">
-        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-[rgba(239,68,68,0.08)] border border-[rgba(239,68,68,0.30)] shrink-0">
-          <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-red-500/[0.08] border border-red-500/30 shrink-0">
+          <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </div>
         <div>
-          <p class="font-display text-foreground font-bold text-lg">${escHtml(tag)}</p>
-          <p class="label-mono mt-1 text-red-400">Taken</p>
-          <p class="text-foreground-muted text-sm mt-1">
+          <p class="text-[#111827] font-bold text-lg">${escHtml(tag)}</p>
+          <p class="text-red-500 text-xs font-bold uppercase tracking-[0.16em] mt-1">Taken</p>
+          <p class="text-[#6B7280] text-sm mt-1">
             This gamertag is already registered to an Xbox account.
           </p>
         </div>
@@ -197,14 +193,14 @@ import Header from '../components/layout/Header.astro';
   function errorHTML(msg: string) {
     return `
       <div class="flex items-start gap-4">
-        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-[rgba(245,158,11,0.08)] border border-[rgba(245,158,11,0.30)] shrink-0">
-          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-500/[0.08] border border-yellow-500/30 shrink-0">
+          <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
           </svg>
         </div>
         <div>
-          <p class="font-bold text-yellow-400">Error</p>
-          <p class="text-foreground-muted text-sm mt-1">${escHtml(msg)}</p>
+          <p class="font-bold text-yellow-600">Error</p>
+          <p class="text-[#6B7280] text-sm mt-1">${escHtml(msg)}</p>
         </div>
       </div>
     `;

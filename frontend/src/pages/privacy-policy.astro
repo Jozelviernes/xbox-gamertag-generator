@@ -1,6 +1,13 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/layout/Header.astro";
+import Shield from "@lucide/astro/icons/shield";
+import Cookie from "@lucide/astro/icons/cookie";
+import Lock from "@lucide/astro/icons/lock";
+import UserCheck from "@lucide/astro/icons/user-check";
+import Bell from "@lucide/astro/icons/bell";
+import Mail from "@lucide/astro/icons/mail";
+import Clock from "@lucide/astro/icons/clock";
 
 const schema = {
   "@context": "https://schema.org",
@@ -9,6 +16,17 @@ const schema = {
   "url": "https://xboxgamertaggenerator.com/privacy-policy",
   "description": "Privacy Policy for Xbox Gamertag Generator.",
 };
+
+const tocItems = [
+  { id: "introduction", label: "1. Introduction" },
+  { id: "information-collect", label: "2. Information We Collect" },
+  { id: "information-use", label: "3. How We Use Your Information" },
+  { id: "cookies-tracking", label: "4. Cookies and Tracking" },
+  { id: "data-security", label: "5. Data Security" },
+  { id: "your-rights", label: "6. Your Rights" },
+  { id: "policy-changes", label: "7. Changes to this Policy" },
+  { id: "contact-info", label: "8. Contact Information" },
+];
 ---
 
 <MainLayout
@@ -19,138 +37,230 @@ const schema = {
 >
   <Header />
 
-  <div class="min-h-screen bg-[#F8FAFC]">
+  <div class="bg-[#E5E7EB] text-[#111827] min-h-screen">
+    <main class="py-16 md:py-20 lg:py-16 px-4 md:px-6 lg:px-0">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Page Title -->
+        <div class="mb-12 text-center md:text-left">
+          <h1 class="relative inline-block text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand mb-4 leading-none">
+            Privacy Policy
+            <span class="absolute -bottom-2 left-0 w-full md:w-24 h-1 bg-brand"></span>
+          </h1>
 
-    <!-- Hero -->
-    <section class="bg-white border-b border-[#E2E8F0] py-14 md:py-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
-          <span class="text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Legal</span>
+          <p class="text-[#4B5563] text-base md:text-lg mt-6 leading-relaxed max-w-3xl">
+            Your privacy is important to us. This policy explains how we collect, use, and protect your information.
+          </p>
         </div>
-        <h1 class="font-display text-3xl md:text-4xl font-black text-[#050505] mb-4 leading-tight">
-          Privacy <span class="text-[#00D02B]">Policy</span>
-        </h1>
-        <p class="text-base md:text-lg text-[#64748B] max-w-2xl mx-auto leading-relaxed">
-          Learn how we collect, use, and protect information when you use Xbox Gamertag Generator.
-        </p>
-      </div>
-    </section>
 
-    <!-- Content -->
-    <section class="py-14 md:py-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12">
+        <!-- Table of Contents -->
+        <div class="mb-12 bg-white rounded-lg shadow-sm border border-gray-300 p-4 md:p-6">
+          <h2 class="text-xl md:text-2xl font-bold text-brand mb-4">
+            Table of Contents
+          </h2>
 
-        <p class="text-sm text-[#94A3B8] mb-10">Effective Date: April 2026</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {tocItems.map((item) => (
+              <a
+                href={`#${item.id}`}
+                class="text-[#374151] hover:text-brand transition-colors duration-200 py-2 px-3 rounded hover:bg-gray-100 block text-sm md:text-base"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
 
-        <p class="text-[17px] leading-8 text-[#64748B] mb-12">
-          At Xbox Gamertag Generator ("we", "our", or "us"), accessible from
-          https://xboxgamertaggenerator.com, we value your privacy and are committed to
-          protecting your information.
-        </p>
+        <!-- Legal Content -->
+        <div class="space-y-8 md:space-y-12">
+          <!-- Introduction -->
+          <section id="introduction">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Introduction
+            </h2>
 
-        <div class="space-y-10">
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              At XboxGamerTagGenerator.com, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
+            </p>
 
-          {[
-            {
-              number: "1",
-              title: "Information We Collect",
-              content: "We do not require users to create an account or submit personal information to use our tools. However, we may collect limited data such as:",
-              list: [
-                "Non-personal information such as browser type, device type, and IP address",
-                "Usage data such as pages visited and tool interactions",
-                "Cookies and analytics data",
-              ],
-            },
-            {
-              number: "2",
-              title: "How We Use Information",
-              content: "We use collected data to:",
-              list: [
-                "Improve website performance and user experience",
-                "Analyze traffic and usage patterns",
-                "Maintain and optimize our tools and services",
-              ],
-            },
-          ].map((section) => (
-            <div class="bg-white border border-[#E2E8F0] rounded-xl  mb-8 p-6 md:p-8">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
-                  <span class="text-black text-xs font-bold">{section.number}</span>
-                </div>
-                <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">{section.title}</h2>
-              </div>
-              <p class="text-[16px] leading-8 text-[#64748B] mb-4">{section.content}</p>
-              <ul class="space-y-2 pl-1">
-                {section.list.map((item) => (
-                  <li class="flex items-start gap-3 text-[16px] leading-7 text-[#64748B]">
-                    <div class="w-1.5 h-1.5 bg-[#00D02B] rounded-full mt-2.5 flex-shrink-0"></div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div class="bg-white border-l-4 border-brand p-4 md:p-6 rounded-r-lg shadow-sm">
+              <p class="text-[#1F2937] font-semibold text-sm md:text-base leading-relaxed">
+                <Shield class="inline w-4 h-4 md:w-5 md:h-5 text-brand mr-2" />
+                We are committed to maintaining the highest standards of privacy protection and data security.
+              </p>
             </div>
-          ))}
+          </section>
 
-          {[
-            {
-              number: "3",
-              title: "Cookies",
-              content: "We may use cookies and similar technologies to remember user preferences and analyze site traffic. You can disable cookies through your browser settings.",
-            },
-            {
-              number: "4",
-              title: "Third-Party Services",
-              content: "We may use third-party services such as analytics providers or advertising networks. These services may collect data in accordance with their own privacy policies.",
-            },
-            {
-              number: "5",
-              title: "Data Security",
-              content: "We implement reasonable security measures to help protect your data. However, no method of transmission over the Internet is completely secure.",
-            },
-            {
-              number: "6",
-              title: "External Links",
-              content: "Our website may contain links to external websites. We are not responsible for the privacy practices or content of those sites.",
-            },
-            {
-              number: "7",
-              title: "Children's Privacy",
-              content: "Our services are not directed to individuals under the age of 13. We do not knowingly collect personal information from children.",
-            },
-            {
-              number: "8",
-              title: "Changes to This Policy",
-              content: "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date.",
-            },
-          ].map((section) => (
-            <div class="bg-white border mb-8 border-[#E2E8F0] rounded-xl p-6 md:p-8">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
-                  <span class="text-black text-xs font-bold">{section.number}</span>
-                </div>
-                <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">{section.title}</h2>
-              </div>
-              <p class="text-[16px] leading-8 text-[#64748B]">{section.content}</p>
+          <!-- Information We Collect -->
+          <section id="information-collect">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Information We Collect
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              We may collect information about you in a variety of ways. The information we may collect includes:
+            </p>
+
+            <h3 class="text-lg md:text-xl font-semibold text-[#1F2937] mb-4">
+              Personal Data
+            </h3>
+            <ul class="list-disc list-inside text-[#374151] space-y-2 md:space-y-3 ml-4 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
+              <li>Contact information (name, email address) when you contact us</li>
+              <li>Feedback and suggestions you submit through our forms</li>
+              <li>Any other information you choose to provide</li>
+            </ul>
+
+            <h3 class="text-lg md:text-xl font-semibold text-[#1F2937] mb-4">
+              Information We Collect Automatically
+            </h3>
+            <ul class="list-disc list-inside text-[#374151] space-y-2 md:space-y-3 ml-4 text-base md:text-lg leading-relaxed">
+              <li>Usage data (pages visited, time spent, clicks)</li>
+              <li>Device information (browser type, operating system)</li>
+              <li>IP address and location data</li>
+              <li>Cookies and similar tracking technologies</li>
+            </ul>
+          </section>
+
+          <!-- How We Use -->
+          <section id="information-use">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              How We Use Your Information
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the site to:
+            </p>
+
+            <ol class="list-decimal list-inside text-[#374151] space-y-2 md:space-y-3 ml-4 text-base md:text-lg leading-relaxed">
+              <li>Create and manage your account</li>
+              <li>Process your requests and provide customer service</li>
+              <li>Generate gamertag suggestions based on your preferences</li>
+              <li>Improve our website and user experience</li>
+              <li>Monitor and analyze usage and trends</li>
+              <li>Send you administrative information and updates</li>
+              <li>Respond to product and customer service requests</li>
+            </ol>
+          </section>
+
+          <!-- Cookies -->
+          <section id="cookies-tracking">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Cookies and Tracking
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              We may use cookies, web beacons, tracking pixels, and other tracking technologies on our site to help customize and improve your experience.
+            </p>
+
+            <div class="bg-white border-l-4 border-brand p-4 md:p-6 rounded-r-lg shadow-sm mb-4 md:mb-6">
+              <p class="text-[#1F2937] text-sm md:text-base leading-relaxed">
+                <Cookie class="inline w-4 h-4 md:w-5 md:h-5 text-brand mr-2" />
+                You can choose to disable cookies through your individual browser options. However, this may affect your ability to use some features of our site.
+              </p>
             </div>
-          ))}
+
+            <h3 class="text-lg md:text-xl font-semibold text-[#1F2937] mb-4">
+              Types of Cookies We Use
+            </h3>
+            <ul class="list-disc list-inside text-[#374151] space-y-2 md:space-y-3 ml-4 text-base md:text-lg leading-relaxed">
+              <li><strong>Essential Cookies:</strong> Required for the website to function properly</li>
+              <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our site</li>
+              <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+              <li><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements</li>
+            </ul>
+          </section>
+
+          <!-- Data Security -->
+          <section id="data-security">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Data Security
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable.
+            </p>
+
+            <div class="bg-white border-l-4 border-brand p-4 md:p-6 rounded-r-lg shadow-sm">
+              <p class="text-[#1F2937] text-sm md:text-base leading-relaxed">
+                <Lock class="inline w-4 h-4 md:w-5 md:h-5 text-brand mr-2" />
+                We implement industry-standard security measures including SSL encryption, secure servers, and regular security audits to protect your data.
+              </p>
+            </div>
+          </section>
+
+          <!-- Your Rights -->
+          <section id="your-rights">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Your Rights
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              Depending on your location, you may have certain rights regarding your personal information under applicable data protection laws, including:
+            </p>
+
+            <div class="bg-white border-l-4 border-brand p-4 md:p-6 rounded-r-lg shadow-sm mb-4 md:mb-6">
+              <p class="text-[#1F2937] font-semibold text-sm md:text-base leading-relaxed">
+                <UserCheck class="inline w-4 h-4 md:w-5 md:h-5 text-brand mr-2" />
+                GDPR Rights: If you are located in the European Union, you have additional rights under the General Data Protection Regulation.
+              </p>
+            </div>
+
+            <ul class="list-disc list-inside text-[#374151] space-y-2 md:space-y-3 ml-4 text-base md:text-lg leading-relaxed">
+              <li><strong>Right to Access:</strong> Request copies of your personal data</li>
+              <li><strong>Right to Rectification:</strong> Request correction of inaccurate data</li>
+              <li><strong>Right to Erasure:</strong> Request deletion of your personal data</li>
+              <li><strong>Right to Restrict Processing:</strong> Request that we limit the use of your data</li>
+              <li><strong>Right to Data Portability:</strong> Request transfer of your data</li>
+              <li><strong>Right to Object:</strong> Object to processing of your personal data</li>
+            </ul>
+          </section>
+
+          <!-- Policy Changes -->
+          <section id="policy-changes">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Changes to this Policy
+            </h2>
+
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              We may update this Privacy Policy from time to time in order to reflect changes to our practices or for other operational, legal, or regulatory reasons.
+            </p>
+
+            <div class="bg-white border-l-4 border-brand p-4 md:p-6 rounded-r-lg shadow-sm">
+              <p class="text-[#1F2937] text-sm md:text-base leading-relaxed">
+                <Bell class="inline w-4 h-4 md:w-5 md:h-5 text-brand mr-2" />
+                We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. We encourage you to review this policy periodically.
+              </p>
+            </div>
+          </section>
 
           <!-- Contact -->
-          <div class="bg-white border-l-4 border-l-[#00D02B] border border-[#E2E8F0] rounded-xl p-6 md:p-8">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-7 h-7 bg-[#00D02B] rounded flex items-center justify-center flex-shrink-0">
-                <span class="text-black text-xs font-bold">9</span>
-              </div>
-              <h2 class="font-display text-lg md:text-xl font-bold text-[#050505]">Contact Us</h2>
-            </div>
-            <p class="text-[16px] leading-8 text-[#64748B] mb-3">
-              If you have any questions about this Privacy Policy, you may contact us at:
-            </p>
-            <p class="text-[16px] font-bold text-[#050505]">xboxgamegenerator@gmail.com</p>
-          </div>
+          <section id="contact-info">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-brand mb-4 md:mb-6 border-l-4 border-brand pl-4">
+              Contact Information
+            </h2>
 
+            <p class="text-[#374151] leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+              If you have questions or comments about this Privacy Policy, please contact us:
+            </p>
+
+            <div class="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-300">
+              <p class="text-[#1F2937] mb-4 text-sm md:text-lg break-words">
+                <Mail class="inline w-4 h-4 md:w-5 md:h-5 text-brand mr-2 md:mr-3" />
+                <span class="break-all">
+                  Email:
+                  <a href="/contact" class="text-brand hover:underline transition-all duration-200">
+                    Visit our Contact Page
+                  </a>
+                </span>
+              </p>
+
+              <p class="text-[#1F2937] text-sm md:text-lg">
+                <Clock class="inline w-4 h-4 md:w-5 md:h-5 text-brand mr-2 md:mr-3" />
+                Last Updated: February 2026
+              </p>
+            </div>
+          </section>
         </div>
       </div>
-    </section>
-
+    </main>
   </div>
 </MainLayout>

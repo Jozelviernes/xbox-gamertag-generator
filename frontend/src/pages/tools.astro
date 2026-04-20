@@ -37,7 +37,7 @@ const tools: Tool[] = [
     description: "Ever wondered what your gamertag might be worth? Get a quick data-based estimate based on length, rarity, and demand.",
     slug: "price-checker",
     available: true,
-    href: "gamertag-price-checker",
+    href: "/gamertag-price-checker",
     icon: "dollar",
   },
   {
@@ -46,7 +46,7 @@ const tools: Tool[] = [
     description: "Create a custom Xbox gamercard — a visual badge showing off your gamertag, gamerscore, and avatar. Great for forums and social bios.",
     slug: "gamercard-generator",
     available: true,
-    href: "gamercard-generator",
+    href: "/gamercard-generator",
     icon: "idcard",
   },
   {
@@ -55,7 +55,7 @@ const tools: Tool[] = [
     description: "Instantly see if your desired tag is still up for grabs before someone else snags it.",
     slug: "availability-checker",
     available: true,
-    href: "gamertag-checker",
+    href: "/gamertag-checker",
     icon: "search",
   },
   {
@@ -64,41 +64,38 @@ const tools: Tool[] = [
     description: "View public stats, gamerscore, recent games, and achievement progress tied to any Xbox gamertag.",
     slug: "profile-stats-checker",
     available: true,
-    href: "gamer-profile",
+    href: "/gamer-profile",
     icon: "chart",
   }
 ];
 
 const iconMap: Record<IconKey, string> = {
-  gamepad: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  gamepad: `<svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 12l-2 5a2 2 0 0 0 3 2l3-2h4l3 2a2 2 0 0 0 3-2l-2-5a6 6 0 0 0-12 0Z" />
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 11v2M7 12h2M16 12h.01M18 10h.01" />
   </svg>`,
-  search: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  search: `<svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <circle cx="11" cy="11" r="7" stroke-width="1.5"></circle>
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 20l-3.5-3.5" />
   </svg>`,
-  chart: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  chart: `<svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 19h16M7 16V9M12 16V5M17 16v-7" />
   </svg>`,
-  download: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  download: `<svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v11M8 10l4 4 4-4M4 21h16" />
   </svg>`,
-  dollar: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  dollar: `<svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18M16.5 7.5c0-1.9-2-3.5-4.5-3.5S7.5 5.6 7.5 7.5 9.5 11 12 11s4.5 1.6 4.5 3.5S14.5 18 12 18s-4.5-1.6-4.5-3.5" />
   </svg>`,
-  trophy: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  trophy: `<svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 4h8v3a4 4 0 0 1-8 0V4ZM6 4H4v2a4 4 0 0 0 4 4M18 4h2v2a4 4 0 0 1-4 4M12 11v4M9 21h6M10 15h4v3h-4z" />
   </svg>`,
-  idcard: `<svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  idcard: `<svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke-width="1.5"></rect>
     <circle cx="9" cy="10" r="2" stroke-width="1.5"></circle>
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 16c.8-1.3 2-2 3-2s2.2.7 3 2M14 9h4M14 13h4" />
   </svg>`,
 };
-
-const availableTools = tools.filter(t => t.available);
-const comingSoonTools = tools.filter(t => !t.available);
 
 const schema = {
   "@context": "https://schema.org",
@@ -117,164 +114,105 @@ const schema = {
 >
   <Header />
 
-  <div class="min-h-screen bg-background text-foreground font-ui">
-
+  <div class="min-h-screen bg-[#F3F4F6] font-ui">
     <!-- Hero -->
-    <section class="section-dark border-b border-[#1F2937] py-16 md:py-24 relative overflow-hidden">
-      <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
-      <div class="max-w-4xl mx-auto px-8 sm:px-12 lg:px-16 text-center relative z-10">
-        <span class="label-green mb-4 block">Free Tools</span>
-        <h1 class="heading-hero text-5xl md:text-6xl lg:text-7xl mb-6 text-foreground">
-          All <span class="text-brand">Xbox</span> Tools
-        </h1>
-        <p class="text-lg md:text-xl text-foreground-muted max-w-2xl mx-auto leading-relaxed font-ui">
-          Everything you need to manage, customize, and level up your Xbox identity.
-          Browse and find the tool that suits you.
-        </p>
+    <section class="section-dark-alt py-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+        <section class="bg-card py-16 rounded-lg">
+          <div class="px-6 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-brand">
+              Explore All Xbox Tools
+            </h1>
 
-        <div class="flex items-center justify-center gap-8 md:gap-12 mt-10">
-          <div class="text-center">
-            <p class="heading-section text-3xl text-brand">{availableTools.length}</p>
-            <p class="label-mono mt-1">Live Tools</p>
+            <h2 class="text-lg md:text-2xl text-foreground mb-6 max-w-3xl mx-auto">
+              Everything you need to manage, customize, and level up your Xbox identity.
+            </h2>
+
+            <p class="text-base md:text-lg text-foreground-muted max-w-2xl mx-auto">
+              From gamertag generators to checkers and profile tools, browse and find the tool that suits you.
+            </p>
           </div>
-          <div class="w-px h-10 bg-[#1F2937]"></div>
-          <div class="text-center">
-            <p class="heading-section text-3xl text-foreground-muted">{comingSoonTools.length}</p>
-            <p class="label-mono mt-1">Coming Soon</p>
-          </div>
-          <div class="w-px h-10 bg-[#1F2937]"></div>
-          <div class="text-center">
-            <p class="heading-section text-3xl text-foreground">100%</p>
-            <p class="label-mono mt-1">Free</p>
-          </div>
-        </div>
+        </section>
       </div>
     </section>
 
-    <!-- Available Tools -->
-    <section class="section-white py-16 md:py-20 border-t border-[#E5E7EB]">
-      <div class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
-
-        <div class="flex items-center gap-3 mb-10">
-          <div class="w-1 h-6 bg-brand rounded-full"></div>
-          <h2 class="font-ui text-2xl md:text-3xl font-extrabold text-[#111827]">Available Now</h2>
-          <span class="ml-2 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-[0.14em] text-[#00B324] bg-[#00D02B]/10 border border-[#00D02B]/20">
-            {availableTools.length} Tools
-          </span>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {availableTools.map((tool) => (
-            <a
-              href={tool.href}
-              class="group bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-7 flex flex-col h-full no-underline shadow-[0_8px_24px_rgba(15,23,42,0.04)] hover:shadow-[0_14px_32px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 transition-all duration-200"
-            >
-              <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#00D02B]/10 border border-[#00D02B]/20">
-                <div class="text-[#00B324]" set:html={iconMap[tool.icon]}></div>
-              </div>
-
-              <div class="flex-1">
-                <h3 class="font-ui text-lg md:text-xl font-extrabold text-[#111827] mb-3 leading-snug group-hover:text-[#00B324] transition-colors duration-200">
-                  {tool.title}
-                </h3>
-                <p class="text-[#4B5563] text-sm md:text-[15px] font-ui leading-7 line-clamp-3">
-                  {tool.description}
-                </p>
-              </div>
-
-              <div class="flex items-center justify-between mt-6 pt-5 border-t border-[#E5E7EB]">
-                <span class="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-[#00B324]">Go to Tool</span>
-                <div class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-[#00D02B] border border-[#00D02B]/30">
-                  <svg class="w-3.5 h-3.5 text-[#00B324] group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
-                  </svg>
+    <!-- Tools Grid -->
+    <section class="py-16 px-4 md:px-12 lg:px-24 bg-[#F3F4F6]">
+      <div class="container mx-auto px-0 sm:px-2 md:px-4">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {tools.map((tool) => (
+            <article class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 relative flex flex-col h-full">
+              {!tool.available && (
+                <div class="absolute top-3 right-3 bg-brand text-white text-xs px-2 py-0.5 rounded-full">
+                  Coming Soon
                 </div>
+              )}
+
+              <div class="text-center mb-4">
+                <div class="text-brand mx-auto mb-4 flex justify-center" set:html={iconMap[tool.icon]} />
               </div>
-            </a>
+
+              <h3 class="text-xl font-semibold mb-3 text-center text-gray-800">
+                {tool.title}
+              </h3>
+
+              <p class="text-gray-600 mb-6 text-center leading-7 flex-1">
+                {tool.description}
+              </p>
+
+              {tool.available ? (
+                <a
+                  href={tool.href}
+                  class="w-full bg-brand hover:bg-brand-light text-white py-3 px-6 rounded-lg font-medium transition-colors duration-200 block text-center mt-auto"
+                >
+                  Go to Tool
+                </a>
+              ) : (
+                <button
+                  disabled
+                  class="w-full bg-gray-300 text-gray-500 py-3 px-6 rounded-lg font-medium cursor-not-allowed block text-center mt-auto"
+                >
+                  Coming Soon
+                </button>
+              )}
+            </article>
           ))}
         </div>
-
       </div>
     </section>
 
-    <!-- Coming Soon Tools -->
-    {comingSoonTools.length > 0 && (
-      <section class="section-white py-16 md:py-20 border-t border-[#E5E7EB]">
-        <div class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
+    <!-- CTA -->
+    <section class="section-white-subtle py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
+        <div class="bg-white border border-[#E5E7EB] rounded-lg px-6 py-10 shadow-sm">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+            Ready to find your <span class="text-brand">perfect tag?</span>
+          </h2>
 
-          <div class="flex items-center gap-3 mb-10">
-            <div class="w-1 h-6 bg-[#D1D5DB] rounded-full"></div>
-            <h2 class="font-ui text-2xl md:text-3xl font-extrabold text-[#6B7280]">Coming Soon</h2>
-            <span class="ml-2 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-[0.14em] text-[#6B7280] bg-[#F3F4F6] border border-[#E5E7EB]">
-              {comingSoonTools.length} Tools
-            </span>
+          <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Start with our gamertag generator and explore all tools for free.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/"
+              class="btn-primary px-8 py-3.5 text-sm inline-flex items-center justify-center gap-2"
+            >
+              Try the Generator
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a
+              href="/blog"
+              class="btn-secondary px-8 py-3.5 text-sm inline-flex items-center justify-center gap-2 !text-[#111827] !border-[#D1D5DB] hover:!border-[#00D02B]/40 hover:!text-[#00B324]"
+            >
+              Read the Guides
+            </a>
           </div>
-
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {comingSoonTools.map((tool) => (
-              <div class="bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-7 flex flex-col h-full opacity-80 cursor-default select-none shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
-
-                <div class="flex items-center justify-between mb-4">
-                  <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-[#F3F4F6] border border-[#E5E7EB]">
-                    <div class="text-[#94A3B8]" set:html={iconMap[tool.icon]}></div>
-                  </div>
-
-                  <span class="px-2 py-1 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-[0.12em] text-[#6B7280] bg-[#F3F4F6] border border-[#E5E7EB] whitespace-nowrap">
-                    Coming Soon
-                  </span>
-                </div>
-
-                <div class="flex-1">
-                  <h3 class="font-ui text-lg md:text-xl font-extrabold text-[#6B7280] leading-snug mb-3">
-                    {tool.title}
-                  </h3>
-                  <p class="text-[#9CA3AF] text-sm md:text-[15px] font-ui leading-7 line-clamp-3">
-                    {tool.description}
-                  </p>
-                </div>
-
-                <div class="mt-6 pt-5 border-t border-[#E5E7EB]">
-                  <button
-                    disabled
-                    class="w-full bg-[#E5E7EB] text-[#9CA3AF] text-sm md:text-[15px] font-semibold px-4 py-2.5 rounded-lg cursor-not-allowed"
-                  >
-                    Coming Soon
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-    )}
-
-    <!-- CTA Section -->
-    <section class="section-white py-16 md:py-20 border-t border-[#E5E7EB]">
-      <div class="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16 text-center">
-        <span class="label-green mb-4 block">Get Started</span>
-        <h2 class="font-ui text-3xl md:text-4xl font-extrabold text-[#111827] mb-4">
-          Ready to find your <span class="text-brand">perfect tag?</span>
-        </h2>
-        <p class="text-[#6B7280] font-ui mb-8 leading-relaxed">
-          Start with our gamertag generator and explore all tools for free.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/" class="btn-primary px-8 py-3.5 text-sm inline-flex items-center justify-center gap-2">
-            Try the Generator
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
-        <a
-  href="/blog"
-  class="btn-secondary px-8 py-3.5 text-sm inline-flex items-center justify-center gap-2 !text-[#111827] !border-[#D1D5DB] hover:!border-[#00D02B]/40 hover:!text-[#00B324]"
->
-  Read the Guides
-</a>
         </div>
       </div>
     </section>
-
   </div>
 </MainLayout>

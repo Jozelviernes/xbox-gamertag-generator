@@ -23,28 +23,24 @@ const schema = {
 >
   <Header />
 
-  <div class="min-h-screen">
-    <!-- ── Hero  ── -->
-    <section class="bg-background relative overflow-hidden pt-14 pb-10 lg:pt-20 lg:pb-14">
-      <div
-        class="pointer-events-none absolute inset-0"
-        style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"
-      ></div>
+  <div class="min-h-screen bg-background text-foreground font-ui">
+    <!-- Hero -->
+    <section class="bg-card relative overflow-hidden pt-14 pb-10 lg:pt-20 lg:pb-14 border-b border-default">
+      <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
 
       <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
         <div class="text-center">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-6">
-            <span class="text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Gaming Dictionary</span>
-          </div>
+          
 
-          <h1 class="font-[Orbitron] text-3xl lg:text-5xl font-black text-white mb-4 leading-tight">
-            Xbox &amp; Gaming <span class="text-[#00D02B]">Glossary</span>
+          <h1 class="heading-section md:heading-hero text-3xl lg:text-5xl font-extrabold text-foreground mb-4 leading-tight">
+            Xbox &amp; Gaming <span class="text-brand">Glossary</span>
           </h1>
 
-          <p class="text-lg lg:text-xl text-[#94A3B8] mb-3 font-semibold">
+          <p class="font-ui text-lg lg:text-xl text-foreground-muted mb-3 font-semibold">
             Understand the lingo. Game smarter.
           </p>
-          <p class="text-base text-[#4B5563] leading-relaxed max-w-2xl mx-auto">
+
+          <p class="font-ui text-base text-foreground-muted leading-relaxed max-w-2xl mx-auto">
             Explore clear definitions of Xbox terms, naming rules, and gamer culture. Build your knowledge and level up your naming game.
           </p>
         </div>
@@ -52,90 +48,91 @@ const schema = {
 
       <div
         class="absolute bottom-0 left-0 right-0 h-px"
-        style="background: linear-gradient(90deg, transparent, #1F2937 20%, #00D02B 50%, #1F2937 80%, transparent);"
+        style="background: linear-gradient(90deg, transparent, hsl(218 30% 18%) 20%, hsl(107 76% 30%) 50%, hsl(218 30% 18%) 80%, transparent);"
       ></div>
     </section>
 
-    <!-- ── Search & Filter ── -->
-    <section class="section-white py-10 border-b border-[#E5E7EB]">
-      <div class="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div class="mb-10">
-          <div class="relative max-w-2xl mx-auto">
-            <input
-              id="searchInput"
-              type="text"
-              placeholder="Search terms..."
-              class="w-full h-12 px-5 pr-12 bg-white border border-[#E5E7EB] rounded-lg text-[#111827] placeholder-[#9CA3AF] text-sm md:text-base font-semibold focus:border-[#00D02B] focus:outline-none focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
-            />
-            <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20l-3.5-3.5" />
-            </svg>
-          </div>
-        </div>
-
-        <div>
-          <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-4 text-center">Browse by Letter</p>
-          <div id="lettersWrap" class="flex flex-wrap justify-center gap-2">
-            {letters.map((letter) => (
-              <button
-                type="button"
-                class="letter-btn w-8 h-8 md:w-9 md:h-9 border border-[#E5E7EB] rounded font-[Orbitron] text-[10px] font-bold text-[#6B7280] bg-white flex items-center justify-center transition-all duration-150 hover:border-[#00D02B]/50 hover:text-[#00D02B] hover:bg-[#00D02B]/[0.06]"
-                data-letter={letter}
-              >
-                {letter}
-              </button>
-            ))}
-          </div>
-        </div>
+   <section class="section-white py-10 border-b border-[#E5E7EB]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+    <div class="mb-10">
+      <div class="relative max-w-2xl mx-auto">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search terms..."
+          class="w-full h-12 px-5 pr-12 bg-white border border-[#E5E7EB] rounded-lg text-[#111827] placeholder-[#9CA3AF] text-sm md:text-base font-semibold focus:border-[#00D02B] focus:outline-none focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
+        />
+        <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 20l-3.5-3.5" />
+        </svg>
       </div>
-    </section>
+    </div>
 
-    <!-- ── Glossary Grid ── -->
-    <section class="section-white py-14">
-      <div class="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div id="glossaryData" data-api-url={glossaryApiUrl}></div>
-
-        <div id="loadingState" class="text-center py-16">
-          <p class="font-[Orbitron] text-base text-[#6B7280]">Loading glossary terms...</p>
-        </div>
-
-        <div id="noResults" class="hidden text-center py-16">
-          <p class="font-[Orbitron] text-base text-[#6B7280]">No terms found.</p>
-          <p class="text-sm text-[#9CA3AF] mt-2">Try a different search or letter.</p>
-        </div>
-
-        <div id="termsGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-4"></div>
-
-        <div id="paginationWrap" class="hidden flex justify-center items-center mt-12 gap-3">
+    <div>
+      <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-4 text-center font-ui">
+        Browse by Letter
+      </p>
+      <div id="lettersWrap" class="flex flex-wrap justify-center gap-2">
+        {letters.map((letter) => (
           <button
-            id="prevBtn"
             type="button"
-            class="flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E5E7EB] text-[#6B7280] text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
+            class="letter-btn w-8 h-8 md:w-9 md:h-9 border border-[#E5E7EB] rounded bg-white text-[#6B7280] flex items-center justify-center text-[10px] font-bold transition-all duration-150 hover:border-[#00D02B]/50 hover:text-[#00D02B] hover:bg-[#00D02B]/[0.06]"
+            data-letter={letter}
           >
-            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            Prev
+            {letter}
           </button>
-
-          <div id="pageNumbers" class="flex gap-2"></div>
-
-          <button
-            id="nextBtn"
-            type="button"
-            class="flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E5E7EB] text-[#6B7280] text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
-          >
-            Next
-            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
+        ))}
       </div>
-    </section>
+    </div>
   </div>
-<script>
+</section>
+
+    <section class="section-white py-14">
+  <div class="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+    <div id="glossaryData" data-api-url={glossaryApiUrl}></div>
+
+    <div id="loadingState" class="text-center py-16">
+      <p class="font-ui text-base text-[#6B7280]">Loading glossary terms...</p>
+    </div>
+
+    <div id="noResults" class="hidden text-center py-16">
+      <p class="font-ui text-base text-[#6B7280]">No terms found.</p>
+      <p class="font-ui text-sm text-[#9CA3AF] mt-2">Try a different search or letter.</p>
+    </div>
+
+    <div id="termsGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-4"></div>
+
+    <div id="paginationWrap" class="hidden flex justify-center items-center mt-12 gap-3">
+      <button
+        id="prevBtn"
+        type="button"
+        class="flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E5E7EB] text-[#6B7280] text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
+      >
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Prev
+      </button>
+
+      <div id="pageNumbers" class="flex gap-2"></div>
+
+      <button
+        id="nextBtn"
+        type="button"
+        class="flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E5E7EB] text-[#6B7280] text-sm font-bold uppercase tracking-wide rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
+      >
+        Next
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+  </div>
+
+  <script>
     interface Term {
       term: string;
       definition: string;
@@ -199,14 +196,14 @@ const schema = {
           .sort((a, b) => a.term.localeCompare(b.term));
       }
 
-      function renderCards(terms: Term[]) {
-        safeTermsGrid.innerHTML = terms.map((term) => `
-          <div class="bg-white border border-[#E5E7EB] rounded-xl p-5 transition-all duration-150 hover:border-[#00D02B]/35 hover:shadow-[0_10px_24px_-12px_rgba(0,208,43,0.18)]">
-            <h3 class="text-[17px] md:text-lg font-bold text-[#00B324] mb-2">${term.term}</h3>
-            <p class="text-sm md:text-[15px] text-[#4B5563] leading-relaxed">${term.definition}</p>
-          </div>
-        `).join("");
-      }
+    function renderCards(terms: Term[]) {
+  safeTermsGrid.innerHTML = terms.map((term) => `
+    <div class="bg-white border border-[#E5E7EB] rounded-xl p-5 transition-all duration-150 hover:border-[#00D02B]/35 hover:shadow-[0_10px_24px_-12px_rgba(0,208,43,0.18)]">
+      <h3 class="font-ui text-[17px] md:text-lg font-bold text-[#00B324] mb-2">${term.term}</h3>
+      <p class="font-ui text-sm md:text-[15px] text-[#4B5563] leading-relaxed">${term.definition}</p>
+    </div>
+  `).join("");
+}
 
       function renderPagination(totalPages: number) {
         safePageNumbers.innerHTML = "";
@@ -216,9 +213,9 @@ const schema = {
           button.type = "button";
           button.textContent = String(page);
 
-          button.className = currentPage === page
-            ? "w-8 h-8 bg-[#00D02B] text-black font-[Orbitron] text-[10px] font-bold rounded"
-            : "w-8 h-8 bg-white border border-[#E5E7EB] text-[#6B7280] font-[Orbitron] text-[10px] font-bold rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150";
+        button.className = currentPage === page
+  ? "w-8 h-8 bg-[#00D02B] text-black font-ui text-[10px] font-bold rounded"
+  : "w-8 h-8 bg-white border border-[#E5E7EB] text-[#6B7280] font-ui text-[10px] font-bold rounded hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150";
 
           button.addEventListener("click", () => {
             currentPage = page;
@@ -233,16 +230,16 @@ const schema = {
         safeNextBtn.disabled = currentPage === totalPages || totalPages === 0;
       }
 
-      function updateLetterButtons() {
-        safeLetterButtons.forEach((btn) => {
-          const btnLetter = btn.dataset.letter ?? "";
-          if (btnLetter === selectedLetter) {
-            btn.className = "letter-btn w-8 h-8 md:w-9 md:h-9 border border-[#00D02B] rounded font-[Orbitron] text-[10px] font-bold text-black bg-[#00D02B] flex items-center justify-center transition-all duration-150";
-          } else {
-            btn.className = "letter-btn w-8 h-8 md:w-9 md:h-9 border border-[#E5E7EB] rounded font-[Orbitron] text-[10px] font-bold text-[#6B7280] bg-white flex items-center justify-center transition-all duration-150 hover:border-[#00D02B]/50 hover:text-[#00D02B] hover:bg-[#00D02B]/[0.06]";
-          }
-        });
-      }
+     function updateLetterButtons() {
+  safeLetterButtons.forEach((btn) => {
+    const btnLetter = btn.dataset.letter ?? "";
+    if (btnLetter === selectedLetter) {
+      btn.className = "letter-btn w-8 h-8 md:w-9 md:h-9 border border-[#00D02B] rounded bg-[#00D02B] text-black flex items-center justify-center text-[10px] font-bold transition-all duration-150";
+    } else {
+      btn.className = "letter-btn w-8 h-8 md:w-9 md:h-9 border border-[#E5E7EB] rounded bg-white text-[#6B7280] flex items-center justify-center text-[10px] font-bold transition-all duration-150 hover:border-[#00D02B]/50 hover:text-[#00D02B] hover:bg-[#00D02B]/[0.06]";
+    }
+  });
+}
 
       function render() {
         safeLoadingState.classList.add("hidden");

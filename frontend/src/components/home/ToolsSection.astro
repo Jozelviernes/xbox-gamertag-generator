@@ -67,119 +67,66 @@ const getToolLink = (slug: string): string => {
 };
 ---
 
-<section class="section-white-subtle py-16 md:py-20 border-t border-[#E5E7EB]">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
+<section class="section-white-subtle py-16 md:py-20">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-center heading-section text-brand mb-12">
+      Explore More Tools
+    </h2>
 
-    <!-- Section Header -->
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 md:mb-12">
-      <div>
-        <span class="inline-block mb-3 px-3 py-1 rounded-full text-[11px] md:text-xs font-bold tracking-[0.18em] uppercase text-[#00B324] bg-[#00D02B]/10 border border-[#00D02B]/20">
-          Free Tools
-        </span>
-        <h2 class="font-ui text-3xl md:text-4xl font-extrabold tracking-tight text-[#111827] leading-tight">
-          Explore More <span class="text-[#00B324]">Tools</span>
-        </h2>
-      </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {tools.map((tool) => {
+        const Icon = tool.icon;
 
-      <a
-        href="/tools"
-        class="inline-flex items-center gap-2 text-base md:text-lg font-semibold text-[#00B324] hover:text-[#00961e] transition-colors"
-      >
-        View All Tools
-        <svg
-          class="w-4 h-4 transition-transform hover:translate-x-0.5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-8">
-  {tools.map((tool) => {
-    const Icon = tool.icon;
-    return tool.comingSoon ? (
+        return (
+          <div
+            class:list={[
+              "bg-white rounded-xl p-6 transition-shadow duration-200 group relative flex flex-col h-full",
+              tool.comingSoon ? "opacity-95" : "hover:shadow-xl"
+            ]}
+          >
+            {tool.comingSoon && (
+              <div class="absolute top-4 right-4 bg-brand text-white text-xs px-2 py-1 rounded-full font-ui">
+                Coming Soon
+              </div>
+            )}
 
-      <!-- COMING SOON (ICON TOP + BADGE RIGHT) -->
-      <div class="bg-white border border-[#E5E7EB] rounded-2xl p-5 md:p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] flex flex-col h-full opacity-80">
+            <div class="text-brand mb-4">
+              <Icon class="h-10 w-10" />
+            </div>
 
-        <!-- ICON + BADGE -->
-        <div class="flex items-center justify-between mb-4">
-          <div class="w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center bg-[#F3F4F6] border border-[#E5E7EB]">
-            <Icon class="h-5 w-5 md:h-6 md:w-6 text-[#94A3B8]" />
+            <h3 class="text-xl font-semibold mb-3 text-[#1F2937] group-hover:text-brand transition-colors font-ui leading-snug">
+              {tool.title}
+            </h3>
+
+            <p class="text-[#4B5563] mb-4 font-ui leading-7">
+              {tool.description}
+            </p>
+
+            <div class="mt-auto">
+              {tool.comingSoon ? (
+                <button
+                  disabled
+                  class="bg-[#D1D5DB] text-[#6B7280] px-4 py-2 rounded font-ui cursor-not-allowed w-full sm:w-auto"
+                >
+                  Coming Soon
+                </button>
+              ) : (
+                <a
+                  href={getToolLink(tool.slug)}
+                  class="inline-block bg-brand hover:bg-brand-light text-white px-4 py-2 rounded transition-colors font-ui w-full text-center sm:w-auto"
+                >
+                  Go to Tool
+                </a>
+              )}
+            </div>
           </div>
-
-          <span class="px-2 py-1 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-[0.12em] text-[#6B7280] bg-[#F3F4F6] border border-[#E5E7EB] whitespace-nowrap">
-            Coming Soon
-          </span>
-        </div>
-
-        <!-- TITLE -->
-        <h3 class="font-ui text-base md:text-lg font-extrabold text-[#374151] leading-snug mb-2">
-          {tool.title}
-        </h3>
-
-        <!-- DESCRIPTION -->
-        <p class="font-ui text-sm md:text-[15px] leading-7 text-[#6B7280] mb-4">
-          {tool.description}
-        </p>
-
-        <!-- BUTTON -->
-        <div class="mt-auto">
-          <button
-            disabled
-            class="w-full bg-[#E5E7EB] text-[#9CA3AF] text-sm md:text-[15px] font-semibold px-4 py-2.5 rounded-lg cursor-not-allowed"
-          >
-            Coming Soon
-          </button>
-        </div>
-
-      </div>
-
-    ) : (
-
-      <!-- AVAILABLE TOOL -->
-      <div class="group bg-white border border-[#E5E7EB] rounded-2xl p-5 md:p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] hover:shadow-[0_14px_32px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 transition-all duration-200 flex flex-col h-full">
-
-        <!-- ICON -->
-        <div class="w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center bg-[#00D02B]/10 border border-[#00D02B]/20 mb-4">
-          <Icon class="h-5 w-5 md:h-6 md:w-6 text-[#00B324]" />
-        </div>
-
-        <!-- TITLE -->
-        <h3 class="font-ui text-base md:text-lg font-extrabold text-[#111827] leading-snug mb-2 group-hover:text-[#00B324] transition-colors">
-          {tool.title}
-        </h3>
-
-        <!-- DESCRIPTION -->
-        <p class="font-ui text-sm md:text-[15px] leading-7 text-[#4B5563] mb-4">
-          {tool.description}
-        </p>
-
-        <!-- BUTTON -->
-        <div class="mt-auto">
-          <a
-            href={getToolLink(tool.slug)}
-            class="block w-full text-center bg-[#00B324] hover:bg-[#00961e] text-white text-sm md:text-[15px] font-semibold px-4 py-2.5 rounded-lg transition-colors"
-          >
-            Go to Tool
-          </a>
-        </div>
-
-      </div>
-
-    );
-  })}
-</div>
-
-
-
-    <!-- Ad Banner -->
-    <div class="bg-[#F3F4F6] rounded-xl px-4 md:px-6 py-6 text-center border-2 border-dashed border-[#D1D5DB] mt-8">
-      <p class="font-ui text-sm md:text-base text-[#6B7280] mb-2">Advertisement</p>
-      <div class="h-20 md:h-32 lg:h-40 bg-[#E5E7EB] rounded-lg"></div>
+        );
+      })}
     </div>
 
+    <div class="bg-[#F3F4F6] rounded-lg px-4 md:px-6 py-6 text-center border-2 border-dashed border-[#D1D5DB] mt-8">
+      <p class="text-sm md:text-base text-[#6B7280] mb-2 font-ui">Advertisement</p>
+      <div class="h-20 md:h-32 lg:h-40 bg-[#E5E7EB] rounded"></div>
+    </div>
   </div>
 </section>

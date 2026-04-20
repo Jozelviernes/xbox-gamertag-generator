@@ -25,76 +25,77 @@ const schema = {
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap');
 
-    .gc-root { font-family: 'Rajdhani', sans-serif; }
-    .gc-title { font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.04em; }
+    .gc-root { font-family: 'Inter', 'Rajdhani', sans-serif; }
+    .gc-title { font-family: 'Inter', sans-serif; letter-spacing: -0.02em; }
     .gc-mono  { font-family: 'Share Tech Mono', monospace; }
 
     .panel {
-      background: #000000;
-      border: 1px solid #1F2937;
-      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
       padding: 20px;
+      box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.10);
     }
 
     .panel-label {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #4B5563;
+      color: #6B7280;
       margin-bottom: 14px;
     }
 
     .gc-input {
       width: 100%;
       padding: 10px 14px;
-      background: #050505;
-      border: 1px solid #1F2937;
+      background: #F8FAFC;
+      border: 1px solid #E5E7EB;
       border-radius: 8px;
-      color: #fff;
-      font-family: 'Rajdhani', sans-serif;
+      color: #111827;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
       font-weight: 600;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .gc-input::placeholder { color: #4B5563; }
-    .gc-input:hover { border-color: #374151; }
+    .gc-input::placeholder { color: #9CA3AF; }
+    .gc-input:hover { border-color: #CBD5E1; }
     .gc-input:focus { border-color: #00D02B; box-shadow: 0 0 0 2px rgba(0,208,43,0.12); }
 
     .gc-select {
       width: 100%;
       padding: 10px 14px;
-      background: #050505;
-      border: 1px solid #1F2937;
+      background: #F8FAFC;
+      border: 1px solid #E5E7EB;
       border-radius: 8px;
-      color: #fff;
-      font-family: 'Rajdhani', sans-serif;
+      color: #111827;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
       font-weight: 600;
       outline: none;
       appearance: none;
       -webkit-appearance: none;
       cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300D02B' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300B324' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 12px center;
       padding-right: 34px;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .gc-select:hover { border-color: #374151; }
-    .gc-select:focus { border-color: #00D02B; outline: none; }
-    .gc-select option { background-color: #050505; color: #ffffff; }
+    .gc-select:hover { border-color: #CBD5E1; }
+    .gc-select:focus { border-color: #00D02B; box-shadow: 0 0 0 2px rgba(0,208,43,0.12); }
+    .gc-select option { background-color: #ffffff; color: #111827; }
 
     .field-label {
       display: block;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #4B5563;
+      color: #6B7280;
       margin-bottom: 6px;
     }
 
@@ -105,25 +106,25 @@ const schema = {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #050505;
-      border: 1px solid #1F2937;
+      background: #F8FAFC;
+      border: 1px solid #E5E7EB;
       cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
     }
-    .avatar-btn:hover { border-color: rgba(0,208,43,0.3); background: rgba(0,208,43,0.04); }
+    .avatar-btn:hover { border-color: rgba(0,208,43,0.35); background: rgba(0,208,43,0.04); }
     .avatar-btn.active {
       border-color: #00D02B;
       background: rgba(0,208,43,0.08);
-      box-shadow: 0 0 0 1px rgba(0,208,43,0.2);
+      box-shadow: 0 0 0 1px rgba(0,208,43,0.12);
     }
 
     .badge-btn {
       padding: 7px 10px;
       border-radius: 6px;
-      border: 1px solid #1F2937;
-      background: #050505;
-      color: #4B5563;
-      font-family: 'Rajdhani', sans-serif;
+      border: 1px solid #E5E7EB;
+      background: #F8FAFC;
+      color: #6B7280;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.05em;
@@ -145,64 +146,53 @@ const schema = {
       stroke-width: 1.8;
       opacity: 0.9;
     }
-    .badge-btn:hover { border-color: rgba(0,208,43,0.3); color: #94A3B8; }
+    .badge-btn:hover { border-color: rgba(0,208,43,0.35); color: #374151; }
     .badge-btn.active {
       border-color: #00D02B;
-      color: #ffffff;
+      color: #111827;
       background: rgba(0,208,43,0.08);
       box-shadow: 0 0 0 1px rgba(0,208,43,0.12);
     }
 
-    .theme-btn {
+    .theme-btn,
+    .style-btn {
       padding: 10px 14px;
       border-radius: 8px;
-      border: 1px solid #1F2937;
-      background: #050505;
-      color: #94A3B8;
-      font-family: 'Rajdhani', sans-serif;
+      border: 1px solid #E5E7EB;
+      background: #F8FAFC;
+      color: #6B7280;
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.15s;
+    }
+
+    .theme-btn {
       display: flex;
       align-items: center;
       gap: 10px;
       text-align: left;
     }
 
-    .style-btn {
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid #1F2937;
-      background: #050505;
-      color: #94A3B8;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
     .theme-btn:hover,
     .style-btn:hover {
-      border-color: rgba(0,208,43,0.3);
-      color: #ffffff;
+      border-color: rgba(0,208,43,0.35);
+      color: #111827;
     }
 
     .theme-btn.active,
     .style-btn.active {
       border-color: #00D02B;
       background: rgba(0,208,43,0.07);
-      color: #ffffff;
-      box-shadow: 0 0 0 1px rgba(0,208,43,0.15);
+      color: #111827;
+      box-shadow: 0 0 0 1px rgba(0,208,43,0.12);
     }
 
     .theme-btn.active .accent-dot {
-      box-shadow: 0 0 0 3px rgba(255,255,255,0.06), 0 0 10px var(--accent, #00D02B);
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.04), 0 0 10px var(--accent, #00D02B);
     }
 
     .upload-zone {
@@ -210,20 +200,20 @@ const schema = {
       align-items: center;
       gap: 12px;
       padding: 12px 16px;
-      background: #050505;
-      border: 1px dashed #1F2937;
+      background: #F8FAFC;
+      border: 1px dashed #D1D5DB;
       border-radius: 8px;
       cursor: pointer;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, background 0.2s;
     }
-    .upload-zone:hover { border-color: rgba(0,208,43,0.4); }
+    .upload-zone:hover { border-color: rgba(0,208,43,0.45); background: rgba(0,208,43,0.03); }
 
     .dl-btn {
       width: 100%;
       padding: 12px;
       background: #00D02B;
-      color: #000000;
-      font-family: 'Rajdhani', sans-serif;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -237,29 +227,29 @@ const schema = {
       gap: 8px;
       transition: background 0.2s, opacity 0.2s;
     }
-    .dl-btn:hover { background: #00e830; }
+    .dl-btn:hover { background: #00b324; }
 
     .canvas-wrap {
-      background: #050505;
+      background: #F8FAFC;
       border-radius: 10px;
       overflow: hidden;
-      border: 1px solid #1F2937;
+      border: 1px solid #E5E7EB;
     }
 
     .tip-item {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
       font-weight: 600;
-      color: #4B5563;
+      color: #6B7280;
       line-height: 1.5;
     }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
 
     .accent-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 
@@ -268,37 +258,40 @@ const schema = {
 
     .section-divider {
       height: 1px;
-      background: #1F2937;
+      background: #E5E7EB;
       margin: 4px 0;
     }
   </style>
 
-  <div class="gc-root min-h-screen bg-[#000000] text-white" style="--accent:#00D02B">
-    <div class="px-4 sm:px-6 lg:px-8 xl:px-12 pt-0 pb-20">
+  <div class="gc-root min-h-screen bg-[#F3F4F6] text-[#111827]" style="--accent:#00D02B">
+    <!-- ── Hero ── -->
+    <section class="section-dark-alt py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="bg-card border border-default rounded-xl py-14 md:py-16 px-6 md:px-10 text-center shadow-card relative overflow-hidden">
+          <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
 
-      <!-- ── Hero ── -->
-      <section class="bg-[#000000] relative overflow-hidden py-14 mb-8">
-        <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,208,43,0.10) 0%, transparent 65%);"></div>
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00D02B]/[0.08] border border-[#00D02B]/25 rounded-sm mb-5">
-            <span class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#00D02B]">Free Tool</span>
+          <div class="relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-dim border border-green rounded-sm mb-6">
+              <span class="label-green">Free Tool</span>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 leading-tight">
+              Xbox Gamercard <span class="text-brand">Generator</span>
+            </h1>
+
+            <p class="text-foreground-muted text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              Build a realistic Xbox-style profile card. Choose your style, theme, badges, and export in social-ready sizes.
+            </p>
           </div>
-          <h1 class="gc-title text-4xl md:text-5xl font-extrabold tracking-wide text-white mb-3">
-            Xbox <span class="text-[#00D02B]">Gamercard</span> Generator
-          </h1>
-          <p class="font-[Rajdhani] text-base md:text-lg text-[#94A3B8] max-w-2xl mx-auto">
-            Build a realistic Xbox-style profile card. Choose your style, theme, badges, and export in social-ready sizes.
-          </p>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, #1F2937 20%, #00D02B 50%, #1F2937 80%, transparent);"></div>
-      </section>
+      </div>
+    </section>
 
+    <div class="px-4 mt-5 sm:px-6 lg:px-8 xl:px-12 pt-0 pb-20">
       <!-- ── Main grid ── -->
       <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.3fr] gap-5">
-
         <!-- ── Left — Controls ── -->
         <div class="space-y-4">
-
           <!-- Profile Info -->
           <div class="panel">
             <div class="panel-label">Profile Info</div>
@@ -352,13 +345,13 @@ const schema = {
             <div>
               <label class="field-label">Upload Custom Avatar</label>
               <label class="upload-zone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                <span id="avatarUploadLabel" class="font-[Rajdhani] text-xs text-[#4B5563] truncate tracking-wide">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span id="avatarUploadLabel" class="text-xs text-[#6B7280] truncate tracking-wide">
                   Click to upload (square recommended)
                 </span>
                 <input id="avatarUpload" type="file" accept="image/*" class="hidden" />
               </label>
-              <button id="clearAvatarBtn" class="hidden mt-2 font-[Rajdhani] text-xs font-bold text-red-400 hover:text-red-300 uppercase tracking-wider transition-colors">
+              <button id="clearAvatarBtn" class="hidden mt-2 text-xs font-bold text-red-500 hover:text-red-400 uppercase tracking-wider transition-colors">
                 Remove avatar
               </button>
             </div>
@@ -394,7 +387,7 @@ const schema = {
               <div>
                 <label class="field-label">Accent Color</label>
                 <input id="accentColor" type="color" value="#00D02B"
-                  class="w-full h-11 bg-[#050505] border border-[#1F2937] rounded-lg cursor-pointer hover:border-[#374151] transition-colors" />
+                  class="w-full h-11 bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg cursor-pointer hover:border-[#CBD5E1] transition-colors" />
               </div>
               <div>
                 <label class="field-label">Background</label>
@@ -415,22 +408,22 @@ const schema = {
           <div class="panel">
             <div class="panel-label">Background Upload</div>
             <label class="upload-zone">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              <span id="bgUploadLabel" class="font-[Rajdhani] text-xs text-[#4B5563] truncate tracking-wide">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span id="bgUploadLabel" class="text-xs text-[#6B7280] truncate tracking-wide">
                 Click to upload background image
               </span>
               <input id="bgUpload" type="file" accept="image/*" class="hidden" />
             </label>
-            <button id="clearBgBtn" class="hidden mt-2 font-[Rajdhani] text-xs font-bold text-red-400 hover:text-red-300 uppercase tracking-wider transition-colors">
+            <button id="clearBgBtn" class="hidden mt-2 text-xs font-bold text-red-500 hover:text-red-400 uppercase tracking-wider transition-colors">
               Remove background
             </button>
             <div id="bgOpacityRow" class="hidden mt-4">
               <div class="flex items-center justify-between mb-1.5">
                 <label class="field-label mb-0">Overlay Darkness</label>
-                <span id="bgOpacityVal" class="gc-mono text-xs text-[#4B5563]">55%</span>
+                <span id="bgOpacityVal" class="gc-mono text-xs text-[#6B7280]">55%</span>
               </div>
               <input id="bgOpacity" type="range" min="0" max="90" value="55" class="w-full" />
-              <div class="flex justify-between mt-1 font-[Rajdhani] text-[10px] text-[#4B5563] uppercase tracking-wider">
+              <div class="flex justify-between mt-1 text-[10px] text-[#6B7280] uppercase tracking-wider">
                 <span>Lighter</span><span>Darker</span>
               </div>
             </div>
@@ -460,18 +453,16 @@ const schema = {
               </div>
             </div>
           </div>
-
         </div>
 
         <!-- ── Right — Preview ── -->
         <div class="space-y-4">
           <div class="lg:sticky lg:top-6 space-y-4">
-
             <!-- Live Preview -->
             <div class="panel">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                 <div class="panel-label mb-0">Live Preview</div>
-                <span id="previewSizeLabel" class="gc-mono text-xs text-[#4B5563]">Wide Card • 600×200</span>
+                <span id="previewSizeLabel" class="gc-mono text-xs text-[#6B7280]">Wide Card • 600×200</span>
               </div>
 
               <div class="canvas-wrap mb-4">
@@ -510,22 +501,19 @@ const schema = {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
 
       <!-- ── Ad slot ── -->
       <div class="max-w-7xl mx-auto mt-8">
-        <div class="bg-white/[0.02] border border-dashed border-[#1F2937] rounded-lg px-5 py-4 text-center">
-          <p class="font-[Rajdhani] text-[10px] font-bold tracking-[3px] uppercase text-[#4B5563] mb-3">Advertisement</p>
-          <div class="h-24 rounded bg-[#050505] border border-[#1F2937]"></div>
+        <div class="bg-white border border-dashed border-[#D1D5DB] rounded-lg px-5 py-4 text-center">
+          <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">Advertisement</p>
+          <div class="h-24 rounded bg-[#E5E7EB]"></div>
         </div>
       </div>
-
     </div>
   </div>
-
 <script>
   type Theme        = { id:string; label:string; bg:string; accent:string; text:string; subtext:string };
   type AvatarPreset = { id:string; emoji:string; label:string };
