@@ -207,105 +207,161 @@ const schema = {
 
   </div>
 
-  <script>
-    type Post = {
-      id: string;
-      title: string;
-      excerpt: string;
-      readTime: string;
-      slug: string;
-    };
+<script>
+  type Post = {
+    id: string;
+    title: string;
+    excerpt: string;
+    readTime: string;
+    slug: string;
+  };
 
-    const grid = document.getElementById("blogGrid") as HTMLElement;
-    const sectionTitle = document.getElementById("sectionTitle") as HTMLElement;
-    const resultsHeader = document.getElementById("resultsHeader") as HTMLElement;
-    const resultsTitle = document.getElementById("resultsTitle") as HTMLElement;
-    const noResults = document.getElementById("noResults") as HTMLElement;
-    const noResultsMsg = document.getElementById("noResultsMsg") as HTMLElement;
-    const searchInput = document.getElementById("searchInput") as HTMLInputElement;
-    const searchBtn = document.getElementById("searchBtn") as HTMLButtonElement;
-    const clearBtn = document.getElementById("clearBtn") as HTMLButtonElement;
-    const viewAllBtn = document.getElementById("viewAllBtn") as HTMLButtonElement;
+  function setupBlogPage() {
+    const gridEl = document.getElementById("blogGrid");
+  const sectionTitleEl = document.getElementById("sectionTitle");
+  const resultsHeaderEl = document.getElementById("resultsHeader");
+  const resultsTitleEl = document.getElementById("resultsTitle");
+  const noResultsEl = document.getElementById("noResults");
+  const noResultsMsgEl = document.getElementById("noResultsMsg");
+  const searchInputEl = document.getElementById("searchInput");
+  const searchBtnEl = document.getElementById("searchBtn");
+  const clearBtnEl = document.getElementById("clearBtn");
+  const viewAllBtnEl = document.getElementById("viewAllBtn");
+  const prevPageBtnEl = document.getElementById("prevPageBtn");
+  const nextPageBtnEl = document.getElementById("nextPageBtn");
+  const pageNumbersEl = document.getElementById("pageNumbers");
+  const paginationWrapEl = document.getElementById("paginationWrap");
 
-    const prevPageBtn = document.getElementById("prevPageBtn") as HTMLButtonElement;
-    const nextPageBtn = document.getElementById("nextPageBtn") as HTMLButtonElement;
-    const pageNumbers = document.getElementById("pageNumbers") as HTMLElement;
-    const paginationWrap = document.getElementById("paginationWrap") as HTMLElement;
+  if (
+    !(gridEl instanceof HTMLElement) ||
+    !(sectionTitleEl instanceof HTMLElement) ||
+    !(resultsHeaderEl instanceof HTMLElement) ||
+    !(resultsTitleEl instanceof HTMLElement) ||
+    !(noResultsEl instanceof HTMLElement) ||
+    !(noResultsMsgEl instanceof HTMLElement) ||
+    !(searchInputEl instanceof HTMLInputElement) ||
+    !(searchBtnEl instanceof HTMLButtonElement) ||
+    !(clearBtnEl instanceof HTMLButtonElement) ||
+    !(viewAllBtnEl instanceof HTMLButtonElement) ||
+    !(prevPageBtnEl instanceof HTMLButtonElement) ||
+    !(nextPageBtnEl instanceof HTMLButtonElement) ||
+    !(pageNumbersEl instanceof HTMLElement) ||
+    !(paginationWrapEl instanceof HTMLElement)
+  ) {
+    return;
+  }
 
+  const grid = gridEl;
+  const sectionTitle = sectionTitleEl;
+  const resultsHeader = resultsHeaderEl;
+  const resultsTitle = resultsTitleEl;
+  const noResults = noResultsEl;
+  const noResultsMsg = noResultsMsgEl;
+  const searchInput = searchInputEl;
+  const searchBtn = searchBtnEl;
+  const clearBtn = clearBtnEl;
+  const viewAllBtn = viewAllBtnEl;
+  const prevPageBtn = prevPageBtnEl;
+  const nextPageBtn = nextPageBtnEl;
+  const pageNumbers = pageNumbersEl;
+  const paginationWrap = paginationWrapEl;
     const posts: Post[] = JSON.parse(grid.dataset.posts ?? "[]");
     const postsPerPage = Number(paginationWrap.dataset.postsPerPage ?? "6");
 
     let currentPosts: Post[] = [...posts];
     let currentPage = 1;
-    let isSearching = false;
 
     function getTotalPages(list: Post[]): number {
       return Math.max(1, Math.ceil(list.length / postsPerPage));
     }
 
-  function cardHTML(post: Post): string {
-  return `
-    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-      <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
-        <span class="text-gray-500 text-sm font-ui">Gaming Image Placeholder</span>
-      </div>
+    function cardHTML(post: Post): string {
+      return `
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+          <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
+            <span class="text-gray-500 text-sm font-ui">Gaming Image Placeholder</span>
+          </div>
 
-      <div class="p-4 flex flex-col flex-1">
-        <h3 class="text-lg font-semibold mb-2 text-gray-800 font-ui line-clamp-2">
-          ${post.title}
-        </h3>
+          <div class="p-4 flex flex-col flex-1">
+            <h3 class="text-lg font-semibold mb-2 text-gray-800 font-ui line-clamp-2">
+              ${post.title}
+            </h3>
 
-        <p class="text-gray-600 mb-3 text-sm font-ui line-clamp-4">
-          ${post.excerpt}
-        </p>
+            <p class="text-gray-600 mb-3 text-sm font-ui line-clamp-4">
+              ${post.excerpt}
+            </p>
 
-        <a
-          href="/${post.slug}"
-          class="text-brand font-medium hover:underline inline-flex items-center font-ui mt-auto"
-        >
-          Read More
-          <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </a>
-      </div>
-    </article>
-  `;
-}
+            <a
+              href="/${post.slug}"
+              class="text-brand font-medium hover:underline inline-flex items-center font-ui mt-auto"
+            >
+              Read More
+              <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      `;
+    }
 
-   function renderPagination(list: Post[]) {
-  const totalPages = Math.max(1, getTotalPages(list));
+    function renderPagination(list: Post[]) {
+      const totalPages = Math.max(1, getTotalPages(list));
+      pageNumbers.innerHTML = "";
 
-  pageNumbers.innerHTML = Array.from({ length: totalPages }, (_, i) => {
-    const page = i + 1;
+      const pages: (number | string)[] = [];
 
-    return `
-      <button
-        type="button"
-        data-page="${page}"
-        class="${
-          page === currentPage
-            ? "w-8 h-8 font-ui text-[10px] font-bold rounded bg-[#00D02B] text-black"
-            : "w-8 h-8 font-ui text-[10px] font-bold rounded bg-white border border-[#E5E7EB] text-[#6B7280] hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all"
-        }"
-      >
-        ${page}
-      </button>
-    `;
-  }).join("");
+      if (totalPages <= 7) {
+        for (let i = 1; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        pages.push(1);
 
-  prevPageBtn.disabled = currentPage === 1;
-  nextPageBtn.disabled = currentPage === totalPages;
+        if (currentPage > 3) pages.push("...");
 
-  const pageButtons = pageNumbers.querySelectorAll("[data-page]");
-  pageButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const target = Number((button as HTMLButtonElement).dataset.page);
-      renderPosts(list, target);
-      window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
-    });
-  });
-}
+        const start = Math.max(2, currentPage - 1);
+        const end = Math.min(totalPages - 1, currentPage + 1);
+
+        for (let i = start; i <= end; i++) {
+          pages.push(i);
+        }
+
+        if (currentPage < totalPages - 2) pages.push("...");
+
+        pages.push(totalPages);
+      }
+
+      pages.forEach((page) => {
+        if (page === "...") {
+          const ellipsis = document.createElement("span");
+          ellipsis.className = "px-2 text-[#9CA3AF] text-xs sm:text-sm font-bold";
+          ellipsis.textContent = "...";
+          pageNumbers.appendChild(ellipsis);
+          return;
+        }
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = String(page);
+
+        button.className =
+          currentPage === page
+            ? "w-8 h-8 sm:w-9 sm:h-9 bg-[#00D02B] text-black font-ui text-[10px] sm:text-xs font-bold rounded shrink-0"
+            : "w-8 h-8 sm:w-9 sm:h-9 bg-white border border-[#E5E7EB] text-[#6B7280] font-ui text-[10px] sm:text-xs font-bold rounded shrink-0 hover:border-[#00D02B]/40 hover:text-[#00D02B] transition-all duration-150";
+
+        button.addEventListener("click", () => {
+          currentPage = Number(page);
+          renderPosts(list, currentPage);
+          window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
+        });
+
+        pageNumbers.appendChild(button);
+      });
+
+      prevPageBtn.disabled = currentPage === 1;
+      nextPageBtn.disabled = currentPage === totalPages;
+    }
 
     function renderPosts(list: Post[], page = 1) {
       const totalPages = getTotalPages(list);
@@ -330,7 +386,6 @@ const schema = {
     }
 
     function showAll() {
-      isSearching = false;
       currentPosts = [...posts];
       currentPage = 1;
 
@@ -350,8 +405,6 @@ const schema = {
         showAll();
         return;
       }
-
-      isSearching = true;
 
       const results = posts.filter(
         (post) =>
@@ -373,29 +426,51 @@ const schema = {
       renderPosts(currentPosts, 1);
     }
 
-    prevPageBtn.addEventListener("click", () => {
-      if (currentPage > 1) {
-        renderPosts(currentPosts, currentPage - 1);
-        window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
-      }
-    });
+    if (!prevPageBtn.dataset.initialized) {
+      prevPageBtn.dataset.initialized = "true";
+      prevPageBtn.addEventListener("click", () => {
+        if (currentPage > 1) {
+          renderPosts(currentPosts, currentPage - 1);
+          window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
+        }
+      });
+    }
 
-    nextPageBtn.addEventListener("click", () => {
-      if (currentPage < getTotalPages(currentPosts)) {
-        renderPosts(currentPosts, currentPage + 1);
-        window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
-      }
-    });
+    if (!nextPageBtn.dataset.initialized) {
+      nextPageBtn.dataset.initialized = "true";
+      nextPageBtn.addEventListener("click", () => {
+        if (currentPage < getTotalPages(currentPosts)) {
+          renderPosts(currentPosts, currentPage + 1);
+          window.scrollTo({ top: grid.offsetTop - 120, behavior: "smooth" });
+        }
+      });
+    }
 
-    searchBtn.addEventListener("click", handleSearch);
+    if (!searchBtn.dataset.initialized) {
+      searchBtn.dataset.initialized = "true";
+      searchBtn.addEventListener("click", handleSearch);
+    }
 
-    searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") handleSearch();
-    });
+    if (!searchInput.dataset.initialized) {
+      searchInput.dataset.initialized = "true";
+      searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") handleSearch();
+      });
+    }
 
-    clearBtn.addEventListener("click", showAll);
-    viewAllBtn.addEventListener("click", showAll);
+    if (!clearBtn.dataset.initialized) {
+      clearBtn.dataset.initialized = "true";
+      clearBtn.addEventListener("click", showAll);
+    }
 
-    renderPosts(currentPosts, 1);
-  </script>
+    if (!viewAllBtn.dataset.initialized) {
+      viewAllBtn.dataset.initialized = "true";
+      viewAllBtn.addEventListener("click", showAll);
+    }
+
+    showAll();
+  }
+
+  document.addEventListener("astro:page-load", setupBlogPage);
+</script>
 </MainLayout>
