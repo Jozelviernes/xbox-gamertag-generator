@@ -393,7 +393,7 @@ const schema = {
       optimizeBtn.disabled = true;
 
       try {
-        const response = await fetch(`${apiBase}/optimize-gamertag`, {
+      const response = await fetch(`${apiBase}/api/optimize-gamertag`, {
           method: "POST",
           headers: {
             "Accept": "application/json",
