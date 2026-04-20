@@ -231,43 +231,60 @@ const schema = {
 <!-- ═══════════════════════════════════════════
      SCRIPT — Typing animation for "Gamertag"
 ════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════
+     SCRIPT — Typing animation for "Gamertag"
+════════════════════════════════════════════ -->
 <script>
-  const word   = "Gamertag";
-  const el     = document.getElementById("typed-word") as HTMLElement;
-  const cursor = document.getElementById("typed-cursor") as HTMLElement;
- 
-  let i        = 0;
-  let deleting = false;
- 
-  function tick() {
-    if (!el || !cursor) return;
- 
-    if (!deleting) {
-      // — Typing forward —
-      el.textContent = word.slice(0, i);
-      i++;
-      if (i > word.length) {
-        // Finished typing — pause 2s then start deleting
-        deleting = true;
-        setTimeout(tick, 2000);
-        return;
+  let typingTimeout: ReturnType<typeof setTimeout> | undefined;
+
+  function setupTypedHeadline() {
+    const typedWord = document.getElementById("typed-word");
+    const typedCursor = document.getElementById("typed-cursor");
+
+    if (!(typedWord instanceof HTMLElement) || !(typedCursor instanceof HTMLElement)) return;
+
+    const el = typedWord;
+    const cursor = typedCursor;
+    const word = "Gamertag";
+
+    clearTimeout(typingTimeout);
+    el.textContent = "";
+    cursor.classList.remove("done");
+
+    let i = 0;
+    let deleting = false;
+
+    function tick() {
+      if (!document.body.contains(el) || !document.body.contains(cursor)) return;
+
+      if (!deleting) {
+        el.textContent = word.slice(0, i);
+        i++;
+
+        if (i > word.length) {
+          deleting = true;
+          typingTimeout = setTimeout(tick, 2000);
+          return;
+        }
+
+        typingTimeout = setTimeout(tick, 75 + Math.random() * 40);
+      } else {
+        el.textContent = word.slice(0, i);
+        i--;
+
+        if (i < 0) {
+          i = 0;
+          deleting = false;
+          typingTimeout = setTimeout(tick, 600);
+          return;
+        }
+
+        typingTimeout = setTimeout(tick, 45 + Math.random() * 25);
       }
-      setTimeout(tick, 75 + Math.random() * 40);
-    } else {
-      // — Deleting —
-      el.textContent = word.slice(0, i);
-      i--;
-      if (i < 0) {
-        // Finished deleting — pause 0.6s then type again
-        i = 0;
-        deleting = false;
-        setTimeout(tick, 600);
-        return;
-      }
-      setTimeout(tick, 45 + Math.random() * 25);
     }
+
+    typingTimeout = setTimeout(tick, 800);
   }
- 
-  // Start after page fade-in
-  setTimeout(tick, 800);
+
+  document.addEventListener("astro:page-load", setupTypedHeadline);
 </script>
