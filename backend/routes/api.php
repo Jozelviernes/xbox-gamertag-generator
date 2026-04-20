@@ -6,7 +6,9 @@ use App\Http\Controllers\Api\GlossaryController;
 use App\Http\Controllers\PriceCheckerController;
 use App\Http\Controllers\Api\GametagController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\GamertagOptimizerController;
 
+Route::post('/optimize-gamertag', [GamertagOptimizerController::class, 'optimize']);
 Route::prefix('xbox')->group(function () {
     Route::post('gametag/check',  [GametagController::class, 'check']);
     Route::get('profile',          [ProfileController::class,  'show']);

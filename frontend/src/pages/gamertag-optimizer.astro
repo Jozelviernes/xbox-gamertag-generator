@@ -1,0 +1,463 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+
+const apiBase = (import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000/api").replace(/\/$/, "");
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Gamertag Optimizer Tool",
+  "url": "https://xboxgamertaggenerator.com/gamertag-optimizer",
+  "description": "Shorten, rewrite, and clean your Xbox gamertag instantly.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+};
+---
+
+<MainLayout
+  title="Gamertag Optimizer Tool | Shorten, Rewrite & Clean Xbox Gamertags"
+  description="Optimize your Xbox gamertag instantly. Shorten long names, clean messy tags, and rewrite weak gamertags into better Xbox-ready ideas."
+  keywords="gamertag optimizer, gamertag cleaner, gamertag rewriter, gamertag shortener, xbox gamertag optimizer, improve gamertag"
+  canonical="https://xboxgamertaggenerator.com/gamertag-optimizer"
+  {schema}
+>
+  <Header />
+
+  <div class="min-h-screen bg-[#F3F4F6] font-ui text-[#111827]">
+    <!-- Hero -->
+    <section class="section-dark-alt py-8">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="bg-card border border-default rounded-xl py-14 md:py-16 px-6 md:px-10 text-center shadow-card relative overflow-hidden">
+          <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
+
+          <div class="relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-dim border border-green rounded-sm mb-6">
+              <span class="label-green">Free Tool</span>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 leading-tight">
+              Gamertag <span class="text-brand">Optimizer</span> Tool
+            </h1>
+
+            <p class="text-base md:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
+              Shorten, rewrite, and clean your Xbox gamertag instantly.
+            </p>
+
+            <div class="mt-6 flex flex-wrap justify-center gap-2 text-xs md:text-sm">
+              <span class="inline-flex items-center px-3 py-1 bg-brand-dim border border-green rounded-sm text-foreground-muted">
+                Free Tool
+              </span>
+              <span class="inline-flex items-center px-3 py-1 bg-brand-dim border border-green rounded-sm text-foreground-muted">
+                Instant Results
+              </span>
+              <span class="inline-flex items-center px-3 py-1 bg-brand-dim border border-green rounded-sm text-foreground-muted">
+                Smart Suggestions
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tool -->
+    <section class="section-white-subtle py-10">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-5">
+        <!-- Input Card -->
+        <div class="bg-white border border-[#E5E7EB] rounded-xl p-6 md:p-7 shadow-lg">
+          <form id="optimizerForm" data-api-base={apiBase} class="space-y-5">
+            <div>
+              <label for="gamertagInput" class="text-xs font-bold tracking-[0.18em] uppercase text-[#6B7280] block mb-3">
+                Enter your Xbox Gamertag
+              </label>
+
+              <div class="flex flex-col sm:flex-row gap-3">
+                <input
+                  id="gamertagInput"
+                  name="gamertag"
+                  type="text"
+                  maxlength="40"
+                  placeholder="e.g. xXDark_Warrior_2005Xx"
+                  class="flex-1 px-4 py-3 bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg text-[#111827] placeholder-[#9CA3AF] text-sm font-medium focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
+                  required
+                />
+                <button
+                  id="optimizeBtn"
+                  type="submit"
+                  class="px-6 py-3 bg-brand hover:bg-brand-light text-white font-semibold text-sm uppercase tracking-[0.14em] rounded-lg transition-colors duration-200 whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  Optimize Gamertag
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="flex items-center justify-between bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg px-4 py-3">
+                <span class="text-sm font-semibold text-[#111827]">Keep Numbers</span>
+                <input
+                  id="keepNumbers"
+                  type="checkbox"
+                  name="keep_numbers"
+                  class="h-4 w-4 accent-[#00D02B]"
+                />
+              </label>
+
+              <label class="flex items-center justify-between bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg px-4 py-3">
+                <span class="text-sm font-semibold text-[#111827]">Keep Meaning</span>
+                <input
+                  id="keepMeaning"
+                  type="checkbox"
+                  name="keep_meaning"
+                  checked
+                  class="h-4 w-4 accent-[#00D02B]"
+                />
+              </label>
+            </div>
+
+            <p class="text-xs text-[#9CA3AF] mt-2">
+              Cleaner removes messy formatting · Rewriter gives stronger alternatives.
+            </p>
+
+            <p class="text-xs text-[#9CA3AF] mt-1 leading-relaxed">
+              Tip: If your gamertag is already clean and readable, this tool will say so instead of forcing many suggestions.
+            </p>
+          </form>
+        </div>
+
+        <!-- Empty -->
+        <div id="emptyState" class="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-lg">
+          <p class="text-sm text-[#6B7280]">
+            Enter a gamertag above to check if it already looks good or to get a few better suggestions.
+          </p>
+        </div>
+
+        <!-- Loading -->
+        <div id="loadingState" class="hidden text-center py-12">
+          <div
+            class="inline-block w-8 h-8 rounded-full animate-spin mb-4"
+            style="border: 2px solid #E5E7EB; border-top-color: #00D02B;"
+          ></div>
+          <p class="text-sm text-[#6B7280] tracking-wide">Checking your gamertag...</p>
+        </div>
+
+        <!-- Error -->
+        <div id="errorState" class="hidden bg-red-500/[0.06] border border-red-500/30 rounded-xl p-6 text-center">
+          <p id="errorMsg" class="text-sm font-bold text-red-500"></p>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="hidden space-y-4">
+          <!-- Status Card -->
+          <div class="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-lg text-center">
+            <p class="text-xs font-bold tracking-[0.16em] uppercase text-[#9CA3AF] mb-2">
+              Checked Gamertag
+            </p>
+
+            <h2 id="normalizedTag" class="text-3xl md:text-4xl font-extrabold text-[#111827] mb-4"></h2>
+
+            <div id="qualityBadgeWrap" class="mb-4 hidden">
+              <span
+                id="qualityBadge"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
+              ></span>
+            </div>
+
+            <p id="optimizerMessage" class="text-sm text-[#6B7280] leading-relaxed max-w-2xl mx-auto"></p>
+
+            <div id="issuesWrap" class="hidden mt-5 text-left max-w-xl mx-auto">
+              <p class="text-xs font-bold tracking-[0.16em] uppercase text-[#6B7280] mb-3">
+                What can be improved
+              </p>
+              <div id="issuesList" class="space-y-2"></div>
+            </div>
+          </div>
+
+          <!-- Suggestions Wrap -->
+          <div id="suggestionsWrap" class="space-y-4">
+            <!-- Shortened -->
+            <div id="shortenedSection" class="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-lg hidden">
+              <div class="mb-5">
+                <span class="inline-flex items-center px-2.5 py-1 bg-[#00D02B]/10 border border-[#00D02B]/20 rounded-sm text-[10px] font-bold tracking-[0.16em] uppercase text-[#00B324] mb-3">
+                  Short
+                </span>
+                <h3 class="text-xl md:text-2xl font-extrabold text-[#111827]">
+                  Shortened Versions
+                </h3>
+                <p class="text-sm text-[#6B7280] mt-1">
+                  Shorter gamertags that keep the strongest part of your name.
+                </p>
+              </div>
+
+              <div id="shortenedList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+            </div>
+
+            <!-- Rewritten -->
+            <div id="rewrittenSection" class="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-lg hidden">
+              <div class="mb-5">
+                <span class="inline-flex items-center px-2.5 py-1 bg-[#00D02B]/10 border border-[#00D02B]/20 rounded-sm text-[10px] font-bold tracking-[0.16em] uppercase text-[#00B324] mb-3">
+                  Rewritten
+                </span>
+                <h3 class="text-xl md:text-2xl font-extrabold text-[#111827]">
+                  Rewritten Versions
+                </h3>
+                <p class="text-sm text-[#6B7280] mt-1">
+                  Alternative names with the same feel, but cleaner or more stylish wording.
+                </p>
+              </div>
+
+              <div id="rewrittenList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+            </div>
+
+            <!-- Cleaned -->
+            <div id="cleanedSection" class="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-lg hidden">
+              <div class="mb-5">
+                <span class="inline-flex items-center px-2.5 py-1 bg-[#00D02B]/10 border border-[#00D02B]/20 rounded-sm text-[10px] font-bold tracking-[0.16em] uppercase text-[#00B324] mb-3">
+                  Clean
+                </span>
+                <h3 class="text-xl md:text-2xl font-extrabold text-[#111827]">
+                  Cleaned Versions
+                </h3>
+                <p class="text-sm text-[#6B7280] mt-1">
+                  Messy gamertags cleaned up into more readable and Xbox-friendly formats.
+                </p>
+              </div>
+
+              <div id="cleanedList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-lg">
+            <h3 class="text-lg md:text-xl font-extrabold text-[#111827]">
+              What This Tool Does
+            </h3>
+            <p class="text-sm text-[#6B7280] mt-2 leading-relaxed">
+              This tool checks whether your gamertag already looks clean. If it needs improvement, it gives a few cleaner, shorter, and rewritten suggestions that feel more Xbox-ready.
+            </p>
+
+            <div class="mt-5 flex flex-col sm:flex-row gap-3">
+              <a
+                href="/gamertag-availability-checker"
+                class="px-5 py-3 bg-brand hover:bg-brand-light text-white font-semibold text-sm uppercase tracking-[0.14em] rounded-lg transition-colors duration-200 text-center"
+              >
+                Check Availability
+              </a>
+
+              <a
+                href="/gamertag-price-checker"
+                class="px-5 py-3 bg-white border border-[#D1D5DB] hover:border-[#00D02B]/40 text-[#6B7280] hover:text-[#00B324] font-semibold text-sm uppercase tracking-[0.14em] rounded-lg transition-all duration-150 text-center"
+              >
+                Check Price
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ad slot -->
+    <section class="pb-16 section-white-subtle">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="bg-white border border-dashed border-[#D1D5DB] rounded-lg px-5 py-4 text-center">
+          <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">Advertisement</p>
+          <div class="bg-[#E5E7EB] rounded h-24 md:h-32"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const form = document.getElementById("optimizerForm");
+    const optimizeBtn = document.getElementById("optimizeBtn");
+    const emptyState = document.getElementById("emptyState");
+    const loadingState = document.getElementById("loadingState");
+    const errorState = document.getElementById("errorState");
+    const errorMsg = document.getElementById("errorMsg");
+    const results = document.getElementById("results");
+
+    const normalizedTag = document.getElementById("normalizedTag");
+    const optimizerMessage = document.getElementById("optimizerMessage");
+    const qualityBadgeWrap = document.getElementById("qualityBadgeWrap");
+    const qualityBadge = document.getElementById("qualityBadge");
+
+    const issuesWrap = document.getElementById("issuesWrap");
+    const issuesList = document.getElementById("issuesList");
+
+    const suggestionsWrap = document.getElementById("suggestionsWrap");
+    const shortenedSection = document.getElementById("shortenedSection");
+    const rewrittenSection = document.getElementById("rewrittenSection");
+    const cleanedSection = document.getElementById("cleanedSection");
+
+    const shortenedList = document.getElementById("shortenedList");
+    const rewrittenList = document.getElementById("rewrittenList");
+    const cleanedList = document.getElementById("cleanedList");
+
+    function showOnly(target) {
+      [emptyState, loadingState, errorState, results].forEach((el) => {
+        el.classList.add("hidden");
+      });
+
+      if (target) {
+        target.classList.remove("hidden");
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function renderCards(target, items) {
+      target.innerHTML = items.map((item) => `
+        <div class="bg-white border border-[#E5E7EB] rounded-lg p-4 flex items-center justify-between gap-3">
+          <div class="min-w-0">
+            <p class="text-base font-bold text-[#111827] truncate">${escapeHtml(item)}</p>
+          </div>
+          <button
+            type="button"
+            data-copy="${escapeHtml(item)}"
+            class="shrink-0 px-3 py-2 bg-white border border-[#D1D5DB] hover:border-[#00D02B]/40 text-[#6B7280] hover:text-[#00B324] font-semibold text-[11px] uppercase tracking-[0.14em] rounded-lg transition-all duration-150"
+          >
+            Copy
+          </button>
+        </div>
+      `).join("");
+    }
+
+    function setSectionState(section, list, items) {
+      if (!Array.isArray(items) || !items.length) {
+        section.classList.add("hidden");
+        list.innerHTML = "";
+        return;
+      }
+
+      renderCards(list, items);
+      section.classList.remove("hidden");
+    }
+
+    function renderIssues(items) {
+      if (!Array.isArray(items) || !items.length) {
+        issuesWrap.classList.add("hidden");
+        issuesList.innerHTML = "";
+        return;
+      }
+
+      issuesList.innerHTML = items.map((item) => `
+        <div class="flex items-start gap-3 bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg px-4 py-3">
+          <span class="mt-0.5 inline-block h-2 w-2 rounded-full bg-[#00D02B]"></span>
+          <p class="text-sm text-[#6B7280]">${escapeHtml(item)}</p>
+        </div>
+      `).join("");
+
+      issuesWrap.classList.remove("hidden");
+    }
+
+    function renderBadge(isGood, tier) {
+      const tierText = tier ? ` · ${tier.replaceAll("_", " ")}` : "";
+
+      if (isGood) {
+        qualityBadge.className = "inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#00D02B]/10 text-[#00B324] border border-[#00D02B]/20";
+        qualityBadge.textContent = `Looks Good${tierText}`;
+      } else {
+        qualityBadge.className = "inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-amber-500/10 text-amber-700 border border-amber-500/20";
+        qualityBadge.textContent = `Can Improve${tierText}`;
+      }
+
+      qualityBadgeWrap.classList.remove("hidden");
+    }
+
+    async function optimizeGamertag(event) {
+      event.preventDefault();
+
+      const apiBase = form.dataset.apiBase;
+      const formData = new FormData(form);
+
+      const payload = {
+        gamertag: String(formData.get("gamertag") || "").trim(),
+        keep_numbers: formData.get("keep_numbers") === "on",
+        keep_meaning: formData.get("keep_meaning") === "on",
+      };
+
+      if (!payload.gamertag) {
+        errorMsg.textContent = "Please enter a gamertag first.";
+        showOnly(errorState);
+        return;
+      }
+
+      showOnly(loadingState);
+      optimizeBtn.disabled = true;
+
+      try {
+        const response = await fetch(`${apiBase}/optimize-gamertag`, {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data?.message || "Failed to optimize gamertag.");
+        }
+
+        normalizedTag.textContent = data.normalized || payload.gamertag;
+        optimizerMessage.textContent = data.message || "Gamertag checked.";
+        renderBadge(Boolean(data.is_good), data.tier || null);
+        renderIssues(data.issues || []);
+
+        setSectionState(shortenedSection, shortenedList, data.shortened || []);
+        setSectionState(rewrittenSection, rewrittenList, data.rewritten || []);
+        setSectionState(cleanedSection, cleanedList, data.cleaned || []);
+
+        const hasSuggestions =
+          (Array.isArray(data.shortened) && data.shortened.length) ||
+          (Array.isArray(data.rewritten) && data.rewritten.length) ||
+          (Array.isArray(data.cleaned) && data.cleaned.length);
+
+        if (hasSuggestions) {
+          suggestionsWrap.classList.remove("hidden");
+        } else {
+          suggestionsWrap.classList.add("hidden");
+        }
+
+        showOnly(results);
+      } catch (error) {
+        errorMsg.textContent = error?.message || "Something went wrong. Please try again.";
+        showOnly(errorState);
+      } finally {
+        optimizeBtn.disabled = false;
+      }
+    }
+
+    form?.addEventListener("submit", optimizeGamertag);
+
+    document.addEventListener("click", async (event) => {
+      const button = event.target.closest("[data-copy]");
+      if (!button) return;
+
+      const value = button.getAttribute("data-copy") || "";
+      const original = button.textContent;
+
+      try {
+        await navigator.clipboard.writeText(value);
+        button.textContent = "Copied";
+        setTimeout(() => {
+          button.textContent = original;
+        }, 1200);
+      } catch {
+        button.textContent = "Failed";
+        setTimeout(() => {
+          button.textContent = original;
+        }, 1200);
+      }
+    });
+  </script>
+</MainLayout>

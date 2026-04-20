@@ -9,7 +9,8 @@ type IconKey =
   | "download"
   | "dollar"
   | "trophy"
-  | "idcard";
+  | "idcard"
+  | "sparkles";
 
 type Tool = {
   id: string;
@@ -66,6 +67,15 @@ const tools: Tool[] = [
     available: true,
     href: "/gamer-profile",
     icon: "chart",
+  },
+  {
+    id: "6",
+    title: "Xbox Gamertag Optimizer Tool",
+    description: "Clean messy tags, improve weak names, and get a few smarter Xbox-ready suggestions only when your gamertag needs work.",
+    slug: "gamertag-optimizer",
+    available: true,
+    href: "/gamertag-optimizer",
+    icon: "sparkles",
   }
 ];
 
@@ -95,6 +105,11 @@ const iconMap: Record<IconKey, string> = {
     <circle cx="9" cy="10" r="2" stroke-width="1.5"></circle>
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 16c.8-1.3 2-2 3-2s2.2.7 3 2M14 9h4M14 13h4" />
   </svg>`,
+  sparkles: `<svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z" />
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z" />
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 14l.8 2.2L8 17l-2.2.8L5 20l-.8-2.2L2 17l2.2-.8L5 14Z" />
+  </svg>`,
 };
 
 const schema = {
@@ -102,10 +117,9 @@ const schema = {
   "@type": "CollectionPage",
   "name": "Xbox Gaming Tools",
   "url": "https://xboxgamertaggenerator.com/tools",
-  "description": "Free Xbox gaming tools — gamertag generator, availability checker, gamer profile checker and more.",
+  "description": "Free Xbox gaming tools — gamertag generator, availability checker, gamer profile checker, optimizer, and more.",
 };
 ---
-
 <MainLayout
   title="Xbox Gaming Tools & Utilities | Gamertag Generator, Checker & More"
   description="Comprehensive collection of free Xbox gaming tools including gamertag generators, availability checkers, profile stats analyzers, and more."

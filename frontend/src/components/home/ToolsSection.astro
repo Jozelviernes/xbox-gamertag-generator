@@ -5,6 +5,7 @@ import Download from "@lucide/astro/icons/download";
 import DollarSign from "@lucide/astro/icons/dollar-sign";
 import UserCheck from "@lucide/astro/icons/user-check";
 import Gift from "@lucide/astro/icons/gift";
+import Sparkles from "@lucide/astro/icons/sparkles";
 
 type Tool = {
   id: string;
@@ -50,6 +51,13 @@ const tools: Tool[] = [
     description: "Instantly see if your desired tag is still up for grabs before someone else snags it.",
     icon: Search,
     slug: "gamertag-checker",
+  },
+  {
+    id: "6",
+    title: "Xbox Gamertag Optimizer Tool",
+    description: "Check if your gamertag already looks clean, and get a few better suggestions only when it needs improvement.",
+    icon: Sparkles,
+    slug: "gamertag-optimizer",
   }
 ];
 
@@ -61,6 +69,7 @@ const getToolLink = (slug: string): string => {
     "gamertag-price-checker": "/gamertag-price-checker",
     "gamer-profile": "/gamer-profile",
     "gamertag-checker": "/gamertag-checker",
+    "gamertag-optimizer": "/gamertag-optimizer",
   };
 
   return map[slug] ?? `/${slug}`;
