@@ -2,8 +2,8 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/layout/Header.astro";
 
-const apiBase = (import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000/api").replace(/\/$/, "");
 
+const apiBase = (import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -238,7 +238,7 @@ const schema = {
 
             <div class="mt-5 flex flex-col sm:flex-row gap-3">
               <a
-                href="/gamertag-availability-checker"
+                href="/gamertag-checker"
                 class="px-5 py-3 bg-brand hover:bg-brand-light text-white font-semibold text-sm uppercase tracking-[0.14em] rounded-lg transition-colors duration-200 text-center"
               >
                 Check Availability
