@@ -1,13 +1,5 @@
 @import "tailwindcss";
 
-/* ============================================================
-   GOOGLE FONTS — add this in your <head> in BaseLayout.astro:
-
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
-   Note: Orbitron is ONLY used for .font-site-title (the "Xbox Gamertag | Generator" logo text)
-   ============================================================ */
 
 /* ============================================================
    PERFORMANCE — font-display swap prevents FOIT/FOUT
@@ -66,12 +58,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ============================================================
-   FONT ROLES
-   Inter         → everything, including h1–h6
-   Orbitron      → .font-site-title ONLY
-                   ("Xbox Gamertag | Generator" logo text)
-   ============================================================ */
+
 
 /* Inter for literally everything */
 h1, h2, h3, h4, h5, h6,
@@ -103,15 +90,12 @@ article,
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
-/* Orbitron — site title logo text ONLY */
 .font-site-title {
   font-family: 'Orbitron', sans-serif;
   font-weight: 900;
 }
 
-/* ============================================================
-   @THEME — ReactJS Xbox palette applied to gaming design system
-   ============================================================ */
+
 @theme {
 
   /* --- Brand Green (Xbox-style, matches ReactJS hsl(107 76% 26%)) --- */

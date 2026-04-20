@@ -161,10 +161,15 @@ import {
     <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8"></div>
 
     <div class="text-center">
-      <button id="generateMoreBtn" type="button" class="gtg-more-btn">
-        Generate More
-      </button>
-    </div>
+  <button id="generateMoreBtn" type="button" class="gtg-more-btn">
+    <span class="gtg-more-btn-inner">
+      <svg class="gtg-more-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+      <span class="gtg-more-btn-text">Generate More</span>
+    </span>
+  </button>
+</div>
 
     <!-- Ad slot -->
     <div class="gtg-ad-slot mt-10">
@@ -678,52 +683,227 @@ import {
     .gtg-generate-btn.loading .gtg-btn-icon { animation: none; }
   }
 
-</style>
+.gtg-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
 
-<!-- ═══ SCRIPT ═══ -->
+.gtg-more-btn-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gtg-more-btn-icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.gtg-more-btn:hover .gtg-more-btn-icon {
+  transform: rotate(-12deg) scale(1.08);
+}
+
+.gtg-more-btn.loading .gtg-more-btn-icon {
+  animation: boltSpin 0.7s linear infinite;
+}
+
+.gtg-more-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+</style>
 <script>
   // @ts-nocheck
 
-  /* ── Custom select logic ── */
-  document.querySelectorAll(".custom-select-wrapper").forEach((wrapper) => {
-    const trigger = wrapper.querySelector(".custom-select-trigger");
-    const menu    = wrapper.querySelector(".custom-select-menu");
-    const input   = wrapper.querySelector("input[type=hidden]");
-    const label   = wrapper.querySelector(".custom-select-label");
-    const items   = wrapper.querySelectorAll(".custom-select-item");
+  function setupGamertagGenerator() {
+    /* ── Custom select logic ── */
+    document.querySelectorAll(".custom-select-wrapper").forEach((wrapper) => {
+      if (wrapper.dataset.initialized === "true") return;
+      wrapper.dataset.initialized = "true";
 
-    trigger?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const isOpen = menu?.classList.contains("open");
-      document.querySelectorAll(".custom-select-menu.open").forEach((m) => {
-        m.classList.remove("open");
-        m.previousElementSibling?.classList.remove("open");
-      });
-      if (!isOpen) {
-        menu?.classList.add("open");
-        trigger?.classList.add("open");
-        trigger?.setAttribute("aria-expanded", "true");
-      }
-    });
+      const trigger = wrapper.querySelector(".custom-select-trigger");
+      const menu = wrapper.querySelector(".custom-select-menu");
+      const input = wrapper.querySelector("input[type=hidden]");
+      const label = wrapper.querySelector(".custom-select-label");
+      const items = wrapper.querySelectorAll(".custom-select-item");
 
-    items.forEach((item) => {
-      item.addEventListener("click", () => {
-        const value = item.dataset.value ?? "";
-        const text  = item.textContent?.trim() ?? "";
-        if (input) input.value = value;
-        if (label) label.textContent = text;
-        items.forEach((i) => {
-          i.classList.remove("selected");
-          i.setAttribute("aria-selected", "false");
+      trigger?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = menu?.classList.contains("open");
+        document.querySelectorAll(".custom-select-menu.open").forEach((m) => {
+          m.classList.remove("open");
+          m.previousElementSibling?.classList.remove("open");
         });
-        item.classList.add("selected");
-        item.setAttribute("aria-selected", "true");
-        menu?.classList.remove("open");
-        trigger?.classList.remove("open");
-        trigger?.setAttribute("aria-expanded", "false");
+        if (!isOpen) {
+          menu?.classList.add("open");
+          trigger?.classList.add("open");
+          trigger?.setAttribute("aria-expanded", "true");
+        }
+      });
+
+      items.forEach((item) => {
+        item.addEventListener("click", () => {
+          const value = item.dataset.value ?? "";
+          const text = item.textContent?.trim() ?? "";
+          if (input) input.value = value;
+          if (label) label.textContent = text;
+          items.forEach((i) => {
+            i.classList.remove("selected");
+            i.setAttribute("aria-selected", "false");
+          });
+          item.classList.add("selected");
+          item.setAttribute("aria-selected", "true");
+          menu?.classList.remove("open");
+          trigger?.classList.remove("open");
+          trigger?.setAttribute("aria-expanded", "false");
+        });
       });
     });
-  });
+
+    const genderEl = document.getElementById("gender");
+    const themeEl = document.getElementById("theme");
+    const languageEl = document.getElementById("language");
+    const includeWordsEl = document.getElementById("includeWords");
+    const otherRequestsEl = document.getElementById("otherRequests");
+    const characterLimitEl = document.getElementById("characterLimit");
+    const characterLimitValueEl = document.getElementById("characterLimitValue");
+    const generateBtn = document.getElementById("generateBtn");
+    const generateMoreBtn = document.getElementById("generateMoreBtn");
+    const resultsSection = document.getElementById("resultsSection");
+    const resultsGrid = document.getElementById("resultsGrid");
+
+    function updateCharacterLimitLabel() {
+      if (characterLimitEl && characterLimitValueEl) {
+        characterLimitValueEl.textContent = characterLimitEl.value;
+      }
+    }
+
+    function getValue(el) {
+      if (
+        el instanceof HTMLInputElement ||
+        el instanceof HTMLTextAreaElement ||
+        el instanceof HTMLSelectElement
+      ) {
+        return el.value;
+      }
+      return "";
+    }
+
+    function getFormData() {
+      return {
+        gender: getValue(genderEl),
+        theme: getValue(themeEl),
+        language: getValue(languageEl),
+        includeWords: getValue(includeWordsEl),
+        otherRequests: getValue(otherRequestsEl),
+        characterLimit: Number(getValue(characterLimitEl) || 12),
+      };
+    }
+
+    async function generateTags(clickedBtn = generateBtn) {
+  if (!clickedBtn) return;
+
+  const btnText =
+    clickedBtn.querySelector(".gtg-btn-text") ||
+    clickedBtn.querySelector(".gtg-more-btn-text");
+
+  const originalText =
+    btnText?.textContent ??
+    (clickedBtn === generateMoreBtn ? "Generate More" : "Generate Gamertags");
+
+  if (btnText) btnText.textContent = "Generating...";
+
+  clickedBtn.setAttribute("disabled", "true");
+  clickedBtn.classList.add("loading");
+
+  try {
+    const API = import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000";
+    const response = await fetch(`${API}/api/generate-gamertags`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(getFormData()),
+    });
+
+    if (!response.ok) throw new Error("Failed to generate gamertags.");
+
+    const data = await response.json();
+    renderResults(data.tags || []);
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong while generating gamertags.");
+  } finally {
+    if (btnText) btnText.textContent = originalText;
+    clickedBtn.removeAttribute("disabled");
+    clickedBtn.classList.remove("loading");
+  }
+}
+    function renderResults(tags) {
+      if (!resultsGrid || !resultsSection) return;
+      resultsGrid.innerHTML = "";
+
+      tags.forEach((tag, index) => {
+        const card = document.createElement("div");
+        card.className = "result-card";
+        card.style.animationDelay = `${index * 60}ms`;
+
+        const name = document.createElement("span");
+        name.className = "result-card-name";
+        name.textContent = tag;
+
+        const btn = document.createElement("button");
+        btn.className = "result-copy-btn";
+        btn.type = "button";
+        btn.textContent = "Copy";
+
+        btn.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(tag);
+            btn.textContent = "Copied!";
+            btn.classList.add("copied");
+            setTimeout(() => {
+              btn.textContent = "Copy";
+              btn.classList.remove("copied");
+            }, 1200);
+          } catch {
+            btn.textContent = "Failed";
+            setTimeout(() => {
+              btn.textContent = "Copy";
+            }, 1200);
+          }
+        });
+
+        card.appendChild(name);
+        card.appendChild(btn);
+        resultsGrid.appendChild(card);
+      });
+
+      resultsSection.classList.remove("hidden");
+      resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    if (characterLimitEl && !characterLimitEl.dataset.initialized) {
+      characterLimitEl.dataset.initialized = "true";
+      characterLimitEl.addEventListener("input", updateCharacterLimitLabel);
+    }
+
+   if (generateBtn && !generateBtn.dataset.initialized) {
+  generateBtn.dataset.initialized = "true";
+  generateBtn.addEventListener("click", () => generateTags(generateBtn));
+}
+
+if (generateMoreBtn && !generateMoreBtn.dataset.initialized) {
+  generateMoreBtn.dataset.initialized = "true";
+  generateMoreBtn.addEventListener("click", () => generateTags(generateMoreBtn));
+}
+
+    updateCharacterLimitLabel();
+  }
 
   document.addEventListener("click", () => {
     document.querySelectorAll(".custom-select-menu.open").forEach((m) => {
@@ -732,119 +912,5 @@ import {
     });
   });
 
-  /* ── Form elements ── */
-  const genderEl              = document.getElementById("gender");
-  const themeEl               = document.getElementById("theme");
-  const languageEl            = document.getElementById("language");
-  const includeWordsEl        = document.getElementById("includeWords");
-  const otherRequestsEl       = document.getElementById("otherRequests");
-  const characterLimitEl      = document.getElementById("characterLimit");
-  const characterLimitValueEl = document.getElementById("characterLimitValue");
-  const generateBtn           = document.getElementById("generateBtn");
-  const generateMoreBtn       = document.getElementById("generateMoreBtn");
-  const resultsSection        = document.getElementById("resultsSection");
-  const resultsGrid           = document.getElementById("resultsGrid");
-
-  /* ── Character limit label ── */
-  function updateCharacterLimitLabel() {
-    if (characterLimitEl && characterLimitValueEl) {
-      characterLimitValueEl.textContent = characterLimitEl.value;
-    }
-  }
-  characterLimitEl?.addEventListener("input", updateCharacterLimitLabel);
-
-  function getValue(el) {
-    if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement || el instanceof HTMLSelectElement) {
-      return el.value;
-    }
-    return "";
-  }
-
-  function getFormData() {
-    return {
-      gender:         getValue(genderEl),
-      theme:          getValue(themeEl),
-      language:       getValue(languageEl),
-      includeWords:   getValue(includeWordsEl),
-      otherRequests:  getValue(otherRequestsEl),
-      characterLimit: Number(getValue(characterLimitEl) || 12),
-    };
-  }
-
-  /* ── Generate ── */
-  async function generateTags() {
-    if (!generateBtn) return;
-
-    const btnText = generateBtn.querySelector(".gtg-btn-text");
-    const originalText = btnText?.textContent ?? "Generate Gamertags";
-    if (btnText) btnText.textContent = "Generating...";
-    generateBtn.setAttribute("disabled", "true");
-    generateBtn.classList.add("loading");
-
-    try {
-      const API = import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000";
-      const response = await fetch(`${API}/api/generate-gamertags`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(getFormData()),
-      });
-      if (!response.ok) throw new Error("Failed to generate gamertags.");
-      const data = await response.json();
-      renderResults(data.tags || []);
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong while generating gamertags.");
-    } finally {
-      if (btnText) btnText.textContent = originalText;
-      generateBtn.removeAttribute("disabled");
-      generateBtn.classList.remove("loading");
-    }
-  }
-
-  /* ── Render results with staggered entrance ── */
-  function renderResults(tags) {
-    if (!resultsGrid || !resultsSection) return;
-    resultsGrid.innerHTML = "";
-
-    tags.forEach((tag, index) => {
-      const card = document.createElement("div");
-      card.className = "result-card";
-      /* Stagger each card by 60ms */
-      card.style.animationDelay = `${index * 60}ms`;
-
-      const name = document.createElement("span");
-      name.className = "result-card-name";
-      name.textContent = tag;
-
-      const btn = document.createElement("button");
-      btn.className = "result-copy-btn";
-      btn.type = "button";
-      btn.textContent = "Copy";
-      btn.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(tag);
-          btn.textContent = "Copied!";
-          btn.classList.add("copied");
-          setTimeout(() => {
-            btn.textContent = "Copy";
-            btn.classList.remove("copied");
-          }, 1200);
-        } catch {
-          btn.textContent = "Failed";
-          setTimeout(() => { btn.textContent = "Copy"; }, 1200);
-        }
-      });
-
-      card.appendChild(name);
-      card.appendChild(btn);
-      resultsGrid.appendChild(card);
-    });
-
-    resultsSection.classList.remove("hidden");
-    resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  generateBtn?.addEventListener("click", generateTags);
-  generateMoreBtn?.addEventListener("click", generateTags);
-  updateCharacterLimitLabel();
+  document.addEventListener("astro:page-load", setupGamertagGenerator);
 </script>
