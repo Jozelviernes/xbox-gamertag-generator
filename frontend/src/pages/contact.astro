@@ -2,17 +2,46 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/layout/Header.astro";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "name": "Contact Xbox Gamertag Generator",
-  "url": "https://xboxgamertaggenerator.com/contact",
-};
+const pageUrl = "https://xboxgamertaggenerator.com/contact";
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Xbox Gamertag Generator",
+    "url": pageUrl,
+    "description": "Contact Xbox Gamertag Generator for support, feedback, questions, and tool suggestions.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Xbox Gamertag Generator",
+      "url": "https://xboxgamertaggenerator.com"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://xboxgamertaggenerator.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": pageUrl
+      }
+    ]
+  }
+];
 
 const helpLinks = [
   {
     title: "Xbox Gamertag Generator",
-    description: "Generate unique Xbox gamertags",
+    description: "Generate unique, cool, and funny Xbox gamertags instantly.",
     href: "/",
     icon: `
       <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -22,8 +51,8 @@ const helpLinks = [
     `,
   },
   {
-    title: "Other Tools",
-    description: "Explore all our gaming tools",
+    title: "Xbox Tools",
+    description: "Explore our Xbox gamertag tools, checkers, and generators.",
     href: "/tools",
     icon: `
       <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -33,8 +62,8 @@ const helpLinks = [
     `,
   },
   {
-    title: "Guides & Resources",
-    description: "Helpful guides and tutorials",
+    title: "Guides and Resources",
+    description: "Read Xbox gamertag guides, naming tips, and helpful articles.",
     href: "/blog",
     icon: `
       <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -47,9 +76,9 @@ const helpLinks = [
 ---
 
 <MainLayout
-  title="Contact Us | Xbox Gamertag Generator"
-  description="Questions? Suggestions? We're here. Contact Xbox Gamertag Generator for support, ideas, or feedback."
-  keywords="contact xbox gamertag generator, support, feedback, gaming tool help"
+  title="Contact Xbox Gamertag Generator – Support, Feedback & Questions"
+  description="Contact Xbox Gamertag Generator for support, feedback, tool suggestions, and general questions about our Xbox gamertag tools and guides."
+  canonical={pageUrl}
   {schema}
 >
   <Header />

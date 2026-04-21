@@ -6,7 +6,6 @@ import { ClientRouter } from "astro:transitions";
 interface Props {
   title: string;
   description: string;
-  keywords?: string;
   ogImage?: string;
   ogType?: string;
   canonical?: string;
@@ -17,7 +16,6 @@ interface Props {
 const {
   title,
   description,
-  keywords,
   ogImage,
   ogType = "website",
   canonical,
@@ -55,7 +53,7 @@ const resolvedOgImage = ogImage
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    {keywords && <meta name="keywords" content={keywords} />}
+    <!-- keywords meta intentionally omitted — Google ignores it completely -->
     <meta name="author" content={siteName} />
     <meta
       name="robots"
@@ -66,15 +64,16 @@ const resolvedOgImage = ogImage
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <!-- Faster-feeling internal navigation -->
- <ClientRouter fallback="swap" />
+    <ClientRouter fallback="swap" />
 
     <!-- Favicons / app icons -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalClean} />
@@ -94,29 +93,35 @@ const resolvedOgImage = ogImage
     <meta name="twitter:image" content={resolvedOgImage} />
     <meta name="twitter:image:alt" content={fullTitle} />
 
-    <!-- Fonts -->
+    <!--
+      FONTS
+      1. preconnect — opens the TCP connection early
+      2. preload    — fetches the CSS file with high priority, non-blocking
+      3. print swap — applies it once loaded (zero render-blocking)
+      4. noscript   — fallback for JS-disabled browsers
+      Orbitron removed — Inter is the only font used across the project.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       />
     </noscript>
 
-    <!-- Page schema -->
+    <!-- Page-level schema (passed via props) -->
     {schema && (
       Array.isArray(schema)
         ? schema.map((s) => (
@@ -125,7 +130,7 @@ const resolvedOgImage = ogImage
         : <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     )}
 
-    <!-- Global WebSite schema -->
+    <!-- Sitewide WebSite schema -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
@@ -141,7 +146,7 @@ const resolvedOgImage = ogImage
       })}
     />
 
-    <!-- Global Organization schema -->
+    <!-- Sitewide Organization schema -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify({

@@ -2,24 +2,42 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/layout/Header.astro";
 
+const pageUrl = "https://xboxgamertaggenerator.com/gamertag-price-checker";
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Xbox Gamertag Price Checker",
-  "url": "https://xboxgamertaggenerator.com/gamertag-price-checker",
-  "description": "Check how much an Xbox gamertag costs to change. Find out the current price for gamertag changes on Xbox.",
+  "url": pageUrl,
+  "description": "Estimate the value of an Xbox gamertag based on length, readability, rarity, and overall naming quality.",
   "applicationCategory": "GameApplication",
   "operatingSystem": "Web",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "creator": {
+    "@type": "Organization",
+    "name": "Xbox Gamertag Generator",
+    "url": "https://xboxgamertaggenerator.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": pageUrl
+  }
 };
 ---
 
 <MainLayout
-  title="Xbox Gamertag Price Checker | How Much Does a Name Change Cost?"
-  description="Find out exactly how much it costs to change your Xbox gamertag. Check current Xbox name change pricing, free change eligibility, and what affects the cost."
-  keywords="xbox gamertag price, xbox name change cost, how much to change xbox gamertag, xbox gamertag change fee, xbox name change price"
+  title="Xbox Gamertag Price Checker – Estimate Your Gamertag Value"
+  description="Use our free Xbox Gamertag Price Checker to estimate a gamertag’s value based on rarity, length, readability, and overall quality."
+  canonical={pageUrl}
   {schema}
 >
+
   <Header />
 
   <div class="min-h-screen bg-[#F3F4F6] font-ui text-[#111827]">

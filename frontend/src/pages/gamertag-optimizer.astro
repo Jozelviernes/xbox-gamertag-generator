@@ -2,25 +2,40 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/layout/Header.astro";
 
-
 const apiBase = (import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
+const pageUrl = "https://xboxgamertaggenerator.com/gamertag-optimizer";
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Gamertag Optimizer Tool",
-  "url": "https://xboxgamertaggenerator.com/gamertag-optimizer",
-  "description": "Shorten, rewrite, and clean your Xbox gamertag instantly.",
+  "name": "Gamertag Optimizer",
+  "url": pageUrl,
+  "description": "Shorten, clean, and rewrite Xbox gamertags instantly with this free Gamertag Optimizer tool.",
   "applicationCategory": "GameApplication",
   "operatingSystem": "Web",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "creator": {
+    "@type": "Organization",
+    "name": "Xbox Gamertag Generator",
+    "url": "https://xboxgamertaggenerator.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": pageUrl
+  }
 };
 ---
 
 <MainLayout
-  title="Gamertag Optimizer Tool | Shorten, Rewrite & Clean Xbox Gamertags"
-  description="Optimize your Xbox gamertag instantly. Shorten long names, clean messy tags, and rewrite weak gamertags into better Xbox-ready ideas."
-  keywords="gamertag optimizer, gamertag cleaner, gamertag rewriter, gamertag shortener, xbox gamertag optimizer, improve gamertag"
-  canonical="https://xboxgamertaggenerator.com/gamertag-optimizer"
+  title="Gamertag Optimizer – Shorten, Clean & Rewrite Xbox Gamertags"
+  description="Use our free Gamertag Optimizer to shorten long names, clean messy Xbox tags, and rewrite weak ideas into better, more readable gamertags."
+  canonical={pageUrl}
   {schema}
 >
   <Header />

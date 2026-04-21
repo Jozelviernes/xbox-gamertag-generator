@@ -12,13 +12,41 @@ import RefreshCcw from "@lucide/astro/icons/refresh-ccw";
 import Ban from "@lucide/astro/icons/ban";
 import Mail from "@lucide/astro/icons/mail";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Terms and Conditions",
-  "url": "https://xboxgamertaggenerator.com/terms-and-conditions",
-  "description": "Terms and Conditions for Xbox Gamertag Generator.",
-};
+const pageUrl = "https://xboxgamertaggenerator.com/terms-and-conditions";
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Terms and Conditions",
+    "url": pageUrl,
+    "description": "Read the Terms and Conditions for using Xbox Gamertag Generator and its tools.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Xbox Gamertag Generator",
+      "url": "https://xboxgamertaggenerator.com"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://xboxgamertaggenerator.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Terms and Conditions",
+        "item": pageUrl
+      }
+    ]
+  }
+];
 
 const tocItems = [
   { id: "use-of-website", label: "1. Use of the Website" },
@@ -35,9 +63,9 @@ const tocItems = [
 ---
 
 <MainLayout
-  title="Terms and Conditions"
-  description="Read the terms and conditions for using Xbox Gamertag Generator and its tools."
-  keywords="terms and conditions, xbox gamertag generator terms"
+  title="Terms and Conditions – Xbox Gamertag Generator"
+  description="Read the Terms and Conditions for using Xbox Gamertag Generator, including tool usage, limitations, responsibilities, and important disclaimers."
+  canonical={pageUrl}
   {schema}
 >
   <Header />

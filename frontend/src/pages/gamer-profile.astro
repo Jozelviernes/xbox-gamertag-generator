@@ -1,12 +1,42 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Header from '../components/layout/Header.astro';
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Gamer Profile Checker",
+  "url": "https://xboxgamertaggenerator.com/gamer-profile",
+  "description": "Look up public Xbox gamer profiles, gamerscore, gamerpic, bio, and profile details with this free Gamer Profile Checker.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "creator": {
+    "@type": "Organization",
+    "name": "Xbox Gamertag Generator",
+    "url": "https://xboxgamertaggenerator.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": "https://xboxgamertaggenerator.com/gamer-profile"
+  }
+};
 ---
 
 <MainLayout
-  title="Gamer Profile Checker — Xbox Stats Lookup"
-  description="Look up public Xbox gamer profiles, gamerscore, bio, and other profile details."
+  title="Gamer Profile Checker – Xbox Profile, Gamerscore & Bio Lookup"
+  description="Look up public Xbox gamer profiles, gamerscore, gamerpic, bio, and other profile details instantly with our free Gamer Profile Checker."
+  canonical="https://xboxgamertaggenerator.com/gamer-profile"
+  {schema}
 >
+
+
   <Header />
 
   <div class="min-h-screen bg-[#F3F4F6] text-[#111827] font-ui">

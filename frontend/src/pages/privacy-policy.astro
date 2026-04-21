@@ -9,13 +9,41 @@ import Bell from "@lucide/astro/icons/bell";
 import Mail from "@lucide/astro/icons/mail";
 import Clock from "@lucide/astro/icons/clock";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Privacy Policy",
-  "url": "https://xboxgamertaggenerator.com/privacy-policy",
-  "description": "Privacy Policy for Xbox Gamertag Generator.",
-};
+const pageUrl = "https://xboxgamertaggenerator.com/privacy-policy";
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy",
+    "url": pageUrl,
+    "description": "Read the Privacy Policy for Xbox Gamertag Generator and learn how we collect, use, and protect information.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Xbox Gamertag Generator",
+      "url": "https://xboxgamertaggenerator.com"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://xboxgamertaggenerator.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": pageUrl
+      }
+    ]
+  }
+];
 
 const tocItems = [
   { id: "introduction", label: "1. Introduction" },
@@ -30,9 +58,9 @@ const tocItems = [
 ---
 
 <MainLayout
-  title="Privacy Policy"
-  description="Learn how Xbox Gamertag Generator collects, uses, and protects your information."
-  keywords="privacy policy, xbox gamertag generator privacy"
+  title="Privacy Policy – Xbox Gamertag Generator"
+  description="Read the Xbox Gamertag Generator Privacy Policy to learn how we collect, use, store, and protect your information."
+  canonical={pageUrl}
   {schema}
 >
   <Header />

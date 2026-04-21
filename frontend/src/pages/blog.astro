@@ -9,16 +9,22 @@ const totalPages = Math.max(1, Math.ceil(blogPosts.length / postsPerPage));
 const schema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "Xbox Gamertag Tips & Guides",
+  "name": "Xbox Gamertag Blog",
   "url": "https://xboxgamertaggenerator.com/blog",
-  "description": "Expert guides on Xbox gamertag creation, naming trends, and gaming branding strategies.",
+  "description": "Xbox gamertag tips, name ideas, guides, and gaming articles to help you choose better Xbox names.",
+  "inLanguage": "en-US",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xbox Gamertag Generator",
+    "url": "https://xboxgamertaggenerator.com"
+  }
 };
 ---
 
 <MainLayout
-  title="Xbox Gamertag Tips, Guides & Gaming Articles | Expert Advice"
-  description="Expert guides on Xbox gamertag creation, naming trends, gaming branding strategies, and profile optimization tips."
-  keywords="xbox gamertag tips, gaming guides, xbox naming advice, gamertag ideas, gaming articles"
+  title="Xbox Gamertag Blog – Tips, Ideas & Guides for Better Xbox Names"
+  description="Browse Xbox gamertag tips, creative name ideas, and gaming guides to help you choose a better Xbox name and build a stronger gamer identity."
+  canonical="https://xboxgamertaggenerator.com/blog"
   {schema}
 >
   <Header />

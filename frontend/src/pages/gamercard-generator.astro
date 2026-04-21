@@ -2,24 +2,42 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/layout/Header.astro";
 
+const pageUrl = "https://xboxgamertaggenerator.com/gamercard-generator";
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Xbox Gamercard Generator",
-  "url": "https://xboxgamertaggenerator.com/gamercard-generator",
-  "description": "Generate a custom Xbox gamercard image for your profile.",
+  "url": pageUrl,
+  "description": "Create a custom Xbox gamercard image with your gamertag, gamerscore, avatar, status, and badges. Download and share it instantly.",
   "applicationCategory": "GameApplication",
   "operatingSystem": "Web",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "creator": {
+    "@type": "Organization",
+    "name": "Xbox Gamertag Generator",
+    "url": "https://xboxgamertaggenerator.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": pageUrl
+  }
 };
 ---
 
 <MainLayout
-  title="Xbox Gamercard Generator | Create Your Custom Xbox Badge"
-  description="Create a custom Xbox gamercard showing your gamertag, gamerscore, status, badges, and avatar. Download as PNG and share on forums, social bios, or anywhere."
-  keywords="xbox gamercard generator, custom xbox badge, xbox gamertag card, xbox profile card, xbox gamercard maker"
+  title="Xbox Gamercard Generator – Create a Custom Xbox Gamercard"
+  description="Create a custom Xbox gamercard with your gamertag, gamerscore, avatar, status, and badges. Download it as a PNG and share it anywhere."
+  canonical={pageUrl}
   {schema}
 >
+
   <Header />
 
   <style>

@@ -1,11 +1,41 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Header from '../components/layout/Header.astro';
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+
+const pageUrl = "https://xboxgamertaggenerator.com/gamertag-checker";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Gamertag Checker",
+  "url": pageUrl,
+  "description": "Check if an Xbox gamertag is taken or still likely available using live Xbox data.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "creator": {
+    "@type": "Organization",
+    "name": "Xbox Gamertag Generator",
+    "url": "https://xboxgamertaggenerator.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": pageUrl
+  }
+};
 ---
 
 <MainLayout
-  title="Gamertag Checker — Is Your Xbox Tag Available?"
-  description="Check if an Xbox gamertag is taken or likely available using live Xbox data."
+  title="Gamertag Checker – Check Xbox Gamertag Availability"
+  description="Check if an Xbox gamertag is taken or still likely available using live Xbox data. Test name ideas before you try to claim them."
+  canonical={pageUrl}
+  {schema}
 >
   <Header />
 

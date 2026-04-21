@@ -3,38 +3,72 @@ import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/layout/Header.astro";
 import image from "../assets/image.png";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": "About Xbox Gamertag Generator",
-  "url": "https://xboxgamertaggenerator.com/about",
-  "description": "Learn about Xbox Gamertag Generator — helping gamers create perfect gaming identities.",
-};
+const pageUrl = "https://xboxgamertaggenerator.com/about";
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Xbox Gamertag Generator",
+    "url": pageUrl,
+    "description": "Learn about Xbox Gamertag Generator, our mission, tools, and how we help gamers create better Xbox names.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Xbox Gamertag Generator",
+      "url": "https://xboxgamertaggenerator.com"
+    },
+    "about": {
+      "@type": "Organization",
+      "name": "Xbox Gamertag Generator",
+      "url": "https://xboxgamertaggenerator.com"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://xboxgamertaggenerator.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About",
+        "item": pageUrl
+      }
+    ]
+  }
+];
 
 const features = [
   {
-    title: "Advanced Gamertag Generator",
-    desc: "Powerful tools to create unique, memorable gamertags",
+    title: "Xbox Gamertag Tools",
+    desc: "Free tools to generate, check, and improve Xbox gamertags.",
   },
   {
     title: "Naming Guides and Tips",
-    desc: "Expert advice on creating the perfect gaming identity",
+    desc: "Helpful articles and practical advice for choosing better Xbox names.",
   },
   {
-    title: "Profile Management Tools",
-    desc: "Resources to optimize your Xbox gaming profile",
+    title: "Profile and Lookup Tools",
+    desc: "Resources for checking gamer profiles, availability, and related details.",
   },
   {
-    title: "Gaming Brand Resources",
-    desc: "Build and grow your presence in the gaming community",
+    title: "Gaming Identity Resources",
+    desc: "Content and tools to help gamers build a stronger online identity.",
   },
 ];
 ---
 
 <MainLayout
-  title="About Xbox Gamertag Generator | Our Mission & Story"
-  description="Learn about Xbox Gamertag Generator - helping gamers create perfect gaming identities. Discover our mission, tools, and commitment to the gaming community."
-  keywords="xbox gamertag generator, about us, gaming identity, xbox gaming tools"
+  title="About Xbox Gamertag Generator – Our Mission, Tools & Guides"
+  description="Learn about Xbox Gamertag Generator, our mission, and the free tools, guides, and resources we build to help gamers create better Xbox names."
+  canonical={pageUrl}
+  ogImage={image.src}
   {schema}
 >
   <Header />

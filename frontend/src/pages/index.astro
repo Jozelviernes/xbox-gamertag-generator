@@ -7,32 +7,48 @@ import ArticleSection from "../components/home/ArticleSection.astro";
 import BlogSection from "../components/home/BlogSection.astro";
 import ToolsSection from "../components/home/ToolsSection.astro";
 import Header from "../components/layout/Header.astro";
-
+ 
+ 
 const schema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Xbox Gamertag Generator",
   "url": "https://xboxgamertaggenerator.com",
-  "description": "Free Xbox gamertag generator — create unique, cool gamertags instantly.",
+  "description": "Free Xbox gamertag generator that creates cool, funny, unique, and rare gaming names instantly. No sign-up required. Supports custom themes, languages, and character limits.",
   "applicationCategory": "GameApplication",
   "operatingSystem": "Web",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "featureList": [
+    "Generate cool Xbox gamertags instantly",
+    "Funny and unique gaming name ideas",
+    "Custom character limit up to 12",
+    "Gender and theme filters",
+    "Multi-language gamertag support",
+    "No sign-up required",
+    "Free to use"
+  ],
+  "screenshot": "https://xboxgamertaggenerator.com/og-image.jpg",
+  "creator": {
+    "@type": "Organization",
+    "name": "Xbox Gamertag Generator",
+    "url": "https://xboxgamertaggenerator.com"
+  },
   "offers": {
     "@type": "Offer",
     "price": "0",
-    "priceCurrency": "USD",
+    "priceCurrency": "USD"
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "ratingCount": "1200",
-  },
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": "https://xboxgamertaggenerator.com"
+  }
 };
 ---
-
+ 
 <MainLayout
-  title="Xbox Gamertag Generator | Create Unique Gaming Names Free"
-  description="Generate unique, cool, and funny Xbox gamertags instantly with our free AI-powered tool. No sign up required. Thousands of creative gaming name ideas in seconds."
-  keywords="xbox gamertag generator, xbox gamertag ideas, cool xbox names, funny xbox gamertags, random gamertag generator, unique gaming names, xbox username ideas"
+  title="Xbox Gamertag Generator – Free Cool, Funny & Unique Xbox Names"
+  description="Generate cool, funny, and unique Xbox gamertags instantly. Free tool — no sign-up needed. Get hundreds of creative Xbox name ideas in seconds and find your perfect tag."
   {schema}
 >
   <Header />
@@ -105,11 +121,10 @@ const schema = {
       </div>
 
       <!-- Description -->
-      <p class="font-ui text-sm md:text-base text-foreground-muted mt-10 max-w-3xl leading-relaxed text-center animate-fade-in-up" style="animation-delay: 0.35s;">
-        Coming up with the perfect Xbox gamertag can be a pain.
-        You want a username that feels original, funny, or cool.
-        This tool helps generate clean, creative names you can use across Xbox, PC, and beyond.
-      </p>
+    <!-- Description -->
+<p class="font-ui text-sm md:text-base text-foreground-muted mt-10 max-w-3xl leading-relaxed text-center animate-fade-in-up" style="animation-delay: 0.35s;">
+  Use this free Xbox Gamertag Generator to create cool, unique, and rare Xbox name ideas in seconds. It helps you find a clean gamertag for Xbox, PC, and other gaming profiles.
+</p>
 
     </div>
 

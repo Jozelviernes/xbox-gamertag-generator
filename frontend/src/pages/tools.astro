@@ -26,7 +26,7 @@ const tools: Tool[] = [
   {
     id: "1",
     title: "Xbox Gamertag Generator",
-    description: "Instantly create unique, funny, and cool gamertags with AI-powered suggestions.",
+    description: "Generate unique, funny, cool, and creative Xbox gamertags instantly.",
     slug: "generator",
     available: true,
     href: "/",
@@ -35,7 +35,7 @@ const tools: Tool[] = [
   {
     id: "2",
     title: "Xbox Gamertag Price Checker",
-    description: "Ever wondered what your gamertag might be worth? Get a quick data-based estimate based on length, rarity, and demand.",
+    description: "Estimate the value of a gamertag based on length, rarity, readability, and overall quality.",
     slug: "price-checker",
     available: true,
     href: "/gamertag-price-checker",
@@ -44,7 +44,7 @@ const tools: Tool[] = [
   {
     id: "3",
     title: "Xbox Gamercard Generator",
-    description: "Create a custom Xbox gamercard — a visual badge showing off your gamertag, gamerscore, and avatar. Great for forums and social bios.",
+    description: "Create a custom Xbox gamercard image with your gamertag, avatar, status, and gamerscore.",
     slug: "gamercard-generator",
     available: true,
     href: "/gamercard-generator",
@@ -53,7 +53,7 @@ const tools: Tool[] = [
   {
     id: "4",
     title: "Xbox Gamertag Availability Checker",
-    description: "Instantly see if your desired tag is still up for grabs before someone else snags it.",
+    description: "Check whether an Xbox gamertag is taken or still likely available.",
     slug: "availability-checker",
     available: true,
     href: "/gamertag-checker",
@@ -61,8 +61,8 @@ const tools: Tool[] = [
   },
   {
     id: "5",
-    title: "Xbox Gamer Profile & Stats Checker",
-    description: "View public stats, gamerscore, recent games, and achievement progress tied to any Xbox gamertag.",
+    title: "Xbox Gamer Profile Checker",
+    description: "Look up public Xbox gamer profiles, gamerscore, and profile details by gamertag.",
     slug: "profile-stats-checker",
     available: true,
     href: "/gamer-profile",
@@ -70,8 +70,8 @@ const tools: Tool[] = [
   },
   {
     id: "6",
-    title: "Xbox Gamertag Optimizer Tool",
-    description: "Clean messy tags, improve weak names, and get a few smarter Xbox-ready suggestions only when your gamertag needs work.",
+    title: "Gamertag Optimizer",
+    description: "Shorten, clean, and rewrite weak or messy Xbox gamertags into better options.",
     slug: "gamertag-optimizer",
     available: true,
     href: "/gamertag-optimizer",
@@ -112,18 +112,58 @@ const iconMap: Record<IconKey, string> = {
   </svg>`,
 };
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Xbox Gaming Tools",
-  "url": "https://xboxgamertaggenerator.com/tools",
-  "description": "Free Xbox gaming tools — gamertag generator, availability checker, gamer profile checker, optimizer, and more.",
-};
+const pageUrl = "https://xboxgamertaggenerator.com/tools";
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Xbox Tools",
+    "url": pageUrl,
+    "description": "Browse free Xbox tools including a gamertag generator, availability checker, gamer profile checker, gamercard generator, optimizer, and more.",
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Xbox Gamertag Generator",
+      "url": "https://xboxgamertaggenerator.com"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Xbox Tools List",
+    "itemListElement": tools.map((tool, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": tool.title,
+      "url": `https://xboxgamertaggenerator.com${tool.href}`
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://xboxgamertaggenerator.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": pageUrl
+      }
+    ]
+  }
+];
 ---
+
 <MainLayout
-  title="Xbox Gaming Tools & Utilities | Gamertag Generator, Checker & More"
-  description="Comprehensive collection of free Xbox gaming tools including gamertag generators, availability checkers, profile stats analyzers, and more."
-  keywords="xbox gaming tools, xbox utilities, gamertag checker, xbox profile tools, free xbox tools"
+  title="Xbox Tools – Gamertag Generator, Checker, Optimizer & More"
+  description="Explore free Xbox tools including a gamertag generator, availability checker, gamer profile checker, gamercard generator, optimizer, and more."
+  canonical={pageUrl}
   {schema}
 >
   <Header />
