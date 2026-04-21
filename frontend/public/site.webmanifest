@@ -1,4 +1,5 @@
 {
+  "id": "/",
   "name": "Xbox Gamertag Generator",
   "short_name": "Gamertag",
   "description": "Generate unique Xbox gamertags, gamer cards, and related Xbox tools.",
@@ -7,6 +8,8 @@
   "display": "standalone",
   "theme_color": "#2f8612",
   "background_color": "#0f141d",
+  "lang": "en",
+  "dir": "ltr",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

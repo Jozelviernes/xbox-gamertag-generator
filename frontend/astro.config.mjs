@@ -5,16 +5,24 @@ import tailwindcss from "@tailwindcss/vite";
 const toolPages = new Set([
   "/gamertag-price-checker",
   "/gamercard-generator",
-  "/gamertag-availability-checker",
-  "/gamer-profile-checker",
+  "/gamertag-checker",
+  "/gamer-profile",
+  "/gamertag-optimizer",
 ]);
 
-const standardPages = new Set([
+const corePages = new Set([
   "/",
-  "/blog",
   "/tools",
+  "/blog",
+  "/glossary",
+]);
+
+const supportPages = new Set([
   "/about",
   "/contact",
+]);
+
+const legalPages = new Set([
   "/privacy-policy",
   "/terms-and-conditions",
 ]);
@@ -45,11 +53,19 @@ export default defineConfig({
           return { ...item, priority: 0.9, changefreq: "weekly" };
         }
 
-        if (!standardPages.has(path)) {
-          return { ...item, priority: 0.8, changefreq: "monthly" };
+        if (corePages.has(path)) {
+          return { ...item, priority: 0.8, changefreq: "weekly" };
         }
 
-        return { ...item, priority: 0.6, changefreq: "monthly" };
+        if (supportPages.has(path)) {
+          return { ...item, priority: 0.6, changefreq: "monthly" };
+        }
+
+        if (legalPages.has(path)) {
+          return { ...item, priority: 0.3, changefreq: "yearly" };
+        }
+
+        return { ...item, priority: 0.7, changefreq: "monthly" };
       },
     }),
   ],
