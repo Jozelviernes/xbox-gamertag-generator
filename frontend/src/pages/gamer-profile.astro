@@ -122,7 +122,7 @@ import Header from '../components/layout/Header.astro';
 </MainLayout>
 
 <script>
-  const API_BASE = import.meta.env.PUBLIC_API_URL ?? 'http://localhost:8000';
+const API_BASE = import.meta.env.PUBLIC_API_URL || 'https://api.xboxgamertaggenerator.com';
 
   const input       = document.getElementById('profile-input') as HTMLInputElement;
   const btn         = document.getElementById('search-btn') as HTMLButtonElement;
