@@ -13,11 +13,11 @@ class ProfileController extends Controller
 
     public function show(Request $request): JsonResponse
     {
-        $request->validate([
+        $validated = $request->validate([
             'gamertag' => ['required', 'string', 'min:1', 'max:15'],
         ]);
 
-        $gamertag = trim($request->input('gamertag'));
+        $gamertag = trim($validated['gamertag']);
         $people   = $this->xbl->searchByGamertag($gamertag);
 
         if (isset($people['error'])) {
@@ -28,7 +28,7 @@ class ProfileController extends Controller
                 ]);
             }
 
-            if (in_array(($people['code'] ?? null), ['RATE_LIMIT', 'LOCAL_RATE_LIMIT'])) {
+            if (in_array(($people['code'] ?? null), ['RATE_LIMIT', 'LOCAL_RATE_LIMIT'], true)) {
                 return response()->json([
                     'error'   => true,
                     'message' => $people['message'] ?? 'Tool is temporarily busy. Please try again next hour.',
@@ -41,8 +41,23 @@ class ProfileController extends Controller
             ], 503);
         }
 
-        $match = collect($people)->first(function ($person) use ($gamertag) {
-            return strtolower(trim($person['gamertag'] ?? '')) === strtolower($gamertag);
+        $results = array_is_list($people) ? $people : ($people['people'] ?? []);
+
+        if (! is_array($results) || empty($results)) {
+            return response()->json([
+                'found'   => false,
+                'message' => 'Gamertag not found.',
+            ]);
+        }
+
+        $normalizedInput = $this->normalizeGamertag($gamertag);
+
+        $match = collect($results)->first(function ($person) use ($normalizedInput) {
+            if (! is_array($person)) {
+                return false;
+            }
+
+            return $this->normalizeGamertag($person['gamertag'] ?? '') === $normalizedInput;
         });
 
         if (! $match) {
@@ -52,12 +67,12 @@ class ProfileController extends Controller
             ]);
         }
 
-        $detail = $match['detail'] ?? [];
+        $detail = is_array($match['detail'] ?? null) ? $match['detail'] : [];
 
         $profile = [
             'xuid'         => $match['xuid'] ?? null,
             'gamertag'     => $match['gamertag'] ?? $gamertag,
-            'gamerscore'   => (int) ($match['gamerScore'] ?? 0),
+            'gamerscore'   => isset($match['gamerScore']) ? (int) $match['gamerScore'] : 0,
             'avatar'       => $match['displayPicRaw'] ?? null,
             'real_name'    => $match['realName'] ?? null,
             'bio'          => $detail['bio'] ?? null,
@@ -92,5 +107,13 @@ class ProfileController extends Controller
             'found'   => true,
             'profile' => $profile,
         ]);
+    }
+
+    private function normalizeGamertag(?string $gamertag): string
+    {
+        $gamertag = trim((string) $gamertag);
+        $gamertag = preg_replace('/\s+/', ' ', $gamertag) ?? $gamertag;
+
+        return mb_strtolower($gamertag);
     }
 }
