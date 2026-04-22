@@ -137,33 +137,36 @@ const schema = {
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       data-posts={JSON.stringify(blogPosts)}
     >
-      {blogPosts.slice(0, postsPerPage).map((post) => (
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-          <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
-            <span class="text-gray-500 text-sm font-ui">Gaming Image Placeholder</span>
-          </div>
+   {blogPosts.slice(0, postsPerPage).map((post) => (
+  <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
+      <span class="text-gray-500 text-sm font-ui">Gaming Image Placeholder</span>
+    </div>
 
-          <div class="p-4">
-            <h3 class="text-lg font-semibold mb-2 text-gray-800 font-ui line-clamp-2">
-              {post.title}
-            </h3>
+    <div class="p-4">
+      <a href={`/${post.slug}`} class="block group">
+        <h3 class="text-lg font-semibold mb-2 text-gray-800 font-ui line-clamp-2 group-hover:text-brand transition-colors">
+          {post.title}
+        </h3>
+      </a>
 
-            <p class="text-gray-600 mb-3 text-sm font-ui line-clamp-4">
-              {post.excerpt}
-            </p>
+      <p class="text-gray-600 mb-3 text-sm font-ui line-clamp-4">
+        {post.excerpt}
+      </p>
 
-            <a
-              href={`/${post.slug}`}
-              class="text-brand font-medium hover:underline inline-flex items-center font-ui"
-            >
-              Read More
-              <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </article>
-      ))}
+      <a
+        href={`/${post.slug}`}
+        class="text-brand font-medium hover:underline inline-flex items-center font-ui mt-auto"
+        aria-label={`Read the article: ${post.title}`}
+      >
+        Read the article
+        <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </article>
+))}
     </div>
   </div>
 </section>
@@ -282,35 +285,38 @@ const schema = {
       return Math.max(1, Math.ceil(list.length / postsPerPage));
     }
 
-    function cardHTML(post: Post): string {
-      return `
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-          <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
-            <span class="text-gray-500 text-sm font-ui">Gaming Image Placeholder</span>
-          </div>
+ function cardHTML(post: Post): string {
+  return `
+    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+      <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
+        <span class="text-gray-500 text-sm font-ui">Gaming Image Placeholder</span>
+      </div>
 
-          <div class="p-4 flex flex-col flex-1">
-            <h3 class="text-lg font-semibold mb-2 text-gray-800 font-ui line-clamp-2">
-              ${post.title}
-            </h3>
+      <div class="p-4 flex flex-col flex-1">
+        <a href="/${post.slug}" class="block group">
+          <h3 class="text-lg font-semibold mb-2 text-gray-800 font-ui line-clamp-2 group-hover:text-brand transition-colors">
+            ${post.title}
+          </h3>
+        </a>
 
-            <p class="text-gray-600 mb-3 text-sm font-ui line-clamp-4">
-              ${post.excerpt}
-            </p>
+        <p class="text-gray-600 mb-3 text-sm font-ui line-clamp-4">
+          ${post.excerpt}
+        </p>
 
-            <a
-              href="/${post.slug}"
-              class="text-brand font-medium hover:underline inline-flex items-center font-ui mt-auto"
-            >
-              Read More
-              <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-      `;
-    }
+        <a
+          href="/${post.slug}"
+          class="text-brand font-medium hover:underline inline-flex items-center font-ui mt-auto"
+          aria-label="Read the article: ${post.title}"
+        >
+          Read the article
+          <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </article>
+  `;
+}
 
     function renderPagination(list: Post[]) {
       const totalPages = Math.max(1, getTotalPages(list));
