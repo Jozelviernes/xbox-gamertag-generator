@@ -5,13 +5,14 @@
   "engines": {
     "node": ">=22.12.0"
   },
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "start": "serve dist --listen $PORT"
-  },
+"scripts": {
+  "dev": "astro dev",
+  "build": "astro build",
+  "postbuild": "cp serve.json dist/serve.json",
+  "preview": "astro preview",
+  "astro": "astro",
+  "start": "serve dist --listen $PORT"
+},
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
     "@lucide/astro": "^1.3.0",
