@@ -180,7 +180,7 @@ const schema = {
 </MainLayout>
 
 <script>
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = import.meta.env.PUBLIC_API_BASE_URL || 'https://api.xboxgamertaggenerator.com';
   const input       = document.getElementById('profile-input') as HTMLInputElement;
   const btn         = document.getElementById('search-btn') as HTMLButtonElement;
   const loadingEl   = document.getElementById('loading')!;
