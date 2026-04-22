@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import Footer from "../components/layout/Footer.astro";
-import { ClientRouter } from "astro:transitions";
+
 
 interface Props {
   title: string;
@@ -63,8 +63,7 @@ const resolvedOgImage = ogImage
     <link rel="canonical" href={canonicalClean} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
-    <!-- Faster-feeling internal navigation -->
-    <ClientRouter fallback="swap" />
+    
 
     <!-- Favicons / app icons -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
