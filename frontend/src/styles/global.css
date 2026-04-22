@@ -836,3 +836,103 @@ textarea {
   .badge-brand  { border-width: 2px; }
   .input-dark:focus { box-shadow: 0 0 0 3px hsl(107 76% 26% / 0.4); }
 }
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: hsl(215 20% 65%);
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: hsl(210 40% 98%);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 9999px;
+  background: hsl(107 76% 30%);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.nav-link.is-active {
+  color: hsl(210 40% 98%);
+}
+
+.mobile-nav-toggle {
+  display: flex;
+  height: 44px;
+  width: 44px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  border: 1px solid hsl(218 30% 18%);
+  background: hsl(218 30% 14%);
+  color: hsl(210 40% 98%);
+  transition: var(--transition-smooth);
+}
+
+.mobile-nav-toggle:hover {
+  border-color: hsl(107 76% 26% / 0.35);
+  background: hsl(107 76% 26% / 0.08);
+  color: hsl(107 76% 30%);
+}
+
+.mobile-nav-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 50;
+  margin-top: -1px;
+  border-top: 1px solid hsl(218 30% 18%);
+  border-bottom: 1px solid hsl(218 30% 18%);
+  background: hsl(218 30% 11%);
+  padding: 1rem;
+  box-shadow: var(--shadow-card);
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid hsl(218 30% 18%);
+  padding: 0.75rem 0;
+  text-align: center;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: hsl(210 40% 98%);
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.is-active {
+  color: hsl(107 76% 30%);
+}
+
+.mobile-nav-link:last-child {
+  border-bottom: 0;
+}

@@ -714,12 +714,10 @@ import {
   opacity: 0.6;
   cursor: not-allowed;
 }
-</style>
-<script>
+</style><script>
   // @ts-nocheck
 
   function setupGamertagGenerator() {
-    /* ── Custom select logic ── */
     document.querySelectorAll(".custom-select-wrapper").forEach((wrapper) => {
       if (wrapper.dataset.initialized === "true") return;
       wrapper.dataset.initialized = "true";
@@ -732,11 +730,15 @@ import {
 
       trigger?.addEventListener("click", (e) => {
         e.stopPropagation();
+
         const isOpen = menu?.classList.contains("open");
+
         document.querySelectorAll(".custom-select-menu.open").forEach((m) => {
           m.classList.remove("open");
           m.previousElementSibling?.classList.remove("open");
+          m.previousElementSibling?.setAttribute("aria-expanded", "false");
         });
+
         if (!isOpen) {
           menu?.classList.add("open");
           trigger?.classList.add("open");
@@ -748,14 +750,18 @@ import {
         item.addEventListener("click", () => {
           const value = item.dataset.value ?? "";
           const text = item.textContent?.trim() ?? "";
+
           if (input) input.value = value;
           if (label) label.textContent = text;
+
           items.forEach((i) => {
             i.classList.remove("selected");
             i.setAttribute("aria-selected", "false");
           });
+
           item.classList.add("selected");
           item.setAttribute("aria-selected", "true");
+
           menu?.classList.remove("open");
           trigger?.classList.remove("open");
           trigger?.setAttribute("aria-expanded", "false");
@@ -804,47 +810,49 @@ import {
     }
 
     async function generateTags(clickedBtn = generateBtn) {
-  if (!clickedBtn) return;
+      if (!clickedBtn) return;
 
-  const btnText =
-    clickedBtn.querySelector(".gtg-btn-text") ||
-    clickedBtn.querySelector(".gtg-more-btn-text");
+      const btnText =
+        clickedBtn.querySelector(".gtg-btn-text") ||
+        clickedBtn.querySelector(".gtg-more-btn-text");
 
-  const originalText =
-    btnText?.textContent ??
-    (clickedBtn === generateMoreBtn ? "Generate More" : "Generate Gamertags");
+      const originalText =
+        btnText?.textContent ??
+        (clickedBtn === generateMoreBtn ? "Generate More" : "Generate Gamertags");
 
-  if (btnText) btnText.textContent = "Generating...";
+      if (btnText) btnText.textContent = "Generating...";
 
-  clickedBtn.setAttribute("disabled", "true");
-  clickedBtn.classList.add("loading");
+      clickedBtn.setAttribute("disabled", "true");
+      clickedBtn.classList.add("loading");
 
-  try {
-    const API = import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000";
-    const response = await fetch(`${API}/api/generate-gamertags`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(getFormData()),
-    });
+      try {
+        const API = import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000";
+        const response = await fetch(`${API}/api/generate-gamertags`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(getFormData()),
+        });
 
-    if (!response.ok) throw new Error("Failed to generate gamertags.");
+        if (!response.ok) throw new Error("Failed to generate gamertags.");
 
-    const data = await response.json();
-    renderResults(data.tags || []);
-  } catch (error) {
-    console.error(error);
-    alert("Something went wrong while generating gamertags.");
-  } finally {
-    if (btnText) btnText.textContent = originalText;
-    clickedBtn.removeAttribute("disabled");
-    clickedBtn.classList.remove("loading");
-  }
-}
+        const data = await response.json();
+        renderResults(data.tags || []);
+      } catch (error) {
+        console.error(error);
+        alert("Something went wrong while generating gamertags.");
+      } finally {
+        if (btnText) btnText.textContent = originalText;
+        clickedBtn.removeAttribute("disabled");
+        clickedBtn.classList.remove("loading");
+      }
+    }
+
     function renderResults(tags) {
       if (!resultsGrid || !resultsSection) return;
+
       resultsGrid.innerHTML = "";
 
       tags.forEach((tag, index) => {
@@ -892,25 +900,37 @@ import {
       characterLimitEl.addEventListener("input", updateCharacterLimitLabel);
     }
 
-   if (generateBtn && !generateBtn.dataset.initialized) {
-  generateBtn.dataset.initialized = "true";
-  generateBtn.addEventListener("click", () => generateTags(generateBtn));
-}
+    if (generateBtn && !generateBtn.dataset.initialized) {
+      generateBtn.dataset.initialized = "true";
+      generateBtn.addEventListener("click", () => generateTags(generateBtn));
+    }
 
-if (generateMoreBtn && !generateMoreBtn.dataset.initialized) {
-  generateMoreBtn.dataset.initialized = "true";
-  generateMoreBtn.addEventListener("click", () => generateTags(generateMoreBtn));
-}
+    if (generateMoreBtn && !generateMoreBtn.dataset.initialized) {
+      generateMoreBtn.dataset.initialized = "true";
+      generateMoreBtn.addEventListener("click", () => generateTags(generateMoreBtn));
+    }
 
     updateCharacterLimitLabel();
   }
 
-  document.addEventListener("click", () => {
+  function closeCustomSelects() {
     document.querySelectorAll(".custom-select-menu.open").forEach((m) => {
       m.classList.remove("open");
       m.previousElementSibling?.classList.remove("open");
+      m.previousElementSibling?.setAttribute("aria-expanded", "false");
     });
-  });
+  }
+
+  if (!document.body.dataset.gtgDocumentClickBound) {
+    document.body.dataset.gtgDocumentClickBound = "true";
+    document.addEventListener("click", closeCustomSelects);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupGamertagGenerator, { once: true });
+  } else {
+    setupGamertagGenerator();
+  }
 
   document.addEventListener("astro:page-load", setupGamertagGenerator);
 </script>
