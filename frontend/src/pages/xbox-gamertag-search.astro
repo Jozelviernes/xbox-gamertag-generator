@@ -1,0 +1,589 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layout/Header.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Gamer Profile Checker",
+  "url": "https://xboxgamertaggenerator.com/xbox-gamertag-search",
+  "description": "Look up public Xbox gamer profiles, gamerscore, gamerpic, bio, profile details, and recent game history with this free Gamer Profile Checker.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "creator": {
+    "@type": "Organization",
+    "name": "Xbox Gamertag Generator",
+    "url": "https://xboxgamertaggenerator.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "potentialAction": {
+    "@type": "UseAction",
+    "target": "https://xboxgamertaggenerator.com/xbox-gamertag-search"
+  }
+};
+---
+
+<MainLayout
+  title="Gamer Profile Checker – Xbox Profile, Gamerscore, Bio & Game History"
+  description="Look up public Xbox gamer profiles, gamerscore, gamerpic, bio, profile details, and recent game history instantly with our free Gamer Profile Checker."
+  canonical="https://xboxgamertaggenerator.com/xbox-gamertag-search"
+  {schema}
+>
+  <Header />
+
+  <div class="min-h-screen bg-[#F3F4F6] text-[#111827] font-ui">
+    <!-- ── Hero ── -->
+    <section class="section-dark-alt py-8">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="bg-card border border-default rounded-xl py-14 md:py-16 px-6 md:px-10 text-center shadow-card relative overflow-hidden">
+          <div class="bg-hero-glow absolute inset-0 pointer-events-none"></div>
+
+          <div class="relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-dim border border-green rounded-sm mb-6">
+              <span class="label-green">Xbox Tools</span>
+            </div>
+
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 leading-tight">
+  Xbox Gamertag <span class="text-brand">Search</span>
+</h1>
+
+<div class="text-foreground-muted text-xs md:text-sm max-w-3xl mx-auto leading-relaxed space-y-3">
+  <p>
+    Use our Xbox Gamertag Search tool to quickly find and view any Xbox Live account. This fast and reliable xbox profile search lets you look up player information across Xbox 360, Xbox One, and Xbox Series X|S.
+  </p>
+
+  <p>
+    Whether you’re trying to find a specific player or verify an account, our tool makes xbox gamertag search simple and accurate. You can also check xbox gamertag history to see past username changes and track activity over time. Designed for speed and ease of use, this is the ideal solution for anyone needing a complete xbox profile search experience.
+  </p>
+</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tool ── -->
+    <section class="section-white-subtle py-10">
+     <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-5">
+        <!-- Search Card -->
+        <div class="bg-white border border-[#E5E7EB] rounded-xl p-6 md:p-7 shadow-lg">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input
+              id="profile-input"
+              class="flex-1 px-4 py-3 bg-[#F8FAFC] border border-[#E5E7EB] rounded-lg text-[#111827] placeholder-[#9CA3AF] text-sm font-medium focus:outline-none focus:border-[#00D02B] focus:ring-2 focus:ring-[#00D02B]/15 transition-colors"
+              type="text"
+              placeholder="Enter gamertag…"
+              maxlength="15"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button
+              id="search-btn"
+              class="px-6 py-3 bg-brand hover:bg-brand-light text-white font-semibold text-sm uppercase tracking-[0.14em] rounded-lg transition-colors duration-200 whitespace-nowrap"
+            >
+              Look Up
+            </button>
+          </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="hidden mt-8 flex items-center justify-center gap-3 text-[#6B7280] text-sm">
+          <svg class="animate-spin w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+          </svg>
+          Fetching profile from Xbox Live…
+        </div>
+
+        <!-- Error -->
+        <div id="error" class="hidden mt-8 bg-red-500/[0.06] border border-red-500/30 rounded-xl p-6 text-center">
+          <p class="text-red-500 font-semibold" id="error-msg"></p>
+        </div>
+
+        <!-- Profile Card -->
+        <div id="profile-card" class="hidden mt-8 animate-fade-in-up">
+          <div class="bg-white border border-[#E5E7EB] rounded-xl p-6 md:p-8 shadow-lg">
+
+            <!-- Top section -->
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              <div class="relative shrink-0">
+                <img
+                  id="profile-avatar"
+                  src=""
+                  alt="Avatar"
+                  class="w-24 h-24 rounded-lg border border-[#00D02B]/30 object-cover shadow-lg bg-[#F3F4F6]"
+                  onerror="this.onerror=null; this.src='https://avatar-ssl.xboxlive.com/avatar/Major%20Nelson/avatar-body.png'"
+                />
+              </div>
+
+              <div class="text-center sm:text-left flex-1 min-w-0">
+                <h2 id="profile-gamertag" class="text-2xl md:text-3xl font-extrabold text-[#111827]"></h2>
+
+                <p id="profile-bio" class="hidden text-[#6B7280] text-sm mt-2 max-w-xl"></p>
+
+                <div id="profile-meta" class="hidden flex flex-wrap justify-center sm:justify-start gap-3 mt-3"></div>
+
+                <div id="profile-badges" class="hidden flex flex-wrap justify-center sm:justify-start gap-2 mt-4"></div>
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div id="stats-divider" class="hidden border-t border-[#E5E7EB] my-6"></div>
+
+            <!-- Dynamic Stats Grid -->
+            <div
+              id="profile-stats-grid"
+              class="hidden grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+            ></div>
+
+            <!-- Game History Divider -->
+            <div id="history-divider" class="hidden border-t border-[#E5E7EB] my-6"></div>
+
+            <!-- Game History -->
+            <div id="game-history-section" class="hidden">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div>
+                  <p class="text-[11px] font-bold tracking-[0.18em] uppercase text-[#00B324]">Recent Activity</p>
+                  <h3 class="text-xl md:text-2xl font-extrabold text-[#111827] mt-1">Game History</h3>
+                </div>
+              </div>
+<div id="game-history-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+<div id="game-history-actions" class="hidden mt-5 flex justify-center">
+  <button
+    id="show-more-history-btn"
+    class="px-5 py-3 bg-brand hover:bg-brand-light text-white font-semibold text-sm uppercase tracking-[0.14em] rounded-lg transition-colors duration-200"
+    type="button"
+  >
+    Show More
+  </button>
+</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Ad slot -->
+        <div class="mt-10 max-w-3xl mx-auto rounded-lg px-6 py-10 text-center border border-dashed border-[#D1D5DB] bg-white">
+          <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#94A3B8] mb-3">Advertisement</p>
+          <div class="h-20 md:h-28 rounded bg-[#E5E7EB]"></div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<script>
+const API_BASE = 'http://127.0.0.1:8000';
+  const input       = document.getElementById('profile-input') as HTMLInputElement;
+  const btn         = document.getElementById('search-btn') as HTMLButtonElement;
+  const loadingEl   = document.getElementById('loading')!;
+  const errorEl     = document.getElementById('error')!;
+  const errorMsg    = document.getElementById('error-msg')!;
+  const profileCard = document.getElementById('profile-card')!;
+const showMoreHistoryBtn = document.getElementById('show-more-history-btn') as HTMLButtonElement | null;
+const gameHistoryActions = document.getElementById('game-history-actions')!;
+
+let currentGamertag = '';
+let currentHistoryLimit = 9;
+const historyStep = 9;
+let lastLoadedHistoryCount = 0;
+  function fmt(n: number) {
+    return n >= 1000 ? (n / 1000).toFixed(1) + 'k' : String(n);
+  }
+
+  function escHtml(str: string) {
+    return (str ?? '').replace(/[&<>"']/g, c =>
+      ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]!));
+  }
+
+  function formatDate(value: string | null | undefined) {
+    if (!value) return '—';
+
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+
+    return date.toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  }
+
+  function formatPercent(value: unknown) {
+    const num = Number(value ?? 0);
+    if (!Number.isFinite(num)) return '0%';
+    return `${num.toFixed(1)}%`;
+  }
+
+  function showError(msg: string) {
+    profileCard.classList.add('hidden');
+    errorEl.classList.remove('hidden');
+    errorMsg.textContent = msg;
+  }
+
+  function statCard(label: string, value: string, highlight = false) {
+    return `
+      <div class="text-center p-3 rounded-lg bg-[#F8FAFC] border border-[#E5E7EB]">
+        <p class="${highlight ? 'text-brand font-extrabold' : 'text-[#111827]'} font-bold text-xl">${escHtml(value)}</p>
+        <p class="text-[10px] font-bold tracking-[0.16em] uppercase text-[#9CA3AF] mt-1">${escHtml(label)}</p>
+      </div>
+    `;
+  }
+
+  function badge(text: string, variant: 'brand' | 'muted' = 'muted') {
+    if (variant === 'brand') {
+      return `<span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold bg-[#00D02B]/10 text-[#00B324] border border-[#00D02B]/20">${escHtml(text)}</span>`;
+    }
+
+    return `<span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold bg-[#F3F4F6] text-[#6B7280] border border-[#E5E7EB]">${escHtml(text)}</span>`;
+  }
+
+  function resetProfileUI() {
+    const avatar = document.getElementById('profile-avatar') as HTMLImageElement;
+    const bioEl = document.getElementById('profile-bio')!;
+    const metaEl = document.getElementById('profile-meta')!;
+    const badgesEl = document.getElementById('profile-badges')!;
+    const statsGrid = document.getElementById('profile-stats-grid')!;
+    const statsDivider = document.getElementById('stats-divider')!;
+    const historyDivider = document.getElementById('history-divider')!;
+    const historySection = document.getElementById('game-history-section')!;
+    const historyList = document.getElementById('game-history-list')!;
+
+    avatar.src = '';
+    avatar.alt = 'Avatar';
+
+    (document.getElementById('profile-gamertag')!).textContent = '';
+
+    bioEl.textContent = '';
+    bioEl.classList.add('hidden');
+
+    metaEl.innerHTML = '';
+    metaEl.classList.add('hidden');
+
+    badgesEl.innerHTML = '';
+    badgesEl.classList.add('hidden');
+
+    statsGrid.innerHTML = '';
+    statsGrid.classList.add('hidden');
+
+    statsDivider.classList.add('hidden');
+
+    historyList.innerHTML = '';
+    historySection.classList.add('hidden');
+    historyDivider.classList.add('hidden');
+    gameHistoryActions.classList.add('hidden');
+
+if (showMoreHistoryBtn) {
+  showMoreHistoryBtn.disabled = false;
+  showMoreHistoryBtn.textContent = 'Show More';
+}
+  }
+
+function gameHistoryCard(game: Record<string, any>) {
+  const name = game.name || 'Unknown Game';
+  const image = game.display_image || game.displayImage || '';
+  const lastPlayed = formatDate(game.last_played);
+  const platforms = Array.isArray(game.platforms) ? game.platforms.filter(Boolean) : [];
+  const currentGs = Number(game?.gamerscore?.current ?? 0);
+  const totalGs = Number(game?.gamerscore?.total ?? 0);
+  const unlockedAchievements = Number(game?.achievements?.unlocked ?? 0);
+  const totalAchievements = Number(game?.achievements?.total ?? 0);
+  const completion = Math.max(0, Math.min(100, Number(game.completion_percent ?? 0)));
+
+  return `
+    <div class="rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] p-4 h-full flex flex-col">
+      <div class="overflow-hidden rounded-lg border border-[#E5E7EB] bg-white">
+        ${
+          image
+            ? `
+              <img
+                src="${escHtml(image)}"
+                alt="${escHtml(name)}"
+                class="w-full h-40 object-cover"
+                onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling?.classList.remove('hidden');"
+              />
+              <div class="hidden h-40 items-center justify-center text-xs text-[#9CA3AF] font-semibold">
+                No Image
+              </div>
+            `
+            : `
+              <div class="h-40 flex items-center justify-center text-xs text-[#9CA3AF] font-semibold">
+                No Image
+              </div>
+            `
+        }
+      </div>
+
+      <div class="mt-4 flex-1 flex flex-col">
+        <h4 class="text-lg font-bold text-[#111827] leading-tight break-words">${escHtml(name)}</h4>
+        <p class="text-sm text-[#6B7280] mt-2">Last played ${escHtml(lastPlayed)}</p>
+
+        ${
+          platforms.length
+            ? `
+              <div class="flex flex-wrap gap-2 mt-3">
+                ${platforms.map((platform: string) => badge(platform)).join('')}
+              </div>
+            `
+            : ''
+        }
+
+        <div class="mt-4">
+          <div class="flex items-center justify-between text-[11px] font-bold tracking-[0.16em] uppercase text-[#9CA3AF] mb-2">
+            <span>Completion</span>
+            <span>${escHtml(formatPercent(completion))}</span>
+          </div>
+          <div class="h-2 rounded-full bg-[#E5E7EB] overflow-hidden">
+            <div class="h-full bg-brand rounded-full" style="width: ${completion}%"></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 mt-4">
+          <div class="rounded-lg border border-[#E5E7EB] bg-white p-3 text-center">
+            <p class="text-[10px] font-bold tracking-[0.14em] uppercase text-[#9CA3AF]">GS</p>
+            <p class="text-[#111827] font-extrabold text-sm mt-1">${escHtml(String(currentGs))}/${escHtml(String(totalGs))}</p>
+          </div>
+
+          <div class="rounded-lg border border-[#E5E7EB] bg-white p-3 text-center">
+            <p class="text-[10px] font-bold tracking-[0.14em] uppercase text-[#9CA3AF]">Unlocked</p>
+            <p class="text-[#111827] font-extrabold text-sm mt-1">${escHtml(String(unlockedAchievements))}</p>
+          </div>
+
+          <div class="rounded-lg border border-[#E5E7EB] bg-white p-3 text-center">
+            <p class="text-[10px] font-bold tracking-[0.14em] uppercase text-[#9CA3AF]">Total</p>
+            <p class="text-[#111827] font-extrabold text-sm mt-1">${escHtml(String(totalAchievements))}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+function populateGameHistory(history: any[]) {
+  const historySection = document.getElementById('game-history-section')!;
+  const historyDivider = document.getElementById('history-divider')!;
+  const historyList = document.getElementById('game-history-list')!;
+
+  lastLoadedHistoryCount = Array.isArray(history) ? history.length : 0;
+
+  if (!Array.isArray(history) || !history.length) {
+    historyList.innerHTML = `
+      <div class="col-span-full rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] p-5 text-sm text-[#6B7280]">
+        No recent game history was returned for this profile.
+      </div>
+    `;
+    historySection.classList.remove('hidden');
+    historyDivider.classList.remove('hidden');
+    gameHistoryActions.classList.add('hidden');
+    return;
+  }
+
+  historyList.innerHTML = history.map(gameHistoryCard).join('');
+  historySection.classList.remove('hidden');
+  historyDivider.classList.remove('hidden');
+
+  if (history.length >= currentHistoryLimit) {
+    gameHistoryActions.classList.remove('hidden');
+  } else {
+    gameHistoryActions.classList.add('hidden');
+  }
+}
+  function populateProfile(p: Record<string, any>, history: any[] = []) {
+    resetProfileUI();
+
+    const avatar = document.getElementById('profile-avatar') as HTMLImageElement;
+    const bioEl = document.getElementById('profile-bio')!;
+    const metaEl = document.getElementById('profile-meta')!;
+    const badgesEl = document.getElementById('profile-badges')!;
+    const statsGrid = document.getElementById('profile-stats-grid')!;
+    const divider = document.getElementById('stats-divider')!;
+
+    avatar.src = p.avatar || '';
+    avatar.alt = p.gamertag ?? 'Avatar';
+
+    (document.getElementById('profile-gamertag')!).textContent = p.gamertag ?? '—';
+
+    if (p.bio) {
+      bioEl.textContent = p.bio;
+      bioEl.classList.remove('hidden');
+    }
+
+    const metaParts: string[] = [];
+
+    if (p.real_name) {
+      metaParts.push(
+        `<span class="text-[10px] font-bold tracking-[0.16em] uppercase text-[#9CA3AF] flex items-center gap-1">${escHtml(p.real_name)}</span>`
+      );
+    }
+
+    if (p.location) {
+      metaParts.push(
+        `<span class="text-[10px] font-bold tracking-[0.16em] uppercase text-[#9CA3AF] flex items-center gap-1">📍 ${escHtml(p.location)}</span>`
+      );
+    }
+
+    if (metaParts.length) {
+      metaEl.innerHTML = metaParts.join('');
+      metaEl.classList.remove('hidden');
+    }
+
+    const badges: string[] = [];
+
+    if (p.account_tier) {
+      badges.push(badge(String(p.account_tier), 'brand'));
+    }
+
+    if (p.reputation) {
+      badges.push(badge(String(p.reputation)));
+    }
+
+    if (p.verified === true) {
+      badges.push(badge('Verified', 'brand'));
+    }
+
+    if (p.has_game_pass === true) {
+      badges.push(badge('Game Pass', 'brand'));
+    }
+
+    if (badges.length) {
+      badgesEl.innerHTML = badges.join('');
+      badgesEl.classList.remove('hidden');
+    }
+
+    const stats: string[] = [];
+
+    stats.push(statCard('Gamerscore', fmt(Number(p.gamerscore ?? 0)), true));
+
+    if (typeof p.followers !== 'undefined') {
+      stats.push(statCard('Followers', fmt(Number(p.followers))));
+    }
+
+    if (typeof p.following !== 'undefined') {
+      stats.push(statCard('Following', fmt(Number(p.following))));
+    }
+
+    if (stats.length) {
+      statsGrid.innerHTML = stats.join('');
+      statsGrid.classList.remove('hidden');
+      divider.classList.remove('hidden');
+    }
+
+    populateGameHistory(history);
+  }
+
+async function lookupProfile(customLimit?: number, preserveVisibleCard = false) {
+  const tag = input.value.trim();
+  if (!tag) return;
+
+  const limit = customLimit ?? currentHistoryLimit;
+
+  if (!preserveVisibleCard) {
+    profileCard.classList.add('hidden');
+  }
+
+  errorEl.classList.add('hidden');
+  loadingEl.classList.remove('hidden');
+  btn.disabled = true;
+
+  if (showMoreHistoryBtn) {
+    showMoreHistoryBtn.disabled = true;
+    showMoreHistoryBtn.textContent = 'Loading...';
+  }
+
+  try {
+    const res = await fetch(
+      `${API_BASE}/api/xbox/profile?gamertag=${encodeURIComponent(tag)}&history_limit=${limit}`,
+      { headers: { Accept: 'application/json' } }
+    );
+
+    const raw = await res.text();
+    let data: any = {};
+
+    try {
+      data = raw ? JSON.parse(raw) : {};
+    } catch {
+      throw new Error('Invalid server response.');
+    }
+
+    if (data.error) {
+      showError(data.message ?? 'Something went wrong.');
+      return;
+    }
+
+    if (data.found === false) {
+      showError(data.message ?? 'Gamertag not found.');
+      return;
+    }
+
+    if (!data.profile) {
+      showError('Profile data is missing.');
+      return;
+    }
+
+    const historySource =
+      data.game_history ??
+      data.history ??
+      data.profile?.game_history ??
+      data.gameHistory ??
+      [];
+
+    const history = Array.isArray(historySource)
+      ? historySource
+      : Array.isArray(historySource?.items)
+        ? historySource.items
+        : [];
+
+    console.log('Profile API response:', data);
+    console.log('Resolved game history:', history);
+
+    currentGamertag = tag;
+    currentHistoryLimit = limit;
+
+    populateProfile(data.profile, history);
+    profileCard.classList.remove('hidden');
+  } catch (err: any) {
+    showError(err?.message ?? 'Network error. Please check your connection.');
+  } finally {
+    loadingEl.classList.add('hidden');
+    btn.disabled = false;
+
+    if (showMoreHistoryBtn) {
+      showMoreHistoryBtn.disabled = false;
+      showMoreHistoryBtn.textContent = 'Show More';
+    }
+  }
+}
+
+  async function showMoreHistory() {
+  if (!currentGamertag) return;
+
+  const previousCount = lastLoadedHistoryCount;
+  currentHistoryLimit += historyStep;
+
+  await lookupProfile(currentHistoryLimit, true);
+
+  if (lastLoadedHistoryCount <= previousCount) {
+    gameHistoryActions.classList.add('hidden');
+  }
+}
+
+ btn.addEventListener('click', () => {
+  currentHistoryLimit = 9;
+  lookupProfile(currentHistoryLimit);
+});
+
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    currentHistoryLimit = 9;
+    lookupProfile(currentHistoryLimit);
+  }
+});
+
+showMoreHistoryBtn?.addEventListener('click', showMoreHistory);
+</script>

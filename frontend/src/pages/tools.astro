@@ -34,15 +34,24 @@ const tools: Tool[] = [
   },
   {
     id: "2",
-    title: "Xbox Gamertag Price Checker",
-    description: "Estimate the value of a gamertag based on length, rarity, readability, and overall quality.",
-    slug: "price-checker",
+    title: "Xbox Gamertag Availability Checker",
+    description: "Check whether an Xbox gamertag is taken or still likely available.",
+    slug: "availability-checker",
     available: true,
-    href: "/gamertag-price-checker",
-    icon: "dollar",
+    href: "/xbox-gamertag-availability-checker",
+    icon: "search",
   },
   {
     id: "3",
+    title: "Xbox Gamertag Search",
+    description: "Look up public Xbox gamer profiles, gamerscore, and profile details by gamertag.",
+    slug: "profile-stats-checker",
+    available: true,
+    href: "/xbox-gamertag-search",
+    icon: "chart",
+  },
+  {
+    id: "4",
     title: "Xbox Gamercard Generator",
     description: "Create a custom Xbox gamercard image with your gamertag, avatar, status, and gamerscore.",
     slug: "gamercard-generator",
@@ -51,22 +60,13 @@ const tools: Tool[] = [
     icon: "idcard",
   },
   {
-    id: "4",
-    title: "Xbox Gamertag Availability Checker",
-    description: "Check whether an Xbox gamertag is taken or still likely available.",
-    slug: "availability-checker",
-    available: true,
-    href: "/gamertag-checker",
-    icon: "search",
-  },
-  {
     id: "5",
-    title: "Xbox Gamer Profile Checker",
-    description: "Look up public Xbox gamer profiles, gamerscore, and profile details by gamertag.",
-    slug: "profile-stats-checker",
+    title: "Xbox Gamertag Price Checker",
+    description: "Estimate the value of a gamertag based on length, rarity, readability, and overall quality.",
+    slug: "price-checker",
     available: true,
-    href: "/gamer-profile",
-    icon: "chart",
+    href: "/gamertag-price-checker",
+    icon: "dollar",
   },
   {
     id: "6",
@@ -78,7 +78,6 @@ const tools: Tool[] = [
     icon: "sparkles",
   }
 ];
-
 const iconMap: Record<IconKey, string> = {
   gamepad: `<svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 12l-2 5a2 2 0 0 0 3 2l3-2h4l3 2a2 2 0 0 0 3-2l-2-5a6 6 0 0 0-12 0Z" />

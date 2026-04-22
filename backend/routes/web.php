@@ -1,17 +1,15 @@
 <?php
 
 use App\Http\Controllers\Admin\GlossaryController;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\GamertagController;
-use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\ProfileController as ApiProfileController;
+use App\Http\Controllers\ProfileController;
 
 Route::prefix('xbox')->group(function () {
-    Route::post('gamertag/check',  [GamertagController::class, 'check']);
-    Route::get('profile',          [ProfileController::class,  'show']);
+    Route::post('gamertag/check', [GamertagController::class, 'check']);
+    Route::get('profile',         [ApiProfileController::class, 'show']);
 });
-
-
 
 Route::redirect('/', '/login');
 
@@ -29,8 +27,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile',    [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile',  [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

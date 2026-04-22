@@ -5,8 +5,8 @@ import tailwindcss from "@tailwindcss/vite";
 const toolPages = new Set([
   "/gamertag-price-checker",
   "/gamercard-generator",
-  "/gamertag-checker",
-  "/gamer-profile",
+  "/xbox-gamertag-availability-checker",
+  "/xbox-gamertag-search",
   "/gamertag-optimizer",
 ]);
 

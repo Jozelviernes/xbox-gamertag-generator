@@ -3,20 +3,20 @@
         <div class="flex h-16 items-center justify-between">
 
             <!-- Logo -->
-            <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
-                <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="1" y="1" width="38" height="38" rx="6" stroke="#00D02B" stroke-width="1.5"/>
-                    <path d="M10 10 L20 20 L10 30" stroke="#00D02B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M20 10 L30 20 L20 30" stroke="#00D02B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
-                    <rect x="18" y="18" width="4" height="4" rx="1" fill="#00D02B"/>
-                </svg>
-
-                <div class="flex flex-col leading-none gap-0.5">
-                    <span class="text-sm font-black uppercase tracking-widest text-[#050505]" style="font-family:'Orbitron',sans-serif;">
-                        XBOX
+            <a href="{{ route('dashboard') }}" class="flex min-w-0 items-center gap-3">
+                <img
+                    src="{{ asset('logo.webp') }}"
+                    alt="Xbox Gamertag Generator logo"
+                    width="40"
+                    height="40"
+                    style="width:40px;height:40px;object-fit:contain;flex-shrink:0;"
+                />
+                <div style="min-width:0;line-height:1;">
+                    <span style="display:block;font-family:'Orbitron',sans-serif;font-size:0.875rem;font-weight:900;text-transform:uppercase;letter-spacing:0.18em;color:#050505;">
+                        Xbox
                     </span>
-                    <span class="text-[9px] font-bold uppercase tracking-[2px] text-[#00D02B]" style="font-family:'Orbitron',sans-serif;">
-                        GAMERTAG GEN
+                    <span style="display:block;font-family:'Inter',sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.22em;color:#00D02B;">
+                        Gamertag Generator
                     </span>
                 </div>
             </a>

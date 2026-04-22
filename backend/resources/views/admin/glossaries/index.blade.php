@@ -125,7 +125,7 @@
                             <tr>
                                 <td colspan="6" class="px-5 py-12 text-center">
                                     <p class="text-base font-semibold text-[#050505]">No glossary terms found.</p>
-                                    <p class="mt-2 text-sm text-[#64748B]">Click “Add Term” to create your first glossary entry.</p>
+                                    <p class="mt-2 text-sm text-[#64748B]">Click "Add Term" to create your first glossary entry.</p>
                                 </td>
                             </tr>
                         @endforelse
@@ -142,9 +142,15 @@
     </div>
 </div>
 
-{{-- Add Modal --}}
-<div id="addModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4 py-6">
-    <div class="w-full max-w-2xl overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-2xl">
+{{-- ============================================================
+     Add Modal
+     FIX: overflow-y-auto on the backdrop so the modal scrolls
+     on small/zoomed screens instead of being clipped.
+     mx-auto + my-6 on the inner box keeps it centered when
+     there IS enough space, and lets it scroll when there isn't.
+     ============================================================ --}}
+<div id="addModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/50 px-4 py-6">
+    <div class="mx-auto w-full max-w-2xl overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-2xl my-6">
         <div class="flex items-center justify-between border-b border-[#E2E8F0] px-6 py-4">
             <div>
                 <h2 class="text-xl font-bold text-[#050505]">Add Glossary Term</h2>
@@ -231,8 +237,8 @@
 </div>
 
 {{-- Edit Modal --}}
-<div id="editModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4 py-6">
-    <div class="w-full max-w-2xl overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-2xl">
+<div id="editModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/50 px-4 py-6">
+    <div class="mx-auto w-full max-w-2xl overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-2xl my-6">
         <div class="flex items-center justify-between border-b border-[#E2E8F0] px-6 py-4">
             <div>
                 <h2 class="text-xl font-bold text-[#050505]">Edit Glossary Term</h2>
@@ -318,8 +324,8 @@
 </div>
 
 {{-- Delete Modal --}}
-<div id="deleteModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4 py-6">
-    <div class="w-full max-w-md overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-2xl">
+<div id="deleteModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/50 px-4 py-6">
+    <div class="mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-2xl my-6">
         <div class="border-b border-[#E2E8F0] px-6 py-4">
             <h2 class="text-xl font-bold text-[#050505]">Delete Glossary Term</h2>
             <p class="mt-1 text-sm text-[#64748B]">This action cannot be undone.</p>
@@ -348,44 +354,37 @@
 </div>
 
 <script>
-    const addModal = document.getElementById('addModal');
-    const editModal = document.getElementById('editModal');
+    const addModal    = document.getElementById('addModal');
+    const editModal   = document.getElementById('editModal');
     const deleteModal = document.getElementById('deleteModal');
 
-    const editForm = document.getElementById('editForm');
-    const deleteForm = document.getElementById('deleteForm');
+    const editForm       = document.getElementById('editForm');
+    const deleteForm     = document.getElementById('deleteForm');
 
-    const editTerm = document.getElementById('edit_term');
-    const editCategory = document.getElementById('edit_category');
+    const editTerm       = document.getElementById('edit_term');
+    const editCategory   = document.getElementById('edit_category');
     const editDefinition = document.getElementById('edit_definition');
-    const editSortOrder = document.getElementById('edit_sort_order');
-    const editIsActive = document.getElementById('edit_is_active');
+    const editSortOrder  = document.getElementById('edit_sort_order');
+    const editIsActive   = document.getElementById('edit_is_active');
     const editGlossaryId = document.getElementById('edit_glossary_id');
-
     const deleteTermName = document.getElementById('delete_term_name');
 
     const glossaryBaseUrl = @json(url('/admin/glossaries'));
 
     function openModal(modal) {
         modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.classList.add('overflow-hidden');
+        modal.scrollTop = 0;
     }
 
     function closeModal(modal) {
         modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.classList.remove('overflow-hidden');
     }
 
-    document.querySelector('[data-open-add]')?.addEventListener('click', () => {
-        openModal(addModal);
-    });
+    document.querySelector('[data-open-add]')?.addEventListener('click', () => openModal(addModal));
 
     document.querySelectorAll('[data-close-modal]').forEach(button => {
         button.addEventListener('click', () => {
-            const modalId = button.getAttribute('data-close-modal');
-            const modal = document.getElementById(modalId);
+            const modal = document.getElementById(button.getAttribute('data-close-modal'));
             if (modal) closeModal(modal);
         });
     });
@@ -393,39 +392,33 @@
     document.querySelectorAll('[data-open-edit]').forEach(button => {
         button.addEventListener('click', () => {
             const id = button.dataset.id;
-            editForm.action = `${glossaryBaseUrl}/${id}`;
-            editGlossaryId.value = id;
-            editTerm.value = button.dataset.term ?? '';
-            editCategory.value = button.dataset.category ?? '';
-            editDefinition.value = button.dataset.definition ?? '';
-            editSortOrder.value = button.dataset.sortOrder ?? 0;
-            editIsActive.checked = (button.dataset.isActive === '1');
-
+            editForm.action          = `${glossaryBaseUrl}/${id}`;
+            editGlossaryId.value     = id;
+            editTerm.value           = button.dataset.term       ?? '';
+            editCategory.value       = button.dataset.category   ?? '';
+            editDefinition.value     = button.dataset.definition ?? '';
+            editSortOrder.value      = button.dataset.sortOrder  ?? 0;
+            editIsActive.checked     = (button.dataset.isActive  === '1');
             openModal(editModal);
         });
     });
 
     document.querySelectorAll('[data-open-delete]').forEach(button => {
         button.addEventListener('click', () => {
-            const id = button.dataset.id;
-            const term = button.dataset.term ?? '';
-
-            deleteForm.action = `${glossaryBaseUrl}/${id}`;
-            deleteTermName.textContent = term;
-
+            deleteForm.action        = `${glossaryBaseUrl}/${button.dataset.id}`;
+            deleteTermName.textContent = button.dataset.term ?? '';
             openModal(deleteModal);
         });
     });
 
+    // Click backdrop to close — target only the backdrop itself, not the inner box
     [addModal, editModal, deleteModal].forEach(modal => {
-        modal?.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal(modal);
-            }
+        modal?.addEventListener('click', e => {
+            if (e.target === modal) closeModal(modal);
         });
     });
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
         if (e.key === 'Escape') {
             closeModal(addModal);
             closeModal(editModal);
@@ -438,13 +431,13 @@
     @endif
 
     @if ($errors->any() && old('glossary_modal') === 'edit')
-        editForm.action = `${glossaryBaseUrl}/{{ old('glossary_id') }}`;
-        editGlossaryId.value = `{{ old('glossary_id') }}`;
-        editTerm.value = @json(old('term'));
-        editCategory.value = @json(old('category'));
-        editDefinition.value = @json(old('definition'));
-        editSortOrder.value = @json(old('sort_order', 0));
-        editIsActive.checked = {{ old('is_active') ? 'true' : 'false' }};
+        editForm.action          = `${glossaryBaseUrl}/{{ old('glossary_id') }}`;
+        editGlossaryId.value     = `{{ old('glossary_id') }}`;
+        editTerm.value           = @json(old('term'));
+        editCategory.value       = @json(old('category'));
+        editDefinition.value     = @json(old('definition'));
+        editSortOrder.value      = @json(old('sort_order', 0));
+        editIsActive.checked     = {{ old('is_active') ? 'true' : 'false' }};
         openModal(editModal);
     @endif
 </script>

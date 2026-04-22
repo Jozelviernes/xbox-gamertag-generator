@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
       <p>Look at the name as if it appears on a profile card, scoreboard, party list, and game clip. Say it out loud. If it feels awkward to read, hard to spell, or too long to call out, it probably needs work.</p>
 
       <h2>Create backup options before you check availability</h2>
-      <p>Do not stop at one idea. Make a short list of five to ten names with the same style so you can move quickly if your first choice is already taken. After that, run them through the <a href="/gamertag-checker">Gamertag Checker</a> and improve rough ones with the <a href="/gamertag-optimizer">Gamertag Optimizer</a>.</p>
+      <p>Do not stop at one idea. Make a short list of five to ten names with the same style so you can move quickly if your first choice is already taken. After that, run them through the <a href="/xbox-gamertag-availability-checker">Gamertag Checker</a> and improve rough ones with the <a href="/gamertag-optimizer">Gamertag Optimizer</a>.</p>
 
       <h2>Quick checklist before you commit</h2>
       <ul>
@@ -114,7 +114,7 @@ export const blogPosts: BlogPost[] = [
         <li>Test availability before you get attached to one choice</li>
       </ul>
 
-      <p>After building a shortlist, test each name with the <a href="/gamertag-checker">Gamertag Checker</a> and compare how it looks on a profile using the <a href="/gamer-profile">Gamer Profile Checker</a>.</p>
+      <p>After building a shortlist, test each name with the <a href="/xbox-gamertag-availability-checker">Gamertag Checker</a> and compare how it looks on a profile using the <a href="/xbox-gamertag-search">Gamer Profile Checker</a>.</p>
     `
   },
   {

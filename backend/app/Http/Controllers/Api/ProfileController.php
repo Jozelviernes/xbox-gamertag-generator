@@ -14,11 +14,14 @@ class ProfileController extends Controller
     public function show(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'gamertag' => ['required', 'string', 'min:1', 'max:15'],
+            'gamertag'      => ['required', 'string', 'min:1', 'max:15'],
+       'history_limit' => ['nullable', 'integer', 'min:1', 'max:100'],
         ]);
 
-        $gamertag = trim($validated['gamertag']);
-        $people   = $this->xbl->searchByGamertag($gamertag);
+        $gamertag     = trim($validated['gamertag']);
+        $historyLimit = (int) ($validated['history_limit'] ?? 10);
+
+        $people = $this->xbl->searchByGamertag($gamertag);
 
         if (isset($people['error'])) {
             if (($people['status'] ?? 0) === 404) {
@@ -68,9 +71,10 @@ class ProfileController extends Controller
         }
 
         $detail = is_array($match['detail'] ?? null) ? $match['detail'] : [];
+        $xuid   = $match['xuid'] ?? null;
 
         $profile = [
-            'xuid'         => $match['xuid'] ?? null,
+            'xuid'         => $xuid,
             'gamertag'     => $match['gamertag'] ?? $gamertag,
             'gamerscore'   => isset($match['gamerScore']) ? (int) $match['gamerScore'] : 0,
             'avatar'       => $match['displayPicRaw'] ?? null,
@@ -103,10 +107,21 @@ class ProfileController extends Controller
             return true;
         });
 
-        return response()->json([
-            'found'   => true,
-            'profile' => $profile,
-        ]);
+        $response = [
+            'found'        => true,
+            'profile'      => $profile,
+            'game_history' => [],
+        ];
+
+        if ($xuid) {
+            $gameHistory = $this->xbl->getGameHistoryByXuid($xuid, $historyLimit);
+
+            if (! isset($gameHistory['error']) && is_array($gameHistory)) {
+                $response['game_history'] = $gameHistory;
+            }
+        }
+
+        return response()->json($response);
     }
 
     private function normalizeGamertag(?string $gamertag): string
