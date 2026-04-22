@@ -181,6 +181,24 @@ const schema = {
 
 <script>
 const API_BASE = import.meta.env.PUBLIC_API_BASE_URL || 'https://api.xboxgamertaggenerator.com';
+ function normalizeXboxImageUrl(url) {
+    if (!url) return null;
+
+    try {
+      const parsed = new URL(url);
+      parsed.searchParams.delete('mode');
+      parsed.searchParams.delete('background');
+      return parsed.toString();
+    } catch {
+      return url
+        .replace(/([?&])mode=Padding(&|$)/gi, '$1')
+        .replace(/([?&])background=0x[0-9a-f]+(&|$)/gi, '$1')
+        .replace(/[?&]$/, '');
+    }
+  }
+
+  const fallbackImage = '/images/default-avatar.svg';
+
   const input       = document.getElementById('profile-input') as HTMLInputElement;
   const btn         = document.getElementById('search-btn') as HTMLButtonElement;
   const loadingEl   = document.getElementById('loading')!;
@@ -404,7 +422,11 @@ function populateGameHistory(history: any[]) {
     const statsGrid = document.getElementById('profile-stats-grid')!;
     const divider = document.getElementById('stats-divider')!;
 
-    avatar.src = p.avatar || '';
+   avatar.src = p.displayPicRaw || p.avatar || fallbackImage;
+avatar.onerror = () => {
+  avatar.onerror = null;
+  avatar.src = fallbackImage;
+};
     avatar.alt = p.gamertag ?? 'Avatar';
 
     (document.getElementById('profile-gamertag')!).textContent = p.gamertag ?? '—';
@@ -476,7 +498,6 @@ function populateGameHistory(history: any[]) {
 
     populateGameHistory(history);
   }
-
 async function lookupProfile(customLimit?: number, preserveVisibleCard = false) {
   const tag = input.value.trim();
   if (!tag) return;
@@ -525,6 +546,14 @@ async function lookupProfile(customLimit?: number, preserveVisibleCard = false) 
       showError('Profile data is missing.');
       return;
     }
+
+    const fallbackImage = '/images/default-avatar.svg';
+
+    const profileImage =
+      normalizeXboxImageUrl(data.profile?.displayPicRaw || data.profile?.gameDisplayPicRaw) ||
+      fallbackImage;
+
+    data.profile.displayPicRaw = profileImage;
 
     const historySource =
       data.game_history ??
