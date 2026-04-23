@@ -43,7 +43,7 @@ export default defineConfig({
         !page.includes("/admin/"),
 
       serialize(item) {
-        const path = new URL(item.url).pathname;
+        const path = new URL(item.url).pathname.replace(/\/$/, "") || "/";
 
         if (path === "/") {
           return { ...item, priority: 1.0, changefreq: "daily" };
