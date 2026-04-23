@@ -154,16 +154,18 @@ const schema = {
         {post.excerpt}
       </p>
 
-      <a
-        href={`/${post.slug}`}
-        class="text-brand font-medium hover:underline inline-flex items-center font-ui mt-auto"
-        aria-label={`Read the article: ${post.title}`}
-      >
-        Read the article
-        <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+    <a
+  href={`/${post.slug}`}
+  class="text-brand font-medium hover:underline inline-flex items-center font-ui mt-auto"
+  aria-label={`Read more about ${post.title}`}
+>
+  <span>Read more</span>
+  <span class="sr-only"> about {post.title}</span>
+  <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+  </svg>
+</a>
+
     </div>
   </article>
 ))}
@@ -285,7 +287,7 @@ const schema = {
       return Math.max(1, Math.ceil(list.length / postsPerPage));
     }
 
- function cardHTML(post: Post): string {
+function cardHTML(post: Post): string {
   return `
     <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
       <div class="w-full h-40 bg-gray-300 flex items-center justify-center">
@@ -306,10 +308,11 @@ const schema = {
         <a
           href="/${post.slug}"
           class="text-brand font-medium hover:underline inline-flex items-center font-ui mt-auto"
-          aria-label="Read the article: ${post.title}"
+          aria-label="Read more about ${post.title}"
         >
-          Read the article
-          <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span>Read more</span>
+          <span class="sr-only"> about ${post.title}</span>
+          <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
         </a>
