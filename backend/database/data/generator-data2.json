@@ -1,0 +1,1840 @@
+{
+  "languageWordSets": {
+    "english": {
+      "gaming": [
+        "Aim", "Clutch", "Spawn", "Raid", "Frag", "Tilt", "Sweat", "Peek",
+        "Rush", "Rank", "Carry", "Scope", "Flick", "Zone", "Lobby", "Grind",
+        "AimVex", "AimFlux", "AimRift", "AimHex", "AimByte", "AimNox", "AimKai", "AimZed",
+        "AimRex", "AimJinx", "AimDrip", "AimRush", "AimXen", "AimZyn", "AimVyr", "AimQix",
+        "AimDash", "AimLock", "AimJolt", "AimRaze", "AimVolt", "AimFaze", "AimGrip", "AimMist",
+        "AimFang", "AimSly", "AimKix", "AimZap", "AimWisp", "AimSync", "AimNova", "AimArc",
+        "ClutchVex", "ClutchFlux", "ClutchRift", "ClutchHex", "ClutchByte", "ClutchNox", "ClutchKai", "ClutchZed",
+        "ClutchRex", "ClutchJinx", "ClutchDrip", "ClutchRush", "ClutchXen", "ClutchZyn", "ClutchVyr", "ClutchQix",
+"ZeroBloom", "MetaShift", "SpawnIQ", "RankPhantom", "Clutchless", "RecoilZed", "FlickNova", "SweatSync",
+"RushVector", "PeekDemon", "AimTheory", "GhostMeta", "LobbyWraith", "TiltProof", "SpawnPixel", "CrosshairX",
+"RankGremlin", "CarryVanta", "RecoilNova", "PixelSweat", "CrackedIQ", "FinalPeek", "ToxicBloom", "NoScopeIQ",
+"RankShadow", "TriggerZen", "GhostCarry", "MetaRogue", "SpawnDemon", "FlickVanta", "PeekRaven", "ClutchIQ",
+"QueueGhost", "RankVandal", "MetaFang", "ScopeNite", "RushCipher", "FlickDusk", "SpawnNite", "TiltViper",
+"PeekWraith", "AimVanta", "FragPilot", "LobbyDrift", "SweatRogue", "RankVexx", "ClutchNite", "RecoilFang",
+"CarryNoxx", "TriggerVoid", "CrossFireX", "GhostFlick", "MetaPilot", "SpawnRift", "FinalRush", "ScopeVanta",
+"FlickGhost", "RankFrost", "AimPhantom", "TiltRunner", "RushNexus", "FragDemon", "PeekPhantom", "SweatVanta",
+"ZeroPeek", "MetaFrost", "RankNinja", "SpawnRush", "ScopeDusk", "FlickRune", "AimWarden", "RushOmega",
+"FragNovaX", "CarryHex", "PeekTitan", "TiltGuard", "SweatNova", "ClutchFox", "RankPulse", "SpawnViper",
+"FlickStorm", "AimCrown", "LobbyHex", "ScopeWolf", "RushPrime", "FragZen", "CarryNiteX", "PeekBlitz",
+"MetaWolf", "RankVenom", "ZeroScope", "FinalFlick", "SpawnAce", "AimRaven", "ClutchOmen", "SweatFrost",
+"VandalScopeX", "RecoilViperX", "TriggerFangX", "ClutchRazorX",
+"FlickerDuskX", "SpawnShadowX", "RankerGhostX", "SweaterNiteX",
+"PeekerHavocX", "FraggyPulseX", "ScopeRuinXXX", "CarryVandalX",
+"RusherBladeX", "LobbyWraithX", "GrinderOmenX", "AimerCipherX"
+      ],
+      "animals": [
+        "Lynx", "Wolf", "Rook", "Mako", "Raptor", "Kodiak", "Viper", "Mantis",
+        "Falcon", "Panda", "Gator", "Raven", "Ocelot", "Cobra", "Orca", "Rhino",
+        "LynxVex", "LynxFlux", "LynxRift", "LynxHex", "LynxByte", "LynxNox", "LynxKai", "LynxZed",
+        "LynxRex", "LynxJinx", "LynxDrip", "LynxRush", "LynxXen", "LynxZyn", "LynxVyr", "LynxQix",
+        "LynxDash", "LynxLock", "LynxJolt", "LynxRaze", "LynxVolt", "LynxFaze", "LynxGrip", "LynxMist",
+        "LynxFang", "LynxSly", "LynxKix", "LynxZap", "LynxWisp", "LynxSync", "LynxNova", "LynxArc",
+        "WolfVex", "WolfFlux", "WolfRift", "WolfHex", "WolfByte", "WolfNox", "WolfKai", "WolfZed",
+        "WolfRex", "WolfJinx", "WolfDrip", "WolfRush", "WolfXen", "WolfZyn", "WolfVyr", "WolfQix",
+"VantaWolf", "NyxRaptor", "MakoFang", "KodiakRush", "RavenClutch", "CobraWisp", "OrcaVanta", "GatorHexx",
+"FalconNox", "MantisRift", "PandaFury", "RhinoJuke", "OcelotByte", "WolfTheory", "ViperKarma", "RookVenom",
+"FangRider", "ClawNova", "TalonVexx", "HowlPixel", "MakoDemon", "RavenDrift", "WolfMint", "CobraShade",
+"OrcaGhost", "GatorRush", "MantisVibe", "FalconByte", "LynxTheory", "KodiakHexx", "RhinoVolt", "RookFrost",
+"GhostWolf", "IronRaven", "FrostMako", "NightCobra", "VexRaptor", "RiftFalcon", "NoxPanther", "HexViper",
+"RogueKodiak", "NovaMantis", "DarkOrca", "BlitzGator", "FangMako", "ClawRaven", "TalonWolf", "VenomLynx",
+"RaptorVoid", "FalconRush", "CobraNova", "KodiakNox", "MantisFang", "OrcaRift", "RhinoVex", "GatorVanta",
+"RavenNite", "WolfCipher", "MakoVolt", "LynxShadow", "ViperDrift", "PandaNox", "OcelotRush", "RookPhantom",
+"FrostWolf", "IronLynx", "ViperAce", "RavenHex", "MakoStorm", "CobraDusk", "FalconIQ", "OrcaNite",
+"RaptorZen", "KodiakAce", "GatorNoxx", "RhinoRush", "PandaBlitz", "OcelotZen", "MantisNova", "RookShade",
+"WolfApex", "LynxPrime", "ViperFrost", "RavenPulse", "MakoNova", "CobraBlitz", "FalconZen", "OrcaVexx",
+"RaptorDusk", "KodiakHex", "GatorPrime", "RhinoNite", "PandaRush", "OcelotFang", "MantisAce", "RookVanta",
+"PantherFangX", "FalconTalonX", "RaptorVenomX", "CobraStrikeX",
+"KodiakClawXX", "MantisFuryXX", "RavenShadowX", "ViperHowlerX",
+"OrcaPhantomX", "GatorRipperX", "RhinoChargeX", "LynxProwlerX",
+"WolfStalkerX", "MakoHunterXX", "OcelotClawXX", "PandaBrawler"
+      ],
+      "tech": [
+        "Cache", "Proxy", "Kernel", "Cipher", "Packet", "Router", "Pixel", "Script",
+        "Thread", "Vector", "Socket", "Quantum", "Binary", "Daemon", "Glitch", "Signal",
+        "CacheVex", "CacheFlux", "CacheRift", "CacheHex", "CacheByte", "CacheNox", "CacheKai", "CacheZed",
+        "CacheRex", "CacheJinx", "CacheDrip", "CacheRush", "CacheXen", "CacheZyn", "CacheVyr", "CacheQix",
+        "CacheDash", "CacheLock", "CacheJolt", "CacheRaze", "CacheVolt", "CacheFaze", "CacheGrip", "CacheMist",
+        "CacheFang", "CacheSly", "CacheKix", "CacheZap", "CacheWisp", "CacheSync", "CacheNova", "CacheArc",
+        "ProxyVex", "ProxyFlux", "ProxyRift", "ProxyHex", "ProxyByte", "ProxyNox", "ProxyKai", "ProxyZed",
+        "ProxyRex", "ProxyJinx", "ProxyDrip", "ProxyRush", "ProxyXen", "ProxyZyn", "ProxyVyr", "ProxyQix",
+"NullStack", "ByteTheory", "PacketGhost", "KernelVanta", "ProxyDrift", "CipherNova", "SocketRush", "QuantumIQ",
+"DaemonHexx", "SignalVibe", "ScriptNox", "VectorJuke", "RouterRage", "PixelKarma", "GlitchMint", "CacheGhost",
+"NullVector", "ByteVanta", "StackRogue", "PacketNox", "KernelIQ", "ProxyMint", "CipherRush", "SocketNova",
+"QuantumHex", "DaemonFang", "SignalDrip", "ScriptVibe", "RouterWisp", "PixelDemon", "GlitchRift", "DataShade",
+"NullCipher", "BytePhantom", "ScriptGhost", "ProxyNexus", "KernelRush", "PacketVexx", "VectorNite", "SocketFang",
+"QuantumVex", "SignalNoxx", "RouterGhost", "GlitchPilot", "DaemonVoid", "CipherDrift", "PixelVanta", "StackFrost",
+"CacheNexus", "NullPilot", "ByteRunner", "PacketShade", "KernelDrip", "ProxyVortex", "ScriptNite", "SignalVanta",
+"VectorGhost", "SocketVex", "QuantumRay", "RouterVoid", "GlitchFang", "DaemonRush", "CipherNite", "PixelRogue",
+"ByteForge", "NullStorm", "CyberNite", "DataPulse", "CodeVanta", "StackNova", "KernelZen", "ProxyFrost",
+"CipherAce", "PacketIQ", "SocketHex", "RouterNox", "PixelForge", "SignalRune", "VectorAce", "GlitchZen",
+"DaemonX", "CacheNiteX", "ScriptNova", "QuantumZen", "ByteRaven", "NullPrime", "CyberFang", "DataBlitz",
+"CodeWarden", "StackDusk", "KernelFox", "ProxyAce", "CipherWolf", "PacketZen", "SocketVanta", "RouterHex",
+"CipherStackX", "KernelPatchX", "PacketPulseX", "VectorCloudX",
+"RouterGhostX", "SocketForgeX", "ProxySignalX", "ScriptDaemon",
+"GlitchMatrix", "QuantumNodeX", "BinaryCacheX", "PixelSocketX",
+"NullRouterXX", "CloudVectorX", "HashKernelXX", "DataCipherXX"
+      ],
+      "fantasy": [
+        "Rune", "Wyrm", "Myth", "Arcane", "Relic", "Glyph", "Fable", "Oath",
+        "Druid", "Mage", "Sage", "Oracle", "Wisp", "Crown", "Aegis", "Golem",
+        "RuneVex", "RuneFlux", "RuneRift", "RuneHex", "RuneByte", "RuneNox", "RuneKai", "RuneZed",
+        "RuneRex", "RuneJinx", "RuneDrip", "RuneRush", "RuneXen", "RuneZyn", "RuneVyr", "RuneQix",
+        "RuneDash", "RuneLock", "RuneJolt", "RuneRaze", "RuneVolt", "RuneFaze", "RuneGrip", "RuneMist",
+        "RuneFang", "RuneSly", "RuneKix", "RuneZap", "RuneWisp", "RuneSync", "RuneNova", "RuneArc",
+        "WyrmVex", "WyrmFlux", "WyrmRift", "WyrmHex", "WyrmByte", "WyrmNox", "WyrmKai", "WyrmZed",
+        "WyrmRex", "WyrmJinx", "WyrmDrip", "WyrmRush", "WyrmXen", "WyrmZyn", "WyrmVyr", "WyrmQix",
+"RuneShade", "MythVanta", "ArcaneWolf", "GlyphNova", "RelicRush", "WyrmFrost", "FableNox", "OathRift",
+"DruidHexx", "MageVapor", "SageClutch", "OracleVexx", "AegisFang", "GolemJuke", "CrownVoid", "WispKarma",
+"RuneDemon", "MythRogue", "ArcaneIQ", "GlyphFrost", "RelicNova", "WyrmVanta", "FableHexx", "OathGhost",
+"DruidMint", "MageRift", "SageVexx", "OracleNox", "AegisRush", "GolemFang", "CrownWisp", "WispShade",
+"RuneWarden", "MythKnight", "ArcaneNox", "GlyphDemon", "RelicVanta", "WyrmShadow", "FableRush", "OathViper",
+"DruidGhost", "MageVanta", "SageDemon", "OracleVoid", "AegisRift", "GolemNite", "CrownFang", "WispVexx",
+"RuneVandal", "MythFrost", "ArcaneFang", "GlyphWraith", "RelicGhost", "WyrmNexus", "FableDrift", "OathNoxx",
+"DruidVexx", "MageCipher", "SageRift", "OracleMist", "AegisNox", "GolemRush", "CrownVanta", "WispPhantom",
+"RuneFrost", "MythGuard", "ArcaneFox", "GlyphAce", "RelicNite", "WyrmPulse", "FableHex", "OathBlitz",
+"DruidVanta", "MageStorm", "SageNoxx", "OracleAce", "AegisZen", "GolemFrost", "CrownRune", "WispNovaX",
+"RunePrime", "MythWolf", "ArcaneVex", "GlyphNite", "RelicFang", "WyrmAce", "FableDusk", "OathNova",
+"DruidPulse", "MageVexx", "SageCrown", "OracleFox", "AegisDusk", "GolemHex", "CrownStorm", "WispFrost",
+"ArcaneSpellX", "DragonGlyphX", "MysticCrownX", "OracleBladeX",
+"WardenRelicX", "DruidShadowX", "PaladinRuneX", "GolemHammerX",
+"FableKnightX", "WispPhantomX", "CrownSorcerX", "AegisDragonX",
+"RuneWraithXX", "MythicOathXX", "GlyphWizardX", "RelicHunterX"
+      ],
+      "sports": [
+        "Dunk", "Sprint", "Rally", "Hoop", "Volley", "Kick", "Goal", "Ace",
+        "Skate", "Dash", "Strike", "Pace", "Juke", "Pivot", "Drift", "Hustle",
+        "DunkVex", "DunkFlux", "DunkRift", "DunkHex", "DunkByte", "DunkNox", "DunkKai", "DunkZed",
+        "DunkRex", "DunkJinx", "DunkDrip", "DunkRush", "DunkXen", "DunkZyn", "DunkVyr", "DunkQix",
+        "DunkDash", "DunkLock", "DunkJolt", "DunkRaze", "DunkVolt", "DunkFaze", "DunkGrip", "DunkMist",
+        "DunkFang", "DunkSly", "DunkKix", "DunkZap", "DunkWisp", "DunkSync", "DunkNova", "DunkArc",
+        "SprintVex", "SprintFlux", "SprintRift", "SprintHex", "SprintByte", "SprintNox", "SprintKai", "SprintZed",
+        "SprintRex", "SprintJinx", "SprintDrip", "SprintRush", "SprintXen", "SprintZyn", "SprintVyr", "SprintQix",
+"DunkTheory", "SprintIQ", "HoopVanta", "KickNova", "GoalGhost", "AceJuke", "SkateRush", "PaceDemon",
+"PivotFury", "JukeVortex", "RallyClutch", "VolleyHexx", "StrikeMint", "DashKarma", "HustleNox", "DriftGoal",
+"DunkRogue", "SprintNox", "HoopGhost", "KickVanta", "GoalRush", "AceDemon", "SkateNova", "PaceRift",
+"PivotMint", "JukeFang", "RallyVexx", "VolleyIQ", "StrikeNova", "DashWisp", "HustleHex", "DriftAce",
+"JukePhantom", "DashVanta", "GoalVandal", "AceRunner", "HoopRogue", "KickFrost", "SprintVexx", "RallyGhost",
+"VolleyNox", "PivotRush", "SkateVanta", "PaceFang", "StrikeVoid", "DunkPilot", "HustleVex", "DriftRally",
+"GoalNexus", "AceVanta", "KickDemon", "HoopVexx", "JukeGhost", "DashCipher", "RallyNite", "VolleyRush",
+"PivotFang", "SkateGhost", "PaceVexx", "StrikeNox", "DunkFrost", "HustleIQ", "DriftVanta", "SprintVoid",
+"DunkFang", "SprintAce", "RallyNoxx", "HoopFrost", "KickBlitz", "GoalVexx", "AceStorm", "SkateNite",
+"DashPrime", "StrikeZen", "PaceWolf", "JukeNovaX", "PivotAce", "DriftKick", "HustleFox", "VolleyFang",
+"DunkPulse", "SprintFox", "RallyPrime", "HoopVanta", "KickStorm", "GoalFrost", "AceBlitz", "SkateZen",
+"DashCrown", "StrikeAce", "PaceVanta", "JukeFrost", "PivotNite", "DriftHex", "HustleZen", "VolleyAce",
+"SprintPowerX", "VolleyStrike", "DunkerPrimeX", "RallyBlazerX",
+"HooperClutch", "KickerStormX", "SkaterDashXX", "JukerPhantom",
+"PacerRocketX", "PivotRunnerX", "DrifterGoalX", "HustleCrownX",
+"AceStrikerXX", "GoalieViperX", "DasherFrostX", "RusherHoopXX"
+      ],
+      "space": [
+        "Orbit", "Nebula", "Quasar", "Pulsar", "Meteor", "Comet", "Lunar", "Solar",
+        "Cosmo", "Astra", "Ion", "Vega", "Orion", "Draco", "Lyra", "Zenith",
+        "OrbitVex", "OrbitFlux", "OrbitRift", "OrbitHex", "OrbitByte", "OrbitNox", "OrbitKai", "OrbitZed",
+        "OrbitRex", "OrbitJinx", "OrbitDrip", "OrbitRush", "OrbitXen", "OrbitZyn", "OrbitVyr", "OrbitQix",
+        "OrbitDash", "OrbitLock", "OrbitJolt", "OrbitRaze", "OrbitVolt", "OrbitFaze", "OrbitGrip", "OrbitMist",
+        "OrbitFang", "OrbitSly", "OrbitKix", "OrbitZap", "OrbitWisp", "OrbitSync", "OrbitNova", "OrbitArc",
+        "NebulaVex", "NebulaFlux", "NebulaRift", "NebulaHex", "NebulaByte", "NebulaNox", "NebulaKai", "NebulaZed",
+        "NebulaRex", "NebulaJinx", "NebulaDrip", "NebulaRush", "NebulaXen", "NebulaZyn", "NebulaVyr", "NebulaQix",
+"VoidLunar", "NovaOrbit", "AstraGhost", "CometVanta", "MeteorIQ", "QuasarMint", "PulsarHexx", "SolarRift",
+"LunarKarma", "DracoNova", "LyraWisp", "VegaRush", "OrionFang", "ZenithNox", "NebulaJuke", "OrbitShade",
+"VoidComet", "NovaVanta", "AstraNox", "CometGhost", "MeteorHex", "QuasarIQ", "PulsarNova", "SolarDemon",
+"LunarWisp", "DracoMint", "LyraFang", "VegaRift", "OrionVexx", "ZenithIQ", "NebulaVoid", "OrbitFrost",
+"NovaCipher", "VoidPilot", "OrbitNite", "CometFang", "LunarVanta", "SolarGhost", "QuasarNox", "PulsarVexx",
+"MeteorRush", "AstraDemon", "DracoVoid", "LyraFrost", "VegaNexus", "OrionNite", "ZenithFang", "NebulaMist",
+"CosmoVanta", "IonGhost", "StarVexx", "MoonRift", "SolarNoxx", "CometDrift", "OrbitVandal", "VoidRogue",
+"LunarCipher", "PulsarMist", "QuasarFang", "MeteorVex", "AstraNite", "DracoRush", "VegaGhost", "OrionVanta",
+"NovaFrost", "VoidAce", "OrbitWolf", "CometNite", "LunarHex", "SolarVexx", "AstraPrime", "MeteorZen",
+"PulsarAce", "QuasarFox", "DracoFrost", "LyraNovaX", "VegaPulse", "OrionHex", "ZenithFox", "NebulaAce",
+"CosmoNite", "IonVanta", "StarForge", "MoonBlitz", "NovaDusk", "VoidPrime", "OrbitFang", "CometZen",
+"LunarStorm", "SolarAce", "AstraFrost", "MeteorHex", "PulsarFox", "QuasarZen", "DracoNite", "VegaVanta",
+"NebulaOrbitX", "MeteorStrike", "PulsarDriftX", "QuasarLightX",
+"SolarShadowX", "LunarRocketX", "CometVectorX", "OrbitPhaserX",
+"CosmicHunter", "AstroWraithX", "GalaxyFrostX", "PhotonRiftXX",
+"PlasmaGhostX", "EclipseNovaX", "StellarVoidX", "ZenithPulseX"
+      ],
+      "music": [
+        "Bass", "Synth", "Riff", "Tempo", "Vibe", "Echo", "Loop", "Drop",
+        "Reverb", "Beat", "Chord", "Groove", "Hook", "Lyric", "Verse", "Solo",
+        "BassVex", "BassFlux", "BassRift", "BassHex", "BassByte", "BassNox", "BassKai", "BassZed",
+        "BassRex", "BassJinx", "BassDrip", "BassRush", "BassXen", "BassZyn", "BassVyr", "BassQix",
+        "BassDash", "BassLock", "BassJolt", "BassRaze", "BassVolt", "BassFaze", "BassGrip", "BassMist",
+        "BassFang", "BassSly", "BassKix", "BassZap", "BassWisp", "BassSync", "BassNova", "BassArc",
+        "SynthVex", "SynthFlux", "SynthRift", "SynthHex", "SynthByte", "SynthNox", "SynthKai", "SynthZed",
+        "SynthRex", "SynthJinx", "SynthDrip", "SynthRush", "SynthXen", "SynthZyn", "SynthVyr", "SynthQix",
+"BassTheory", "SynthGhost", "RiffVanta", "TempoRush", "VibeNova", "EchoWisp", "LoopFang", "DropClutch",
+"ReverbNox", "BeatKarma", "ChordHexx", "GrooveJuke", "HookPixel", "LyricVexx", "VerseMint", "SoloDrift",
+"BassDemon", "SynthRogue", "RiffNova", "TempoNox", "VibeGhost", "EchoMint", "LoopVanta", "DropIQ",
+"ReverbHex", "BeatWisp", "ChordNova", "GrooveFang", "HookRush", "LyricShade", "VerseRift", "SoloVexx",
+"BassVanta", "SynthNite", "RiffGhost", "TempoVexx", "VibeCipher", "EchoDemon", "LoopRogue", "DropVanta",
+"ReverbMist", "BeatVandal", "ChordNoxx", "GrooveVoid", "HookFang", "LyricGhost", "VerseNite", "SoloVanta",
+"BassPilot", "SynthFrost", "RiffCipher", "TempoDemon", "VibeRift", "EchoVanta", "LoopNoxx", "DropRogue",
+"ReverbFang", "BeatGhost", "ChordVexx", "GrooveNite", "HookVanta", "LyricRush", "VerseGhost", "SoloNoxx",
+"BassForge", "SynthAce", "RiffNite", "TempoHex", "VibeFrost", "EchoPrime", "LoopStorm", "DropVexx",
+"ReverbAce", "BeatNoxx", "ChordZen", "GrooveFox", "HookVanta", "LyricFang", "VerseNova", "SoloPrime",
+"BassWolf", "SynthFang", "RiffVanta", "TempoAce", "VibeStorm", "EchoBlitz", "LoopPrime", "DropFrost",
+"ReverbZen", "BeatForge", "ChordNite", "GrooveAce", "HookFrost", "LyricPrime", "VerseHex", "SoloStorm",
+"ReverbVerseX", "SynthMelodyX", "BasslineRift", "TempoWardenX",
+"GrooveCipher", "EchoRhythmXX", "RiffVandalXX", "LoopPhantomX",
+"BeatShadowXX", "ChordRocketX", "DropViperXXX", "HookSpecterX",
+"LyricFrostXX", "SoloWraithXX", "VibePulseXXX", "AudioHavocXX"
+      ],
+      "food": [
+        "Taco", "Ramen", "Mochi", "Waffle", "Nacho", "Sushi", "Boba", "Latte",
+        "Donut", "Cookie", "Noodle", "Pickle", "Toast", "Burger", "Kimchi", "Curry",
+        "TacoVex", "TacoFlux", "TacoRift", "TacoHex", "TacoByte", "TacoNox", "TacoKai", "TacoZed",
+        "TacoRex", "TacoJinx", "TacoDrip", "TacoRush", "TacoXen", "TacoZyn", "TacoVyr", "TacoQix",
+        "TacoDash", "TacoLock", "TacoJolt", "TacoRaze", "TacoVolt", "TacoFaze", "TacoGrip", "TacoMist",
+        "TacoFang", "TacoSly", "TacoKix", "TacoZap", "TacoWisp", "TacoSync", "TacoNova", "TacoArc",
+        "RamenVex", "RamenFlux", "RamenRift", "RamenHex", "RamenByte", "RamenNox", "RamenKai", "RamenZed",
+        "RamenRex", "RamenJinx", "RamenDrip", "RamenRush", "RamenXen", "RamenZyn", "RamenVyr", "RamenQix",
+"TacoTheory", "RamenGhost", "MochiVanta", "WaffleRush", "NachoNox", "SushiKarma", "BobaFang", "LatteVexx",
+"DonutPixel", "CookieJuke", "NoodleMint", "PickleRush", "ToastDemon", "BurgerHexx", "KimchiNova", "CurryClutch",
+"TacoGhost", "RamenNox", "MochiRush", "WaffleIQ", "NachoFang", "SushiVanta", "BobaNova", "LatteMint",
+"DonutRift", "CookieNox", "NoodleVexx", "PickleIQ", "ToastRush", "BurgerWisp", "KimchiHex", "CurryShade",
+"TacoVanta", "RamenVexx", "MochiGhost", "WaffleNox", "NachoRogue", "SushiFang", "BobaCipher", "LatteNite",
+"DonutVanta", "CookieRush", "NoodleFang", "PickleVex", "ToastGhost", "BurgerNox", "KimchiRift", "CurryVanta",
+"TacoPilot", "RamenDemon", "MochiNoxx", "WaffleVex", "NachoGhost", "SushiRush", "BobaVanta", "LatteRogue",
+"DonutFang", "CookieMist", "NoodleNite", "PickleGhost", "ToastVexx", "BurgerRush", "KimchiVex", "CurryGhost",
+"TacoFrost", "RamenAce", "MochiNite", "WaffleZen", "NachoHex", "SushiPrime", "BobaStorm", "LatteVanta",
+"DonutAce", "CookieFox", "NoodleZen", "PickleNox", "ToastPrime", "BurgerAce", "KimchiNite", "CurryFrost",
+"TacoBlitz", "RamenVanta", "MochiPrime", "WaffleHex", "NachoZen", "SushiNite", "BobaFrost", "LatteAce",
+"DonutStorm", "CookieZen", "NoodleFox", "PickleAce", "ToastFrost", "BurgerZen", "KimchiAce", "CurryPrime",
+"WaffleCrunch", "PotatoBlazeX", "NachoRocketX", "RamenShadowX",
+"SushiVortexX", "BurgerFrostX", "CookieRiftXX", "TacoPhantomX",
+"MochiClutchX", "NoodleWraith", "PickleViperX", "DonutStriker",
+"KimchiGhostX", "CurryRipperX", "BobaBlizzard", "LatteVandalX"
+      ],
+      "funny": [
+        "Lag", "Noob", "Bonk", "Oops", "Potato", "Goofy", "Bozo", "Panic",
+        "Yikes", "Meme", "NPC", "Derp", "Clown", "Oopsie", "Donkey", "Trash",
+        "LagVex", "LagFlux", "LagRift", "LagHex", "LagByte", "LagNox", "LagKai", "LagZed",
+        "LagRex", "LagJinx", "LagDrip", "LagRush", "LagXen", "LagZyn", "LagVyr", "LagQix",
+        "LagDash", "LagLock", "LagJolt", "LagRaze", "LagVolt", "LagFaze", "LagGrip", "LagMist",
+        "LagFang", "LagSly", "LagKix", "LagZap", "LagWisp", "LagSync", "LagNova", "LagArc",
+        "NoobVex", "NoobFlux", "NoobRift", "NoobHex", "NoobByte", "NoobNox", "NoobKai", "NoobZed",
+        "NoobRex", "NoobJinx", "NoobDrip", "NoobRush", "NoobXen", "NoobZyn", "NoobVyr", "NoobQix",
+"BotPanic", "LagLottery", "NoobTheory", "OopsGoblin", "BonkMeta", "PotatoIQ", "GoofyClutch", "BozoVector",
+"PanicWaffle", "YikesNova", "MemeGoblin", "NPCEnergy", "DerpKnight", "ClownMode", "OopsieRush", "DonkeyAim",
+"TrashWizard", "BotBurrito", "AimBanana", "LagWizard", "NoobMagnet", "OopsTheory", "BonkClutch", "PotatoRush",
+"GoofyPixel", "BozoGhost", "PanicDemon", "YikesRift", "MemeVanta", "NPCGoblin", "DerpNova", "ClownRush",
+"LagGoblin", "BotWizard", "NoobFuel", "OopsVanta", "BonkPilot", "PotatoNox", "GoofyDemon", "BozoRift",
+"PanicGoblin", "YikesPilot", "MemeNoxx", "NPCWizard", "DerpVanta", "ClownPixel", "OopsieNox", "DonkeyRush",
+"TrashGoblin", "BotGremlin", "AimPotato", "LagBiscuit", "NoobRocket", "OopsSniper", "BonkGoblin", "PotatoFang",
+"GoofyRift", "BozoVanta", "PanicPixel", "YikesFang", "MemePilot", "NPCVanta", "DerpRogue", "ClownNox",
+"LagWizardX", "NoobFrost", "BotClutch", "OopsNinja", "BonkPrime", "PotatoZen", "GoofyAce", "BozoFrost",
+"PanicNoxx", "YikesWolf", "MemeKnight", "NPCFrost", "DerpWizard", "ClownAce", "OopsieZen", "DonkeyNox",
+"TrashNinja", "LagKnight", "NoobVanta", "BotGoblinX", "OopsFrost", "BonkWizard", "PotatoHex", "GoofyNite",
+"BozoPrime", "PanicAce", "YikesNite", "MemeFrost", "NPCPrime", "DerpKnight", "ClownZen", "TrashFrost",
+"PotatoPanicX", "NoobHelmetXX", "LaggyMuffinX", "BonkBananaXX",
+"OopsReloadXX", "GoblinAimBot", "BotWaffleXXX", "DerpPancakeX",
+"ClownRecoilX", "TrashGoblinX", "YikesPotatoX", "MemeHelmetXX",
+"NPCBananaXXX", "BozoSniperXX", "GoofyRocketX", "PanicPickleX"
+      ]
+    },
+    "spanish": {
+      "gaming": [
+        "RayoAim", "RayoRaid", "RayoRush", "RayoFrag", "RayoPeek", "RayoRank", "RayoDuel", "RayoZone",
+        "RayoClutch", "RayoSpawn", "RayoGrind", "RayoMVP", "RayoFlick", "RayoXP", "RayoMeta", "RayoJuke",
+        "RayoX", "RayoZ", "RayoQ", "Rayo404", "Rayo77", "RayoGG", "RayoVX", "RayoK",
+        "RayoKai", "RayoNox", "RayoVex", "RayoZed", "RayoHex", "RayoArc", "RayoBit", "RayoNeo",
+        "RayoOne", "RayoZero", "RayoMax", "RayoZen",
+"SombraAim", "SombraRaid", "SombraRush", "SombraFrag", "SombraPeek", "SombraRank", "SombraDuel", "SombraZone",
+"FuegoAim", "FuegoRaid", "FuegoRush", "FuegoFrag", "FuegoPeek", "FuegoRank", "FuegoDuel", "FuegoZone",
+"NitroAim", "NitroRaid", "NitroRush", "NitroFrag", "NitroPeek", "NitroRank", "NitroDuel", "NitroZone",
+"VelozAim", "VelozRaid", "VelozRush", "VelozFrag", "VelozPeek", "VelozRank", "VelozDuel", "VelozZone"
+      ],
+      "animals": [
+        "RayoFang", "RayoClaw", "RayoProwl", "RayoHowl", "RayoTalon", "RayoPounce", "RayoWild", "RayoPack",
+        "RayoRoar", "RayoTusk", "RayoMane", "RayoBite", "RayoStalk", "RayoWing", "RayoPaw", "RayoHorn",
+        "RayoFlux", "RayoRex", "RayoJinx", "NocheFang", "NocheClaw", "NocheProwl", "NocheHowl", "NocheTalon",
+        "NochePounce", "NocheWild", "NochePack", "NocheRoar", "NocheTusk", "NocheMane", "NocheBite", "NocheStalk",
+        "NocheWing", "NochePaw", "NocheHorn", "NocheX",
+"LoboFang", "LoboClaw", "LoboProwl", "LoboHowl", "LoboTalon", "LoboWild", "LoboPack", "LoboRoar",
+"ZorroFang", "ZorroClaw", "ZorroProwl", "ZorroHowl", "ZorroTalon", "ZorroWild", "ZorroPack", "ZorroRoar",
+"DracoFang", "DracoClaw", "DracoProwl", "DracoHowl", "DracoTalon", "DracoWild", "DracoPack", "DracoRoar",
+"ToroFang", "ToroClaw", "ToroProwl", "ToroHowl", "ToroTalon", "ToroWild", "ToroPack", "ToroRoar"
+      ],
+      "tech": [
+        "RayoByte", "RayoPing", "RayoCache", "RayoProxy", "RayoNode", "RayoStack", "RayoHash", "RayoGlitch",
+        "RayoCipher", "RayoKernel", "RayoPixel", "RayoVector", "RayoSync", "RayoBoot", "RayoPatch", "NocheByte",
+        "NochePing", "NocheCache", "NocheProxy", "NocheNode", "NocheStack", "NocheHash", "NocheGlitch", "NocheCipher",
+        "NocheKernel", "NochePixel", "NocheVector", "NocheSync", "NocheBoot", "NochePatch", "NocheFlux", "NocheZ",
+        "NocheQ", "Noche404", "Noche77", "NocheGG",
+"SombraByte", "SombraPing", "SombraNode", "SombraHash", "SombraSync", "SombraBoot", "SombraPatch", "SombraPixel",
+"FuegoByte", "FuegoPing", "FuegoNode", "FuegoHash", "FuegoSync", "FuegoBoot", "FuegoPatch", "FuegoPixel",
+"NitroByte", "NitroPing", "NitroNode", "NitroHash", "NitroSync", "NitroBoot", "NitroPatch", "NitroPixel",
+"VelozByte", "VelozPing", "VelozNode", "VelozHash", "VelozSync", "VelozBoot", "VelozPatch", "VelozPixel"
+      ],
+      "fantasy": [
+        "RayoRune", "RayoMage", "RayoMyth", "RayoRelic", "RayoWisp", "RayoAegis", "RayoDruid", "RayoGlyph",
+        "RayoBane", "RayoMana", "RayoSpell", "RayoQuest", "RayoCrown", "RayoOath", "RayoFable", "NocheRune",
+        "NocheMage", "NocheMyth", "NocheRelic", "NocheWisp", "NocheHex", "NocheAegis", "NocheDruid", "NocheGlyph",
+        "NocheBane", "NocheMana", "NocheSpell", "NocheQuest", "NocheCrown", "NocheOath", "NocheFable", "NocheXP",
+        "NocheVX", "NocheK", "NocheKai", "NocheNox",
+"SombraRune", "SombraMage", "SombraMyth", "SombraWisp", "SombraMana", "SombraOath", "SombraHex", "SombraRelic",
+"FuegoRune", "FuegoMage", "FuegoMyth", "FuegoWisp", "FuegoMana", "FuegoOath", "FuegoHex", "FuegoRelic",
+"DracoRune", "DracoMage", "DracoMyth", "DracoWisp", "DracoMana", "DracoOath", "DracoHex", "DracoRelic",
+"LunaRune", "LunaMage", "LunaMyth", "LunaWisp", "LunaMana", "LunaOath", "LunaHex", "LunaRelic"
+      ],
+      "sports": [
+        "RayoGoal", "RayoDash", "RayoSlam", "RayoAce", "RayoSprint", "RayoHoop", "RayoRally", "RayoBoost",
+        "RayoMedal", "RayoPodium", "RayoPace", "RayoDunk", "RayoGrip", "RayoTurbo", "RayoStreak", "NocheGoal",
+        "NocheDash", "NocheSlam", "NocheAce", "NocheSprint", "NocheHoop", "NocheRally", "NocheBoost", "NocheMedal",
+        "NochePodium", "NochePace", "NocheDunk", "NocheGrip", "NocheTurbo", "NocheJuke", "NocheStreak", "NocheVex",
+        "NocheZed", "NocheArc", "NocheBit", "NocheNeo",
+"SombraGoal", "SombraDash", "SombraAce", "SombraHoop", "SombraPace", "SombraDunk", "SombraGrip", "SombraJuke",
+"FuegoGoal", "FuegoDash", "FuegoAce", "FuegoHoop", "FuegoPace", "FuegoDunk", "FuegoGrip", "FuegoJuke",
+"NitroGoal", "NitroDash", "NitroAce", "NitroHoop", "NitroPace", "NitroDunk", "NitroGrip", "NitroJuke",
+"VelozGoal", "VelozDash", "VelozAce", "VelozHoop", "VelozPace", "VelozDunk", "VelozGrip", "VelozJuke"
+      ],
+      "space": [
+        "RayoOrbit", "RayoNova", "RayoIon", "RayoComet", "RayoPulsar", "RayoVoid", "RayoWarp", "RayoAstra",
+        "RayoMeteor", "RayoLyra", "RayoDraco", "RayoPhoton", "RayoLunar", "RayoSolar", "RayoVega", "RayoCosmo",
+        "NocheOrbit", "NocheNova", "NocheIon", "NocheComet", "NochePulsar", "NocheVoid", "NocheWarp", "NocheAstra",
+        "NocheMeteor", "NocheLyra", "NocheDraco", "NochePhoton", "NocheLunar", "NocheSolar", "NocheVega", "NocheCosmo",
+        "NocheOne", "NocheZero", "NocheMax", "NocheZen",
+"SombraNova", "SombraIon", "SombraVoid", "SombraWarp", "SombraLyra", "SombraVega", "SombraLunar", "SombraSolar",
+"FuegoNova", "FuegoIon", "FuegoVoid", "FuegoWarp", "FuegoLyra", "FuegoVega", "FuegoLunar", "FuegoSolar",
+"LunaNova", "LunaIon", "LunaVoid", "LunaWarp", "LunaLyra", "LunaVega", "LunaLunar", "LunaSolar",
+"DracoNova", "DracoIon", "DracoVoid", "DracoWarp", "DracoLyra", "DracoVega", "DracoLunar", "DracoSolar"
+      ],
+      "music": [
+        "RayoBeat", "RayoBass", "RayoRiff", "RayoLoop", "RayoDrop", "RayoEcho", "RayoVibe", "RayoTempo",
+        "RayoHook", "RayoFlow", "RayoSynth", "RayoBPM", "RayoTrack", "RayoWave", "RayoRemix", "RayoChord",
+        "NocheBeat", "NocheBass", "NocheRiff", "NocheLoop", "NocheDrop", "NocheEcho", "NocheVibe", "NocheTempo",
+        "NocheHook", "NocheFlow", "NocheSynth", "NocheBPM", "NocheTrack", "NocheWave", "NocheRemix", "NocheChord",
+        "NocheRex", "NocheJinx", "FuegoBeat", "FuegoBass",
+"SombraBeat", "SombraBass", "SombraRiff", "SombraLoop", "SombraDrop", "SombraEcho", "SombraVibe", "SombraFlow",
+"LunaBeat", "LunaBass", "LunaRiff", "LunaLoop", "LunaDrop", "LunaEcho", "LunaVibe", "LunaFlow",
+"NitroBeat", "NitroBass", "NitroRiff", "NitroLoop", "NitroDrop", "NitroEcho", "NitroVibe", "NitroFlow",
+"VelozBeat", "VelozBass", "VelozRiff", "VelozLoop", "VelozDrop", "VelozEcho", "VelozVibe", "VelozFlow"
+      ],
+      "food": [
+        "RayoTaco", "RayoBoba", "RayoToast", "RayoRamen", "RayoMochi", "RayoWaffle", "RayoNacho", "RayoSushi",
+        "RayoLatte", "RayoDonut", "RayoNoodle", "RayoCurry", "RayoMiso", "RayoKebab", "RayoCookie", "RayoPickle",
+        "NocheTaco", "NocheBoba", "NocheToast", "NocheRamen", "NocheMochi", "NocheWaffle", "NocheNacho", "NocheSushi",
+        "NocheLatte", "NocheDonut", "NocheNoodle", "NocheCurry", "NocheMiso", "NocheKebab", "NocheCookie", "NochePickle",
+        "FuegoTaco", "FuegoBoba", "FuegoToast", "FuegoRamen",
+"SombraTaco", "SombraBoba", "SombraToast", "SombraRamen", "SombraMochi", "SombraSushi", "SombraLatte", "SombraDonut",
+"LunaTaco", "LunaBoba", "LunaToast", "LunaRamen", "LunaMochi", "LunaSushi", "LunaLatte", "LunaDonut",
+"NitroTaco", "NitroBoba", "NitroToast", "NitroRamen", "NitroMochi", "NitroSushi", "NitroLatte", "NitroDonut",
+"VelozTaco", "VelozBoba", "VelozToast", "VelozRamen", "VelozMochi", "VelozSushi", "VelozLatte", "VelozDonut"
+      ],
+      "funny": [
+        "RayoLag", "RayoNoob", "RayoBonk", "RayoOops", "RayoMeme", "RayoNPC", "RayoDerp", "RayoBozo",
+        "RayoYikes", "RayoPanic", "RayoGoofy", "RayoTroll", "RayoBruh", "RayoDuck", "RayoFumble", "RayoClown",
+        "NocheLag", "NocheNoob", "NocheBonk", "NocheOops", "NocheMeme", "NocheNPC", "NocheDerp", "NocheBozo",
+        "NocheYikes", "NochePanic", "NocheGoofy", "NocheTroll", "NocheBruh", "NocheDuck", "NocheFumble", "NocheClown",
+        "FuegoLag", "FuegoNoob", "FuegoBonk", "FuegoOops",
+"SombraLag", "SombraNoob", "SombraBonk", "SombraOops", "SombraMeme", "SombraNPC", "SombraDerp", "SombraBozo",
+"LunaLag", "LunaNoob", "LunaBonk", "LunaOops", "LunaMeme", "LunaNPC", "LunaDerp", "LunaBozo",
+"NitroLag", "NitroNoob", "NitroBonk", "NitroOops", "NitroMeme", "NitroNPC", "NitroDerp", "NitroBozo",
+"VelozLag", "VelozNoob", "VelozBonk", "VelozOops", "VelozMeme", "VelozNPC", "VelozDerp", "VelozBozo"
+      ]
+    },
+    "portuguese": {
+      "gaming": [
+        "RaioAim", "RaioRaid", "RaioRush", "RaioFrag", "RaioPeek", "RaioRank", "RaioDuel", "RaioZone",
+        "RaioClutch", "RaioSpawn", "RaioGrind", "RaioMVP", "RaioFlick", "RaioXP", "RaioMeta", "RaioJuke",
+        "RaioX", "RaioZ", "RaioQ", "Raio404", "Raio77", "RaioGG", "RaioVX", "RaioK",
+        "RaioKai", "RaioNox", "RaioVex", "RaioZed", "RaioHex", "RaioArc", "RaioBit", "RaioNeo",
+        "RaioOne", "RaioZero", "RaioMax", "RaioZen",
+"SombraAim", "SombraRaid", "SombraRush", "SombraFrag", "SombraPeek", "SombraRank", "SombraDuel", "SombraZone", "SombraSpawn", "SombraFlick",
+"FuriaAim", "FuriaRaid", "FuriaRush", "FuriaFrag", "FuriaPeek", "FuriaRank", "FuriaDuel", "FuriaZone", "FuriaClutch", "FuriaFlick",
+"VelozAim", "VelozRaid", "VelozRush", "VelozFrag", "VelozPeek", "VelozRank", "VelozDuel", "VelozZone", "VelozSpawn", "VelozMeta",
+"BrasaAim", "BrasaRaid", "BrasaRush", "BrasaFrag", "BrasaPeek", "BrasaRank", "BrasaDuel", "BrasaZone", "BrasaClutch", "BrasaJuke",
+"TurboAim", "TurboRaid", "TurboRush", "TurboFrag", "TurboPeek", "TurboRank", "TurboDuel", "TurboZone", "TurboSpawn", "TurboFlick"
+      ],
+      "animals": [
+        "RaioFang", "RaioClaw", "RaioProwl", "RaioHowl", "RaioTalon", "RaioPounce", "RaioWild", "RaioPack",
+        "RaioRoar", "RaioTusk", "RaioMane", "RaioBite", "RaioStalk", "RaioWing", "RaioPaw", "RaioHorn",
+        "RaioFlux", "RaioRex", "RaioJinx", "NoiteFang", "NoiteClaw", "NoiteProwl", "NoiteHowl", "NoiteTalon",
+        "NoitePounce", "NoiteWild", "NoitePack", "NoiteRoar", "NoiteTusk", "NoiteMane", "NoiteBite", "NoiteStalk",
+        "NoiteWing", "NoitePaw", "NoiteHorn", "NoiteX",
+"SombraAim", "SombraRaid", "SombraRush", "SombraFrag", "SombraPeek", "SombraRank", "SombraDuel", "SombraZone", "SombraSpawn", "SombraFlick",
+"FuriaAim", "FuriaRaid", "FuriaRush", "FuriaFrag", "FuriaPeek", "FuriaRank", "FuriaDuel", "FuriaZone", "FuriaClutch", "FuriaFlick",
+"VelozAim", "VelozRaid", "VelozRush", "VelozFrag", "VelozPeek", "VelozRank", "VelozDuel", "VelozZone", "VelozSpawn", "VelozMeta",
+"BrasaAim", "BrasaRaid", "BrasaRush", "BrasaFrag", "BrasaPeek", "BrasaRank", "BrasaDuel", "BrasaZone", "BrasaClutch", "BrasaJuke",
+"TurboAim", "TurboRaid", "TurboRush", "TurboFrag", "TurboPeek", "TurboRank", "TurboDuel", "TurboZone", "TurboSpawn", "TurboFlick"
+      ],
+      "tech": [
+        "RaioByte", "RaioPing", "RaioCache", "RaioProxy", "RaioNode", "RaioStack", "RaioHash", "RaioGlitch",
+        "RaioCipher", "RaioKernel", "RaioPixel", "RaioVector", "RaioSync", "RaioBoot", "RaioPatch", "NoiteByte",
+        "NoitePing", "NoiteCache", "NoiteProxy", "NoiteNode", "NoiteStack", "NoiteHash", "NoiteGlitch", "NoiteCipher",
+        "NoiteKernel", "NoitePixel", "NoiteVector", "NoiteSync", "NoiteBoot", "NoitePatch", "NoiteFlux", "NoiteZ",
+        "NoiteQ", "Noite404", "Noite77", "NoiteGG",
+"SombraByte", "SombraPing", "SombraCache", "SombraProxy", "SombraNode", "SombraStack", "SombraHash", "SombraSync", "SombraBoot", "SombraPatch",
+"BrasaByte", "BrasaPing", "BrasaCache", "BrasaProxy", "BrasaNode", "BrasaStack", "BrasaHash", "BrasaSync", "BrasaBoot", "BrasaPatch",
+"NuvemByte", "NuvemPing", "NuvemCache", "NuvemProxy", "NuvemNode", "NuvemStack", "NuvemHash", "NuvemSync", "NuvemBoot", "NuvemPatch",
+"VetorByte", "VetorPing", "VetorCache", "VetorProxy", "VetorNode", "VetorStack", "VetorHash", "VetorSync", "VetorBoot", "VetorPatch",
+"PixelByte", "PixelPing", "PixelCache", "PixelProxy", "PixelNode", "PixelStack", "PixelHash", "PixelSync", "PixelBoot", "PixelPatch"
+      ],
+      "fantasy": [
+        "RaioRune", "RaioMage", "RaioMyth", "RaioRelic", "RaioWisp", "RaioAegis", "RaioDruid", "RaioGlyph",
+        "RaioBane", "RaioMana", "RaioSpell", "RaioQuest", "RaioCrown", "RaioOath", "RaioFable", "NoiteRune",
+        "NoiteMage", "NoiteMyth", "NoiteRelic", "NoiteWisp", "NoiteHex", "NoiteAegis", "NoiteDruid", "NoiteGlyph",
+        "NoiteBane", "NoiteMana", "NoiteSpell", "NoiteQuest", "NoiteCrown", "NoiteOath", "NoiteFable", "NoiteXP",
+        "NoiteVX", "NoiteK", "NoiteKai", "NoiteNox",
+"SombraRune", "SombraMage", "SombraMyth", "SombraWisp", "SombraAegis", "SombraDruid", "SombraGlyph", "SombraMana", "SombraOath", "SombraFable",
+"BrasaRune", "BrasaMage", "BrasaMyth", "BrasaWisp", "BrasaAegis", "BrasaDruid", "BrasaGlyph", "BrasaMana", "BrasaOath", "BrasaFable",
+"DracoRune", "DracoMage", "DracoMyth", "DracoWisp", "DracoAegis", "DracoDruid", "DracoGlyph", "DracoMana", "DracoOath", "DracoFable",
+"LunarRune", "LunarMage", "LunarMyth", "LunarWisp", "LunarAegis", "LunarDruid", "LunarGlyph", "LunarMana", "LunarOath", "LunarFable",
+"FuriaRune", "FuriaMage", "FuriaMyth", "FuriaWisp", "FuriaAegis", "FuriaDruid", "FuriaGlyph", "FuriaMana", "FuriaOath", "FuriaFable"
+      ],
+      "sports": [
+        "RaioGoal", "RaioDash", "RaioSlam", "RaioAce", "RaioSprint", "RaioHoop", "RaioRally", "RaioBoost",
+        "RaioMedal", "RaioPodium", "RaioPace", "RaioDunk", "RaioGrip", "RaioTurbo", "RaioStreak", "NoiteGoal",
+        "NoiteDash", "NoiteSlam", "NoiteAce", "NoiteSprint", "NoiteHoop", "NoiteRally", "NoiteBoost", "NoiteMedal",
+        "NoitePodium", "NoitePace", "NoiteDunk", "NoiteGrip", "NoiteTurbo", "NoiteJuke", "NoiteStreak", "NoiteVex",
+        "NoiteZed", "NoiteArc", "NoiteBit", "NoiteNeo",
+"SombraGoal", "SombraDash", "SombraSlam", "SombraAce", "SombraHoop", "SombraRally", "SombraBoost", "SombraPace", "SombraDunk", "SombraGrip",
+"BrasaGoal", "BrasaDash", "BrasaSlam", "BrasaAce", "BrasaHoop", "BrasaRally", "BrasaBoost", "BrasaPace", "BrasaDunk", "BrasaGrip",
+"TurboGoal", "TurboDash", "TurboSlam", "TurboAce", "TurboHoop", "TurboRally", "TurboBoost", "TurboPace", "TurboDunk", "TurboGrip",
+"VelozGoal", "VelozDash", "VelozSlam", "VelozAce", "VelozHoop", "VelozRally", "VelozBoost", "VelozPace", "VelozDunk", "VelozGrip",
+"FuriaGoal", "FuriaDash", "FuriaSlam", "FuriaAce", "FuriaHoop", "FuriaRally", "FuriaBoost", "FuriaPace", "FuriaDunk", "FuriaGrip"
+      ],
+      "space": [
+        "RaioOrbit", "RaioNova", "RaioIon", "RaioComet", "RaioPulsar", "RaioVoid", "RaioWarp", "RaioAstra",
+        "RaioMeteor", "RaioLyra", "RaioDraco", "RaioPhoton", "RaioLunar", "RaioSolar", "RaioVega", "RaioCosmo",
+        "NoiteOrbit", "NoiteNova", "NoiteIon", "NoiteComet", "NoitePulsar", "NoiteVoid", "NoiteWarp", "NoiteAstra",
+        "NoiteMeteor", "NoiteLyra", "NoiteDraco", "NoitePhoton", "NoiteLunar", "NoiteSolar", "NoiteVega", "NoiteCosmo",
+        "NoiteOne", "NoiteZero", "NoiteMax", "NoiteZen",
+"SombraNova", "SombraIon", "SombraVoid", "SombraWarp", "SombraAstra", "SombraLyra", "SombraDraco", "SombraLunar", "SombraSolar", "SombraVega",
+"BrasaNova", "BrasaIon", "BrasaVoid", "BrasaWarp", "BrasaAstra", "BrasaLyra", "BrasaDraco", "BrasaLunar", "BrasaSolar", "BrasaVega",
+"LunarNova", "LunarIon", "LunarVoid", "LunarWarp", "LunarAstra", "LunarLyra", "LunarDraco", "LunarLunar", "LunarSolar", "LunarVega",
+"CosmoNova", "CosmoIon", "CosmoVoid", "CosmoWarp", "CosmoAstra", "CosmoLyra", "CosmoDraco", "CosmoLunar", "CosmoSolar", "CosmoVega",
+"VazioNova", "VazioIon", "VazioVoid", "VazioWarp", "VazioAstra", "VazioLyra", "VazioDraco", "VazioLunar", "VazioSolar", "VazioVega"
+      ],
+      "music": [
+        "RaioBeat", "RaioBass", "RaioRiff", "RaioLoop", "RaioDrop", "RaioEcho", "RaioVibe", "RaioTempo",
+        "RaioHook", "RaioFlow", "RaioSynth", "RaioBPM", "RaioTrack", "RaioWave", "RaioRemix", "RaioChord",
+        "NoiteBeat", "NoiteBass", "NoiteRiff", "NoiteLoop", "NoiteDrop", "NoiteEcho", "NoiteVibe", "NoiteTempo",
+        "NoiteHook", "NoiteFlow", "NoiteSynth", "NoiteBPM", "NoiteTrack", "NoiteWave", "NoiteRemix", "NoiteChord",
+        "NoiteRex", "NoiteJinx", "FogoBeat", "FogoBass",
+"SombraBeat", "SombraBass", "SombraRiff", "SombraLoop", "SombraDrop", "SombraEcho", "SombraVibe", "SombraTempo", "SombraFlow", "SombraChord",
+"BrasaBeat", "BrasaBass", "BrasaRiff", "BrasaLoop", "BrasaDrop", "BrasaEcho", "BrasaVibe", "BrasaTempo", "BrasaFlow", "BrasaChord",
+"LunarBeat", "LunarBass", "LunarRiff", "LunarLoop", "LunarDrop", "LunarEcho", "LunarVibe", "LunarTempo", "LunarFlow", "LunarChord",
+"FuriaBeat", "FuriaBass", "FuriaRiff", "FuriaLoop", "FuriaDrop", "FuriaEcho", "FuriaVibe", "FuriaTempo", "FuriaFlow", "FuriaChord",
+"VelozBeat", "VelozBass", "VelozRiff", "VelozLoop", "VelozDrop", "VelozEcho", "VelozVibe", "VelozTempo", "VelozFlow", "VelozChord"
+      ],
+      "food": [
+        "RaioTaco", "RaioBoba", "RaioToast", "RaioRamen", "RaioMochi", "RaioWaffle", "RaioNacho", "RaioSushi",
+        "RaioLatte", "RaioDonut", "RaioNoodle", "RaioCurry", "RaioMiso", "RaioKebab", "RaioCookie", "RaioPickle",
+        "NoiteTaco", "NoiteBoba", "NoiteToast", "NoiteRamen", "NoiteMochi", "NoiteWaffle", "NoiteNacho", "NoiteSushi",
+        "NoiteLatte", "NoiteDonut", "NoiteNoodle", "NoiteCurry", "NoiteMiso", "NoiteKebab", "NoiteCookie", "NoitePickle",
+        "FogoTaco", "FogoBoba", "FogoToast", "FogoRamen",
+"SombraTaco", "SombraBoba", "SombraToast", "SombraRamen", "SombraMochi", "SombraSushi", "SombraLatte", "SombraDonut", "SombraMiso", "SombraKebab",
+"BrasaTaco", "BrasaBoba", "BrasaToast", "BrasaRamen", "BrasaMochi", "BrasaSushi", "BrasaLatte", "BrasaDonut", "BrasaMiso", "BrasaKebab",
+"LunarTaco", "LunarBoba", "LunarToast", "LunarRamen", "LunarMochi", "LunarSushi", "LunarLatte", "LunarDonut", "LunarMiso", "LunarKebab",
+"FuriaTaco", "FuriaBoba", "FuriaToast", "FuriaRamen", "FuriaMochi", "FuriaSushi", "FuriaLatte", "FuriaDonut", "FuriaMiso", "FuriaKebab",
+"VelozTaco", "VelozBoba", "VelozToast", "VelozRamen", "VelozMochi", "VelozSushi", "VelozLatte", "VelozDonut", "VelozMiso", "VelozKebab"
+      ],
+      "funny": [
+        "RaioLag", "RaioNoob", "RaioBonk", "RaioOops", "RaioMeme", "RaioNPC", "RaioDerp", "RaioBozo",
+        "RaioYikes", "RaioPanic", "RaioGoofy", "RaioTroll", "RaioBruh", "RaioDuck", "RaioFumble", "RaioClown",
+        "NoiteLag", "NoiteNoob", "NoiteBonk", "NoiteOops", "NoiteMeme", "NoiteNPC", "NoiteDerp", "NoiteBozo",
+        "NoiteYikes", "NoitePanic", "NoiteGoofy", "NoiteTroll", "NoiteBruh", "NoiteDuck", "NoiteFumble", "NoiteClown",
+        "FogoLag", "FogoNoob", "FogoBonk", "FogoOops",
+"SombraLag", "SombraNoob", "SombraBonk", "SombraOops", "SombraMeme", "SombraNPC", "SombraDerp", "SombraBozo", "SombraYikes", "SombraPanic",
+"BrasaLag", "BrasaNoob", "BrasaBonk", "BrasaOops", "BrasaMeme", "BrasaNPC", "BrasaDerp", "BrasaBozo", "BrasaYikes", "BrasaPanic",
+"LunarLag", "LunarNoob", "LunarBonk", "LunarOops", "LunarMeme", "LunarNPC", "LunarDerp", "LunarBozo", "LunarYikes", "LunarPanic",
+"FuriaLag", "FuriaNoob", "FuriaBonk", "FuriaOops", "FuriaMeme", "FuriaNPC", "FuriaDerp", "FuriaBozo", "FuriaYikes", "FuriaPanic",
+"VelozLag", "VelozNoob", "VelozBonk", "VelozOops", "VelozMeme", "VelozNPC", "VelozDerp", "VelozBozo", "VelozYikes", "VelozPanic"
+      ]
+    },
+    "french": {
+      "gaming": [
+        "NuitAim", "NuitRaid", "NuitRush", "NuitFrag", "NuitPeek", "NuitRank", "NuitDuel", "NuitZone",
+        "NuitClutch", "NuitSpawn", "NuitGrind", "NuitMVP", "NuitFlick", "NuitXP", "NuitMeta", "NuitJuke",
+        "NuitX", "NuitZ", "NuitQ", "Nuit404", "Nuit77", "NuitGG", "NuitVX", "NuitK",
+        "NuitKai", "NuitNox", "NuitVex", "NuitZed", "NuitHex", "NuitArc", "NuitBit", "NuitNeo",
+        "NuitOne", "NuitZero", "NuitMax", "NuitZen"
+      ],
+      "animals": [
+        "NuitFang", "NuitClaw", "NuitProwl", "NuitHowl", "NuitTalon", "NuitPounce", "NuitWild", "NuitPack",
+        "NuitRoar", "NuitTusk", "NuitMane", "NuitBite", "NuitStalk", "NuitWing", "NuitPaw", "NuitHorn",
+        "NuitFlux", "NuitRex", "NuitJinx", "FeuFang", "FeuClaw", "FeuProwl", "FeuHowl", "FeuTalon",
+        "FeuPounce", "FeuWild", "FeuPack", "FeuRoar", "FeuTusk", "FeuMane", "FeuBite", "FeuStalk",
+        "FeuWing", "FeuPaw", "FeuHorn", "FeuX"
+      ],
+      "tech": [
+        "NuitByte", "NuitPing", "NuitCache", "NuitProxy", "NuitNode", "NuitStack", "NuitHash", "NuitGlitch",
+        "NuitCipher", "NuitKernel", "NuitPixel", "NuitVector", "NuitSync", "NuitBoot", "NuitPatch", "FeuByte",
+        "FeuPing", "FeuCache", "FeuProxy", "FeuNode", "FeuStack", "FeuHash", "FeuGlitch", "FeuCipher",
+        "FeuKernel", "FeuPixel", "FeuVector", "FeuSync", "FeuBoot", "FeuPatch", "FeuFlux", "FeuZ",
+        "FeuQ", "Feu404", "Feu77", "FeuGG"
+      ],
+      "fantasy": [
+        "NuitRune", "NuitMage", "NuitMyth", "NuitRelic", "NuitWisp", "NuitAegis", "NuitDruid", "NuitGlyph",
+        "NuitBane", "NuitMana", "NuitSpell", "NuitQuest", "NuitCrown", "NuitOath", "NuitFable", "FeuRune",
+        "FeuMage", "FeuMyth", "FeuRelic", "FeuWisp", "FeuHex", "FeuAegis", "FeuDruid", "FeuGlyph",
+        "FeuBane", "FeuMana", "FeuSpell", "FeuQuest", "FeuCrown", "FeuOath", "FeuFable", "FeuXP",
+        "FeuVX", "FeuK", "FeuKai", "FeuNox"
+      ],
+      "sports": [
+        "NuitGoal", "NuitDash", "NuitSlam", "NuitAce", "NuitSprint", "NuitHoop", "NuitRally", "NuitBoost",
+        "NuitMedal", "NuitPodium", "NuitPace", "NuitDunk", "NuitGrip", "NuitTurbo", "NuitStreak", "FeuGoal",
+        "FeuDash", "FeuSlam", "FeuAce", "FeuSprint", "FeuHoop", "FeuRally", "FeuBoost", "FeuMedal",
+        "FeuPodium", "FeuPace", "FeuDunk", "FeuGrip", "FeuTurbo", "FeuJuke", "FeuStreak", "FeuVex",
+        "FeuZed", "FeuArc", "FeuBit", "FeuNeo"
+      ],
+      "space": [
+        "NuitOrbit", "NuitNova", "NuitIon", "NuitComet", "NuitPulsar", "NuitVoid", "NuitWarp", "NuitAstra",
+        "NuitMeteor", "NuitLyra", "NuitDraco", "NuitPhoton", "NuitLunar", "NuitSolar", "NuitVega", "NuitCosmo",
+        "FeuOrbit", "FeuNova", "FeuIon", "FeuComet", "FeuPulsar", "FeuVoid", "FeuWarp", "FeuAstra",
+        "FeuMeteor", "FeuLyra", "FeuDraco", "FeuPhoton", "FeuLunar", "FeuSolar", "FeuVega", "FeuCosmo",
+        "FeuOne", "FeuZero", "FeuMax", "FeuZen"
+      ],
+      "music": [
+        "NuitBeat", "NuitBass", "NuitRiff", "NuitLoop", "NuitDrop", "NuitEcho", "NuitVibe", "NuitTempo",
+        "NuitHook", "NuitFlow", "NuitSynth", "NuitBPM", "NuitTrack", "NuitWave", "NuitRemix", "NuitChord",
+        "FeuBeat", "FeuBass", "FeuRiff", "FeuLoop", "FeuDrop", "FeuEcho", "FeuVibe", "FeuTempo",
+        "FeuHook", "FeuFlow", "FeuSynth", "FeuBPM", "FeuTrack", "FeuWave", "FeuRemix", "FeuChord",
+        "FeuRex", "FeuJinx", "LoupBeat", "LoupBass"
+      ],
+      "food": [
+        "NuitTaco", "NuitBoba", "NuitToast", "NuitRamen", "NuitMochi", "NuitWaffle", "NuitNacho", "NuitSushi",
+        "NuitLatte", "NuitDonut", "NuitNoodle", "NuitCurry", "NuitMiso", "NuitKebab", "NuitCookie", "NuitPickle",
+        "FeuTaco", "FeuBoba", "FeuToast", "FeuRamen", "FeuMochi", "FeuWaffle", "FeuNacho", "FeuSushi",
+        "FeuLatte", "FeuDonut", "FeuNoodle", "FeuCurry", "FeuMiso", "FeuKebab", "FeuCookie", "FeuPickle",
+        "LoupTaco", "LoupBoba", "LoupToast", "LoupRamen"
+      ],
+      "funny": [
+        "NuitLag", "NuitNoob", "NuitBonk", "NuitOops", "NuitMeme", "NuitNPC", "NuitDerp", "NuitBozo",
+        "NuitYikes", "NuitPanic", "NuitGoofy", "NuitTroll", "NuitBruh", "NuitDuck", "NuitFumble", "NuitClown",
+        "FeuLag", "FeuNoob", "FeuBonk", "FeuOops", "FeuMeme", "FeuNPC", "FeuDerp", "FeuBozo",
+        "FeuYikes", "FeuPanic", "FeuGoofy", "FeuTroll", "FeuBruh", "FeuDuck", "FeuFumble", "FeuClown",
+        "LoupLag", "LoupNoob", "LoupBonk", "LoupOops"
+      ]
+    },
+    "german": {
+      "gaming": [
+        "NachtAim", "NachtRaid", "NachtRush", "NachtFrag", "NachtPeek", "NachtRank", "NachtDuel", "NachtZone",
+        "NachtClutch", "NachtSpawn", "NachtGrind", "NachtMVP", "NachtFlick", "NachtXP", "NachtMeta", "NachtJuke",
+        "NachtX", "NachtZ", "NachtQ", "Nacht404", "Nacht77", "NachtGG", "NachtVX", "NachtK",
+        "NachtKai", "NachtNox", "NachtVex", "NachtZed", "NachtHex", "NachtArc", "NachtBit", "NachtNeo",
+        "NachtOne", "NachtZero", "NachtMax", "NachtZen"
+      ],
+      "animals": [
+        "NachtFang", "NachtClaw", "NachtProwl", "NachtHowl", "NachtTalon", "NachtPounce", "NachtWild", "NachtPack",
+        "NachtRoar", "NachtTusk", "NachtMane", "NachtBite", "NachtStalk", "NachtWing", "NachtPaw", "NachtHorn",
+        "NachtFlux", "NachtRex", "NachtJinx", "FeuerFang", "FeuerClaw", "FeuerProwl", "FeuerHowl", "FeuerTalon",
+        "FeuerPounce", "FeuerWild", "FeuerPack", "FeuerRoar", "FeuerTusk", "FeuerMane", "FeuerBite", "FeuerStalk",
+        "FeuerWing", "FeuerPaw", "FeuerHorn", "FeuerX"
+      ],
+      "tech": [
+        "NachtByte", "NachtPing", "NachtCache", "NachtProxy", "NachtNode", "NachtStack", "NachtHash", "NachtGlitch",
+        "NachtCipher", "NachtKernel", "NachtPixel", "NachtVector", "NachtSync", "NachtBoot", "NachtPatch", "FeuerByte",
+        "FeuerPing", "FeuerCache", "FeuerProxy", "FeuerNode", "FeuerStack", "FeuerHash", "FeuerGlitch", "FeuerCipher",
+        "FeuerKernel", "FeuerPixel", "FeuerVector", "FeuerSync", "FeuerBoot", "FeuerPatch", "FeuerFlux", "FeuerZ",
+        "FeuerQ", "Feuer404", "Feuer77", "FeuerGG"
+      ],
+      "fantasy": [
+        "NachtRune", "NachtMage", "NachtMyth", "NachtRelic", "NachtWisp", "NachtAegis", "NachtDruid", "NachtGlyph",
+        "NachtBane", "NachtMana", "NachtSpell", "NachtQuest", "NachtCrown", "NachtOath", "NachtFable", "FeuerRune",
+        "FeuerMage", "FeuerMyth", "FeuerRelic", "FeuerWisp", "FeuerHex", "FeuerAegis", "FeuerDruid", "FeuerGlyph",
+        "FeuerBane", "FeuerMana", "FeuerSpell", "FeuerQuest", "FeuerCrown", "FeuerOath", "FeuerFable", "FeuerXP",
+        "FeuerVX", "FeuerK", "FeuerKai", "FeuerNox"
+      ],
+      "sports": [
+        "NachtGoal", "NachtDash", "NachtSlam", "NachtAce", "NachtSprint", "NachtHoop", "NachtRally", "NachtBoost",
+        "NachtMedal", "NachtPodium", "NachtPace", "NachtDunk", "NachtGrip", "NachtTurbo", "NachtStreak", "FeuerGoal",
+        "FeuerDash", "FeuerSlam", "FeuerAce", "FeuerSprint", "FeuerHoop", "FeuerRally", "FeuerBoost", "FeuerMedal",
+        "FeuerPodium", "FeuerPace", "FeuerDunk", "FeuerGrip", "FeuerTurbo", "FeuerJuke", "FeuerStreak", "FeuerVex",
+        "FeuerZed", "FeuerArc", "FeuerBit", "FeuerNeo"
+      ],
+      "space": [
+        "NachtOrbit", "NachtNova", "NachtIon", "NachtComet", "NachtPulsar", "NachtVoid", "NachtWarp", "NachtAstra",
+        "NachtMeteor", "NachtLyra", "NachtDraco", "NachtPhoton", "NachtLunar", "NachtSolar", "NachtVega", "NachtCosmo",
+        "FeuerOrbit", "FeuerNova", "FeuerIon", "FeuerComet", "FeuerPulsar", "FeuerVoid", "FeuerWarp", "FeuerAstra",
+        "FeuerMeteor", "FeuerLyra", "FeuerDraco", "FeuerPhoton", "FeuerLunar", "FeuerSolar", "FeuerVega", "FeuerCosmo",
+        "FeuerOne", "FeuerZero", "FeuerMax", "FeuerZen"
+      ],
+      "music": [
+        "NachtBeat", "NachtBass", "NachtRiff", "NachtLoop", "NachtDrop", "NachtEcho", "NachtVibe", "NachtTempo",
+        "NachtHook", "NachtFlow", "NachtSynth", "NachtBPM", "NachtTrack", "NachtWave", "NachtRemix", "NachtChord",
+        "FeuerBeat", "FeuerBass", "FeuerRiff", "FeuerLoop", "FeuerDrop", "FeuerEcho", "FeuerVibe", "FeuerTempo",
+        "FeuerHook", "FeuerFlow", "FeuerSynth", "FeuerBPM", "FeuerTrack", "FeuerWave", "FeuerRemix", "FeuerChord",
+        "FeuerRex", "FeuerJinx", "WolfBeat", "WolfBass"
+      ],
+      "food": [
+        "NachtTaco", "NachtBoba", "NachtToast", "NachtRamen", "NachtMochi", "NachtWaffle", "NachtNacho", "NachtSushi",
+        "NachtLatte", "NachtDonut", "NachtNoodle", "NachtCurry", "NachtMiso", "NachtKebab", "NachtCookie", "NachtPickle",
+        "FeuerTaco", "FeuerBoba", "FeuerToast", "FeuerRamen", "FeuerMochi", "FeuerWaffle", "FeuerNacho", "FeuerSushi",
+        "FeuerLatte", "FeuerDonut", "FeuerNoodle", "FeuerCurry", "FeuerMiso", "FeuerKebab", "FeuerCookie", "FeuerPickle",
+        "WolfTaco", "WolfBoba", "WolfToast", "WolfRamen"
+      ],
+      "funny": [
+        "NachtLag", "NachtNoob", "NachtBonk", "NachtOops", "NachtMeme", "NachtNPC", "NachtDerp", "NachtBozo",
+        "NachtYikes", "NachtPanic", "NachtGoofy", "NachtTroll", "NachtBruh", "NachtDuck", "NachtFumble", "NachtClown",
+        "FeuerLag", "FeuerNoob", "FeuerBonk", "FeuerOops", "FeuerMeme", "FeuerNPC", "FeuerDerp", "FeuerBozo",
+        "FeuerYikes", "FeuerPanic", "FeuerGoofy", "FeuerTroll", "FeuerBruh", "FeuerDuck", "FeuerFumble", "FeuerClown",
+        "WolfLag", "WolfNoob", "WolfBonk", "WolfOops"
+      ]
+    },
+    "italian": {
+      "gaming": [
+        "NotteAim", "NotteRaid", "NotteRush", "NotteFrag", "NottePeek", "NotteRank", "NotteDuel", "NotteZone",
+        "NotteClutch", "NotteSpawn", "NotteGrind", "NotteMVP", "NotteFlick", "NotteXP", "NotteMeta", "NotteJuke",
+        "NotteX", "NotteZ", "NotteQ", "Notte404", "Notte77", "NotteGG", "NotteVX", "NotteK",
+        "NotteKai", "NotteNox", "NotteVex", "NotteZed", "NotteHex", "NotteArc", "NotteBit", "NotteNeo",
+        "NotteOne", "NotteZero", "NotteMax", "NotteZen"
+      ],
+      "animals": [
+        "NotteFang", "NotteClaw", "NotteProwl", "NotteHowl", "NotteTalon", "NottePounce", "NotteWild", "NottePack",
+        "NotteRoar", "NotteTusk", "NotteMane", "NotteBite", "NotteStalk", "NotteWing", "NottePaw", "NotteHorn",
+        "NotteFlux", "NotteRex", "NotteJinx", "FuocoFang", "FuocoClaw", "FuocoProwl", "FuocoHowl", "FuocoTalon",
+        "FuocoPounce", "FuocoWild", "FuocoPack", "FuocoRoar", "FuocoTusk", "FuocoMane", "FuocoBite", "FuocoStalk",
+        "FuocoWing", "FuocoPaw", "FuocoHorn", "FuocoX"
+      ],
+      "tech": [
+        "NotteByte", "NottePing", "NotteCache", "NotteProxy", "NotteNode", "NotteStack", "NotteHash", "NotteGlitch",
+        "NotteCipher", "NotteKernel", "NottePixel", "NotteVector", "NotteSync", "NotteBoot", "NottePatch", "FuocoByte",
+        "FuocoPing", "FuocoCache", "FuocoProxy", "FuocoNode", "FuocoStack", "FuocoHash", "FuocoGlitch", "FuocoCipher",
+        "FuocoKernel", "FuocoPixel", "FuocoVector", "FuocoSync", "FuocoBoot", "FuocoPatch", "FuocoFlux", "FuocoZ",
+        "FuocoQ", "Fuoco404", "Fuoco77", "FuocoGG"
+      ],
+      "fantasy": [
+        "NotteRune", "NotteMage", "NotteMyth", "NotteRelic", "NotteWisp", "NotteAegis", "NotteDruid", "NotteGlyph",
+        "NotteBane", "NotteMana", "NotteSpell", "NotteQuest", "NotteCrown", "NotteOath", "NotteFable", "FuocoRune",
+        "FuocoMage", "FuocoMyth", "FuocoRelic", "FuocoWisp", "FuocoHex", "FuocoAegis", "FuocoDruid", "FuocoGlyph",
+        "FuocoBane", "FuocoMana", "FuocoSpell", "FuocoQuest", "FuocoCrown", "FuocoOath", "FuocoFable", "FuocoXP",
+        "FuocoVX", "FuocoK", "FuocoKai", "FuocoNox"
+      ],
+      "sports": [
+        "NotteGoal", "NotteDash", "NotteSlam", "NotteAce", "NotteSprint", "NotteHoop", "NotteRally", "NotteBoost",
+        "NotteMedal", "NottePodium", "NottePace", "NotteDunk", "NotteGrip", "NotteTurbo", "NotteStreak", "FuocoGoal",
+        "FuocoDash", "FuocoSlam", "FuocoAce", "FuocoSprint", "FuocoHoop", "FuocoRally", "FuocoBoost", "FuocoMedal",
+        "FuocoPodium", "FuocoPace", "FuocoDunk", "FuocoGrip", "FuocoTurbo", "FuocoJuke", "FuocoStreak", "FuocoVex",
+        "FuocoZed", "FuocoArc", "FuocoBit", "FuocoNeo"
+      ],
+      "space": [
+        "NotteOrbit", "NotteNova", "NotteIon", "NotteComet", "NottePulsar", "NotteVoid", "NotteWarp", "NotteAstra",
+        "NotteMeteor", "NotteLyra", "NotteDraco", "NottePhoton", "NotteLunar", "NotteSolar", "NotteVega", "NotteCosmo",
+        "FuocoOrbit", "FuocoNova", "FuocoIon", "FuocoComet", "FuocoPulsar", "FuocoVoid", "FuocoWarp", "FuocoAstra",
+        "FuocoMeteor", "FuocoLyra", "FuocoDraco", "FuocoPhoton", "FuocoLunar", "FuocoSolar", "FuocoVega", "FuocoCosmo",
+        "FuocoOne", "FuocoZero", "FuocoMax", "FuocoZen"
+      ],
+      "music": [
+        "NotteBeat", "NotteBass", "NotteRiff", "NotteLoop", "NotteDrop", "NotteEcho", "NotteVibe", "NotteTempo",
+        "NotteHook", "NotteFlow", "NotteSynth", "NotteBPM", "NotteTrack", "NotteWave", "NotteRemix", "NotteChord",
+        "FuocoBeat", "FuocoBass", "FuocoRiff", "FuocoLoop", "FuocoDrop", "FuocoEcho", "FuocoVibe", "FuocoTempo",
+        "FuocoHook", "FuocoFlow", "FuocoSynth", "FuocoBPM", "FuocoTrack", "FuocoWave", "FuocoRemix", "FuocoChord",
+        "FuocoRex", "FuocoJinx", "LupoBeat", "LupoBass"
+      ],
+      "food": [
+        "NotteTaco", "NotteBoba", "NotteToast", "NotteRamen", "NotteMochi", "NotteWaffle", "NotteNacho", "NotteSushi",
+        "NotteLatte", "NotteDonut", "NotteNoodle", "NotteCurry", "NotteMiso", "NotteKebab", "NotteCookie", "NottePickle",
+        "FuocoTaco", "FuocoBoba", "FuocoToast", "FuocoRamen", "FuocoMochi", "FuocoWaffle", "FuocoNacho", "FuocoSushi",
+        "FuocoLatte", "FuocoDonut", "FuocoNoodle", "FuocoCurry", "FuocoMiso", "FuocoKebab", "FuocoCookie", "FuocoPickle",
+        "LupoTaco", "LupoBoba", "LupoToast", "LupoRamen"
+      ],
+      "funny": [
+        "NotteLag", "NotteNoob", "NotteBonk", "NotteOops", "NotteMeme", "NotteNPC", "NotteDerp", "NotteBozo",
+        "NotteYikes", "NottePanic", "NotteGoofy", "NotteTroll", "NotteBruh", "NotteDuck", "NotteFumble", "NotteClown",
+        "FuocoLag", "FuocoNoob", "FuocoBonk", "FuocoOops", "FuocoMeme", "FuocoNPC", "FuocoDerp", "FuocoBozo",
+        "FuocoYikes", "FuocoPanic", "FuocoGoofy", "FuocoTroll", "FuocoBruh", "FuocoDuck", "FuocoFumble", "FuocoClown",
+        "LupoLag", "LupoNoob", "LupoBonk", "LupoOops"
+      ]
+    },
+    "russian": {
+      "gaming": [
+        "TenAim", "TenRaid", "TenRush", "TenFrag", "TenPeek", "TenRank", "TenDuel", "TenZone",
+        "TenClutch", "TenSpawn", "TenGrind", "TenMVP", "TenFlick", "TenXP", "TenMeta", "TenJuke",
+        "TenX", "TenZ", "TenQ", "Ten404", "Ten77", "TenGG", "TenVX", "TenK",
+        "TenKai", "TenNox", "TenVex", "TenZed", "TenHex", "TenArc", "TenBit", "TenNeo",
+        "TenOne", "TenZero", "TenMax", "TenZen"
+      ],
+      "animals": [
+        "TenFang", "TenClaw", "TenProwl", "TenHowl", "TenTalon", "TenPounce", "TenWild", "TenPack",
+        "TenRoar", "TenTusk", "TenMane", "TenBite", "TenStalk", "TenWing", "TenPaw", "TenHorn",
+        "TenFlux", "TenRex", "TenJinx", "OgonFang", "OgonClaw", "OgonProwl", "OgonHowl", "OgonTalon",
+        "OgonPounce", "OgonWild", "OgonPack", "OgonRoar", "OgonTusk", "OgonMane", "OgonBite", "OgonStalk",
+        "OgonWing", "OgonPaw", "OgonHorn", "OgonX"
+      ],
+      "tech": [
+        "TenByte", "TenPing", "TenCache", "TenProxy", "TenNode", "TenStack", "TenHash", "TenGlitch",
+        "TenCipher", "TenKernel", "TenPixel", "TenVector", "TenSync", "TenBoot", "TenPatch", "OgonByte",
+        "OgonPing", "OgonCache", "OgonProxy", "OgonNode", "OgonStack", "OgonHash", "OgonGlitch", "OgonCipher",
+        "OgonKernel", "OgonPixel", "OgonVector", "OgonSync", "OgonBoot", "OgonPatch", "OgonFlux", "OgonZ",
+        "OgonQ", "Ogon404", "Ogon77", "OgonGG"
+      ],
+      "fantasy": [
+        "TenRune", "TenMage", "TenMyth", "TenRelic", "TenWisp", "TenAegis", "TenDruid", "TenGlyph",
+        "TenBane", "TenMana", "TenSpell", "TenQuest", "TenCrown", "TenOath", "TenFable", "OgonRune",
+        "OgonMage", "OgonMyth", "OgonRelic", "OgonWisp", "OgonHex", "OgonAegis", "OgonDruid", "OgonGlyph",
+        "OgonBane", "OgonMana", "OgonSpell", "OgonQuest", "OgonCrown", "OgonOath", "OgonFable", "OgonXP",
+        "OgonVX", "OgonK", "OgonKai", "OgonNox"
+      ],
+      "sports": [
+        "TenGoal", "TenDash", "TenSlam", "TenAce", "TenSprint", "TenHoop", "TenRally", "TenBoost",
+        "TenMedal", "TenPodium", "TenPace", "TenDunk", "TenGrip", "TenTurbo", "TenStreak", "OgonGoal",
+        "OgonDash", "OgonSlam", "OgonAce", "OgonSprint", "OgonHoop", "OgonRally", "OgonBoost", "OgonMedal",
+        "OgonPodium", "OgonPace", "OgonDunk", "OgonGrip", "OgonTurbo", "OgonJuke", "OgonStreak", "OgonVex",
+        "OgonZed", "OgonArc", "OgonBit", "OgonNeo"
+      ],
+      "space": [
+        "TenOrbit", "TenNova", "TenIon", "TenComet", "TenPulsar", "TenVoid", "TenWarp", "TenAstra",
+        "TenMeteor", "TenLyra", "TenDraco", "TenPhoton", "TenLunar", "TenSolar", "TenVega", "TenCosmo",
+        "OgonOrbit", "OgonNova", "OgonIon", "OgonComet", "OgonPulsar", "OgonVoid", "OgonWarp", "OgonAstra",
+        "OgonMeteor", "OgonLyra", "OgonDraco", "OgonPhoton", "OgonLunar", "OgonSolar", "OgonVega", "OgonCosmo",
+        "OgonOne", "OgonZero", "OgonMax", "OgonZen"
+      ],
+      "music": [
+        "TenBeat", "TenBass", "TenRiff", "TenLoop", "TenDrop", "TenEcho", "TenVibe", "TenTempo",
+        "TenHook", "TenFlow", "TenSynth", "TenBPM", "TenTrack", "TenWave", "TenRemix", "TenChord",
+        "OgonBeat", "OgonBass", "OgonRiff", "OgonLoop", "OgonDrop", "OgonEcho", "OgonVibe", "OgonTempo",
+        "OgonHook", "OgonFlow", "OgonSynth", "OgonBPM", "OgonTrack", "OgonWave", "OgonRemix", "OgonChord",
+        "OgonRex", "OgonJinx", "VolkBeat", "VolkBass"
+      ],
+      "food": [
+        "TenTaco", "TenBoba", "TenToast", "TenRamen", "TenMochi", "TenWaffle", "TenNacho", "TenSushi",
+        "TenLatte", "TenDonut", "TenNoodle", "TenCurry", "TenMiso", "TenKebab", "TenCookie", "TenPickle",
+        "OgonTaco", "OgonBoba", "OgonToast", "OgonRamen", "OgonMochi", "OgonWaffle", "OgonNacho", "OgonSushi",
+        "OgonLatte", "OgonDonut", "OgonNoodle", "OgonCurry", "OgonMiso", "OgonKebab", "OgonCookie", "OgonPickle",
+        "VolkTaco", "VolkBoba", "VolkToast", "VolkRamen"
+      ],
+      "funny": [
+        "TenLag", "TenNoob", "TenBonk", "TenOops", "TenMeme", "TenNPC", "TenDerp", "TenBozo",
+        "TenYikes", "TenPanic", "TenGoofy", "TenTroll", "TenBruh", "TenDuck", "TenFumble", "TenClown",
+        "OgonLag", "OgonNoob", "OgonBonk", "OgonOops", "OgonMeme", "OgonNPC", "OgonDerp", "OgonBozo",
+        "OgonYikes", "OgonPanic", "OgonGoofy", "OgonTroll", "OgonBruh", "OgonDuck", "OgonFumble", "OgonClown",
+        "VolkLag", "VolkNoob", "VolkBonk", "VolkOops"
+      ]
+    },
+    "japanese": {
+      "gaming": [
+        "KageAim", "KageRaid", "KageRush", "KageFrag", "KagePeek", "KageRank", "KageDuel", "KageZone",
+        "KageClutch", "KageSpawn", "KageGrind", "KageMVP", "KageFlick", "KageXP", "KageMeta", "KageJuke",
+        "KageX", "KageZ", "KageQ", "Kage404", "Kage77", "KageGG", "KageVX", "KageK",
+        "KageKai", "KageNox", "KageVex", "KageZed", "KageHex", "KageArc", "KageBit", "KageNeo",
+        "KageOne", "KageZero", "KageMax", "KageZen"
+      ],
+      "animals": [
+        "KageFang", "KageClaw", "KageProwl", "KageHowl", "KageTalon", "KagePounce", "KageWild", "KagePack",
+        "KageRoar", "KageTusk", "KageMane", "KageBite", "KageStalk", "KageWing", "KagePaw", "KageHorn",
+        "KageFlux", "KageRex", "KageJinx", "HonoFang", "HonoClaw", "HonoProwl", "HonoHowl", "HonoTalon",
+        "HonoPounce", "HonoWild", "HonoPack", "HonoRoar", "HonoTusk", "HonoMane", "HonoBite", "HonoStalk",
+        "HonoWing", "HonoPaw", "HonoHorn", "HonoX"
+      ],
+      "tech": [
+        "KageByte", "KagePing", "KageCache", "KageProxy", "KageNode", "KageStack", "KageHash", "KageGlitch",
+        "KageCipher", "KageKernel", "KagePixel", "KageVector", "KageSync", "KageBoot", "KagePatch", "HonoByte",
+        "HonoPing", "HonoCache", "HonoProxy", "HonoNode", "HonoStack", "HonoHash", "HonoGlitch", "HonoCipher",
+        "HonoKernel", "HonoPixel", "HonoVector", "HonoSync", "HonoBoot", "HonoPatch", "HonoFlux", "HonoZ",
+        "HonoQ", "Hono404", "Hono77", "HonoGG"
+      ],
+      "fantasy": [
+        "KageRune", "KageMage", "KageMyth", "KageRelic", "KageWisp", "KageAegis", "KageDruid", "KageGlyph",
+        "KageBane", "KageMana", "KageSpell", "KageQuest", "KageCrown", "KageOath", "KageFable", "HonoRune",
+        "HonoMage", "HonoMyth", "HonoRelic", "HonoWisp", "HonoHex", "HonoAegis", "HonoDruid", "HonoGlyph",
+        "HonoBane", "HonoMana", "HonoSpell", "HonoQuest", "HonoCrown", "HonoOath", "HonoFable", "HonoXP",
+        "HonoVX", "HonoK", "HonoKai", "HonoNox"
+      ],
+      "sports": [
+        "KageGoal", "KageDash", "KageSlam", "KageAce", "KageSprint", "KageHoop", "KageRally", "KageBoost",
+        "KageMedal", "KagePodium", "KagePace", "KageDunk", "KageGrip", "KageTurbo", "KageStreak", "HonoGoal",
+        "HonoDash", "HonoSlam", "HonoAce", "HonoSprint", "HonoHoop", "HonoRally", "HonoBoost", "HonoMedal",
+        "HonoPodium", "HonoPace", "HonoDunk", "HonoGrip", "HonoTurbo", "HonoJuke", "HonoStreak", "HonoVex",
+        "HonoZed", "HonoArc", "HonoBit", "HonoNeo"
+      ],
+      "space": [
+        "KageOrbit", "KageNova", "KageIon", "KageComet", "KagePulsar", "KageVoid", "KageWarp", "KageAstra",
+        "KageMeteor", "KageLyra", "KageDraco", "KagePhoton", "KageLunar", "KageSolar", "KageVega", "KageCosmo",
+        "HonoOrbit", "HonoNova", "HonoIon", "HonoComet", "HonoPulsar", "HonoVoid", "HonoWarp", "HonoAstra",
+        "HonoMeteor", "HonoLyra", "HonoDraco", "HonoPhoton", "HonoLunar", "HonoSolar", "HonoVega", "HonoCosmo",
+        "HonoOne", "HonoZero", "HonoMax", "HonoZen"
+      ],
+      "music": [
+        "KageBeat", "KageBass", "KageRiff", "KageLoop", "KageDrop", "KageEcho", "KageVibe", "KageTempo",
+        "KageHook", "KageFlow", "KageSynth", "KageBPM", "KageTrack", "KageWave", "KageRemix", "KageChord",
+        "HonoBeat", "HonoBass", "HonoRiff", "HonoLoop", "HonoDrop", "HonoEcho", "HonoVibe", "HonoTempo",
+        "HonoHook", "HonoFlow", "HonoSynth", "HonoBPM", "HonoTrack", "HonoWave", "HonoRemix", "HonoChord",
+        "HonoRex", "HonoJinx", "OkamiBeat", "OkamiBass"
+      ],
+      "food": [
+        "KageTaco", "KageBoba", "KageToast", "KageRamen", "KageMochi", "KageWaffle", "KageNacho", "KageSushi",
+        "KageLatte", "KageDonut", "KageNoodle", "KageCurry", "KageMiso", "KageKebab", "KageCookie", "KagePickle",
+        "HonoTaco", "HonoBoba", "HonoToast", "HonoRamen", "HonoMochi", "HonoWaffle", "HonoNacho", "HonoSushi",
+        "HonoLatte", "HonoDonut", "HonoNoodle", "HonoCurry", "HonoMiso", "HonoKebab", "HonoCookie", "HonoPickle",
+        "OkamiTaco", "OkamiBoba", "OkamiToast", "OkamiRamen"
+      ],
+      "funny": [
+        "KageLag", "KageNoob", "KageBonk", "KageOops", "KageMeme", "KageNPC", "KageDerp", "KageBozo",
+        "KageYikes", "KagePanic", "KageGoofy", "KageTroll", "KageBruh", "KageDuck", "KageFumble", "KageClown",
+        "HonoLag", "HonoNoob", "HonoBonk", "HonoOops", "HonoMeme", "HonoNPC", "HonoDerp", "HonoBozo",
+        "HonoYikes", "HonoPanic", "HonoGoofy", "HonoTroll", "HonoBruh", "HonoDuck", "HonoFumble", "HonoClown",
+        "OkamiLag", "OkamiNoob", "OkamiBonk", "OkamiOops"
+      ]
+    },
+    "korean": {
+      "gaming": [
+        "GeuAim", "GeuRaid", "GeuRush", "GeuFrag", "GeuPeek", "GeuRank", "GeuDuel", "GeuZone",
+        "GeuClutch", "GeuSpawn", "GeuGrind", "GeuMVP", "GeuFlick", "GeuXP", "GeuMeta", "GeuJuke",
+        "GeuX", "GeuZ", "GeuQ", "Geu404", "Geu77", "GeuGG", "GeuVX", "GeuK",
+        "GeuKai", "GeuNox", "GeuVex", "GeuZed", "GeuHex", "GeuArc", "GeuBit", "GeuNeo",
+        "GeuOne", "GeuZero", "GeuMax", "GeuZen"
+      ],
+      "animals": [
+        "GeuFang", "GeuClaw", "GeuProwl", "GeuHowl", "GeuTalon", "GeuPounce", "GeuWild", "GeuPack",
+        "GeuRoar", "GeuTusk", "GeuMane", "GeuBite", "GeuStalk", "GeuWing", "GeuPaw", "GeuHorn",
+        "GeuFlux", "GeuRex", "GeuJinx", "BulFang", "BulClaw", "BulProwl", "BulHowl", "BulTalon",
+        "BulPounce", "BulWild", "BulPack", "BulRoar", "BulTusk", "BulMane", "BulBite", "BulStalk",
+        "BulWing", "BulPaw", "BulHorn", "BulX"
+      ],
+      "tech": [
+        "GeuByte", "GeuPing", "GeuCache", "GeuProxy", "GeuNode", "GeuStack", "GeuHash", "GeuGlitch",
+        "GeuCipher", "GeuKernel", "GeuPixel", "GeuVector", "GeuSync", "GeuBoot", "GeuPatch", "BulByte",
+        "BulPing", "BulCache", "BulProxy", "BulNode", "BulStack", "BulHash", "BulGlitch", "BulCipher",
+        "BulKernel", "BulPixel", "BulVector", "BulSync", "BulBoot", "BulPatch", "BulFlux", "BulZ",
+        "BulQ", "Bul404", "Bul77", "BulGG"
+      ],
+      "fantasy": [
+        "GeuRune", "GeuMage", "GeuMyth", "GeuRelic", "GeuWisp", "GeuAegis", "GeuDruid", "GeuGlyph",
+        "GeuBane", "GeuMana", "GeuSpell", "GeuQuest", "GeuCrown", "GeuOath", "GeuFable", "BulRune",
+        "BulMage", "BulMyth", "BulRelic", "BulWisp", "BulHex", "BulAegis", "BulDruid", "BulGlyph",
+        "BulBane", "BulMana", "BulSpell", "BulQuest", "BulCrown", "BulOath", "BulFable", "BulXP",
+        "BulVX", "BulK", "BulKai", "BulNox"
+      ],
+      "sports": [
+        "GeuGoal", "GeuDash", "GeuSlam", "GeuAce", "GeuSprint", "GeuHoop", "GeuRally", "GeuBoost",
+        "GeuMedal", "GeuPodium", "GeuPace", "GeuDunk", "GeuGrip", "GeuTurbo", "GeuStreak", "BulGoal",
+        "BulDash", "BulSlam", "BulAce", "BulSprint", "BulHoop", "BulRally", "BulBoost", "BulMedal",
+        "BulPodium", "BulPace", "BulDunk", "BulGrip", "BulTurbo", "BulJuke", "BulStreak", "BulVex",
+        "BulZed", "BulArc", "BulBit", "BulNeo"
+      ],
+      "space": [
+        "GeuOrbit", "GeuNova", "GeuIon", "GeuComet", "GeuPulsar", "GeuVoid", "GeuWarp", "GeuAstra",
+        "GeuMeteor", "GeuLyra", "GeuDraco", "GeuPhoton", "GeuLunar", "GeuSolar", "GeuVega", "GeuCosmo",
+        "BulOrbit", "BulNova", "BulIon", "BulComet", "BulPulsar", "BulVoid", "BulWarp", "BulAstra",
+        "BulMeteor", "BulLyra", "BulDraco", "BulPhoton", "BulLunar", "BulSolar", "BulVega", "BulCosmo",
+        "BulOne", "BulZero", "BulMax", "BulZen"
+      ],
+      "music": [
+        "GeuBeat", "GeuBass", "GeuRiff", "GeuLoop", "GeuDrop", "GeuEcho", "GeuVibe", "GeuTempo",
+        "GeuHook", "GeuFlow", "GeuSynth", "GeuBPM", "GeuTrack", "GeuWave", "GeuRemix", "GeuChord",
+        "BulBeat", "BulBass", "BulRiff", "BulLoop", "BulDrop", "BulEcho", "BulVibe", "BulTempo",
+        "BulHook", "BulFlow", "BulSynth", "BulBPM", "BulTrack", "BulWave", "BulRemix", "BulChord",
+        "BulRex", "BulJinx", "NeukBeat", "NeukBass"
+      ],
+      "food": [
+        "GeuTaco", "GeuBoba", "GeuToast", "GeuRamen", "GeuMochi", "GeuWaffle", "GeuNacho", "GeuSushi",
+        "GeuLatte", "GeuDonut", "GeuNoodle", "GeuCurry", "GeuMiso", "GeuKebab", "GeuCookie", "GeuPickle",
+        "BulTaco", "BulBoba", "BulToast", "BulRamen", "BulMochi", "BulWaffle", "BulNacho", "BulSushi",
+        "BulLatte", "BulDonut", "BulNoodle", "BulCurry", "BulMiso", "BulKebab", "BulCookie", "BulPickle",
+        "NeukTaco", "NeukBoba", "NeukToast", "NeukRamen"
+      ],
+      "funny": [
+        "GeuLag", "GeuNoob", "GeuBonk", "GeuOops", "GeuMeme", "GeuNPC", "GeuDerp", "GeuBozo",
+        "GeuYikes", "GeuPanic", "GeuGoofy", "GeuTroll", "GeuBruh", "GeuDuck", "GeuFumble", "GeuClown",
+        "BulLag", "BulNoob", "BulBonk", "BulOops", "BulMeme", "BulNPC", "BulDerp", "BulBozo",
+        "BulYikes", "BulPanic", "BulGoofy", "BulTroll", "BulBruh", "BulDuck", "BulFumble", "BulClown",
+        "NeukLag", "NeukNoob", "NeukBonk", "NeukOops"
+      ]
+    },
+    "hindi": {
+      "gaming": [
+        "ChayaAim", "ChayaRaid", "ChayaRush", "ChayaFrag", "ChayaPeek", "ChayaRank", "ChayaDuel", "ChayaZone",
+        "ChayaClutch", "ChayaSpawn", "ChayaGrind", "ChayaMVP", "ChayaFlick", "ChayaXP", "ChayaMeta", "ChayaJuke",
+        "ChayaX", "ChayaZ", "ChayaQ", "Chaya404", "Chaya77", "ChayaGG", "ChayaVX", "ChayaK",
+        "ChayaKai", "ChayaNox", "ChayaVex", "ChayaZed", "ChayaHex", "ChayaArc", "ChayaBit", "ChayaNeo",
+        "ChayaOne", "ChayaZero", "ChayaMax", "ChayaZen"
+      ],
+      "animals": [
+        "ChayaFang", "ChayaClaw", "ChayaProwl", "ChayaHowl", "ChayaTalon", "ChayaPounce", "ChayaWild", "ChayaPack",
+        "ChayaRoar", "ChayaTusk", "ChayaMane", "ChayaBite", "ChayaStalk", "ChayaWing", "ChayaPaw", "ChayaHorn",
+        "ChayaFlux", "ChayaRex", "ChayaJinx", "AgniFang", "AgniClaw", "AgniProwl", "AgniHowl", "AgniTalon",
+        "AgniPounce", "AgniWild", "AgniPack", "AgniRoar", "AgniTusk", "AgniMane", "AgniBite", "AgniStalk",
+        "AgniWing", "AgniPaw", "AgniHorn", "AgniX"
+      ],
+      "tech": [
+        "ChayaByte", "ChayaPing", "ChayaCache", "ChayaProxy", "ChayaNode", "ChayaStack", "ChayaHash", "ChayaGlitch",
+        "ChayaCipher", "ChayaKernel", "ChayaPixel", "ChayaVector", "ChayaSync", "ChayaBoot", "ChayaPatch", "AgniByte",
+        "AgniPing", "AgniCache", "AgniProxy", "AgniNode", "AgniStack", "AgniHash", "AgniGlitch", "AgniCipher",
+        "AgniKernel", "AgniPixel", "AgniVector", "AgniSync", "AgniBoot", "AgniPatch", "AgniFlux", "AgniZ",
+        "AgniQ", "Agni404", "Agni77", "AgniGG"
+      ],
+      "fantasy": [
+        "ChayaRune", "ChayaMage", "ChayaMyth", "ChayaRelic", "ChayaWisp", "ChayaAegis", "ChayaDruid", "ChayaGlyph",
+        "ChayaBane", "ChayaMana", "ChayaSpell", "ChayaQuest", "ChayaCrown", "ChayaOath", "ChayaFable", "AgniRune",
+        "AgniMage", "AgniMyth", "AgniRelic", "AgniWisp", "AgniHex", "AgniAegis", "AgniDruid", "AgniGlyph",
+        "AgniBane", "AgniMana", "AgniSpell", "AgniQuest", "AgniCrown", "AgniOath", "AgniFable", "AgniXP",
+        "AgniVX", "AgniK", "AgniKai", "AgniNox"
+      ],
+      "sports": [
+        "ChayaGoal", "ChayaDash", "ChayaSlam", "ChayaAce", "ChayaSprint", "ChayaHoop", "ChayaRally", "ChayaBoost",
+        "ChayaMedal", "ChayaPodium", "ChayaPace", "ChayaDunk", "ChayaGrip", "ChayaTurbo", "ChayaStreak", "AgniGoal",
+        "AgniDash", "AgniSlam", "AgniAce", "AgniSprint", "AgniHoop", "AgniRally", "AgniBoost", "AgniMedal",
+        "AgniPodium", "AgniPace", "AgniDunk", "AgniGrip", "AgniTurbo", "AgniJuke", "AgniStreak", "AgniVex",
+        "AgniZed", "AgniArc", "AgniBit", "AgniNeo"
+      ],
+      "space": [
+        "ChayaOrbit", "ChayaNova", "ChayaIon", "ChayaComet", "ChayaPulsar", "ChayaVoid", "ChayaWarp", "ChayaAstra",
+        "ChayaMeteor", "ChayaLyra", "ChayaDraco", "ChayaPhoton", "ChayaLunar", "ChayaSolar", "ChayaVega", "ChayaCosmo",
+        "AgniOrbit", "AgniNova", "AgniIon", "AgniComet", "AgniPulsar", "AgniVoid", "AgniWarp", "AgniAstra",
+        "AgniMeteor", "AgniLyra", "AgniDraco", "AgniPhoton", "AgniLunar", "AgniSolar", "AgniVega", "AgniCosmo",
+        "AgniOne", "AgniZero", "AgniMax", "AgniZen"
+      ],
+      "music": [
+        "ChayaBeat", "ChayaBass", "ChayaRiff", "ChayaLoop", "ChayaDrop", "ChayaEcho", "ChayaVibe", "ChayaTempo",
+        "ChayaHook", "ChayaFlow", "ChayaSynth", "ChayaBPM", "ChayaTrack", "ChayaWave", "ChayaRemix", "ChayaChord",
+        "AgniBeat", "AgniBass", "AgniRiff", "AgniLoop", "AgniDrop", "AgniEcho", "AgniVibe", "AgniTempo",
+        "AgniHook", "AgniFlow", "AgniSynth", "AgniBPM", "AgniTrack", "AgniWave", "AgniRemix", "AgniChord",
+        "AgniRex", "AgniJinx", "BhedBeat", "BhedBass"
+      ],
+      "food": [
+        "ChayaTaco", "ChayaBoba", "ChayaToast", "ChayaRamen", "ChayaMochi", "ChayaWaffle", "ChayaNacho", "ChayaSushi",
+        "ChayaLatte", "ChayaDonut", "ChayaNoodle", "ChayaCurry", "ChayaMiso", "ChayaKebab", "ChayaCookie", "ChayaPickle",
+        "AgniTaco", "AgniBoba", "AgniToast", "AgniRamen", "AgniMochi", "AgniWaffle", "AgniNacho", "AgniSushi",
+        "AgniLatte", "AgniDonut", "AgniNoodle", "AgniCurry", "AgniMiso", "AgniKebab", "AgniCookie", "AgniPickle",
+        "BhedTaco", "BhedBoba", "BhedToast", "BhedRamen"
+      ],
+      "funny": [
+        "ChayaLag", "ChayaNoob", "ChayaBonk", "ChayaOops", "ChayaMeme", "ChayaNPC", "ChayaDerp", "ChayaBozo",
+        "ChayaYikes", "ChayaPanic", "ChayaGoofy", "ChayaTroll", "ChayaBruh", "ChayaDuck", "ChayaFumble", "ChayaClown",
+        "AgniLag", "AgniNoob", "AgniBonk", "AgniOops", "AgniMeme", "AgniNPC", "AgniDerp", "AgniBozo",
+        "AgniYikes", "AgniPanic", "AgniGoofy", "AgniTroll", "AgniBruh", "AgniDuck", "AgniFumble", "AgniClown",
+        "BhedLag", "BhedNoob", "BhedBonk", "BhedOops"
+      ]
+    },
+    "arabic": {
+      "gaming": [
+        "ZilAim", "ZilRaid", "ZilRush", "ZilFrag", "ZilPeek", "ZilRank", "ZilDuel", "ZilZone",
+        "ZilClutch", "ZilSpawn", "ZilGrind", "ZilMVP", "ZilFlick", "ZilXP", "ZilMeta", "ZilJuke",
+        "ZilX", "ZilZ", "ZilQ", "Zil404", "Zil77", "ZilGG", "ZilVX", "ZilK",
+        "ZilKai", "ZilNox", "ZilVex", "ZilZed", "ZilHex", "ZilArc", "ZilBit", "ZilNeo",
+        "ZilOne", "ZilZero", "ZilMax", "ZilZen"
+      ],
+      "animals": [
+        "ZilFang", "ZilClaw", "ZilProwl", "ZilHowl", "ZilTalon", "ZilPounce", "ZilWild", "ZilPack",
+        "ZilRoar", "ZilTusk", "ZilMane", "ZilBite", "ZilStalk", "ZilWing", "ZilPaw", "ZilHorn",
+        "ZilFlux", "ZilRex", "ZilJinx", "NarFang", "NarClaw", "NarProwl", "NarHowl", "NarTalon",
+        "NarPounce", "NarWild", "NarPack", "NarRoar", "NarTusk", "NarMane", "NarBite", "NarStalk",
+        "NarWing", "NarPaw", "NarHorn", "NarX"
+      ],
+      "tech": [
+        "ZilByte", "ZilPing", "ZilCache", "ZilProxy", "ZilNode", "ZilStack", "ZilHash", "ZilGlitch",
+        "ZilCipher", "ZilKernel", "ZilPixel", "ZilVector", "ZilSync", "ZilBoot", "ZilPatch", "NarByte",
+        "NarPing", "NarCache", "NarProxy", "NarNode", "NarStack", "NarHash", "NarGlitch", "NarCipher",
+        "NarKernel", "NarPixel", "NarVector", "NarSync", "NarBoot", "NarPatch", "NarFlux", "NarZ",
+        "NarQ", "Nar404", "Nar77", "NarGG"
+      ],
+      "fantasy": [
+        "ZilRune", "ZilMage", "ZilMyth", "ZilRelic", "ZilWisp", "ZilAegis", "ZilDruid", "ZilGlyph",
+        "ZilBane", "ZilMana", "ZilSpell", "ZilQuest", "ZilCrown", "ZilOath", "ZilFable", "NarRune",
+        "NarMage", "NarMyth", "NarRelic", "NarWisp", "NarHex", "NarAegis", "NarDruid", "NarGlyph",
+        "NarBane", "NarMana", "NarSpell", "NarQuest", "NarCrown", "NarOath", "NarFable", "NarXP",
+        "NarVX", "NarK", "NarKai", "NarNox"
+      ],
+      "sports": [
+        "ZilGoal", "ZilDash", "ZilSlam", "ZilAce", "ZilSprint", "ZilHoop", "ZilRally", "ZilBoost",
+        "ZilMedal", "ZilPodium", "ZilPace", "ZilDunk", "ZilGrip", "ZilTurbo", "ZilStreak", "NarGoal",
+        "NarDash", "NarSlam", "NarAce", "NarSprint", "NarHoop", "NarRally", "NarBoost", "NarMedal",
+        "NarPodium", "NarPace", "NarDunk", "NarGrip", "NarTurbo", "NarJuke", "NarStreak", "NarVex",
+        "NarZed", "NarArc", "NarBit", "NarNeo"
+      ],
+      "space": [
+        "ZilOrbit", "ZilNova", "ZilIon", "ZilComet", "ZilPulsar", "ZilVoid", "ZilWarp", "ZilAstra",
+        "ZilMeteor", "ZilLyra", "ZilDraco", "ZilPhoton", "ZilLunar", "ZilSolar", "ZilVega", "ZilCosmo",
+        "NarOrbit", "NarNova", "NarIon", "NarComet", "NarPulsar", "NarVoid", "NarWarp", "NarAstra",
+        "NarMeteor", "NarLyra", "NarDraco", "NarPhoton", "NarLunar", "NarSolar", "NarVega", "NarCosmo",
+        "NarOne", "NarZero", "NarMax", "NarZen"
+      ],
+      "music": [
+        "ZilBeat", "ZilBass", "ZilRiff", "ZilLoop", "ZilDrop", "ZilEcho", "ZilVibe", "ZilTempo",
+        "ZilHook", "ZilFlow", "ZilSynth", "ZilBPM", "ZilTrack", "ZilWave", "ZilRemix", "ZilChord",
+        "NarBeat", "NarBass", "NarRiff", "NarLoop", "NarDrop", "NarEcho", "NarVibe", "NarTempo",
+        "NarHook", "NarFlow", "NarSynth", "NarBPM", "NarTrack", "NarWave", "NarRemix", "NarChord",
+        "NarRex", "NarJinx", "DhibBeat", "DhibBass"
+      ],
+      "food": [
+        "ZilTaco", "ZilBoba", "ZilToast", "ZilRamen", "ZilMochi", "ZilWaffle", "ZilNacho", "ZilSushi",
+        "ZilLatte", "ZilDonut", "ZilNoodle", "ZilCurry", "ZilMiso", "ZilKebab", "ZilCookie", "ZilPickle",
+        "NarTaco", "NarBoba", "NarToast", "NarRamen", "NarMochi", "NarWaffle", "NarNacho", "NarSushi",
+        "NarLatte", "NarDonut", "NarNoodle", "NarCurry", "NarMiso", "NarKebab", "NarCookie", "NarPickle",
+        "DhibTaco", "DhibBoba", "DhibToast", "DhibRamen"
+      ],
+      "funny": [
+        "ZilLag", "ZilNoob", "ZilBonk", "ZilOops", "ZilMeme", "ZilNPC", "ZilDerp", "ZilBozo",
+        "ZilYikes", "ZilPanic", "ZilGoofy", "ZilTroll", "ZilBruh", "ZilDuck", "ZilFumble", "ZilClown",
+        "NarLag", "NarNoob", "NarBonk", "NarOops", "NarMeme", "NarNPC", "NarDerp", "NarBozo",
+        "NarYikes", "NarPanic", "NarGoofy", "NarTroll", "NarBruh", "NarDuck", "NarFumble", "NarClown",
+        "DhibLag", "DhibNoob", "DhibBonk", "DhibOops"
+      ]
+    },
+    "turkish": {
+      "gaming": [
+        "GolgeAim", "GolgeRaid", "GolgeRush", "GolgeFrag", "GolgePeek", "GolgeRank", "GolgeDuel", "GolgeZone",
+        "GolgeClutch", "GolgeSpawn", "GolgeGrind", "GolgeMVP", "GolgeFlick", "GolgeXP", "GolgeMeta", "GolgeJuke",
+        "GolgeX", "GolgeZ", "GolgeQ", "Golge404", "Golge77", "GolgeGG", "GolgeVX", "GolgeK",
+        "GolgeKai", "GolgeNox", "GolgeVex", "GolgeZed", "GolgeHex", "GolgeArc", "GolgeBit", "GolgeNeo",
+        "GolgeOne", "GolgeZero", "GolgeMax", "GolgeZen"
+      ],
+      "animals": [
+        "GolgeFang", "GolgeClaw", "GolgeProwl", "GolgeHowl", "GolgeTalon", "GolgePounce", "GolgeWild", "GolgePack",
+        "GolgeRoar", "GolgeTusk", "GolgeMane", "GolgeBite", "GolgeStalk", "GolgeWing", "GolgePaw", "GolgeHorn",
+        "GolgeFlux", "GolgeRex", "GolgeJinx", "AtesFang", "AtesClaw", "AtesProwl", "AtesHowl", "AtesTalon",
+        "AtesPounce", "AtesWild", "AtesPack", "AtesRoar", "AtesTusk", "AtesMane", "AtesBite", "AtesStalk",
+        "AtesWing", "AtesPaw", "AtesHorn", "AtesX"
+      ],
+      "tech": [
+        "GolgeByte", "GolgePing", "GolgeCache", "GolgeProxy", "GolgeNode", "GolgeStack", "GolgeHash", "GolgeGlitch",
+        "GolgeCipher", "GolgeKernel", "GolgePixel", "GolgeVector", "GolgeSync", "GolgeBoot", "GolgePatch", "AtesByte",
+        "AtesPing", "AtesCache", "AtesProxy", "AtesNode", "AtesStack", "AtesHash", "AtesGlitch", "AtesCipher",
+        "AtesKernel", "AtesPixel", "AtesVector", "AtesSync", "AtesBoot", "AtesPatch", "AtesFlux", "AtesZ",
+        "AtesQ", "Ates404", "Ates77", "AtesGG"
+      ],
+      "fantasy": [
+        "GolgeRune", "GolgeMage", "GolgeMyth", "GolgeRelic", "GolgeWisp", "GolgeAegis", "GolgeDruid", "GolgeGlyph",
+        "GolgeBane", "GolgeMana", "GolgeSpell", "GolgeQuest", "GolgeCrown", "GolgeOath", "GolgeFable", "AtesRune",
+        "AtesMage", "AtesMyth", "AtesRelic", "AtesWisp", "AtesHex", "AtesAegis", "AtesDruid", "AtesGlyph",
+        "AtesBane", "AtesMana", "AtesSpell", "AtesQuest", "AtesCrown", "AtesOath", "AtesFable", "AtesXP",
+        "AtesVX", "AtesK", "AtesKai", "AtesNox"
+      ],
+      "sports": [
+        "GolgeGoal", "GolgeDash", "GolgeSlam", "GolgeAce", "GolgeSprint", "GolgeHoop", "GolgeRally", "GolgeBoost",
+        "GolgeMedal", "GolgePodium", "GolgePace", "GolgeDunk", "GolgeGrip", "GolgeTurbo", "GolgeStreak", "AtesGoal",
+        "AtesDash", "AtesSlam", "AtesAce", "AtesSprint", "AtesHoop", "AtesRally", "AtesBoost", "AtesMedal",
+        "AtesPodium", "AtesPace", "AtesDunk", "AtesGrip", "AtesTurbo", "AtesJuke", "AtesStreak", "AtesVex",
+        "AtesZed", "AtesArc", "AtesBit", "AtesNeo"
+      ],
+      "space": [
+        "GolgeOrbit", "GolgeNova", "GolgeIon", "GolgeComet", "GolgePulsar", "GolgeVoid", "GolgeWarp", "GolgeAstra",
+        "GolgeMeteor", "GolgeLyra", "GolgeDraco", "GolgePhoton", "GolgeLunar", "GolgeSolar", "GolgeVega", "GolgeCosmo",
+        "AtesOrbit", "AtesNova", "AtesIon", "AtesComet", "AtesPulsar", "AtesVoid", "AtesWarp", "AtesAstra",
+        "AtesMeteor", "AtesLyra", "AtesDraco", "AtesPhoton", "AtesLunar", "AtesSolar", "AtesVega", "AtesCosmo",
+        "AtesOne", "AtesZero", "AtesMax", "AtesZen"
+      ],
+      "music": [
+        "GolgeBeat", "GolgeBass", "GolgeRiff", "GolgeLoop", "GolgeDrop", "GolgeEcho", "GolgeVibe", "GolgeTempo",
+        "GolgeHook", "GolgeFlow", "GolgeSynth", "GolgeBPM", "GolgeTrack", "GolgeWave", "GolgeRemix", "GolgeChord",
+        "AtesBeat", "AtesBass", "AtesRiff", "AtesLoop", "AtesDrop", "AtesEcho", "AtesVibe", "AtesTempo",
+        "AtesHook", "AtesFlow", "AtesSynth", "AtesBPM", "AtesTrack", "AtesWave", "AtesRemix", "AtesChord",
+        "AtesRex", "AtesJinx", "KurtBeat", "KurtBass"
+      ],
+      "food": [
+        "GolgeTaco", "GolgeBoba", "GolgeToast", "GolgeRamen", "GolgeMochi", "GolgeWaffle", "GolgeNacho", "GolgeSushi",
+        "GolgeLatte", "GolgeDonut", "GolgeNoodle", "GolgeCurry", "GolgeMiso", "GolgeKebab", "GolgeCookie", "GolgePickle",
+        "AtesTaco", "AtesBoba", "AtesToast", "AtesRamen", "AtesMochi", "AtesWaffle", "AtesNacho", "AtesSushi",
+        "AtesLatte", "AtesDonut", "AtesNoodle", "AtesCurry", "AtesMiso", "AtesKebab", "AtesCookie", "AtesPickle",
+        "KurtTaco", "KurtBoba", "KurtToast", "KurtRamen"
+      ],
+      "funny": [
+        "GolgeLag", "GolgeNoob", "GolgeBonk", "GolgeOops", "GolgeMeme", "GolgeNPC", "GolgeDerp", "GolgeBozo",
+        "GolgeYikes", "GolgePanic", "GolgeGoofy", "GolgeTroll", "GolgeBruh", "GolgeDuck", "GolgeFumble", "GolgeClown",
+        "AtesLag", "AtesNoob", "AtesBonk", "AtesOops", "AtesMeme", "AtesNPC", "AtesDerp", "AtesBozo",
+        "AtesYikes", "AtesPanic", "AtesGoofy", "AtesTroll", "AtesBruh", "AtesDuck", "AtesFumble", "AtesClown",
+        "KurtLag", "KurtNoob", "KurtBonk", "KurtOops"
+      ]
+    },
+    "chinese": {
+      "gaming": [
+        "YingAim", "YingRaid", "YingRush", "YingFrag", "YingPeek", "YingRank", "YingDuel", "YingZone",
+        "YingClutch", "YingSpawn", "YingGrind", "YingMVP", "YingFlick", "YingXP", "YingMeta", "YingJuke",
+        "YingX", "YingZ", "YingQ", "Ying404", "Ying77", "YingGG", "YingVX", "YingK",
+        "YingKai", "YingNox", "YingVex", "YingZed", "YingHex", "YingArc", "YingBit", "YingNeo",
+        "YingOne", "YingZero", "YingMax", "YingZen"
+      ],
+      "animals": [
+        "YingFang", "YingClaw", "YingProwl", "YingHowl", "YingTalon", "YingPounce", "YingWild", "YingPack",
+        "YingRoar", "YingTusk", "YingMane", "YingBite", "YingStalk", "YingWing", "YingPaw", "YingHorn",
+        "YingFlux", "YingRex", "YingJinx", "HuoFang", "HuoClaw", "HuoProwl", "HuoHowl", "HuoTalon",
+        "HuoPounce", "HuoWild", "HuoPack", "HuoRoar", "HuoTusk", "HuoMane", "HuoBite", "HuoStalk",
+        "HuoWing", "HuoPaw", "HuoHorn", "HuoX"
+      ],
+      "tech": [
+        "YingByte", "YingPing", "YingCache", "YingProxy", "YingNode", "YingStack", "YingHash", "YingGlitch",
+        "YingCipher", "YingKernel", "YingPixel", "YingVector", "YingSync", "YingBoot", "YingPatch", "HuoByte",
+        "HuoPing", "HuoCache", "HuoProxy", "HuoNode", "HuoStack", "HuoHash", "HuoGlitch", "HuoCipher",
+        "HuoKernel", "HuoPixel", "HuoVector", "HuoSync", "HuoBoot", "HuoPatch", "HuoFlux", "HuoZ",
+        "HuoQ", "Huo404", "Huo77", "HuoGG"
+      ],
+      "fantasy": [
+        "YingRune", "YingMage", "YingMyth", "YingRelic", "YingWisp", "YingAegis", "YingDruid", "YingGlyph",
+        "YingBane", "YingMana", "YingSpell", "YingQuest", "YingCrown", "YingOath", "YingFable", "HuoRune",
+        "HuoMage", "HuoMyth", "HuoRelic", "HuoWisp", "HuoHex", "HuoAegis", "HuoDruid", "HuoGlyph",
+        "HuoBane", "HuoMana", "HuoSpell", "HuoQuest", "HuoCrown", "HuoOath", "HuoFable", "HuoXP",
+        "HuoVX", "HuoK", "HuoKai", "HuoNox"
+      ],
+      "sports": [
+        "YingGoal", "YingDash", "YingSlam", "YingAce", "YingSprint", "YingHoop", "YingRally", "YingBoost",
+        "YingMedal", "YingPodium", "YingPace", "YingDunk", "YingGrip", "YingTurbo", "YingStreak", "HuoGoal",
+        "HuoDash", "HuoSlam", "HuoAce", "HuoSprint", "HuoHoop", "HuoRally", "HuoBoost", "HuoMedal",
+        "HuoPodium", "HuoPace", "HuoDunk", "HuoGrip", "HuoTurbo", "HuoJuke", "HuoStreak", "HuoVex",
+        "HuoZed", "HuoArc", "HuoBit", "HuoNeo"
+      ],
+      "space": [
+        "YingOrbit", "YingNova", "YingIon", "YingComet", "YingPulsar", "YingVoid", "YingWarp", "YingAstra",
+        "YingMeteor", "YingLyra", "YingDraco", "YingPhoton", "YingLunar", "YingSolar", "YingVega", "YingCosmo",
+        "HuoOrbit", "HuoNova", "HuoIon", "HuoComet", "HuoPulsar", "HuoVoid", "HuoWarp", "HuoAstra",
+        "HuoMeteor", "HuoLyra", "HuoDraco", "HuoPhoton", "HuoLunar", "HuoSolar", "HuoVega", "HuoCosmo",
+        "HuoOne", "HuoZero", "HuoMax", "HuoZen"
+      ],
+      "music": [
+        "YingBeat", "YingBass", "YingRiff", "YingLoop", "YingDrop", "YingEcho", "YingVibe", "YingTempo",
+        "YingHook", "YingFlow", "YingSynth", "YingBPM", "YingTrack", "YingWave", "YingRemix", "YingChord",
+        "HuoBeat", "HuoBass", "HuoRiff", "HuoLoop", "HuoDrop", "HuoEcho", "HuoVibe", "HuoTempo",
+        "HuoHook", "HuoFlow", "HuoSynth", "HuoBPM", "HuoTrack", "HuoWave", "HuoRemix", "HuoChord",
+        "HuoRex", "HuoJinx", "LangBeat", "LangBass"
+      ],
+      "food": [
+        "YingTaco", "YingBoba", "YingToast", "YingRamen", "YingMochi", "YingWaffle", "YingNacho", "YingSushi",
+        "YingLatte", "YingDonut", "YingNoodle", "YingCurry", "YingMiso", "YingKebab", "YingCookie", "YingPickle",
+        "HuoTaco", "HuoBoba", "HuoToast", "HuoRamen", "HuoMochi", "HuoWaffle", "HuoNacho", "HuoSushi",
+        "HuoLatte", "HuoDonut", "HuoNoodle", "HuoCurry", "HuoMiso", "HuoKebab", "HuoCookie", "HuoPickle",
+        "LangTaco", "LangBoba", "LangToast", "LangRamen"
+      ],
+      "funny": [
+        "YingLag", "YingNoob", "YingBonk", "YingOops", "YingMeme", "YingNPC", "YingDerp", "YingBozo",
+        "YingYikes", "YingPanic", "YingGoofy", "YingTroll", "YingBruh", "YingDuck", "YingFumble", "YingClown",
+        "HuoLag", "HuoNoob", "HuoBonk", "HuoOops", "HuoMeme", "HuoNPC", "HuoDerp", "HuoBozo",
+        "HuoYikes", "HuoPanic", "HuoGoofy", "HuoTroll", "HuoBruh", "HuoDuck", "HuoFumble", "HuoClown",
+        "LangLag", "LangNoob", "LangBonk", "LangOops"
+      ]
+    },
+    "polish": {
+      "gaming": [
+        "CienAim", "CienRaid", "CienRush", "CienFrag", "CienPeek", "CienRank", "CienDuel", "CienZone",
+        "CienClutch", "CienSpawn", "CienGrind", "CienMVP", "CienFlick", "CienXP", "CienMeta", "CienJuke",
+        "CienX", "CienZ", "CienQ", "Cien404", "Cien77", "CienGG", "CienVX", "CienK",
+        "CienKai", "CienNox", "CienVex", "CienZed", "CienHex", "CienArc", "CienBit", "CienNeo",
+        "CienOne", "CienZero", "CienMax", "CienZen"
+      ],
+      "animals": [
+        "CienFang", "CienClaw", "CienProwl", "CienHowl", "CienTalon", "CienPounce", "CienWild", "CienPack",
+        "CienRoar", "CienTusk", "CienMane", "CienBite", "CienStalk", "CienWing", "CienPaw", "CienHorn",
+        "CienFlux", "CienRex", "CienJinx", "OgienFang", "OgienClaw", "OgienProwl", "OgienHowl", "OgienTalon",
+        "OgienPounce", "OgienWild", "OgienPack", "OgienRoar", "OgienTusk", "OgienMane", "OgienBite", "OgienStalk",
+        "OgienWing", "OgienPaw", "OgienHorn", "OgienX"
+      ],
+      "tech": [
+        "CienByte", "CienPing", "CienCache", "CienProxy", "CienNode", "CienStack", "CienHash", "CienGlitch",
+        "CienCipher", "CienKernel", "CienPixel", "CienVector", "CienSync", "CienBoot", "CienPatch", "OgienByte",
+        "OgienPing", "OgienCache", "OgienProxy", "OgienNode", "OgienStack", "OgienHash", "OgienGlitch", "OgienCipher",
+        "OgienKernel", "OgienPixel", "OgienVector", "OgienSync", "OgienBoot", "OgienPatch", "OgienFlux", "OgienZ",
+        "OgienQ", "Ogien404", "Ogien77", "OgienGG"
+      ],
+      "fantasy": [
+        "CienRune", "CienMage", "CienMyth", "CienRelic", "CienWisp", "CienAegis", "CienDruid", "CienGlyph",
+        "CienBane", "CienMana", "CienSpell", "CienQuest", "CienCrown", "CienOath", "CienFable", "OgienRune",
+        "OgienMage", "OgienMyth", "OgienRelic", "OgienWisp", "OgienHex", "OgienAegis", "OgienDruid", "OgienGlyph",
+        "OgienBane", "OgienMana", "OgienSpell", "OgienQuest", "OgienCrown", "OgienOath", "OgienFable", "OgienXP",
+        "OgienVX", "OgienK", "OgienKai", "OgienNox"
+      ],
+      "sports": [
+        "CienGoal", "CienDash", "CienSlam", "CienAce", "CienSprint", "CienHoop", "CienRally", "CienBoost",
+        "CienMedal", "CienPodium", "CienPace", "CienDunk", "CienGrip", "CienTurbo", "CienStreak", "OgienGoal",
+        "OgienDash", "OgienSlam", "OgienAce", "OgienSprint", "OgienHoop", "OgienRally", "OgienBoost", "OgienMedal",
+        "OgienPodium", "OgienPace", "OgienDunk", "OgienGrip", "OgienTurbo", "OgienJuke", "OgienStreak", "OgienVex",
+        "OgienZed", "OgienArc", "OgienBit", "OgienNeo"
+      ],
+      "space": [
+        "CienOrbit", "CienNova", "CienIon", "CienComet", "CienPulsar", "CienVoid", "CienWarp", "CienAstra",
+        "CienMeteor", "CienLyra", "CienDraco", "CienPhoton", "CienLunar", "CienSolar", "CienVega", "CienCosmo",
+        "OgienOrbit", "OgienNova", "OgienIon", "OgienComet", "OgienPulsar", "OgienVoid", "OgienWarp", "OgienAstra",
+        "OgienMeteor", "OgienLyra", "OgienDraco", "OgienPhoton", "OgienLunar", "OgienSolar", "OgienVega", "OgienCosmo",
+        "OgienOne", "OgienZero", "OgienMax", "OgienZen"
+      ],
+      "music": [
+        "CienBeat", "CienBass", "CienRiff", "CienLoop", "CienDrop", "CienEcho", "CienVibe", "CienTempo",
+        "CienHook", "CienFlow", "CienSynth", "CienBPM", "CienTrack", "CienWave", "CienRemix", "CienChord",
+        "OgienBeat", "OgienBass", "OgienRiff", "OgienLoop", "OgienDrop", "OgienEcho", "OgienVibe", "OgienTempo",
+        "OgienHook", "OgienFlow", "OgienSynth", "OgienBPM", "OgienTrack", "OgienWave", "OgienRemix", "OgienChord",
+        "OgienRex", "OgienJinx", "WilkBeat", "WilkBass"
+      ],
+      "food": [
+        "CienTaco", "CienBoba", "CienToast", "CienRamen", "CienMochi", "CienWaffle", "CienNacho", "CienSushi",
+        "CienLatte", "CienDonut", "CienNoodle", "CienCurry", "CienMiso", "CienKebab", "CienCookie", "CienPickle",
+        "OgienTaco", "OgienBoba", "OgienToast", "OgienRamen", "OgienMochi", "OgienWaffle", "OgienNacho", "OgienSushi",
+        "OgienLatte", "OgienDonut", "OgienNoodle", "OgienCurry", "OgienMiso", "OgienKebab", "OgienCookie", "OgienPickle",
+        "WilkTaco", "WilkBoba", "WilkToast", "WilkRamen"
+      ],
+      "funny": [
+        "CienLag", "CienNoob", "CienBonk", "CienOops", "CienMeme", "CienNPC", "CienDerp", "CienBozo",
+        "CienYikes", "CienPanic", "CienGoofy", "CienTroll", "CienBruh", "CienDuck", "CienFumble", "CienClown",
+        "OgienLag", "OgienNoob", "OgienBonk", "OgienOops", "OgienMeme", "OgienNPC", "OgienDerp", "OgienBozo",
+        "OgienYikes", "OgienPanic", "OgienGoofy", "OgienTroll", "OgienBruh", "OgienDuck", "OgienFumble", "OgienClown",
+        "WilkLag", "WilkNoob", "WilkBonk", "WilkOops"
+      ]
+    },
+    "indonesian": {
+      "gaming": [
+        "BayangAim", "BayangRaid", "BayangRush", "BayangFrag", "BayangPeek", "BayangRank", "BayangDuel", "BayangZone",
+        "BayangClutch", "BayangSpawn", "BayangGrind", "BayangMVP", "BayangFlick", "BayangXP", "BayangMeta", "BayangJuke",
+        "BayangX", "BayangZ", "BayangQ", "Bayang404", "Bayang77", "BayangGG", "BayangVX", "BayangK",
+        "BayangKai", "BayangNox", "BayangVex", "BayangZed", "BayangHex", "BayangArc", "BayangBit", "BayangNeo",
+        "BayangOne", "BayangZero", "BayangMax", "BayangZen"
+      ],
+      "animals": [
+        "BayangFang", "BayangClaw", "BayangProwl", "BayangHowl", "BayangTalon", "BayangPounce", "BayangWild", "BayangPack",
+        "BayangRoar", "BayangTusk", "BayangMane", "BayangBite", "BayangStalk", "BayangWing", "BayangPaw", "BayangHorn",
+        "BayangFlux", "BayangRex", "BayangJinx", "ApiFang", "ApiClaw", "ApiProwl", "ApiHowl", "ApiTalon",
+        "ApiPounce", "ApiWild", "ApiPack", "ApiRoar", "ApiTusk", "ApiMane", "ApiBite", "ApiStalk",
+        "ApiWing", "ApiPaw", "ApiHorn", "ApiX"
+      ],
+      "tech": [
+        "BayangByte", "BayangPing", "BayangCache", "BayangProxy", "BayangNode", "BayangStack", "BayangHash", "BayangGlitch",
+        "BayangCipher", "BayangKernel", "BayangPixel", "BayangVector", "BayangSync", "BayangBoot", "BayangPatch", "ApiByte",
+        "ApiPing", "ApiCache", "ApiProxy", "ApiNode", "ApiStack", "ApiHash", "ApiGlitch", "ApiCipher",
+        "ApiKernel", "ApiPixel", "ApiVector", "ApiSync", "ApiBoot", "ApiPatch", "ApiFlux", "ApiZ",
+        "ApiQ", "Api404", "Api77", "ApiGG"
+      ],
+      "fantasy": [
+        "BayangRune", "BayangMage", "BayangMyth", "BayangRelic", "BayangWisp", "BayangAegis", "BayangDruid", "BayangGlyph",
+        "BayangBane", "BayangMana", "BayangSpell", "BayangQuest", "BayangCrown", "BayangOath", "BayangFable", "ApiRune",
+        "ApiMage", "ApiMyth", "ApiRelic", "ApiWisp", "ApiHex", "ApiAegis", "ApiDruid", "ApiGlyph",
+        "ApiBane", "ApiMana", "ApiSpell", "ApiQuest", "ApiCrown", "ApiOath", "ApiFable", "ApiXP",
+        "ApiVX", "ApiK", "ApiKai", "ApiNox"
+      ],
+      "sports": [
+        "BayangGoal", "BayangDash", "BayangSlam", "BayangAce", "BayangSprint", "BayangHoop", "BayangRally", "BayangBoost",
+        "BayangMedal", "BayangPodium", "BayangPace", "BayangDunk", "BayangGrip", "BayangTurbo", "BayangStreak", "ApiGoal",
+        "ApiDash", "ApiSlam", "ApiAce", "ApiSprint", "ApiHoop", "ApiRally", "ApiBoost", "ApiMedal",
+        "ApiPodium", "ApiPace", "ApiDunk", "ApiGrip", "ApiTurbo", "ApiJuke", "ApiStreak", "ApiVex",
+        "ApiZed", "ApiArc", "ApiBit", "ApiNeo"
+      ],
+      "space": [
+        "BayangOrbit", "BayangNova", "BayangIon", "BayangComet", "BayangPulsar", "BayangVoid", "BayangWarp", "BayangAstra",
+        "BayangMeteor", "BayangLyra", "BayangDraco", "BayangPhoton", "BayangLunar", "BayangSolar", "BayangVega", "BayangCosmo",
+        "ApiOrbit", "ApiNova", "ApiIon", "ApiComet", "ApiPulsar", "ApiVoid", "ApiWarp", "ApiAstra",
+        "ApiMeteor", "ApiLyra", "ApiDraco", "ApiPhoton", "ApiLunar", "ApiSolar", "ApiVega", "ApiCosmo",
+        "ApiOne", "ApiZero", "ApiMax", "ApiZen"
+      ],
+      "music": [
+        "BayangBeat", "BayangBass", "BayangRiff", "BayangLoop", "BayangDrop", "BayangEcho", "BayangVibe", "BayangTempo",
+        "BayangHook", "BayangFlow", "BayangSynth", "BayangBPM", "BayangTrack", "BayangWave", "BayangRemix", "BayangChord",
+        "ApiBeat", "ApiBass", "ApiRiff", "ApiLoop", "ApiDrop", "ApiEcho", "ApiVibe", "ApiTempo",
+        "ApiHook", "ApiFlow", "ApiSynth", "ApiBPM", "ApiTrack", "ApiWave", "ApiRemix", "ApiChord",
+        "ApiRex", "ApiJinx", "SerigBeat", "SerigBass"
+      ],
+      "food": [
+        "BayangTaco", "BayangBoba", "BayangToast", "BayangRamen", "BayangMochi", "BayangWaffle", "BayangNacho", "BayangSushi",
+        "BayangLatte", "BayangDonut", "BayangNoodle", "BayangCurry", "BayangMiso", "BayangKebab", "BayangCookie", "BayangPickle",
+        "ApiTaco", "ApiBoba", "ApiToast", "ApiRamen", "ApiMochi", "ApiWaffle", "ApiNacho", "ApiSushi",
+        "ApiLatte", "ApiDonut", "ApiNoodle", "ApiCurry", "ApiMiso", "ApiKebab", "ApiCookie", "ApiPickle",
+        "SerigTaco", "SerigBoba", "SerigToast", "SerigRamen"
+      ],
+      "funny": [
+        "BayangLag", "BayangNoob", "BayangBonk", "BayangOops", "BayangMeme", "BayangNPC", "BayangDerp", "BayangBozo",
+        "BayangYikes", "BayangPanic", "BayangGoofy", "BayangTroll", "BayangBruh", "BayangDuck", "BayangFumble", "BayangClown",
+        "ApiLag", "ApiNoob", "ApiBonk", "ApiOops", "ApiMeme", "ApiNPC", "ApiDerp", "ApiBozo",
+        "ApiYikes", "ApiPanic", "ApiGoofy", "ApiTroll", "ApiBruh", "ApiDuck", "ApiFumble", "ApiClown",
+        "SerigLag", "SerigNoob", "SerigBonk", "SerigOops"
+      ]
+    }
+  },
+  "languageGenderWords": {
+    "english": {
+      "male": {
+        "prefixes": [
+          "Ace", "King", "Lord", "Duke", "Rex", "Sir", "Boss", "Maverick",
+          "Rogue", "Alpha", "Vanguard", "Chief"
+        ],
+        "suffixes": [
+          "Bro", "King", "Rex", "Knight", "Boss", "MVP", "Ace", "Lord",
+          "Wolf", "Beast", "Hero", "Duke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "Nova", "Queen", "Lady", "Valkyrie", "Empress", "Vixen", "Diva", "Luna",
+          "Nyx", "Siren", "Aura", "Raven"
+        ],
+        "suffixes": [
+          "Queen", "Nova", "Valk", "Siren", "Luna", "Nyx", "Star", "Raven",
+          "Diva", "Ace", "Aura", "Vixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "Apex", "Prime", "Ultra", "Zero", "Ghost", "Nexus", "Orbit", "Cipher",
+          "Legend", "Zenith", "Echo", "Flux"
+        ],
+        "suffixes": [
+          "Legend", "Prime", "Apex", "Ghost", "Nexus", "Zero", "Ace", "Flux",
+          "Echo", "Orbit", "Core", "Zenith"
+        ]
+      }
+    },
+    "spanish": {
+      "male": {
+        "prefixes": [
+          "RayoAce", "NocheKing", "FuegoLord", "LoboDuke", "ToroRex", "SombraSir", "CieloBoss", "RojoMaverick",
+          "ZorroRogue", "DagaAlpha", "BrasaNox", "ReyChief"
+        ],
+        "suffixes": [
+          "RayoBro", "NocheKing", "FuegoRex", "LoboKnight", "ToroBoss", "SombraMVP", "CieloAce", "RojoLord",
+          "ZorroWolf", "DagaBeast", "BrasaHero", "ReyDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "RayoNova", "NocheQueen", "FuegoLady", "LoboValkyrie", "ToroEmpress", "SombraVixen", "CieloDiva", "RojoLuna",
+          "ZorroNyx", "DagaSiren", "BrasaAura", "ReyRaven"
+        ],
+        "suffixes": [
+          "RayoQueen", "NocheNova", "FuegoValk", "LoboSiren", "ToroLuna", "SombraNyx", "CieloStar", "RojoRaven",
+          "ZorroDiva", "DagaAce", "BrasaAura", "ReyVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "RayoApex", "NochePrime", "FuegoUltra", "LoboZero", "ToroGhost", "SombraNexus", "CieloOrbit", "RojoCipher",
+          "ZorroLegend", "DagaZenith", "BrasaEcho", "ReyFlux"
+        ],
+        "suffixes": [
+          "RayoLegend", "NochePrime", "FuegoApex", "LoboGhost", "ToroNexus", "SombraZero", "CieloAce", "RojoFlux",
+          "ZorroEcho", "DagaOrbit", "BrasaCore", "ReyZenith"
+        ]
+      }
+    },
+    "portuguese": {
+      "male": {
+        "prefixes": [
+          "RaioAce", "NoiteKing", "FogoLord", "LoboDuke", "TouroRex", "SombraSir", "CeuBoss", "RubroVX",
+          "RaposaRogue", "BrasaAlpha", "ReiVanguard", "LuaChief"
+        ],
+        "suffixes": [
+          "RaioBro", "NoiteKing", "FogoRex", "LoboKnight", "TouroBoss", "SombraMVP", "CeuAce", "RubroLord",
+          "RaposaWolf", "BrasaBeast", "ReiHero", "LuaDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "RaioNova", "NoiteQueen", "FogoLady", "LoboValkyrie", "TouroEmpress", "SombraVixen", "CeuDiva", "RubroLuna",
+          "RaposaNyx", "BrasaSiren", "ReiAura", "LuaRaven"
+        ],
+        "suffixes": [
+          "RaioQueen", "NoiteNova", "FogoValk", "LoboSiren", "TouroLuna", "SombraNyx", "CeuStar", "RubroRaven",
+          "RaposaDiva", "BrasaAce", "ReiAura", "LuaVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "RaioApex", "NoitePrime", "FogoUltra", "LoboZero", "TouroGhost", "SombraNexus", "CeuOrbit", "RubroCipher",
+          "RaposaLegend", "BrasaZenith", "ReiEcho", "LuaFlux"
+        ],
+        "suffixes": [
+          "RaioLegend", "NoitePrime", "FogoApex", "LoboGhost", "TouroNexus", "SombraZero", "CeuAce", "RubroFlux",
+          "RaposaEcho", "BrasaOrbit", "ReiCore", "LuaZenith"
+        ]
+      }
+    },
+    "french": {
+      "male": {
+        "prefixes": [
+          "NuitAce", "FeuKing", "LoupLord", "RoiDuke", "OmbreRex", "CielSir", "RougeBoss", "RenardVX",
+          "LameRogue", "BrumeAlpha", "EtoileNox", "LuneChief"
+        ],
+        "suffixes": [
+          "NuitBro", "FeuKing", "LoupRex", "RoiKnight", "OmbreBoss", "CielMVP", "RougeAce", "RenardLord",
+          "LameWolf", "BrumeBeast", "EtoileHero", "LuneDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "NuitNova", "FeuQueen", "LoupLady", "RoiValkyrie", "OmbreEmpress", "CielVixen", "RougeDiva", "RenardLuna",
+          "LameNyx", "BrumeSiren", "EtoileAura", "LuneRaven"
+        ],
+        "suffixes": [
+          "NuitQueen", "FeuNova", "LoupValk", "RoiSiren", "OmbreLuna", "CielNyx", "RougeStar", "RenardRaven",
+          "LameDiva", "BrumeAce", "EtoileAura", "LuneVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "NuitApex", "FeuPrime", "LoupUltra", "RoiZero", "OmbreGhost", "CielNexus", "RougeOrbit", "RenardCipher",
+          "LameLegend", "BrumeZenith", "EtoileEcho", "LuneFlux"
+        ],
+        "suffixes": [
+          "NuitLegend", "FeuPrime", "LoupApex", "RoiGhost", "OmbreNexus", "CielZero", "RougeAce", "RenardFlux",
+          "LameEcho", "BrumeOrbit", "EtoileCore", "LuneZenith"
+        ]
+      }
+    },
+    "german": {
+      "male": {
+        "prefixes": [
+          "NachtAce", "FeuerKing", "WolfLord", "KoenigDuke", "SchattenRex", "HimmelSir", "RotBoss", "FuchsVX",
+          "KlingeRogue", "NebelAlpha", "SternNox", "MondChief"
+        ],
+        "suffixes": [
+          "NachtBro", "FeuerKing", "WolfRex", "KoenigKnight", "SchattenBoss", "HimmelMVP", "RotAce", "FuchsLord",
+          "KlingeWolf", "NebelBeast", "SternHero", "MondDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "NachtNova", "FeuerQueen", "WolfLady", "Koenig404", "Schatten77", "HimmelVixen", "RotDiva", "FuchsLuna",
+          "KlingeNyx", "NebelSiren", "SternAura", "MondRaven"
+        ],
+        "suffixes": [
+          "NachtQueen", "FeuerNova", "WolfValk", "KoenigSiren", "SchattenLuna", "HimmelNyx", "RotStar", "FuchsRaven",
+          "KlingeDiva", "NebelAce", "SternAura", "MondVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "NachtApex", "FeuerPrime", "WolfUltra", "KoenigZero", "Schatten77", "HimmelNexus", "RotOrbit", "FuchsCipher",
+          "KlingeLegend", "NebelZenith", "SternEcho", "MondFlux"
+        ],
+        "suffixes": [
+          "NachtLegend", "FeuerPrime", "WolfApex", "KoenigGhost", "Schatten77", "HimmelZero", "RotAce", "FuchsFlux",
+          "KlingeEcho", "NebelOrbit", "SternCore", "MondZenith"
+        ]
+      }
+    },
+    "italian": {
+      "male": {
+        "prefixes": [
+          "NotteAce", "FuocoKing", "LupoLord", "ReDuke", "OmbraRex", "CieloSir", "RossoBoss", "VolpeVX",
+          "LamaRogue", "NebbiaAlpha", "StellaNox", "LunaChief"
+        ],
+        "suffixes": [
+          "NotteBro", "FuocoKing", "LupoRex", "ReKnight", "OmbraBoss", "CieloMVP", "RossoAce", "VolpeLord",
+          "LamaWolf", "NebbiaBeast", "StellaHero", "LunaDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "NotteNova", "FuocoQueen", "LupoLady", "ReValkyrie", "OmbraEmpress", "CieloVixen", "RossoDiva", "VolpeLuna",
+          "LamaNyx", "NebbiaSiren", "StellaAura", "LunaRaven"
+        ],
+        "suffixes": [
+          "NotteQueen", "FuocoNova", "LupoValk", "ReSiren", "OmbraLuna", "CieloNyx", "RossoStar", "VolpeRaven",
+          "LamaDiva", "NebbiaAce", "StellaAura", "LunaVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "NotteApex", "FuocoPrime", "LupoUltra", "ReZero", "OmbraGhost", "CieloNexus", "RossoOrbit", "VolpeCipher",
+          "LamaLegend", "NebbiaZenith", "StellaEcho", "LunaFlux"
+        ],
+        "suffixes": [
+          "NotteLegend", "FuocoPrime", "LupoApex", "ReGhost", "OmbraNexus", "CieloZero", "RossoAce", "VolpeFlux",
+          "LamaEcho", "NebbiaOrbit", "StellaCore", "LunaZenith"
+        ]
+      }
+    },
+    "russian": {
+      "male": {
+        "prefixes": [
+          "TenAce", "OgonKing", "VolkLord", "TsarDuke", "NochRex", "NeboSir", "KrasBoss", "LisMaverick",
+          "KlinRogue", "MorozAlpha", "ZvezdaNox", "LunaChief"
+        ],
+        "suffixes": [
+          "TenBro", "OgonKing", "VolkRex", "TsarKnight", "NochBoss", "NeboMVP", "KrasAce", "LisLord",
+          "KlinWolf", "MorozBeast", "ZvezdaHero", "LunaDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "TenNova", "OgonQueen", "VolkLady", "TsarValkyrie", "NochEmpress", "NeboVixen", "KrasDiva", "LisLuna",
+          "KlinNyx", "MorozSiren", "ZvezdaAura", "LunaRaven"
+        ],
+        "suffixes": [
+          "TenQueen", "OgonNova", "VolkValk", "TsarSiren", "NochLuna", "NeboNyx", "KrasStar", "LisRaven",
+          "KlinDiva", "MorozAce", "ZvezdaAura", "LunaVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "TenApex", "OgonPrime", "VolkUltra", "TsarZero", "NochGhost", "NeboNexus", "KrasOrbit", "LisCipher",
+          "KlinLegend", "MorozZenith", "ZvezdaEcho", "LunaFlux"
+        ],
+        "suffixes": [
+          "TenLegend", "OgonPrime", "VolkApex", "TsarGhost", "NochNexus", "NeboZero", "KrasAce", "LisFlux",
+          "KlinEcho", "MorozOrbit", "ZvezdaCore", "LunaZenith"
+        ]
+      }
+    },
+    "japanese": {
+      "male": {
+        "prefixes": [
+          "KageAce", "HonoKing", "OkamiLord", "KuroDuke", "YoruRex", "SoraSir", "AkaBoss", "KitsuneVX",
+          "KibaRogue", "YukiAlpha", "HoshiNox", "TsukiChief"
+        ],
+        "suffixes": [
+          "KageBro", "HonoKing", "OkamiRex", "KuroKnight", "YoruBoss", "SoraMVP", "AkaAce", "KitsuneLord",
+          "KibaWolf", "YukiBeast", "HoshiHero", "TsukiDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "KageNova", "HonoQueen", "OkamiLady", "KuroValkyrie", "YoruEmpress", "SoraVixen", "AkaDiva", "KitsuneLuna",
+          "KibaNyx", "YukiSiren", "HoshiAura", "TsukiRaven"
+        ],
+        "suffixes": [
+          "KageQueen", "HonoNova", "OkamiValk", "KuroSiren", "YoruLuna", "SoraNyx", "AkaStar", "KitsuneRaven",
+          "KibaDiva", "YukiAce", "HoshiAura", "TsukiVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "KageApex", "HonoPrime", "OkamiUltra", "KuroZero", "YoruGhost", "SoraNexus", "AkaOrbit", "KitsuneVX",
+          "KibaLegend", "YukiZenith", "HoshiEcho", "TsukiFlux"
+        ],
+        "suffixes": [
+          "KageLegend", "HonoPrime", "OkamiApex", "KuroGhost", "YoruNexus", "SoraZero", "AkaAce", "KitsuneFlux",
+          "KibaEcho", "YukiOrbit", "HoshiCore", "TsukiZenith"
+        ]
+      }
+    },
+    "korean": {
+      "male": {
+        "prefixes": [
+          "GeuAce", "BulKing", "NeukLord", "WangDuke", "BamRex", "HaneulSir", "BbalBoss", "YeouMaverick",
+          "KalRogue", "NunAlpha", "ByeolNox", "DalChief"
+        ],
+        "suffixes": [
+          "GeuBro", "BulKing", "NeukRex", "WangKnight", "BamBoss", "HaneulMVP", "BbalAce", "YeouLord",
+          "KalWolf", "NunBeast", "ByeolHero", "DalDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "GeuNova", "BulQueen", "NeukLady", "WangValkyrie", "BamEmpress", "HaneulVixen", "BbalDiva", "YeouLuna",
+          "KalNyx", "NunSiren", "ByeolAura", "DalRaven"
+        ],
+        "suffixes": [
+          "GeuQueen", "BulNova", "NeukValk", "WangSiren", "BamLuna", "HaneulNyx", "BbalStar", "YeouRaven",
+          "KalDiva", "NunAce", "ByeolAura", "DalVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "GeuApex", "BulPrime", "NeukUltra", "WangZero", "BamGhost", "HaneulNexus", "BbalOrbit", "YeouCipher",
+          "KalLegend", "NunZenith", "ByeolEcho", "DalFlux"
+        ],
+        "suffixes": [
+          "GeuLegend", "BulPrime", "NeukApex", "WangGhost", "BamNexus", "HaneulZero", "BbalAce", "YeouFlux",
+          "KalEcho", "NunOrbit", "ByeolCore", "DalZenith"
+        ]
+      }
+    },
+    "hindi": {
+      "male": {
+        "prefixes": [
+          "ChayaAce", "AgniKing", "BhedLord", "RajaDuke", "RaatRex", "AkashSir", "LalBoss", "LomdiVX",
+          "TalwarRogue", "HimAlpha", "TaraVanguard", "ChandChief"
+        ],
+        "suffixes": [
+          "ChayaBro", "AgniKing", "BhedRex", "RajaKnight", "RaatBoss", "AkashMVP", "LalAce", "LomdiLord",
+          "TalwarWolf", "HimBeast", "TaraHero", "ChandDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "ChayaNova", "AgniQueen", "BhedLady", "RajaValkyrie", "RaatEmpress", "AkashVixen", "LalDiva", "LomdiLuna",
+          "TalwarNyx", "HimSiren", "TaraAura", "ChandRaven"
+        ],
+        "suffixes": [
+          "ChayaQueen", "AgniNova", "BhedValk", "RajaSiren", "RaatLuna", "AkashNyx", "LalStar", "LomdiRaven",
+          "TalwarDiva", "HimAce", "TaraAura", "ChandVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "ChayaApex", "AgniPrime", "BhedUltra", "RajaZero", "RaatGhost", "AkashNexus", "LalOrbit", "LomdiCipher",
+          "TalwarLegend", "HimZenith", "TaraEcho", "ChandFlux"
+        ],
+        "suffixes": [
+          "ChayaLegend", "AgniPrime", "BhedApex", "RajaGhost", "RaatNexus", "AkashZero", "LalAce", "LomdiFlux",
+          "TalwarEcho", "HimOrbit", "TaraCore", "ChandZenith"
+        ]
+      }
+    },
+    "arabic": {
+      "male": {
+        "prefixes": [
+          "ZilAce", "NarKing", "DhibLord", "MalikDuke", "LaylRex", "SamaSir", "AhmarBoss", "ThaalVX",
+          "SaifRogue", "BarqAlpha", "NajmVanguard", "QamarChief"
+        ],
+        "suffixes": [
+          "ZilBro", "NarKing", "DhibRex", "MalikKnight", "LaylBoss", "SamaMVP", "AhmarAce", "ThaalLord",
+          "SaifWolf", "BarqBeast", "NajmHero", "QamarDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "ZilNova", "NarQueen", "DhibLady", "Malik404", "LaylEmpress", "SamaVixen", "AhmarDiva", "ThaalLuna",
+          "SaifNyx", "BarqSiren", "NajmAura", "QamarRaven"
+        ],
+        "suffixes": [
+          "ZilQueen", "NarNova", "DhibValk", "MalikSiren", "LaylLuna", "SamaNyx", "AhmarStar", "ThaalRaven",
+          "SaifDiva", "BarqAce", "NajmAura", "QamarVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "ZilApex", "NarPrime", "DhibUltra", "MalikZero", "LaylGhost", "SamaNexus", "AhmarOrbit", "ThaalCipher",
+          "SaifLegend", "BarqZenith", "NajmEcho", "QamarFlux"
+        ],
+        "suffixes": [
+          "ZilLegend", "NarPrime", "DhibApex", "MalikGhost", "LaylNexus", "SamaZero", "AhmarAce", "ThaalFlux",
+          "SaifEcho", "BarqOrbit", "NajmCore", "QamarZenith"
+        ]
+      }
+    },
+    "turkish": {
+      "male": {
+        "prefixes": [
+          "GolgeAce", "AtesKing", "KurtLord", "KralDuke", "GeceRex", "GokSir", "KirmizBoss", "TilkiVX",
+          "KilicRogue", "BuzAlpha", "YildizNox", "AyChief"
+        ],
+        "suffixes": [
+          "GolgeBro", "AtesKing", "KurtRex", "KralKnight", "GeceBoss", "GokMVP", "KirmizAce", "TilkiLord",
+          "KilicWolf", "BuzBeast", "YildizHero", "AyDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "GolgeNova", "AtesQueen", "KurtLady", "KralValkyrie", "GeceEmpress", "GokVixen", "KirmizDiva", "TilkiLuna",
+          "KilicNyx", "BuzSiren", "YildizAura", "AyRaven"
+        ],
+        "suffixes": [
+          "GolgeQueen", "AtesNova", "KurtValk", "KralSiren", "GeceLuna", "GokNyx", "KirmizStar", "TilkiRaven",
+          "KilicDiva", "BuzAce", "YildizAura", "AyVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "GolgeApex", "AtesPrime", "KurtUltra", "KralZero", "GeceGhost", "GokNexus", "KirmizOrbit", "TilkiCipher",
+          "KilicLegend", "BuzZenith", "YildizEcho", "AyFlux"
+        ],
+        "suffixes": [
+          "GolgeLegend", "AtesPrime", "KurtApex", "KralGhost", "GeceNexus", "GokZero", "KirmizAce", "TilkiFlux",
+          "KilicEcho", "BuzOrbit", "YildizCore", "AyZenith"
+        ]
+      }
+    },
+    "chinese": {
+      "male": {
+        "prefixes": [
+          "YingAce", "HuoKing", "LangLord", "WangDuke", "YeRex", "TianSir", "HongBoss", "HuMaverick",
+          "DaoRogue", "XueAlpha", "XingVanguard", "YueChief"
+        ],
+        "suffixes": [
+          "YingBro", "HuoKing", "LangRex", "WangKnight", "YeBoss", "TianMVP", "HongAce", "HuLord",
+          "DaoWolf", "XueBeast", "XingHero", "YueDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "YingNova", "HuoQueen", "LangLady", "WangValkyrie", "YeEmpress", "TianVixen", "HongDiva", "HuLuna",
+          "DaoNyx", "XueSiren", "XingAura", "YueRaven"
+        ],
+        "suffixes": [
+          "YingQueen", "HuoNova", "LangValk", "WangSiren", "YeLuna", "TianNyx", "HongStar", "HuRaven",
+          "DaoDiva", "XueAce", "XingAura", "YueVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "YingApex", "HuoPrime", "LangUltra", "WangZero", "YeGhost", "TianNexus", "HongOrbit", "HuCipher",
+          "DaoLegend", "XueZenith", "XingEcho", "YueFlux"
+        ],
+        "suffixes": [
+          "YingLegend", "HuoPrime", "LangApex", "WangGhost", "YeNexus", "TianZero", "HongAce", "HuFlux",
+          "DaoEcho", "XueOrbit", "XingCore", "YueZenith"
+        ]
+      }
+    },
+    "polish": {
+      "male": {
+        "prefixes": [
+          "CienAce", "OgienKing", "WilkLord", "KrolDuke", "NocRex", "NieboSir", "CzerwBoss", "LisMaverick",
+          "MieczRogue", "MrozAlpha", "GwiazNox", "KsiazChief"
+        ],
+        "suffixes": [
+          "CienBro", "OgienKing", "WilkRex", "KrolKnight", "NocBoss", "NieboMVP", "CzerwAce", "LisLord",
+          "MieczWolf", "MrozBeast", "GwiazHero", "KsiazDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "CienNova", "OgienQueen", "WilkLady", "KrolValkyrie", "NocEmpress", "NieboVixen", "CzerwDiva", "LisLuna",
+          "MieczNyx", "MrozSiren", "GwiazAura", "KsiazRaven"
+        ],
+        "suffixes": [
+          "CienQueen", "OgienNova", "WilkValk", "KrolSiren", "NocLuna", "NieboNyx", "CzerwStar", "LisRaven",
+          "MieczDiva", "MrozAce", "GwiazAura", "KsiazVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "CienApex", "OgienPrime", "WilkUltra", "KrolZero", "NocGhost", "NieboNexus", "CzerwOrbit", "LisCipher",
+          "MieczLegend", "MrozZenith", "GwiazEcho", "KsiazFlux"
+        ],
+        "suffixes": [
+          "CienLegend", "OgienPrime", "WilkApex", "KrolGhost", "NocNexus", "NieboZero", "CzerwAce", "LisFlux",
+          "MieczEcho", "MrozOrbit", "GwiazCore", "KsiazZenith"
+        ]
+      }
+    },
+    "indonesian": {
+      "male": {
+        "prefixes": [
+          "BayangAce", "ApiKing", "SerigLord", "RajaDuke", "MalamRex", "LangitSir", "MerahBoss", "RubahVX",
+          "PedangRogue", "BekuAlpha", "BintangNox", "BulanChief"
+        ],
+        "suffixes": [
+          "BayangBro", "ApiKing", "SerigRex", "RajaKnight", "MalamBoss", "LangitMVP", "MerahAce", "RubahLord",
+          "PedangWolf", "BekuBeast", "BintangHero", "BulanDuke"
+        ]
+      },
+      "female": {
+        "prefixes": [
+          "BayangNova", "ApiQueen", "SerigLady", "RajaValkyrie", "MalamEmpress", "LangitVixen", "MerahDiva", "RubahLuna",
+          "PedangNyx", "BekuSiren", "BintangAura", "BulanRaven"
+        ],
+        "suffixes": [
+          "BayangQueen", "ApiNova", "SerigValk", "RajaSiren", "MalamLuna", "LangitNyx", "MerahStar", "RubahRaven",
+          "PedangDiva", "BekuAce", "BintangAura", "BulanVixen"
+        ]
+      },
+      "neutral": {
+        "prefixes": [
+          "BayangApex", "ApiPrime", "SerigUltra", "RajaZero", "MalamGhost", "LangitNexus", "MerahOrbit", "RubahCipher",
+          "PedangLegend", "BekuZenith", "BintangEcho", "BulanFlux"
+        ],
+        "suffixes": [
+          "BayangLegend", "ApiPrime", "SerigApex", "RajaGhost", "MalamNexus", "LangitZero", "MerahAce", "RubahFlux",
+          "PedangEcho", "BekuOrbit", "BintangCore", "BulanZenith"
+        ]
+      }
+    }
+  },
+  "languageSuffixes": {
+    "english": [
+      "X", "Z", "GG", "VX", "XP", "77", "404", "One",
+      "Zero", "Neo", "Max", "Arc", "Byte", "Vex", "Flux", "Mode",
+      "Zone", "Core", "Sync", "Nox", "Kai", "Rift", "Hex", "Rush",
+      "Rank", "Aim", "Loot", "Clutch", "Wave", "Jolt"
+    ],
+    "spanish": [
+      "XSP", "ZSP", "GGSP", "VXSP", "XPSP", "77SP", "404SP", "OneSP",
+      "ZeroSP", "NeoSP", "MaxSP", "ArcSP", "ByteSP", "VexSP", "FluxSP", "ModeSP",
+      "ZoneSP", "CoreSP", "SyncSP", "NoxSP", "KaiSP", "RiftSP", "HexSP", "RushSP",
+      "RankSP", "AimSP", "LootSP", "ClutchSP", "WaveSP", "JoltSP"
+    ],
+    "portuguese": [
+      "XPO", "ZPO", "GGPO", "VXPO", "XPPO", "77PO", "404PO", "OnePO",
+      "ZeroPO", "NeoPO", "MaxPO", "ArcPO", "BytePO", "VexPO", "FluxPO", "ModePO",
+      "ZonePO", "CorePO", "SyncPO", "NoxPO", "KaiPO", "RiftPO", "HexPO", "RushPO",
+      "RankPO", "AimPO", "LootPO", "ClutchPO", "WavePO", "JoltPO"
+    ],
+    "french": [
+      "XFR", "ZFR", "GGFR", "VXFR", "XPFR", "77FR", "404FR", "OneFR",
+      "ZeroFR", "NeoFR", "MaxFR", "ArcFR", "ByteFR", "VexFR", "FluxFR", "ModeFR",
+      "ZoneFR", "CoreFR", "SyncFR", "NoxFR", "KaiFR", "RiftFR", "HexFR", "RushFR",
+      "RankFR", "AimFR", "LootFR", "ClutchFR", "WaveFR", "JoltFR"
+    ],
+    "german": [
+      "XGE", "ZGE", "GGGE", "VXGE", "XPGE", "77GE", "404GE", "OneGE",
+      "ZeroGE", "NeoGE", "MaxGE", "ArcGE", "ByteGE", "VexGE", "FluxGE", "ModeGE",
+      "ZoneGE", "CoreGE", "SyncGE", "NoxGE", "KaiGE", "RiftGE", "HexGE", "RushGE",
+      "RankGE", "AimGE", "LootGE", "ClutchGE", "WaveGE", "JoltGE"
+    ],
+    "italian": [
+      "XIT", "ZIT", "GGIT", "VXIT", "XPIT", "77IT", "404IT", "OneIT",
+      "ZeroIT", "NeoIT", "MaxIT", "ArcIT", "ByteIT", "VexIT", "FluxIT", "ModeIT",
+      "ZoneIT", "CoreIT", "SyncIT", "NoxIT", "KaiIT", "RiftIT", "HexIT", "RushIT",
+      "RankIT", "AimIT", "LootIT", "ClutchIT", "WaveIT", "JoltIT"
+    ],
+    "russian": [
+      "XRU", "ZRU", "GGRU", "VXRU", "XPRU", "77RU", "404RU", "OneRU",
+      "ZeroRU", "NeoRU", "MaxRU", "ArcRU", "ByteRU", "VexRU", "FluxRU", "ModeRU",
+      "ZoneRU", "CoreRU", "SyncRU", "NoxRU", "KaiRU", "RiftRU", "HexRU", "RushRU",
+      "RankRU", "AimRU", "LootRU", "ClutchRU", "WaveRU", "JoltRU"
+    ],
+    "japanese": [
+      "XJA", "ZJA", "GGJA", "VXJA", "XPJA", "77JA", "404JA", "OneJA",
+      "ZeroJA", "NeoJA", "MaxJA", "ArcJA", "ByteJA", "VexJA", "FluxJA", "ModeJA",
+      "ZoneJA", "CoreJA", "SyncJA", "NoxJA", "KaiJA", "RiftJA", "HexJA", "RushJA",
+      "RankJA", "AimJA", "LootJA", "ClutchJA", "WaveJA", "JoltJA"
+    ],
+    "korean": [
+      "XKO", "ZKO", "GGKO", "VXKO", "XPKO", "77KO", "404KO", "OneKO",
+      "ZeroKO", "NeoKO", "MaxKO", "ArcKO", "ByteKO", "VexKO", "FluxKO", "ModeKO",
+      "ZoneKO", "CoreKO", "SyncKO", "NoxKO", "KaiKO", "RiftKO", "HexKO", "RushKO",
+      "RankKO", "AimKO", "LootKO", "ClutchKO", "WaveKO", "JoltKO"
+    ],
+    "hindi": [
+      "XHI", "ZHI", "GGHI", "VXHI", "XPHI", "77HI", "404HI", "OneHI",
+      "ZeroHI", "NeoHI", "MaxHI", "ArcHI", "ByteHI", "VexHI", "FluxHI", "ModeHI",
+      "ZoneHI", "CoreHI", "SyncHI", "NoxHI", "KaiHI", "RiftHI", "HexHI", "RushHI",
+      "RankHI", "AimHI", "LootHI", "ClutchHI", "WaveHI", "JoltHI"
+    ],
+    "arabic": [
+      "XAR", "ZAR", "GGAR", "VXAR", "XPAR", "77AR", "404AR", "OneAR",
+      "ZeroAR", "NeoAR", "MaxAR", "ArcAR", "ByteAR", "VexAR", "FluxAR", "ModeAR",
+      "ZoneAR", "CoreAR", "SyncAR", "NoxAR", "KaiAR", "RiftAR", "HexAR", "RushAR",
+      "RankAR", "AimAR", "LootAR", "ClutchAR", "WaveAR", "JoltAR"
+    ],
+    "turkish": [
+      "XTU", "ZTU", "GGTU", "VXTU", "XPTU", "77TU", "404TU", "OneTU",
+      "ZeroTU", "NeoTU", "MaxTU", "ArcTU", "ByteTU", "VexTU", "FluxTU", "ModeTU",
+      "ZoneTU", "CoreTU", "SyncTU", "NoxTU", "KaiTU", "RiftTU", "HexTU", "RushTU",
+      "RankTU", "AimTU", "LootTU", "ClutchTU", "WaveTU", "JoltTU"
+    ],
+    "chinese": [
+      "XCH", "ZCH", "GGCH", "VXCH", "XPCH", "77CH", "404CH", "OneCH",
+      "ZeroCH", "NeoCH", "MaxCH", "ArcCH", "ByteCH", "VexCH", "FluxCH", "ModeCH",
+      "ZoneCH", "CoreCH", "SyncCH", "NoxCH", "KaiCH", "RiftCH", "HexCH", "RushCH",
+      "RankCH", "AimCH", "LootCH", "ClutchCH", "WaveCH", "JoltCH"
+    ],
+    "polish": [
+      "XPO", "ZPO", "GGPO", "VXPO", "XPPO", "77PO", "404PO", "OnePO",
+      "ZeroPO", "NeoPO", "MaxPO", "ArcPO", "BytePO", "VexPO", "FluxPO", "ModePO",
+      "ZonePO", "CorePO", "SyncPO", "NoxPO", "KaiPO", "RiftPO", "HexPO", "RushPO",
+      "RankPO", "AimPO", "LootPO", "ClutchPO", "WavePO", "JoltPO"
+    ],
+    "indonesian": [
+      "XIN", "ZIN", "GGIN", "VXIN", "XPIN", "77IN", "404IN", "OneIN",
+      "ZeroIN", "NeoIN", "MaxIN", "ArcIN", "ByteIN", "VexIN", "FluxIN", "ModeIN",
+      "ZoneIN", "CoreIN", "SyncIN", "NoxIN", "KaiIN", "RiftIN", "HexIN", "RushIN",
+      "RankIN", "AimIN", "LootIN", "ClutchIN", "WaveIN", "JoltIN"
+    ]
+  },
+  "themes": [
+    {"value": "gaming", "label": "Gaming"},
+    {"value": "animals", "label": "Animals"},
+    {"value": "tech", "label": "Tech"},
+    {"value": "fantasy", "label": "Fantasy"},
+    {"value": "sports", "label": "Sports"},
+    {"value": "space", "label": "Space"},
+    {"value": "music", "label": "Music"},
+    {"value": "food", "label": "Food"},
+    {"value": "funny", "label": "Funny"}
+  ],
+  "languages": [
+    {"value": "english", "label": "English"},
+    {"value": "spanish", "label": "Spanish"},
+    {"value": "portuguese", "label": "Portuguese"},
+    {"value": "french", "label": "French"},
+    {"value": "german", "label": "German"},
+    {"value": "italian", "label": "Italian"},
+    {"value": "russian", "label": "Russian"},
+    {"value": "japanese", "label": "Japanese"},
+    {"value": "korean", "label": "Korean"},
+    {"value": "hindi", "label": "Hindi"},
+    {"value": "arabic", "label": "Arabic"},
+    {"value": "turkish", "label": "Turkish"},
+    {"value": "chinese", "label": "Chinese (Simplified)"},
+    {"value": "polish", "label": "Polish"},
+    {"value": "indonesian", "label": "Indonesian"}
+  ],
+  "numbers": [
+    "01", "02", "03", "04", "05", "06", "07", "08",
+    "09", "10", "11", "12", "13", "21", "23", "24",
+    "27", "33", "42", "47", "55", "64", "69", "77",
+    "88", "99", "101", "117", "123", "247", "360", "404",
+    "505", "707", "777", "808", "999"
+  ]
+}

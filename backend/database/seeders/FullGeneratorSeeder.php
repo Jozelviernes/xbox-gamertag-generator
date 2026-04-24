@@ -14,7 +14,7 @@ class FullGeneratorSeeder extends Seeder
 {
     public function run(): void
     {
-        $path = database_path('data/generator-data.json');
+        $path = database_path('data/generator-data2.json');
 
         if (!File::exists($path)) {
             throw new \RuntimeException("generator-data.json not found at: {$path}");
@@ -37,11 +37,30 @@ class FullGeneratorSeeder extends Seeder
             $suffixRows = [];
             $numberRows = [];
 
+            $wordSeen = [];
+            $genderSeen = [];
+            $suffixSeen = [];
+            $numberSeen = [];
+
             $now = now();
 
             foreach (($data['languageWordSets'] ?? []) as $language => $themes) {
                 foreach ($themes as $theme => $words) {
                     foreach ($words as $word) {
+                        $word = trim((string) $word);
+
+                        if ($word === '') {
+                            continue;
+                        }
+
+                        $key = $this->makeKey($language, $theme, $word);
+
+                        if (isset($wordSeen[$key])) {
+                            continue;
+                        }
+
+                        $wordSeen[$key] = true;
+
                         $wordRows[] = [
                             'word' => $word,
                             'language' => $language,
@@ -56,6 +75,20 @@ class FullGeneratorSeeder extends Seeder
             foreach (($data['languageGenderWords'] ?? []) as $language => $genderSets) {
                 foreach ($genderSets as $gender => $positions) {
                     foreach (($positions['prefixes'] ?? []) as $word) {
+                        $word = trim((string) $word);
+
+                        if ($word === '') {
+                            continue;
+                        }
+
+                        $key = $this->makeKey($language, $gender, 'prefix', $word);
+
+                        if (isset($genderSeen[$key])) {
+                            continue;
+                        }
+
+                        $genderSeen[$key] = true;
+
                         $genderRows[] = [
                             'word' => $word,
                             'language' => $language,
@@ -67,6 +100,20 @@ class FullGeneratorSeeder extends Seeder
                     }
 
                     foreach (($positions['suffixes'] ?? []) as $word) {
+                        $word = trim((string) $word);
+
+                        if ($word === '') {
+                            continue;
+                        }
+
+                        $key = $this->makeKey($language, $gender, 'suffix', $word);
+
+                        if (isset($genderSeen[$key])) {
+                            continue;
+                        }
+
+                        $genderSeen[$key] = true;
+
                         $genderRows[] = [
                             'word' => $word,
                             'language' => $language,
@@ -81,6 +128,20 @@ class FullGeneratorSeeder extends Seeder
 
             foreach (($data['languageSuffixes'] ?? []) as $language => $suffixes) {
                 foreach ($suffixes as $word) {
+                    $word = trim((string) $word);
+
+                    if ($word === '') {
+                        continue;
+                    }
+
+                    $key = $this->makeKey($language, $word);
+
+                    if (isset($suffixSeen[$key])) {
+                        continue;
+                    }
+
+                    $suffixSeen[$key] = true;
+
                     $suffixRows[] = [
                         'word' => $word,
                         'language' => $language,
@@ -91,6 +152,20 @@ class FullGeneratorSeeder extends Seeder
             }
 
             foreach (($data['numbers'] ?? []) as $value) {
+                $value = trim((string) $value);
+
+                if ($value === '') {
+                    continue;
+                }
+
+                $key = $this->makeKey($value);
+
+                if (isset($numberSeen[$key])) {
+                    continue;
+                }
+
+                $numberSeen[$key] = true;
+
                 $numberRows[] = [
                     'value' => $value,
                     'created_at' => $now,
@@ -114,5 +189,12 @@ class FullGeneratorSeeder extends Seeder
                 GeneratorNumber::insert($chunk);
             }
         });
+    }
+
+    private function makeKey(...$parts): string
+    {
+        return collect($parts)
+            ->map(fn ($part) => mb_strtolower(trim((string) $part), 'UTF-8'))
+            ->implode('|');
     }
 }

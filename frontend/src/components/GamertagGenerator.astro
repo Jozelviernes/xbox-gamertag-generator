@@ -36,55 +36,71 @@ import {
         </div>
       </div>
 
-      <!-- Character Theme -->
-      <div>
-        <label class="gtg-label block mb-2">Character Theme</label>
-        <div class="custom-select-wrapper" data-name="theme">
-          <input type="hidden" name="theme" id="theme" value={themes[0]?.value ?? ""} />
-          <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-            <span class="custom-select-label">{themes[0]?.label ?? "Any"}</span>
-            <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M6 8L1 3h10z" fill="currentColor"/>
-            </svg>
-          </button>
-          <ul class="custom-select-menu" role="listbox">
-            {themes.map((t, i) => (
-              <li
-                class={`custom-select-item${i === 0 ? " selected" : ""}`}
-                role="option"
-                data-value={t.value}
-                aria-selected={i === 0 ? "true" : "false"}
-              >{t.label}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+<!-- Character Theme -->
+<div>
+  <label class="gtg-label block mb-2">Character Theme</label>
 
-      <!-- Language -->
-      <div>
-        <label class="gtg-label block mb-2">Language</label>
-        <div class="custom-select-wrapper" data-name="language">
-          <input type="hidden" name="language" id="language" value={languages[0]?.value ?? ""} />
-          <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-            <span class="custom-select-label">{languages[0]?.label ?? "English"}</span>
-            <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M6 8L1 3h10z" fill="currentColor"/>
-            </svg>
-          </button>
-          <ul class="custom-select-menu" role="listbox">
-            {languages.map((l, i) => (
-              <li
-                class={`custom-select-item${i === 0 ? " selected" : ""}`}
-                role="option"
-                data-value={l.value}
-                aria-selected={i === 0 ? "true" : "false"}
-              >{l.label}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+  <div class="custom-select-wrapper" data-name="theme">
+    <input type="hidden" name="theme" id="theme" value="any" />
 
-      <!-- Include Words -->
+    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+      <span class="custom-select-label">Any</span>
+      <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M6 8L1 3h10z" fill="currentColor"/>
+      </svg>
+    </button>
+
+    <ul id="themeOptions" class="custom-select-menu" role="listbox">
+      <li class="custom-select-item selected" role="option" data-value="any" aria-selected="true">Any</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Language -->
+<div>
+  <label class="gtg-label block mb-2">Language</label>
+
+  <div class="custom-select-wrapper" data-name="language">
+    <input type="hidden" name="language" id="language" value="english" />
+
+    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+      <span class="custom-select-label">English</span>
+      <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M6 8L1 3h10z" fill="currentColor"/>
+      </svg>
+    </button>
+
+    <ul id="languageOptions" class="custom-select-menu" role="listbox">
+      <li class="custom-select-item selected" role="option" data-value="english" aria-selected="true">English</li>
+    </ul>
+  </div>
+</div>
+
+   
+   <!-- Name Preference -->
+<div class="md:col-span-2 lg:col-span-1">
+  <label class="gtg-label block mb-2">Name Preference</label>
+
+  <div class="custom-select-wrapper" data-name="namePreference">
+    <input type="hidden" name="namePreference" id="namePreference" value="default" />
+
+    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+      <span class="custom-select-label">Default</span>
+      <svg class="custom-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M6 8L1 3h10z" fill="currentColor"/>
+      </svg>
+    </button>
+
+    <ul class="custom-select-menu" role="listbox">
+      <li class="custom-select-item selected" role="option" data-value="default" aria-selected="true">Default</li>
+      <li class="custom-select-item" role="option" data-value="short" aria-selected="false">Short Names</li>
+      <li class="custom-select-item" role="option" data-value="no_numbers" aria-selected="false">No Numbers</li>
+      <li class="custom-select-item" role="option" data-value="short_no_numbers" aria-selected="false">Short + No Numbers</li>
+    </ul>
+  </div>
+</div>
+
+   <!-- Include Words -->
       <div class="md:col-span-2 lg:col-span-2">
         <label for="includeWords" class="gtg-label block mb-2">Include <span class="gtg-label-optional">(Optional)</span></label>
         <textarea
@@ -94,15 +110,6 @@ import {
         ></textarea>
       </div>
 
-      <!-- Other Requests -->
-      <div class="md:col-span-2 lg:col-span-1">
-        <label for="otherRequests" class="gtg-label block mb-2">Other Requests</label>
-        <textarea
-          id="otherRequests"
-          placeholder="Any special requirements..."
-          class="generator-textarea"
-        ></textarea>
-      </div>
 
       <!-- Character Limit slider — full width -->
       <div class="md:col-span-2 lg:col-span-3">
@@ -362,22 +369,25 @@ import {
   /* ─────────────────────────────────────────────
      TEXTAREA
   ───────────────────────────────────────────── */
-  .generator-textarea {
-    width: 100%;
-    background-color: hsl(218 30% 10%);
-    color: hsl(210 40% 92%);
-    border: 1px solid hsl(218 30% 22%);
-    border-radius: 0.75rem;
-    padding: 10px 14px;
-    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    min-height: 80px;
-    resize: none;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-    line-height: 1.6;
-  }
+ .generator-textarea {
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  background-color: hsl(218 30% 10%);
+  color: hsl(210 40% 92%);
+  border: 1px solid hsl(218 30% 22%);
+  border-radius: 0.75rem;
+  padding: 10px 14px;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  resize: none;
+  outline: none;
+  line-height: 22px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
   .generator-textarea::placeholder { color: hsl(218 20% 38%); }
   .generator-textarea:hover {
     border-color: hsl(218 30% 30%);
@@ -714,8 +724,70 @@ import {
   opacity: 0.6;
   cursor: not-allowed;
 }
-</style><script>
+</style>
+<script>
   // @ts-nocheck
+async function loadGeneratorOptions() {
+  const API = import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:8000";
+
+  try {
+    const response = await fetch(`${API}/api/generator/options`, {
+      headers: {
+        "Accept": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to load generator options.");
+    }
+
+    const data = await response.json();
+
+  populateCustomSelect("theme", data.themes || [], "any", "Any");
+    populateCustomSelect("language", data.languages || [], "english", "English");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function populateCustomSelect(name, options, defaultValue, defaultLabel) {
+  const wrapper = document.querySelector(`.custom-select-wrapper[data-name="${name}"]`);
+  if (!wrapper) return;
+
+  const input = wrapper.querySelector("input[type=hidden]");
+  const label = wrapper.querySelector(".custom-select-label");
+  const menu = wrapper.querySelector(".custom-select-menu");
+
+  if (!input || !label || !menu) return;
+
+  const finalOptions = options.length
+    ? options
+    : [{ value: defaultValue, label: defaultLabel }];
+
+  const selectedOption =
+    finalOptions.find((option) => option.value === defaultValue) ||
+    finalOptions[0];
+
+  input.value = selectedOption.value;
+  label.textContent = selectedOption.label;
+
+  menu.innerHTML = finalOptions.map((option) => {
+    const isSelected = option.value === selectedOption.value;
+
+    return `
+      <li
+        class="custom-select-item${isSelected ? " selected" : ""}"
+        role="option"
+        data-value="${option.value}"
+        aria-selected="${isSelected ? "true" : "false"}"
+      >
+        ${option.label}
+      </li>
+    `;
+  }).join("");
+
+  delete wrapper.dataset.initialized;
+}
 
   function setupGamertagGenerator() {
     document.querySelectorAll(".custom-select-wrapper").forEach((wrapper) => {
@@ -773,7 +845,7 @@ import {
     const themeEl = document.getElementById("theme");
     const languageEl = document.getElementById("language");
     const includeWordsEl = document.getElementById("includeWords");
-    const otherRequestsEl = document.getElementById("otherRequests");
+   const namePreferenceEl = document.getElementById("namePreference");
     const characterLimitEl = document.getElementById("characterLimit");
     const characterLimitValueEl = document.getElementById("characterLimitValue");
     const generateBtn = document.getElementById("generateBtn");
@@ -798,17 +870,16 @@ import {
       return "";
     }
 
-    function getFormData() {
-      return {
-        gender: getValue(genderEl),
-        theme: getValue(themeEl),
-        language: getValue(languageEl),
-        includeWords: getValue(includeWordsEl),
-        otherRequests: getValue(otherRequestsEl),
-        characterLimit: Number(getValue(characterLimitEl) || 12),
-      };
-    }
-
+  function getFormData() {
+  return {
+    gender: getValue(genderEl),
+    theme: getValue(themeEl),
+    language: getValue(languageEl),
+    includeWords: getValue(includeWordsEl),
+    namePreference: getValue(namePreferenceEl),
+    characterLimit: Number(getValue(characterLimitEl) || 12),
+  };
+}
     async function generateTags(clickedBtn = generateBtn) {
       if (!clickedBtn) return;
 
@@ -921,16 +992,16 @@ import {
     });
   }
 
-  if (!document.body.dataset.gtgDocumentClickBound) {
-    document.body.dataset.gtgDocumentClickBound = "true";
-    document.addEventListener("click", closeCustomSelects);
-  }
+ async function initGamertagGenerator() {
+  await loadGeneratorOptions();
+  setupGamertagGenerator();
+}
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupGamertagGenerator, { once: true });
-  } else {
-    setupGamertagGenerator();
-  }
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initGamertagGenerator, { once: true });
+} else {
+  initGamertagGenerator();
+}
 
-  document.addEventListener("astro:page-load", setupGamertagGenerator);
+document.addEventListener("astro:page-load", initGamertagGenerator);
 </script>

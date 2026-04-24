@@ -15,43 +15,61 @@ class GamertagController extends Controller
     public function generate(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'gender'         => 'nullable|string|in:any,male,female,neutral',
-            'theme'          => 'nullable|string|max:50',
-            'language'       => 'nullable|string|max:50',
-            'includeWords'   => 'nullable|string',
-            'otherRequests'  => 'nullable|string',
-            'characterLimit' => 'nullable|integer|min:3|max:12',
+            'gender'          => 'nullable|string|in:any,male,female,neutral',
+            'theme'           => 'nullable|string|max:50',
+            'language'        => 'nullable|string|max:50',
+            'includeWords'    => 'nullable|string',
+            'namePreference'  => 'nullable|string|in:default,short,no_numbers,short_no_numbers',
+
+            // Keep this for backward compatibility if your frontend still sends otherRequests.
+            'otherRequests'   => 'nullable|string',
+
+            'characterLimit'  => 'nullable|integer|min:3|max:12',
         ]);
 
-        $gender         = $validated['gender'] ?? 'any';
-        $theme          = $validated['theme'] ?? 'gaming';
-        $language       = $validated['language'] ?? 'english';
-        $characterLimit = $validated['characterLimit'] ?? 12;
+        $targetCount     = 6;
+        $gender          = $validated['gender'] ?? 'any';
+        $theme           = $validated['theme'] ?? 'gaming';
+        $language        = $validated['language'] ?? 'english';
+        $characterLimit  = $validated['characterLimit'] ?? 12;
+        $namePreference  = $validated['namePreference'] ?? 'default';
 
         $customWords = collect(explode(',', $validated['includeWords'] ?? ''))
-            ->map(fn($w) => trim($w))
-            ->filter(fn($w) => $w !== '')
+            ->map(fn ($word) => trim($word))
+            ->filter(fn ($word) => $word !== '')
+            ->unique(fn ($word) => mb_strtolower($word))
             ->values()
             ->toArray();
 
-        $parsedRequests = $this->parseOtherRequests($validated['otherRequests'] ?? '');
+        $parsedRequests = $this->parseNamePreference(
+            $namePreference,
+            $validated['otherRequests'] ?? ''
+        );
 
-        // Load data with fallback helper
-        $baseWords       = $this->fetchWords($language, $theme);
-        $prefixes        = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'prefix') : [];
-        $suffixGender    = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'suffix') : [];
+        $baseWords        = $this->fetchWords($language, $theme);
+        $prefixes         = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'prefix') : [];
+        $suffixGender     = $gender !== 'any' ? $this->fetchGenderWords($language, $gender, 'suffix') : [];
         $languageSuffixes = $this->fetchSuffixes($language);
-        $numbers         = GeneratorNumber::pluck('value')->toArray() ?: ['01', '07', '13', '99', '47'];
+        $numbers          = GeneratorNumber::pluck('value')->toArray() ?: ['01', '07', '13', '99', '47'];
 
         $generated       = [];
         $usedCustomWords = [];
         $usedPatterns    = [];
-        $customQuota     = !empty($customWords) ? 1 : 0;
-        $customUsed      = 0;
-        $safety          = 0;
 
-        while (count($generated) < 6 && $safety < 150) {
+        // If user adds include words, 4 out of 6 results will include the custom word.
+        $customQuota = !empty($customWords) ? min(4, $targetCount) : 0;
+        $customUsed  = 0;
+        $safety      = 0;
+
+        while (count($generated) < $targetCount && $safety < 250) {
             $forceCustom = $customUsed < $customQuota;
+
+            // Alternate include word position:
+            // Result 1 = custom word first
+            // Result 2 = custom word last
+            // Result 3 = custom word first
+            // Result 4 = custom word last
+            $customPosition = $customUsed % 2 === 0 ? 'first' : 'last';
 
             $tag = $this->generateSingleTag(
                 $baseWords,
@@ -64,21 +82,25 @@ class GamertagController extends Controller
                 $customWords,
                 $parsedRequests,
                 $forceCustom,
+                $customPosition,
                 $usedCustomWords,
                 $usedPatterns
             );
 
             $tagLower = mb_strtolower($tag);
 
-            if (mb_strlen($tag) >= 3 && !in_array($tagLower, array_map('mb_strtolower', $generated), true)) {
-                if ($this->containsCustomWord($tag, $customWords)) {
+            if (
+                mb_strlen($tag) >= 3 &&
+                !in_array($tagLower, array_map('mb_strtolower', $generated), true)
+            ) {
+                if ($forceCustom && $this->containsCustomWord($tag, $customWords)) {
                     $matched = $this->findMatchedCustomWord($tag, $customWords);
+
                     if ($matched !== null) {
                         $usedCustomWords[] = mb_strtolower($matched);
                     }
-                    if ($forceCustom) {
-                        $customUsed++;
-                    }
+
+                    $customUsed++;
                 }
 
                 $generated[]    = $tag;
@@ -88,28 +110,73 @@ class GamertagController extends Controller
             $safety++;
         }
 
-        return response()->json(['tags' => $generated]);
+        return response()->json([
+            'tags' => $generated,
+        ]);
     }
 
-    // ─── Data Fetchers ────────────────────────────────────────────────────────
+ public function options(): JsonResponse
+{
+    $themes = GeneratorWord::query()
+        ->whereNotNull('theme')
+        ->select('theme')
+        ->distinct()
+        ->orderBy('theme')
+        ->pluck('theme')
+        ->map(fn ($theme) => [
+            'value' => $theme,
+            'label' => $this->formatLabel($theme),
+        ])
+        ->unique('value')
+        ->values();
 
-    private function fetchWords(string $language, string $theme): array
-    {
-        $words = GeneratorWord::where('language', $language)
-            ->where('theme', $theme)
-            ->pluck('word')
-            ->toArray();
+    $themes->prepend([
+        'value' => 'any',
+        'label' => 'Any',
+    ]);
 
-        if (empty($words)) {
-            $words = GeneratorWord::where('language', 'english')
-                ->where('theme', 'gaming')
-                ->pluck('word')
-                ->toArray();
+    $languages = GeneratorWord::query()
+        ->whereNotNull('language')
+        ->select('language')
+        ->distinct()
+        ->orderBy('language')
+        ->pluck('language')
+        ->map(fn ($language) => [
+            'value' => $language,
+            'label' => $this->formatLanguageLabel($language),
+        ])
+        ->unique('value')
+        ->values();
+
+    return response()->json([
+        'themes' => $themes,
+        'languages' => $languages,
+    ]);
+}
+  private function fetchWords(string $language, string $theme): array
+{
+    $query = GeneratorWord::query()
+        ->where('language', $language);
+
+    if ($theme !== 'any') {
+        $query->where('theme', $theme);
+    }
+
+    $words = $query->pluck('word')->toArray();
+
+    if (empty($words)) {
+        $fallback = GeneratorWord::query()
+            ->where('language', 'english');
+
+        if ($theme !== 'any') {
+            $fallback->where('theme', $theme);
         }
 
-        return $words;
+        $words = $fallback->pluck('word')->toArray();
     }
 
+    return array_values(array_unique($words));
+}
     private function fetchGenderWords(string $language, string $gender, string $position): array
     {
         $words = GeneratorGenderWord::where('language', $language)
@@ -126,7 +193,7 @@ class GamertagController extends Controller
                 ->toArray();
         }
 
-        return $words;
+        return array_values(array_unique($words));
     }
 
     private function fetchSuffixes(string $language): array
@@ -141,10 +208,8 @@ class GamertagController extends Controller
                 ->toArray();
         }
 
-        return $suffixes;
+        return array_values(array_unique($suffixes));
     }
-
-    // ─── Tag Generator ────────────────────────────────────────────────────────
 
     private function generateSingleTag(
         array $baseWords,
@@ -157,6 +222,7 @@ class GamertagController extends Controller
         array $customWords,
         array $parsedRequests,
         bool $forceCustom,
+        string $customPosition,
         array $usedCustomWords,
         array $usedPatterns
     ): string {
@@ -164,38 +230,41 @@ class GamertagController extends Controller
             return 'Player' . rand(10, 99);
         }
 
-        $allowNumbers  = !in_array('no_numbers', $parsedRequests, true);
-        $preferShort   = in_array('short', $parsedRequests, true);
+        $allowNumbers = !in_array('no_numbers', $parsedRequests, true);
+        $preferShort  = in_array('short', $parsedRequests, true);
 
-        // Pick a base word — shuffle to reduce repetition
-        $shuffled = $baseWords;
-        shuffle($shuffled);
-        $dbWord = $shuffled[0];
+        $dbWord = $baseWords[array_rand($baseWords)];
 
-        // Build main word
-        $availableCustomWords = $this->getAvailableCustomWords($customWords, $usedCustomWords);
-        $mainWord = $this->buildMainWord($dbWord, $availableCustomWords, $forceCustom);
+        if ($forceCustom && !empty($customWords)) {
+            $availableCustomWords = $this->getAvailableCustomWords($customWords, $usedCustomWords);
 
-        // Pick optional parts — randomize independently
-        $prefix      = ($gender !== 'any' && !empty($prefixes) && mt_rand(1, 100) > 75)
-                        ? $prefixes[array_rand($prefixes)]
-                        : '';
+            return $this->buildIncludedWordTag(
+                $availableCustomWords[array_rand($availableCustomWords)],
+                $dbWord,
+                $characterLimit,
+                $customPosition
+            );
+        }
+
+        $mainWord = $dbWord;
+
+        $prefix = ($gender !== 'any' && !empty($prefixes) && mt_rand(1, 100) > 75)
+            ? $prefixes[array_rand($prefixes)]
+            : '';
 
         $genderSuffix = ($gender !== 'any' && !empty($suffixGenderWords) && mt_rand(1, 100) > 85)
-                        ? $suffixGenderWords[array_rand($suffixGenderWords)]
-                        : '';
+            ? $suffixGenderWords[array_rand($suffixGenderWords)]
+            : '';
 
         $extraSuffix = '';
         $number      = '';
 
         if (!$preferShort && mt_rand(1, 100) > 40) {
-            // Vary the pattern: avoid using the same suffix/number pattern repeatedly
             $useNumber = $allowNumbers && !empty($numbers) && mt_rand(0, 1) === 1;
             $useSuffix = !empty($languageSuffixes) && mt_rand(0, 1) === 1;
 
             $pattern = ($useNumber ? 'N' : '') . ($useSuffix ? 'S' : '');
 
-            // If this pattern was recently used, flip the choice
             if (in_array($pattern, array_slice($usedPatterns, -3), true)) {
                 $useNumber = !$useNumber;
                 $useSuffix = !$useSuffix;
@@ -233,26 +302,62 @@ class GamertagController extends Controller
         return $this->smartTrim($mainWord, $characterLimit);
     }
 
-    private function buildMainWord(string $dbWord, array $availableCustomWords, bool $forceCustom): string
-    {
-        if (empty($availableCustomWords)) {
-            return $dbWord;
+    private function buildIncludedWordTag(
+        string $customWord,
+        string $dbWord,
+        int $characterLimit,
+        string $position
+    ): string {
+        $customWord = ucfirst(trim($customWord));
+        $dbWord     = ucfirst(trim($dbWord));
+
+        if ($customWord === '') {
+            return $this->smartTrim($dbWord, $characterLimit);
         }
 
-        $shouldUseCustom = $forceCustom || mt_rand(1, 100) > 85;
-
-        if (!$shouldUseCustom) {
-            return $dbWord;
+        if (mb_strlen($customWord) >= $characterLimit) {
+            return mb_substr($customWord, 0, $characterLimit);
         }
 
-        $customWord = $availableCustomWords[array_rand($availableCustomWords)];
+        $remainingLength = $characterLimit - mb_strlen($customWord);
+        $trimmedDbWord   = mb_substr($dbWord, 0, $remainingLength);
 
-        return mt_rand(0, 1) === 1
-            ? $this->combineWords($customWord, $dbWord)
-            : $this->combineWords($dbWord, $customWord);
+        if ($position === 'last') {
+            return $customWord === ''
+                ? $this->smartTrim($dbWord, $characterLimit)
+                : $trimmedDbWord . $customWord;
+        }
+
+        return $customWord . $trimmedDbWord;
     }
 
-    // ─── Helpers ──────────────────────────────────────────────────────────────
+    private function parseNamePreference(string $namePreference, string $legacyOtherRequests = ''): array
+    {
+        $flags = [];
+
+        if (in_array($namePreference, ['short', 'short_no_numbers'], true)) {
+            $flags[] = 'short';
+        }
+
+        if (in_array($namePreference, ['no_numbers', 'short_no_numbers'], true)) {
+            $flags[] = 'no_numbers';
+        }
+
+        // Backward compatibility for old otherRequests textarea.
+        $legacyText = mb_strtolower(trim($legacyOtherRequests));
+
+        if ($legacyText !== '') {
+            if (str_contains($legacyText, 'short') || str_contains($legacyText, 'brief') || str_contains($legacyText, 'small')) {
+                $flags[] = 'short';
+            }
+
+            if (str_contains($legacyText, 'no number') || str_contains($legacyText, 'without number')) {
+                $flags[] = 'no_numbers';
+            }
+        }
+
+        return array_values(array_unique($flags));
+    }
 
     private function extractPattern(string $tag): string
     {
@@ -260,26 +365,6 @@ class GamertagController extends Controller
         $wordCount = preg_match_all('/[A-Z][a-z]+/', $tag);
 
         return ($hasNumber ? 'N' : '') . ($wordCount > 1 ? 'M' : 'S');
-    }
-
-    private function parseOtherRequests(string $input): array
-    {
-        $text  = mb_strtolower(trim($input));
-        $flags = [];
-
-        if ($text === '') {
-            return $flags;
-        }
-
-        if (str_contains($text, 'short') || str_contains($text, 'brief') || str_contains($text, 'small')) {
-            $flags[] = 'short';
-        }
-
-        if (str_contains($text, 'no number') || str_contains($text, 'without number')) {
-            $flags[] = 'no_numbers';
-        }
-
-        return $flags;
     }
 
     private function containsCustomWord(string $tag, array $customWords): bool
@@ -312,20 +397,12 @@ class GamertagController extends Controller
 
         $used = array_map('mb_strtolower', $usedCustomWords);
 
-        $available = array_values(array_filter($customWords, fn($w) => !in_array(mb_strtolower($w), $used, true)));
+        $available = array_values(array_filter(
+            $customWords,
+            fn ($word) => !in_array(mb_strtolower($word), $used, true)
+        ));
 
         return !empty($available) ? $available : $customWords;
-    }
-
-    private function combineWords(string $first, string $second): string
-    {
-        $first  = ucfirst(trim($first));
-        $second = ucfirst(trim($second));
-
-        if ($first === '')  return $second;
-        if ($second === '') return $first;
-
-        return $first . $second;
     }
 
     private function smartTrim(string $text, int $limit): string
@@ -334,7 +411,8 @@ class GamertagController extends Controller
             return $text;
         }
 
-        $parts   = preg_split('/(?=[A-Z])|[_\-\s]+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
+        $parts = preg_split('/(?=[A-Z])|[_\-\s]+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
+
         $rebuilt = '';
 
         foreach ($parts as $part) {
@@ -350,5 +428,32 @@ class GamertagController extends Controller
         }
 
         return mb_substr($text, 0, $limit);
+    }
+
+    private function formatLabel(string $value): string
+    {
+        return ucwords(str_replace(['-', '_'], ' ', $value));
+    }
+
+    private function formatLanguageLabel(string $language): string
+    {
+        return match ($language) {
+            'english' => 'English',
+            'spanish' => 'Spanish',
+            'portuguese' => 'Portuguese',
+            'french' => 'French',
+            'german' => 'German',
+            'italian' => 'Italian',
+            'russian' => 'Russian',
+            'japanese' => 'Japanese',
+            'korean' => 'Korean',
+            'hindi' => 'Hindi',
+            'arabic' => 'Arabic',
+            'turkish' => 'Turkish',
+            'chinese' => 'Chinese',
+            'polish' => 'Polish',
+            'indonesian' => 'Indonesian',
+            default => $this->formatLabel($language),
+        };
     }
 }

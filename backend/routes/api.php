@@ -9,13 +9,15 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\GamertagOptimizerController;
 
 Route::post('/optimize-gamertag', [GamertagOptimizerController::class, 'optimize']);
+
 Route::prefix('xbox')->group(function () {
     Route::post('gametag/check',  [GametagController::class, 'check']);
     Route::get('profile',          [ProfileController::class,  'show']);
 });
 
-
 Route::post('/generate-gamertags', [GamertagController::class, 'generate']);
+Route::get('/generator/options', [GamertagController::class, 'options']);
+
 Route::post('/check-price', [PriceCheckerController::class, 'check']);
 Route::get('/glossary', [GlossaryController::class, 'index']);
 
