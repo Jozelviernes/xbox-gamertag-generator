@@ -163,10 +163,26 @@ const helpLinks = [
                 ></textarea>
               </div>
 
+              <!-- Honeypot field for spam bots -->
+              <input
+                id="website"
+                name="website"
+                type="text"
+                class="hidden"
+                tabindex="-1"
+                autocomplete="off"
+              />
+
+              <p
+                id="formStatus"
+                class="hidden rounded-lg border px-4 py-3 text-sm font-medium"
+                aria-live="polite"
+              ></p>
+
               <button
                 id="submitBtn"
                 type="submit"
-                class="w-full bg-brand hover:bg-brand-light text-white py-3.5 px-6 rounded-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center gap-2"
+                class="w-full bg-brand hover:bg-brand-light text-white py-3.5 px-6 rounded-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 <span id="sendIcon" class="inline-flex items-center">
                   <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -217,31 +233,126 @@ const helpLinks = [
       </div>
     </section>
   </div>
+<script>
+  function initContactForm() {
+    const API_BASE = ["localhost", "127.0.0.1"].includes(window.location.hostname)
+      ? "http://127.0.0.1:8000"
+      : "https://api.xboxgamertaggenerator.com";
 
-  <script>
     const form = document.getElementById("contactForm");
     const submitBtn = document.getElementById("submitBtn");
     const submitText = document.getElementById("submitText");
     const sendIcon = document.getElementById("sendIcon");
+    const formStatus = document.getElementById("formStatus");
 
-    if (
-      form instanceof HTMLFormElement &&
-      submitBtn instanceof HTMLButtonElement &&
-      submitText instanceof HTMLElement &&
-      sendIcon instanceof HTMLElement
-    ) {
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        submitBtn.disabled = true;
-        submitText.textContent = "Sending...";
-        sendIcon.innerHTML = `<svg class="h-4 w-4 animate-pulse" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L15 22L11 13L2 9L22 2Z" /></svg>`;
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        form.reset();
-        submitBtn.disabled = false;
-        submitText.textContent = "Send Message";
-        sendIcon.innerHTML = `<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L15 22L11 13L2 9L22 2Z" /></svg>`;
-        alert("Message Sent! Thanks for reaching out. We'll get back to you soon!");
-      });
+    if (!(form instanceof HTMLFormElement)) return;
+    if (!(submitBtn instanceof HTMLButtonElement)) return;
+    if (!(submitText instanceof HTMLElement)) return;
+    if (!(sendIcon instanceof HTMLElement)) return;
+    if (!(formStatus instanceof HTMLElement)) return;
+
+    const contactForm = form;
+    const button = submitBtn;
+    const buttonText = submitText;
+    const icon = sendIcon;
+    const statusBox = formStatus;
+
+    if (contactForm.dataset.ready === "true") return;
+    contactForm.dataset.ready = "true";
+
+    const defaultIcon = `
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L15 22L11 13L2 9L22 2Z" />
+      </svg>
+    `;
+
+    const loadingIcon = `
+      <svg class="h-4 w-4 animate-pulse" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L15 22L11 13L2 9L22 2Z" />
+      </svg>
+    `;
+
+    function setStatus(type, message) {
+      statusBox.textContent = message;
+
+      statusBox.classList.remove(
+        "hidden",
+        "border-green-200",
+        "bg-green-50",
+        "text-green-700",
+        "border-red-200",
+        "bg-red-50",
+        "text-red-700"
+      );
+
+      if (type === "success") {
+        statusBox.classList.add("border-green-200", "bg-green-50", "text-green-700");
+      } else {
+        statusBox.classList.add("border-red-200", "bg-red-50", "text-red-700");
+      }
     }
-  </script>
+
+    function resetButton() {
+      button.disabled = false;
+      buttonText.textContent = "Send Message";
+      icon.innerHTML = defaultIcon;
+    }
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      button.disabled = true;
+      buttonText.textContent = "Sending...";
+      icon.innerHTML = loadingIcon;
+      statusBox.classList.add("hidden");
+
+      const formData = new FormData(contactForm);
+
+      const payload = {
+        name: String(formData.get("name") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        message: String(formData.get("message") || "").trim(),
+        website: String(formData.get("website") || "").trim(),
+      };
+
+      try {
+        const response = await fetch(`${API_BASE}/api/contact`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await response.json().catch(() => ({
+          success: false,
+          message: "Invalid server response.",
+        }));
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "Unable to send message right now.");
+        }
+
+        contactForm.reset();
+
+        setStatus("success", "Message sent successfully. Thanks for reaching out!");
+      } catch (error) {
+        setStatus(
+          "error",
+          error instanceof Error
+            ? error.message
+            : "Unable to send message right now. Please try again later."
+        );
+      } finally {
+        resetButton();
+      }
+    });
+  }
+
+  initContactForm();
+  document.addEventListener("astro:page-load", initContactForm);
+</script>
 </MainLayout>

@@ -24,7 +24,10 @@ return [
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],
-
+'contact' => [
+    'to' => env('CONTACT_TO_EMAIL', 'xboxgamegenerator@gmail.com'),
+    'from' => env('RESEND_FROM_EMAIL', 'Xbox Gamertag Generator <contact@xboxgamertaggenerator.com>'),
+],
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),

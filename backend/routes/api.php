@@ -7,7 +7,11 @@ use App\Http\Controllers\PriceCheckerController;
 use App\Http\Controllers\Api\GametagController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\GamertagOptimizerController;
+use App\Http\Controllers\Api\ContactController;
 
+Route::post('/contact', ContactController::class)
+    ->middleware('throttle:5,1');
+    
 Route::post('/optimize-gamertag', [GamertagOptimizerController::class, 'optimize']);
 
 Route::prefix('xbox')->group(function () {
