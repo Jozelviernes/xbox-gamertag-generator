@@ -92,18 +92,7 @@ const schema = {
     <!-- Hero -->
     <section class="bg-white border-b border-white-border">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-        {post.categories && post.categories.length > 0 && (
-          <div class="flex flex-wrap gap-2 justify-center mb-5">
-            {post.categories.map((cat: any) => (
-              
-               <a href={`/blog/category/${cat.slug}`}
-                class="badge-brand hover:opacity-80 transition-opacity"
-              >
-                {cat.name}
-              </a>
-            ))}
-          </div>
-        )}
+       
 
         <h1
           class="text-2xl sm:text-3xl md:text-4xl font-bold text-center leading-tight mb-5 text-dark-heading"

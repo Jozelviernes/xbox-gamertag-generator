@@ -102,7 +102,6 @@ const schema = {
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
      <h2 class="text-lg font-bold text-dark-heading mb-6 flex items-center justify-between">
 
-
   <a 
     href="/blog"
     class="text-sm font-semibold text-xbox-green hover:underline"
@@ -113,8 +112,7 @@ const schema = {
 
       {author.posts && author.posts.length > 0 ? (
         <div class="space-y-4">
-          {author.posts.map((post: any) => (
-            
+          {author.posts.slice(0, 5).map((post: any) => (
               <a href={`/${post.slug}`}
               class="flex gap-4 bg-white rounded-xl p-5 border border-white-border hover:border-brand transition-colors group"
             >
@@ -141,6 +139,18 @@ const schema = {
         </div>
       ) : (
         <p class="text-sm text-dark-body">No posts yet.</p>
+      )}
+
+
+     {author.posts && author.posts.length > 5 && (
+        <div class="mt-6 text-center">
+          
+           <a href="/blog"
+            class="inline-block text-sm font-semibold px-6 py-3 rounded-lg bg-xbox-green text-brand hover:opacity-90 transition-opacity"
+          >
+            View All Posts
+          </a>
+        </div>
       )}
     </div>
 
